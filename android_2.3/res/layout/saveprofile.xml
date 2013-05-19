@@ -1,0 +1,48 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layout_profile_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+	   <TextView
+	       android:id="@+id/save_profile"
+	       android:layout_width="match_parent"
+	       android:layout_height="wrap_content"
+	       android:padding="5pt"
+	       android:text="@string/text_pleaseinputname" />
+
+	   <EditText
+	       android:id="@+id/save_profile_name"
+	       android:layout_width="match_parent"
+	       android:layout_height="wrap_content"
+	       android:ems="10"
+	       android:inputType="text" >
+
+	       <requestFocus />
+	   </EditText>
+
+	   <LinearLayout
+	       android:id="@+id/layout_profile_button"
+	       android:layout_width="match_parent"
+	       android:layout_height="wrap_content" >
+
+	       <Button
+	           android:id="@+id/profile_save_button"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:text="@string/text_ok" />
+
+	       <Button
+	           android:id="@+id/profile_cancel_button"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:text="@string/text_cancel" />
+	   </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

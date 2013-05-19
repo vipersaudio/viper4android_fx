@@ -1,0 +1,121 @@
+﻿ViPER4Android FX v2.2.0.7
+Codename: Beautiful
+Copyright (C) 2006-2016 vipercn.com
+Forum: forum.vipersaudio.com
+
+Latest: v2.2.0.7
+1.New optimized driver for Non-VFP, VFP, NEON_A8 and NEON_A9/15 chip.
+2.Fix driver failure at PXA920 and some chip without VFP.
+3.Tweak the parameters for field surround.
+4.Add auditory system protection (Cure Tech+).
+
+===Attention===
+Phone with ARMv5TE core may cause laggy when convolver is enabled. 
+===============
+
+************
+[v2.0.0.1]
+1.New framework, upgraded effect kernel.
+2.More optimization.
+3.First release of version 2.
+
+[v2.0.0.2]
+1.Fix pop sound caused by IIR eq.
+
+[v2.0.0.3]
+1.Disable loudness correction in IIR eq.
+2.Fix crack sound when change music.
+
+[v2.0.0.4]
+1.Add notification function.
+2.Compatibility fixup.
+3.Add listen device configuration of version 1.
+4.Fix some bugs in dynamic system.
+5.Upgrade field surround.
+6.Fix speaker effect.
+7.Optimized for different cpu platform.
+8.Add zh_TW language support.
+
+[v2.0.0.5]
+1.Tegra2 platform fixup.
+2.Fix dynamic system with version 1 config.
+
+[v2.0.0.6]
+1.Bluetooth device connection fixup.
+2.Fix crack sound when IIR eq and bass set to extreme.
+3.More optimization.
+4.Finish the framework of speaker effect.
+
+[v2.0.0.7]
+1.Fix force close when bluetooth device connected.
+2.Effect unique id fixup, more compatible.
+3.Add IIR eq for speaker.
+4.Fix a potential bug.
+
+[v2.0.0.8]
+1.Add effect mode lockdown function.
+2.Add reverberation for speaker.
+3.Tweak parameters of field surround.
+4.Tweak kernel function.
+5.New application icon.
+
+[v2.0.0.9]
+1.Upgrade eq to 10 band 511 order FIR eq.
+2.Add driver status check function.
+3.Upgrade volume module of speaker.
+
+[v2.1.0.1]
+1.Enhance eq effect.
+2.Add mid-image adjustment in field surround.
+3.Add changelog dialog.
+
+[v2.1.0.2]
+1.Adjust eq effect, more comfortable.
+2.Bluetooth device effect fixup.
+
+[v2.2.0.1]
+1.Add convolver effect.
+2.Fix some bugs.
+3.CPU load optimization.
+
+[v2.2.0.2]
+1.CPU load optimization.
+2.Add main output gain.
+3.Support ir samples with irs extension.
+4.Sorted impulse response list.
+5.Show a hint when no ir samples found.
+6.Fix menu FC in MIUIv5.
+7.Fix convolver effect for android 4.2.2, root permission required.
+
+[v2.2.0.3]
+1.Fix convolver effect for MIUIv5, root permission required.
+
+[v2.2.0.4]
+1.CPU load optimization.
+2.Add changelog view in menu.
+3.Auto driver compatible install and update with ViPER4Android, no longer need to manually install.
+4.Add driver safe mode. If you got no audio effect, you can try to switch to safemode.
+5.Add normal and compatible mode. If you got no audio effect, you can try to switch to compatible mode.
+6.Improve the stability of convolver.
+7.Effect profile support save and load.
+8.Improved UI interface and logic.
+
+[v2.2.0.5]
+1.Installation process will use toolbox first.
+2.Fix driver check method.
+
+[v2.2.0.6]
+1.Driver installation/uninstallation more stable.
+2.CPU load optimization (convolver).
+3.Impulse response support longer than 1sec.
+4.Convolver support ARMv5TE chip.
+5.Field surround effect upgrade.
+6.Uninstall driver needs confirmation.
+7.Effect profile support overwrite.
+
+[v2.2.0.7]
+1.New optimized driver for Non-VFP, VFP, NEON_A8 and NEON_A9/15 chip.
+2.Fix driver failure at PXA920 and some chip without VFP.
+3.Tweak the parameters for field surround.
+4.Add auditory system protection (Cure Tech+).
+************
