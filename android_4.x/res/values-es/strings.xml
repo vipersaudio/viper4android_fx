@@ -49,6 +49,12 @@
     <string name="pref_dynamicsystem_tube_title">Simulador Tube(6N1J)</string>
     <string name="pref_dynamicsystem_tube_summary_on">Simulador Tube esta activado</string>
     <string name="pref_dynamicsystem_tube_summary_off">Simulador Tube esta desactivado</string>
+    <string name="pref_curesystem_title">Protección del sistema auditivo</string>
+    <string name="pref_curesystem_summary_on">Cure Tech+ esta activado</string>
+    <string name="pref_curesystem_summary_off">Cure Tech+ esta desactivado</string>
+    <string name="pref_curesystem_enable">Habilitar</string>
+    <string name="pref_select_cure_cf_title">Seleccione Nivel Binaural</string>
+    <string name="dialog_cure_crossfeed">Nivel Binaural</string>
     <string name="pref_convolver_title">Convolver</string>
     <string name="pref_convolver_summary_on">Convolver esta activado</string>
     <string name="pref_convolver_summary_off">Convolver esta desactivado</string>
@@ -116,13 +122,14 @@ No incluya '='"</string>
     <string name="text_su_missing">Permisos Root (su binary) requerido.</string>
     <string name="text_busybox_missing">"Busybox no encontrado. 
 Para utilizar ViPER4Android, necesita instalar busybox primero."</string>
-    <string name="text_ok">OK</string>
+    <string name="text_ok">Aceptar</string>
     <string name="text_cancel">Cancelar</string>
     <string name="text_select_cpu">Por favor seleccione su CPU</string>
     <string name="text_drvvernotmatch">"Para utilizar ViPER4Android, necesita instalar / actualizar el controlador V4A. 
 El proceso de instalación se realizará automáticamente. 
 Instalar/actualizar ahora?"</string>
     <string name="text_drvuninst_confim">¿Realmente desea desinstalar el controlador v4a?</string>
+    <string name="text_user_statistics">v4a. activado</string>
     <string name="text_commode">Modo FX Compatible</string>
     <string name="text_drv_blank" />
     <string name="text_uninstall">Desinstalar Driver</string>
@@ -141,7 +148,7 @@ Estado: %4$s
 Procesamiento: %5$s 
 Tipo: %6$s 
 Frecuencia de muestreo: %7$d 
-Chanales: %8$d 
+Canales: %8$d 
 "</string>
     <string name="text_service_error">Error al comunicarse con el servicio ViPER4Android.</string>
     <string name="about_title">Ayuda y Acerca de</string>
