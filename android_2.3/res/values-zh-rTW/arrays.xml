@@ -73,6 +73,11 @@
     <item>極端</item>
   </string-array>
 
+  <string-array name="vhs_qual">
+    <item>標準質量</item>
+    <item>高質量(消耗更多的CPU)</item>
+  </string-array>
+
   <string-array name="playbackgain_ratio">
     <item>輕微</item>
     <item>中等</item>

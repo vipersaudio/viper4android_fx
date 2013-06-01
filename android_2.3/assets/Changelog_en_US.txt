@@ -1,16 +1,14 @@
-﻿ViPER4Android FX v2.2.0.7
+﻿ViPER4Android FX v2.2.0.8
 Codename: Beautiful
 Copyright (C) 2006-2016 vipercn.com
 Forum: forum.vipersaudio.com
 
-Latest: v2.2.0.7
-1.New optimized driver for Non-VFP, VFP, NEON_A8 and NEON_A9/15 chip.
-2.Fix driver failure at PXA920 and some chip without VFP.
-3.Tweak the parameters for field surround.
-4.Add auditory system protection (Cure Tech+).
+Latest: v2.2.0.8
+1.Add Headphone Surround Engine+.
+2.Fix some bugs.
 
 ===Attention===
-Phone with ARMv5TE core may cause laggy when convolver is enabled. 
+The convolver and headphone surround+ are disabled in "Without VFP".
 ===============
 
 ************
@@ -118,4 +116,8 @@ Phone with ARMv5TE core may cause laggy when convolver is enabled.
 2.Fix driver failure at PXA920 and some chip without VFP.
 3.Tweak the parameters for field surround.
 4.Add auditory system protection (Cure Tech+).
+
+[v2.2.0.8]
+1.Add Headphone Surround Engine+.
+2.Fix some bugs.
 ************

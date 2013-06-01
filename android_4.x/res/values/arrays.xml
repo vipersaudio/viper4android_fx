@@ -187,6 +187,16 @@
     <item>2</item>
   </string-array>
 
+  <string-array name="vhs_qual">
+    <item>Normal</item>
+    <item>High</item>
+  </string-array>
+
+  <string-array name="vhs_qual_values" translatable="false">
+    <item>0</item>
+    <item>1</item>
+  </string-array>
+
   <string-array name="playbackgain_ratio">
     <item>Slight</item>
     <item>Moderate</item>
