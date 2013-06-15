@@ -73,6 +73,13 @@
     <string name="pref_convolver_knl">Impulse Response</string>
     <string name="pref_convolver_knl_title">Select Impulse Response</string>
 
+    <string name="pref_vhs_title">Headphone Surround +</string>
+    <string name="pref_vhs_summary_on">VHS+ is enabled</string>
+    <string name="pref_vhs_summary_off">VHS+ is disabled</string>
+    <string name="pref_vhs_enable">Enable</string>
+    <string name="pref_select_vhs_qual_title">Select Effect Quality</string>
+    <string name="dialog_vhs_qual">Effect Quality</string>
+
     <string name="pref_colorfulmusic_title">Field Surround</string>
     <string name="pref_colorfulmusic_summary_on">Field surround is enabled</string>
     <string name="pref_colorfulmusic_summary_off">Field surround is disabled</string>

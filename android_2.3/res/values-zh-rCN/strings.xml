@@ -73,6 +73,13 @@
     <string name="pref_convolver_knl">脉冲反馈样本</string>
     <string name="pref_convolver_knl_title">选择脉冲反馈样本</string>
 
+    <string name="pref_vhs_title">耳机环绕核擎+</string>
+    <string name="pref_vhs_summary_on">耳机环绕核擎+ 已启用</string>
+    <string name="pref_vhs_summary_off">耳机环绕核擎+ 已禁用</string>
+    <string name="pref_vhs_enable">启用</string>
+    <string name="pref_select_vhs_qual_title">选择效果质量</string>
+    <string name="dialog_vhs_qual">效果质量</string>
+
     <string name="pref_colorfulmusic_title">场环绕</string>
     <string name="pref_colorfulmusic_summary_on">场环绕已启用</string>
     <string name="pref_colorfulmusic_summary_off">场环绕已禁用</string>

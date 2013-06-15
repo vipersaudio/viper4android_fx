@@ -321,6 +321,8 @@ public class Utils
         		bwOutput.write("viper4android.headphonefx.convolver.enable=boolean=" + szValue + "\n");
         		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.colorfulmusic.enable", false));
         		bwOutput.write("viper4android.headphonefx.colorfulmusic.enable=boolean=" + szValue + "\n");
+        		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.vhs.enable", false));
+        		bwOutput.write("viper4android.headphonefx.vhs.enable=boolean=" + szValue + "\n");
         		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.reverb.enable", false));
         		bwOutput.write("viper4android.headphonefx.reverb.enable=boolean=" + szValue + "\n");
         		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.dynamicsystem.enable", false));
@@ -347,6 +349,8 @@ public class Utils
         		bwOutput.write("viper4android.headphonefx.colorfulmusic.coeffs=string=" + szValue + "\n");
         		szValue = preferences.getString("viper4android.headphonefx.colorfulmusic.midimage", "150");
         		bwOutput.write("viper4android.headphonefx.colorfulmusic.midimage=string=" + szValue + "\n");
+        		szValue = preferences.getString("viper4android.headphonefx.vhs.qual", "0");
+        		bwOutput.write("viper4android.headphonefx.vhs.qual=string=" + szValue + "\n");
         		szValue = preferences.getString("viper4android.headphonefx.reverb.roomsize", "0");
         		bwOutput.write("viper4android.headphonefx.reverb.roomsize=string=" + szValue + "\n");
         		szValue = preferences.getString("viper4android.headphonefx.reverb.roomwidth", "0");

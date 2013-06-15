@@ -73,6 +73,13 @@
     <string name="pref_convolver_knl">脈衝回饋模擬樣本</string>
     <string name="pref_convolver_knl_title">選擇脈衝回饋模擬樣本</string>
 
+    <string name="pref_vhs_title">耳機環繞核擎+</string>
+    <string name="pref_vhs_summary_on">耳機環繞核擎+ 已啟用</string>
+    <string name="pref_vhs_summary_off">耳機環繞核擎+ 已停用</string>
+    <string name="pref_vhs_enable">啟用</string>
+    <string name="pref_select_vhs_qual_title">選擇效果質量</string>
+    <string name="dialog_vhs_qual">效果質量</string>
+
     <string name="pref_colorfulmusic_title">臨場感模擬</string>
     <string name="pref_colorfulmusic_summary_on">臨場感模擬已啟用</string>
     <string name="pref_colorfulmusic_summary_off">臨場感模擬已停用</string>
