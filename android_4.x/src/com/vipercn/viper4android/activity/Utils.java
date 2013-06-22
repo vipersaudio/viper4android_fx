@@ -329,6 +329,10 @@ public class Utils
         		bwOutput.write("viper4android.headphonefx.dynamicsystem.enable=boolean=" + szValue + "\n");
         		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.dynamicsystem.tube", false));
         		bwOutput.write("viper4android.headphonefx.dynamicsystem.tube=boolean=" + szValue + "\n");
+        		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.fidelity.bass.enable", false));
+        		bwOutput.write("viper4android.headphonefx.fidelity.bass.enable=boolean=" + szValue + "\n");
+        		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.fidelity.clarity.enable", false));
+        		bwOutput.write("viper4android.headphonefx.fidelity.clarity.enable=boolean=" + szValue + "\n");
         		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.cure.enable", false));
         		bwOutput.write("viper4android.headphonefx.cure.enable=boolean=" + szValue + "\n");
 
@@ -365,6 +369,16 @@ public class Utils
         		bwOutput.write("viper4android.headphonefx.dynamicsystem.coeffs=string=" + szValue + "\n");
         		szValue = preferences.getString("viper4android.headphonefx.dynamicsystem.bass", "0");
         		bwOutput.write("viper4android.headphonefx.dynamicsystem.bass=string=" + szValue + "\n");
+        		szValue = preferences.getString("viper4android.headphonefx.fidelity.bass.mode", "0");
+        		bwOutput.write("viper4android.headphonefx.fidelity.bass.mode=string=" + szValue + "\n");
+        		szValue = preferences.getString("viper4android.headphonefx.fidelity.bass.freq", "40");
+        		bwOutput.write("viper4android.headphonefx.fidelity.bass.freq=string=" + szValue + "\n");
+        		szValue = preferences.getString("viper4android.headphonefx.fidelity.bass.gain", "50");
+        		bwOutput.write("viper4android.headphonefx.fidelity.bass.gain=string=" + szValue + "\n");
+        		szValue = preferences.getString("viper4android.headphonefx.fidelity.clarity.mode", "0");
+        		bwOutput.write("viper4android.headphonefx.fidelity.clarity.mode=string=" + szValue + "\n");
+        		szValue = preferences.getString("viper4android.headphonefx.fidelity.clarity.gain", "50");
+        		bwOutput.write("viper4android.headphonefx.fidelity.clarity.gain=string=" + szValue + "\n");
         		szValue = preferences.getString("viper4android.headphonefx.cure.crossfeed", "0");
         		bwOutput.write("viper4android.headphonefx.cure.crossfeed=string=" + szValue + "\n");
         		szValue = preferences.getString("viper4android.headphonefx.outvol", "100");

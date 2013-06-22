@@ -59,6 +59,24 @@
     <string name="pref_dynamicsystem_tube_summary_on">Tube simulator is enabled</string>
     <string name="pref_dynamicsystem_tube_summary_off">Tube simulator is disabled</string>
 
+    <string name="pref_fidelity_title">Fidelity Control</string>
+    <string name="pref_fidelity_vb_summary_on">ViPER Bass is enabled</string>
+    <string name="pref_fidelity_vb_summary_off">ViPER Bass is disabled</string>
+    <string name="pref_fidelity_vb_enable">Enable ViPER Bass</string>
+    <string name="pref_fidelity_vb_mode">Bass Mode</string>
+    <string name="pref_fidelity_vb_mode_title">Select Bass Mode</string>
+    <string name="pref_fidelity_vb_bassfreq">Bass Frequency</string>
+    <string name="pref_fidelity_vb_bassfreq_title">Select Bass Frequency</string>
+    <string name="pref_fidelity_vb_bassgain">Bass Boost</string>
+    <string name="pref_fidelity_vb_bassgain_title">Select Bass Boost</string>
+    <string name="pref_fidelity_vc_summary_on">ViPER Clarity is enabled</string>
+    <string name="pref_fidelity_vc_summary_off">ViPER Clarity is disabled</string>
+    <string name="pref_fidelity_vc_enable">Enable ViPER Clarity</string>
+    <string name="pref_fidelity_vc_mode">Clarity Mode</string>
+    <string name="pref_fidelity_vc_mode_title">Select Clarity Mode</string>
+    <string name="pref_fidelity_vc_bassgain">Clarity</string>
+    <string name="pref_fidelity_vc_bassgain_title">Select Clarity</string>
+
     <string name="pref_curesystem_title">Auditory System Protection</string>
     <string name="pref_curesystem_summary_on">Cure Tech+ is enabled</string>
     <string name="pref_curesystem_summary_off">Cure Tech+ is disabled</string>
