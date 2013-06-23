@@ -59,6 +59,24 @@
     <string name="pref_dynamicsystem_tube_summary_on">電子管模擬器已啓用</string>
     <string name="pref_dynamicsystem_tube_summary_off">電子管模擬器已停用</string>
 
+    <string name="pref_fidelity_title">保真控制</string>
+    <string name="pref_fidelity_vb_summary_on">ViPER低音已啟用</string>
+    <string name="pref_fidelity_vb_summary_off">ViPER低音已停用</string>
+    <string name="pref_fidelity_vb_enable">啟用ViPER低音</string>
+    <string name="pref_fidelity_vb_mode">低音處理模式</string>
+    <string name="pref_fidelity_vb_mode_title">低音處理模式</string>
+    <string name="pref_fidelity_vb_bassfreq">低音頻點</string>
+    <string name="pref_fidelity_vb_bassfreq_title">選擇低音頻點</string>
+    <string name="pref_fidelity_vb_bassgain">低音增益</string>
+    <string name="pref_fidelity_vb_bassgain_title">選擇低音增益</string>
+    <string name="pref_fidelity_vc_summary_on">ViPER清晰度已啟用</string>
+    <string name="pref_fidelity_vc_summary_off">ViPER清晰度已停用</string>
+    <string name="pref_fidelity_vc_enable">啟用ViPER清晰度</string>
+    <string name="pref_fidelity_vc_mode">清晰度處理模式</string>
+    <string name="pref_fidelity_vc_mode_title">選擇清晰度處理模式</string>
+    <string name="pref_fidelity_vc_bassgain">清晰度</string>
+    <string name="pref_fidelity_vc_bassgain_title">選擇清晰度</string>
+
     <string name="pref_convolver_title">脈衝回饋模擬效果</string>
     <string name="pref_convolver_summary_on">脈衝回饋模擬效果已啟用</string>
     <string name="pref_convolver_summary_off">脈衝回饋模擬效果已停用</string>
@@ -174,6 +192,8 @@
 \n
     </string>
     <string name="text_service_error">無法和ViPER4Android背景服務建立連接，可能是無法加載驅動或背景服務程序已被殺死。</string>
+
+    <string name="text_checkupdate">檢查更新</string>
 
     <string name="str_about">非常感謝alankila的EQ介面。</string>
     <string name="str_copyright">版權所有© 2006–2016, vipercn.com。</string> 

@@ -224,11 +224,11 @@
 
     <string name="text_help_content">***General help***
 \n
-\n\'Instalar Driver' - Instalar/Actualizar driver efecto ViPER4.
-\n\'Desinstalar Driver' - Desinstalar driver efecto ViPER4.
-\n\'Cambiar a Modo Seguro' - Cambie el driver a compatible con OpenSL arch.
-\n\'Cambiar a Modo Normal' - Cambie el driver único arch.
-\n\'Modo Compatible FX' - Ajuste el modo efecto compatible
+\n\'Instalar Driver\' - Instalar/Actualizar driver efecto ViPER4.
+\n\'Desinstalar Driver\' - Desinstalar driver efecto ViPER4.
+\n\'Cambiar a Modo Seguro\' - Cambie el driver a compatible con OpenSL arch.
+\n\'Cambiar a Modo Normal\' - Cambie el driver único arch.
+\n\'Modo Compatible FX\' - Ajuste el modo efecto compatible
 \n    \'Normal\' - Haga ViPER4 como un efecto global.
 \n    \'Compatible\' - Haga ViPER4 como un efecto local.
 \n

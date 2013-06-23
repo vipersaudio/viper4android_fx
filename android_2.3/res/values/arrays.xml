@@ -437,6 +437,88 @@
     <item>800;6200;80;140;0;0</item>
   </string-array>
 
+  <string-array name="vbass_mode">
+    <item>Natural Bass</item>
+    <item>Pure Bass+</item>
+  </string-array>
+  <string-array name="vbass_mode_values"  translatable="false">
+    <item>0</item>
+    <item>1</item>
+  </string-array>
+  <string-array name="vbass_freq">
+    <item>40 Hz</item>
+    <item>50 Hz</item>
+    <item>60 Hz</item>
+    <item>80 Hz</item>
+    <item>100 Hz</item>
+  </string-array>
+  <string-array name="vbass_freq_values"  translatable="false">
+    <item>40</item>
+    <item>50</item>
+    <item>60</item>
+    <item>80</item>
+    <item>100</item>
+  </string-array>
+  <string-array name="vbass_boost">
+    <item>3.5 dB</item>
+    <item>6.0 dB</item>
+    <item>8.0 dB</item>
+    <item>10.0 dB</item>
+    <item>11.0 dB</item>
+    <item>12.0 dB</item>
+    <item>13.0 dB</item>
+    <item>14.0 dB</item>
+    <item>14.8 dB</item>
+    <item>15.6 dB</item>
+    <item>16.3 dB</item>
+    <item>17.0 dB</item>
+  </string-array>
+  <string-array name="vbass_boost_values"  translatable="false">
+    <item>50</item>
+    <item>100</item>
+    <item>150</item>
+    <item>200</item>
+    <item>250</item>
+    <item>300</item>
+    <item>350</item>
+    <item>400</item>
+    <item>450</item>
+    <item>500</item>
+    <item>550</item>
+    <item>600</item>
+  </string-array>
+
+  <string-array name="vclarity_mode">
+    <item>Natural Clarity</item>
+    <item>OZone+</item>
+  </string-array>
+  <string-array name="vclarity_mode_values"  translatable="false">
+    <item>0</item>
+    <item>1</item>
+  </string-array>
+  <string-array name="vclarity_boost">
+    <item>3.5 dB</item>
+    <item>6.0 dB</item>
+    <item>8.0 dB</item>
+    <item>10.0 dB</item>
+    <item>11.0 dB</item>
+    <item>12.0 dB</item>
+    <item>13.0 dB</item>
+    <item>14.0 dB</item>
+    <item>14.8 dB</item>
+  </string-array>
+  <string-array name="vclarity_boost_values"  translatable="false">
+    <item>50</item>
+    <item>100</item>
+    <item>150</item>
+    <item>200</item>
+    <item>250</item>
+    <item>300</item>
+    <item>350</item>
+    <item>400</item>
+    <item>450</item>
+  </string-array>
+
   <string-array name="speaker_lowfreq">
     <item>100 Hz</item>
     <item>140 Hz</item>

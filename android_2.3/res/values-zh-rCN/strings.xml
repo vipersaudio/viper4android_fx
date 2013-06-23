@@ -59,6 +59,24 @@
     <string name="pref_dynamicsystem_tube_summary_on">电子管模拟器已启用</string>
     <string name="pref_dynamicsystem_tube_summary_off">电子管模拟器已禁用</string>
 
+    <string name="pref_fidelity_title">保真控制</string>
+    <string name="pref_fidelity_vb_summary_on">ViPER低音已启用</string>
+    <string name="pref_fidelity_vb_summary_off">ViPER低音已禁用</string>
+    <string name="pref_fidelity_vb_enable">启用ViPER低音</string>
+    <string name="pref_fidelity_vb_mode">低音处理模式</string>
+    <string name="pref_fidelity_vb_mode_title">低音处理模式</string>
+    <string name="pref_fidelity_vb_bassfreq">低音频点</string>
+    <string name="pref_fidelity_vb_bassfreq_title">选择低音频点</string>
+    <string name="pref_fidelity_vb_bassgain">低音增益</string>
+    <string name="pref_fidelity_vb_bassgain_title">选择低音增益</string>
+    <string name="pref_fidelity_vc_summary_on">ViPER清晰度已启用</string>
+    <string name="pref_fidelity_vc_summary_off">ViPER清晰度已禁用</string>
+    <string name="pref_fidelity_vc_enable">启用ViPER清晰度</string>
+    <string name="pref_fidelity_vc_mode">清晰度处理模式</string>
+    <string name="pref_fidelity_vc_mode_title">选择清晰度处理模式</string>
+    <string name="pref_fidelity_vc_bassgain">清晰度</string>
+    <string name="pref_fidelity_vc_bassgain_title">选择清晰度</string>
+
     <string name="pref_curesystem_title">听觉保护</string>
     <string name="pref_curesystem_summary_on">Cure技术已启用</string>
     <string name="pref_curesystem_summary_off">Cure技术已禁用</string>
@@ -181,6 +199,8 @@
 \n
     </string>
     <string name="text_service_error">无法和ViPER4Android后台服务建立连接，可能是无法加载驱动或后台服务进程已被杀死。</string>
+
+    <string name="text_checkupdate">检查更新</string>
 
     <string name="str_about">非常感谢alankila的EQ界面。</string>
     <string name="str_copyright">版权所有© 2006–2016, vipercn.com。</string> 

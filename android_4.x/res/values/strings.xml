@@ -241,4 +241,6 @@
     <string name="text_forum_link">http://forum.xda-developers.com/showthread.php?t=2191223</string>
     <string name="text_view_forum">Forum</string>
 
+    <string name="text_checkupdate">Check Update</string>
+    <string name="text_updatelink">http://vipersaudio.com/swupdate/viper4android/download.html</string>
 </resources>

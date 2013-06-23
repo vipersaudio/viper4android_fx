@@ -728,6 +728,14 @@ public final class ViPER4Android extends FragmentActivity
         int choice = item.getItemId();
         switch (choice)
         {
+	        case R.id.checkupdate:
+	        {
+				Uri uri = Uri.parse(getResources().getString(R.string.text_updatelink));  
+		        Intent intent = new Intent(Intent.ACTION_VIEW, uri);  
+		        ViPER4Android.this.startActivity(intent);
+	        	return true;
+	        }
+
             case R.id.about:
             {
 				PackageManager packageMgr = getPackageManager();

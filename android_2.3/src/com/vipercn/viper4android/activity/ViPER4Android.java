@@ -28,6 +28,7 @@ import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -612,6 +613,15 @@ public final class ViPER4Android extends PreferenceActivity
 
 		switch (item.getItemId())
 		{
+        case R.id.checkupdate:
+        {
+			Uri uri = Uri.parse(getResources().getString(R.string.text_updatelink));  
+	        Intent intent = new Intent(Intent.ACTION_VIEW, uri);  
+	        ViPER4Android.this.startActivity(intent);
+
+        	return true;
+        }
+
 		case R.id.changelog:
 		{
 			String szLocale = Locale.getDefault().getLanguage() + "_" + Locale.getDefault().getCountry();

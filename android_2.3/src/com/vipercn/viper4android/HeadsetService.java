@@ -294,26 +294,33 @@ public class HeadsetService extends Service
 	public static final int PARAM_HPFX_DYNSYS_YCOEFFS = 65561;
 	public static final int PARAM_HPFX_DYNSYS_SIDEGAIN = 65562;
 	public static final int PARAM_HPFX_DYNSYS_BASSGAIN = 65563;
-	public static final int PARAM_HPFX_CURE_PROCESS_ENABLED = 65564;
-	public static final int PARAM_HPFX_CURE_CROSSFEED = 65565;
-	public static final int PARAM_HPFX_OUTPUT_VOLUME = 65566;
-	public static final int PARAM_HPFX_LIMITER_THRESHOLD = 65567;
-	public static final int PARAM_SPKFX_CONV_PROCESS_ENABLED = 65568;
-	public static final int PARAM_SPKFX_CONV_UPDATEKERNEL = 65569;
-	public static final int PARAM_SPKFX_FIREQ_PROCESS_ENABLED = 65570;
-	public static final int PARAM_SPKFX_FIREQ_BANDLEVEL = 65571;
-	public static final int PARAM_SPKFX_REVB_PROCESS_ENABLED = 65572;
-	public static final int PARAM_SPKFX_REVB_ROOMSIZE = 65573;
-	public static final int PARAM_SPKFX_REVB_WIDTH = 65574;
-	public static final int PARAM_SPKFX_REVB_DAMP = 65575;
-	public static final int PARAM_SPKFX_REVB_WET = 65576;
-	public static final int PARAM_SPKFX_REVB_DRY = 65577;
-	public static final int PARAM_SPKFX_AGC_PROCESS_ENABLED = 65578;
-	public static final int PARAM_SPKFX_AGC_RATIO = 65579;
-	public static final int PARAM_SPKFX_AGC_VOLUME = 65580;
-	public static final int PARAM_SPKFX_AGC_MAXSCALER = 65581;
-	public static final int PARAM_SPKFX_OUTPUT_VOLUME = 65582;
-	public static final int PARAM_SPKFX_LIMITER_THRESHOLD = 65583;
+	public static final int PARAM_HPFX_VIPERBASS_PROCESS_ENABLED = 65564;
+	public static final int PARAM_HPFX_VIPERBASS_MODE = 65565;
+	public static final int PARAM_HPFX_VIPERBASS_SPEAKER = 65566;
+	public static final int PARAM_HPFX_VIPERBASS_BASSGAIN = 65567;
+	public static final int PARAM_HPFX_VIPERCLARITY_PROCESS_ENABLED = 65568;
+	public static final int PARAM_HPFX_VIPERCLARITY_MODE = 65569;
+	public static final int PARAM_HPFX_VIPERCLARITY_CLARITY = 65570;
+	public static final int PARAM_HPFX_CURE_PROCESS_ENABLED = 65571;
+	public static final int PARAM_HPFX_CURE_CROSSFEED = 65572;
+	public static final int PARAM_HPFX_OUTPUT_VOLUME = 65573;
+	public static final int PARAM_HPFX_LIMITER_THRESHOLD = 65574;
+	public static final int PARAM_SPKFX_CONV_PROCESS_ENABLED = 65575;
+	public static final int PARAM_SPKFX_CONV_UPDATEKERNEL = 65576;
+	public static final int PARAM_SPKFX_FIREQ_PROCESS_ENABLED = 65577;
+	public static final int PARAM_SPKFX_FIREQ_BANDLEVEL = 65578;
+	public static final int PARAM_SPKFX_REVB_PROCESS_ENABLED = 65579;
+	public static final int PARAM_SPKFX_REVB_ROOMSIZE = 65580;
+	public static final int PARAM_SPKFX_REVB_WIDTH = 65581;
+	public static final int PARAM_SPKFX_REVB_DAMP = 65582;
+	public static final int PARAM_SPKFX_REVB_WET = 65583;
+	public static final int PARAM_SPKFX_REVB_DRY = 65584;
+	public static final int PARAM_SPKFX_AGC_PROCESS_ENABLED = 65585;
+	public static final int PARAM_SPKFX_AGC_RATIO = 65586;
+	public static final int PARAM_SPKFX_AGC_VOLUME = 65587;
+	public static final int PARAM_SPKFX_AGC_MAXSCALER = 65588;
+	public static final int PARAM_SPKFX_OUTPUT_VOLUME = 65589;
+	public static final int PARAM_SPKFX_LIMITER_THRESHOLD = 65590;
 	/***************************************/
 
     private AudioManager mAudioManager = null;
@@ -420,7 +427,7 @@ public class HeadsetService extends Service
 		@Override  
 		public void onReceive(final Context context, final Intent intent)
 		{
-			updateDspSystem();
+			//updateDspSystem();
 			Log.i("ViPER4Android", "screenOnReceiver::onReceive()");
 		}
 	};
@@ -941,6 +948,20 @@ public class HeadsetService extends Service
 				mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_DYNSYS_PROCESS_ENABLED, 1);
 			else mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_DYNSYS_PROCESS_ENABLED, 0);
 
+			/* Fidelity Control */
+			Log.i("ViPER4Android", "updateSystem(): Updating Fidelity Control.");
+			mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_VIPERBASS_MODE, Integer.valueOf(preferences.getString("viper4android.headphonefx.fidelity.bass.mode", "0")));
+			mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_VIPERBASS_SPEAKER, Integer.valueOf(preferences.getString("viper4android.headphonefx.fidelity.bass.freq", "40")));
+			mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_VIPERBASS_BASSGAIN, Integer.valueOf(preferences.getString("viper4android.headphonefx.fidelity.bass.gain", "50")));
+			if (preferences.getBoolean("viper4android.headphonefx.fidelity.bass.enable", false))
+				mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_VIPERBASS_PROCESS_ENABLED, 1);
+			else mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_VIPERBASS_PROCESS_ENABLED, 0);
+			mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_VIPERCLARITY_MODE, Integer.valueOf(preferences.getString("viper4android.headphonefx.fidelity.clarity.mode", "0")));
+			mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_VIPERCLARITY_CLARITY, Integer.valueOf(preferences.getString("viper4android.headphonefx.fidelity.clarity.gain", "50")));
+			if (preferences.getBoolean("viper4android.headphonefx.fidelity.clarity.enable", false))
+				mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_VIPERCLARITY_PROCESS_ENABLED, 1);
+			else mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_VIPERCLARITY_PROCESS_ENABLED, 0);
+
 			/* Cure System */
 			Log.i("ViPER4Android", "updateSystem(): Updating Cure System.");
 			mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_CURE_CROSSFEED, Integer.valueOf(preferences.getString("viper4android.headphonefx.cure.crossfeed", "0")));
@@ -1176,6 +1197,20 @@ public class HeadsetService extends Service
 			if (preferences.getBoolean("viper4android.headphonefx.dynamicsystem.enable", false))
 				mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_DYNSYS_PROCESS_ENABLED, 1);
 			else mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_DYNSYS_PROCESS_ENABLED, 0);
+
+			/* Fidelity Control */
+			Log.i("ViPER4Android", "updateSystem(): Updating Fidelity Control.");
+			mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_VIPERBASS_MODE, Integer.valueOf(preferences.getString("viper4android.headphonefx.fidelity.bass.mode", "0")));
+			mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_VIPERBASS_SPEAKER, Integer.valueOf(preferences.getString("viper4android.headphonefx.fidelity.bass.freq", "40")));
+			mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_VIPERBASS_BASSGAIN, Integer.valueOf(preferences.getString("viper4android.headphonefx.fidelity.bass.gain", "50")));
+			if (preferences.getBoolean("viper4android.headphonefx.fidelity.bass.enable", false))
+				mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_VIPERBASS_PROCESS_ENABLED, 1);
+			else mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_VIPERBASS_PROCESS_ENABLED, 0);
+			mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_VIPERCLARITY_MODE, Integer.valueOf(preferences.getString("viper4android.headphonefx.fidelity.clarity.mode", "0")));
+			mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_VIPERCLARITY_CLARITY, Integer.valueOf(preferences.getString("viper4android.headphonefx.fidelity.clarity.gain", "50")));
+			if (preferences.getBoolean("viper4android.headphonefx.fidelity.clarity.enable", false))
+				mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_VIPERCLARITY_PROCESS_ENABLED, 1);
+			else mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_VIPERCLARITY_PROCESS_ENABLED, 0);
 
 			/* Cure System */
 			Log.i("ViPER4Android", "updateSystem(): Updating Cure System.");

@@ -203,4 +203,46 @@
     <item>未知類型4</item>
   </string-array>
 
+  <string-array name="vbass_mode">
+    <item>自然低音</item>
+    <item>醇低音+</item>
+  </string-array>
+  <string-array name="vbass_freq">
+    <item>40 赫茲</item>
+    <item>50 赫茲</item>
+    <item>60 赫茲</item>
+    <item>80 赫茲</item>
+    <item>100 赫茲</item>
+  </string-array>
+  <string-array name="vbass_boost">
+    <item>3.5 分貝</item>
+    <item>6.0 分貝</item>
+    <item>8.0 分貝</item>
+    <item>10.0 分貝</item>
+    <item>11.0 分貝</item>
+    <item>12.0 分貝</item>
+    <item>13.0 分貝</item>
+    <item>14.0 分貝</item>
+    <item>14.8 分貝</item>
+    <item>15.6 分貝</item>
+    <item>16.3 分貝</item>
+    <item>17.0 分貝</item>
+  </string-array>
+
+  <string-array name="vclarity_mode">
+    <item>自然處理</item>
+    <item>醇氧+</item>
+  </string-array>
+  <string-array name="vclarity_boost">
+    <item>3.5 分貝</item>
+    <item>6.0 分貝</item>
+    <item>8.0 分貝</item>
+    <item>10.0 分貝</item>
+    <item>11.0 分貝</item>
+    <item>12.0 分貝</item>
+    <item>13.0 分貝</item>
+    <item>14.0 分貝</item>
+    <item>14.8 分貝</item>
+  </string-array>
+
 </resources>
