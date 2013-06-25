@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ViPER4Android FX</string>
+    <string name="select_configuration_title">ViPER4Android FX</string>
+    <string name="headset_title">Słuchawki</string>
+    <string name="speaker_title">Głośnik</string>
+    <string name="bluetooth_title">Bluetooth</string>
+    <string name="audio_effects">Audio Effects</string>
+    <string name="dsp_settings_headset">Ustawienia - Słuchawki</string>
+    <string name="dsp_settings_speaker">Ustawienia - Głośnik</string>
+    <string name="dsp_settings_bluetooth">Ustawienia - Bluetooth</string>
+    <string name="pref_dsp_enable">Stan</string>
+    <string name="pref_effect_title">Siła efektu</string>
+    <string name="dialog_effect">Siła efektu</string>
+    <string name="pref_fx_master_title">Silnik efektów</string>
+    <string name="pref_fx_master_summary_on">V4A-FX jest włączony</string>
+    <string name="pref_fx_master_summary_off">V4A-FX jest wyłączony</string>
+    <string name="pref_spkfx_master_title">Silnik efektów</string>
+    <string name="pref_spkfx_master_summary_on">V4A-SpeakerFX jest włączony</string>
+    <string name="pref_spkfx_master_summary_off">V4A-SpeakerFX jest wyłączony</string>
+    <string name="pref_fx_limiter_title">Master Gate (Limiter)</string>
+    <string name="pref_fx_limiter_threshold">Limit Threshold</string>
+    <string name="pref_spkfx_limiter_title">Master Gate (Limiter)</string>
+    <string name="pref_spkfx_limiter_threshold">Limit Threshold</string>
+    <string name="pref_output_gain">Output Gain</string>
+    <string name="pref_playback_title">Wzmocnienie</string>
+    <string name="pref_playback_summary_on">PlaybackAGC jest aktywny</string>
+    <string name="pref_playback_summary_off">PlaybackAGC jest nieaktywny</string>
+    <string name="pref_playback_output_threshold">Max Output</string>
+    <string name="pref_playback_maxgain">Maksymalne wzmocnienie</string>
+    <string name="pref_xloud_title">Wysoka głosność</string>
+    <string name="pref_xloud_summary_on">eXtra-Loud jest aktywny</string>
+    <string name="pref_xloud_summary_off">eXtra-Loud jest nieaktywny</string>
+    <string name="pref_xloud_output_amplifer">Output Gain</string>
+    <string name="pref_xloud_spk_lowfreq">Low Response</string>
+    <string name="pref_xloud_spk_highfreq">High Response</string>
+    <string name="pref_equalizer_title">Equalizer</string>
+    <string name="pref_equalizer_summary_on">FIREqualizer jest aktywny</string>
+    <string name="pref_equalizer_summary_off">FIREqualizer jest nieaktywny</string>
+    <string name="pref_equalizer_enable">Stan</string>
+    <string name="pref_equalizer_preset_title">Wybierz profil</string>
+    <string name="pref_dynamicsystem_title">Dynamic System</string>
+    <string name="pref_dynamicsystem_summary_on">Dynamic system is enabled</string>
+    <string name="pref_dynamicsystem_summary_off">Dynamic system is disabled</string>
+    <string name="pref_dynamicsystem_enable">Stan</string>
+    <string name="pref_dynamicsystem_output">Słuchawki</string>
+    <string name="pref_dynamicsystem_output_title">Słuchawki</string>
+    <string name="pref_dynamicsystem_bass">Select Dynamic Bass</string>
+    <string name="pref_dynamicsystem_tube_title">Tube Simulator (6N1J)</string>
+    <string name="pref_dynamicsystem_tube_summary_on">Tube simulator is enabled</string>
+    <string name="pref_dynamicsystem_tube_summary_off">Tube simulator is disabled</string>
+    <string name="pref_fidelity_title">Wierność dźwięku</string>
+    <string name="pref_fidelity_vb_summary_on">ViPER Bass jest aktywny</string>
+    <string name="pref_fidelity_vb_summary_off">ViPER Bass jest nieaktywny</string>
+    <string name="pref_fidelity_vb_enable">Bass ViPER</string>
+    <string name="pref_fidelity_vb_mode">Tryb bassu</string>
+    <string name="pref_fidelity_vb_mode_title">Tryb bassu</string>
+    <string name="pref_fidelity_vb_bassfreq">Częstotliwość bassu</string>
+    <string name="pref_fidelity_vb_bassfreq_title">Częstotliwość bassu</string>
+    <string name="pref_fidelity_vb_bassgain">Wzmocnienie bassu</string>
+    <string name="pref_fidelity_vb_bassgain_title">Wzmocnienie bassu</string>
+    <string name="pref_fidelity_vc_summary_on">Czystość ViPER jest aktywna</string>
+    <string name="pref_fidelity_vc_summary_off">Czystość ViPER jest nieaktywna</string>
+    <string name="pref_fidelity_vc_enable">Czystość ViPER</string>
+    <string name="pref_fidelity_vc_mode">Tryb czystości dźwięku</string>
+    <string name="pref_fidelity_vc_mode_title">Tryb czystości dźwięku</string>
+    <string name="pref_fidelity_vc_bassgain">Czystość</string>
+    <string name="pref_fidelity_vc_bassgain_title">Czystość</string>
+    <string name="pref_curesystem_title">Ochrona słuchu</string>
+    <string name="pref_curesystem_summary_on">Cure Tech+ jest aktywny</string>
+    <string name="pref_curesystem_summary_off">Cure Tech+ jest nieaktywny</string>
+    <string name="pref_curesystem_enable">Stan</string>
+    <string name="pref_select_cure_cf_title">Obustronny efekt</string>
+    <string name="dialog_cure_crossfeed">Obustronny efekt</string>
+    <string name="pref_convolver_title">Convolver</string>
+    <string name="pref_convolver_summary_on">Convolver jest aktywny</string>
+    <string name="pref_convolver_summary_off">Convolver jest nieaktywny</string>
+    <string name="pref_convolver_enable">Stan</string>
+    <string name="pref_convolver_knl">Impulsy</string>
+    <string name="pref_convolver_knl_title">Wybierz impulsy</string>
+    <string name="pref_vhs_title">Dźwięk przestrzenny +</string>
+    <string name="pref_vhs_summary_on">VHS+ jest aktywny</string>
+    <string name="pref_vhs_summary_off">VHS+ jest nieaktywny</string>
+    <string name="pref_vhs_enable">Stan</string>
+    <string name="pref_select_vhs_qual_title">Jakość efektu</string>
+    <string name="dialog_vhs_qual">Jakość efektu</string>
+    <string name="pref_colorfulmusic_title">Field Surround</string>
+    <string name="pref_colorfulmusic_summary_on">Field surround is enabled</string>
+    <string name="pref_colorfulmusic_summary_off">Field surround is disabled</string>
+    <string name="pref_colorfulmusic_enable">Stan</string>
+    <string name="pref_select_colorfulmusic_title">Siła efektu</string>
+    <string name="dialog_colorfulmusic">Siła efektu</string>
+    <string name="pref_select_colorfulmusic_mi_title">Select Mid Image Strength</string>
+    <string name="dialog_colorfulmusic_mi">Mid Image Strength</string>
+    <string name="pref_reverb_title">Echo</string>
+    <string name="pref_reverb_summary_on">Pogłos jest aktywny</string>
+    <string name="pref_reverb_summary_off">Pogłos jest nieaktywny</string>
+    <string name="pref_reverb_enable">Stan</string>
+    <string name="pref_reverb_roomsize">Wielkość pokoju</string>
+    <string name="pref_reverb_width">Pole akustyczne</string>
+    <string name="pref_reverb_damp">Współczynnik tłumienia</string>
+    <string name="pref_reverb_wet">Wet Signal</string>
+    <string name="pref_reverb_dry">Dry Signal</string>
+    <string name="eq_preset_acoustic">Akustyczny</string>
+    <string name="eq_preset_bass_booster">Wzmocnienie bassu</string>
+    <string name="eq_preset_bass_reducer">Redukacja bassu</string>
+    <string name="eq_preset_classical">Klasyczny</string>
+    <string name="eq_preset_deep">Deep</string>
+    <string name="eq_preset_flat">Płaski</string>
+    <string name="eq_preset_r_and_b">R&amp;B</string>
+    <string name="eq_preset_rock">Rock</string>
+    <string name="eq_preset_small_speakers">Małe głośniki</string>
+    <string name="eq_preset_treble_booster">Wzmocnienie sporanu</string>
+    <string name="eq_preset_treble_reducer">Redukcja sopranu</string>
+    <string name="eq_preset_vocal_booster">Wzmocnienie wokalu</string>
+    <string name="eq_preset_custom">Własny</string>
+    <string name="text_ir_dir_isempty">Brak przykładowych impulsów w %1$s.</string>
+    <string name="text_token_lost">Napotkano błąd, spróbuj ponownie załadować biblioteki.</string>
+    <string name="text_enabled">Enabled</string>
+    <string name="text_disabled">Disabled</string>
+    <string name="text_headset">Słuchawki</string>
+    <string name="text_bluetooth">Bluetooth</string>
+    <string name="text_speaker">Głośnik</string>
+    <string name="text_showtrayicon">Pokaż/Ukryj powiadomienia</string>
+    <string name="text_lockeffect">Strona główna</string>
+    <string name="text_yes">Tak</string>
+    <string name="text_no">Nie</string>
+    <string name="text_normal">Normal</string>
+    <string name="text_abnormal">Abnormal</string>
+    <string name="text_effectprofile">Effect Profile</string>
+    <string name="text_loadfxprofile">Wczytaj profil</string>
+    <string name="text_savefxprofile">Zapisz profil</string>
+    <string name="text_pleaseinputname">"Podaj nazwę profilu 
+unikaj '='"</string>
+    <string name="text_profilesaved_ok">Zapisano profil.</string>
+    <string name="text_profilesaved_err">Nie mozna zapisać, profil o podanej nazwie już istnieje.</string>
+    <string name="text_profilesaved_overwrite">Profil o takiej nazwie już istnieje, nadpisać?</string>
+    <string name="text_profileload_ok">Wczytano profil.</string>
+    <string name="text_profileload_err">Nie można wczytać profilu.</string>
+    <string name="text_rwsd_error">Nie można odczytać karty SD.</string>
+    <string name="text_opensafemode">Tryb bezpieczny</string>
+    <string name="text_closesafemode">Tryb normalny</string>
+    <string name="text_modeswitchok">Pomyślnie zmieniono tryb, zrestartuj telefon.</string>
+    <string name="text_modeswitchfailed">Błąd przy przełączaniu trybu, upewnij się, że busybox jest poprawnie zainstalowany.</string>
+    <string name="text_su_missing">Brak dostępu do uprawnień roota.</string>
+    <string name="text_busybox_missing">"Brak busyboxa. 
+By moć korzystać z ViPER4Android musisz zainstalować busybox."</string>
+    <string name="text_ok">Ok</string>
+    <string name="text_cancel">Anuluj</string>
+    <string name="text_select_cpu">Wybierz procesor</string>
+    <string name="text_drvvernotmatch">"By moć korzystać z ViPER4Android musisz zainstalować/zaktualizować dodatkowe biblioteki. 
+Zainstalować/Zaktualizować je teraz?"</string>
+    <string name="text_drvuninst_confim">Czy na pewno chcesz usunąć dodatkowe biblioteki?</string>
+    <string name="text_user_statistics">v4a.active</string>
+    <string name="text_commode">Tryb kompaktybilności z FX</string>
+    <string name="text_drv_blank" />
+    <string name="text_uninstall">Usuń biblioteki</string>
+    <string name="text_install">Zainstaluj biblioteki</string>
+    <string name="text_drvinst_ok">Biblioteki zostały zainstalowene, zrestartuj telefon.</string>
+    <string name="text_drvuninst_ok">Biblioteki zostały usunięte, zrestartuj telefon.</string>
+    <string name="text_drvinst_failed">Bład przy instalacji bibliotek, brak roota bądź busyboxa.</string>
+    <string name="text_changelog">Lista zmian</string>
+    <string name="text_drv_status">Pokaż stan</string>
+    <string name="text_drv_status_view">"
+ 
+Wersja bibliotek: %1$s 
+NEON Enabled: %2$s 
+Enabled: %3$s 
+Status: %4$s 
+Processing: %5$s 
+Type: %6$s 
+Sampling Rate: %7$d 
+Channels: %8$d 
+"</string>
+    <string name="text_service_error">Failed to communicate with ViPER4Android service.</string>
+    <string name="about_title">Informacje i pomoc</string>
+    <string name="about_text">"***O ViPER4Android*** 
+ 
+'libv4a_xx_xx.so' is the kernel of ViPER4Android. 
+Copyright © 2006-2016, vipercn.com. All rights reserved. 
+Without the official permit, commercial use is disallowed. 
+Official Forum: forum.vipersaudio.com 
+ 
+'ViPER4Android.apk' is the control panel of ViPER4Android. 
+Based on some code of Cyanogenmod's DSPManager. 
+ 
+Version %1$s (FX), Codename Beautiful. 
+"</string>
+    <string name="text_help_content">"***General help*** 
+ 
+'Install Driver' - Install/Update ViPER4Android effect driver. 
+'Uninstall Driver' - Uninstall ViPER4Android effect driver. 
+'Switch to Safe Mode' - Switch the driver to compatible with OpenSL arch. 
+'Switch to Normal Mode' - Switch the driver to unique arch. 
+'FX Compatible Mode' - Set effect compatible mode. 
+ 'Normal' - Make ViPER4Android as a global effect. 
+ 'Compatible' - Make ViPER4Android as a local effect. 
+ 
+"<b>Do you got no v4a effect on all/most mediaplayers?</b>" 
+ You can switch the driver to safe mode (Switch to Safe Mode) and try again. 
+ If still got no effect, you can switch the fx mode to compatible and try again. 
+ 
+"<b>Forum: http://forum.xda-developers.com/showthread.php?t=2191223</b>" "</string>
+    <string name="text_forum_link">http://forum.xda-developers.com/showthread.php?t=2191223</string>
+    <string name="text_view_forum">Forum</string>
+    <string name="text_checkupdate">Sprawdź aktualizacje</string>
+    <string name="text_updatelink">http://vipersaudio.com/swupdate/viper4android/download.html</string>
+</resources>
