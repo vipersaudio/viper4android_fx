@@ -35,7 +35,7 @@
     <string name="pref_playback_output_threshold">Max Output</string>
     <string name="pref_playback_maxgain">Maksymalne wzmocnienie</string>
 
-    <string name="pref_xloud_title">Wysoka głosność</string>
+    <string name="pref_xloud_title">Wysoka głośność</string>
     <string name="pref_xloud_summary_on">eXtra-Loud jest aktywny</string>
     <string name="pref_xloud_summary_off">eXtra-Loud jest nieaktywny</string>
     <string name="pref_xloud_output_amplifer">Output Gain</string>
@@ -60,8 +60,8 @@
     <string name="pref_dynamicsystem_tube_summary_off">Tube simulator is disabled</string>
 
     <string name="pref_fidelity_title">Wierność dźwięku</string>
-    <string name="pref_fidelity_vb_summary_on">ViPER Bass jest aktywny</string>
-    <string name="pref_fidelity_vb_summary_off">ViPER Bass jest nieaktywny</string>
+    <string name="pref_fidelity_vb_summary_on">Bass ViPER jest aktywny</string>
+    <string name="pref_fidelity_vb_summary_off">Bass ViPER jest nieaktywny</string>
     <string name="pref_fidelity_vb_enable">Bass ViPER</string>
     <string name="pref_fidelity_vb_mode">Tryb bassu</string>
     <string name="pref_fidelity_vb_mode_title">Tryb bassu</string>
@@ -120,14 +120,14 @@
 
     <string name="eq_preset_acoustic">Akustyczny</string>
     <string name="eq_preset_bass_booster">Wzmocnienie bassu</string>
-    <string name="eq_preset_bass_reducer">Redukacja bassu</string>
+    <string name="eq_preset_bass_reducer">Redukcja bassu</string>
     <string name="eq_preset_classical">Klasyczny</string>
     <string name="eq_preset_deep">Deep</string>
     <string name="eq_preset_flat">Płaski</string>
     <string name="eq_preset_r_and_b">R&amp;B</string>
     <string name="eq_preset_rock">Rock</string>
     <string name="eq_preset_small_speakers">Małe głośniki</string>
-    <string name="eq_preset_treble_booster">Wzmocnienie sporanu</string>
+    <string name="eq_preset_treble_booster">Wzmocnienie sopranu</string>
     <string name="eq_preset_treble_reducer">Redukcja sopranu</string>
     <string name="eq_preset_vocal_booster">Wzmocnienie wokalu</string>
     <string name="eq_preset_custom">Własny</string>
@@ -153,7 +153,7 @@
 \nUnikaj \'=\'
     </string>
     <string name="text_profilesaved_ok">Zapisano profil.</string>
-    <string name="text_profilesaved_err">Nie mozna zapisać, profil o podanej nazwie już istnieje.</string>
+    <string name="text_profilesaved_err">Nie można zapisać, profil o podanej nazwie już istnieje.</string>
     <string name="text_profilesaved_overwrite">Profil o takiej nazwie już istnieje, nadpisać?</string>
     <string name="text_profileload_ok">Wczytano profil.</string>
     <string name="text_profileload_err">Nie można wczytać profilu.</string>
@@ -167,25 +167,25 @@
     <string name="text_su_missing">Brak dostępu do uprawnień roota.</string>
 
     <string name="text_busybox_missing">Brak busyboxa. 
-\nBy moć korzystać z ViPER4Android musisz zainstalować busybox.
+\nViPER4Android do poprawnego działania wymaga zainstalowanego busyboxa.
     </string>
 
     <string name="text_ok">Ok</string>
     <string name="text_cancel">Anuluj</string>
     <string name="text_select_cpu">Wybierz procesor</string>
 
-    <string name="text_drvvernotmatch">By moć korzystać z ViPER4Android musisz zainstalować/zaktualizować dodatkowe biblioteki. 
+    <string name="text_drvvernotmatch">Do korzystania z ViPER4Android konieczna jest instalacja/aktualizacja dodatkowych bibliotek. 
 \nZainstalować/Zaktualizować je teraz?
     </string>
 
     <string name="text_drvuninst_confim">Czy na pewno chcesz usunąć dodatkowe biblioteki?</string>
 
-    <string name="text_commode">Tryb kompaktybilności</string>
+    <string name="text_commode">Tryb kompatybilności</string>
 
     <string name="text_drv_blank" />
     <string name="text_uninstall">Usuń biblioteki</string>
     <string name="text_install">Zainstaluj biblioteki</string>
-    <string name="text_drvinst_ok">Biblioteki zostały zainstalowene, zrestartuj telefon.</string>
+    <string name="text_drvinst_ok">Biblioteki zostały zainstalowane, zrestartuj telefon.</string>
     <string name="text_drvuninst_ok">Biblioteki zostały usunięte, zrestartuj telefon.</string>
     <string name="text_drvinst_failed">Bład przy instalacji bibliotek, brak roota bądź busyboxa.</string>
 
@@ -203,7 +203,7 @@
 \nKanały: %8$d
 \n
     </string>
-    <string name="text_service_error">Nie można uzyskać połaczenia z usługą ViPER4Android.</string>
+    <string name="text_service_error">Nie można uzyskać połączenia z usługą ViPER4Android.</string>
 
     <string name="about_title">Informacje i pomoc</string>
     <string name="about_text">***O ViPER4Android***
@@ -213,8 +213,7 @@
 \nKomercyjne rozpowszechnianie bez zgody twórcy jest zabronione.
 \nOficjalne forum: forum.vipersaudio.com
 \n
-\n\'ViPER4Android.apk\' is the control panel of ViPER4Android.
-\nBased on some code of Cyanogenmod\'s DSPManager.
+\nNiewielkie części kodu zostały oparte o DSPManager grupy CyanogenMod.
 \n
 \nWersja %1$s (FX), Codename Beautiful.
 \n
@@ -222,17 +221,17 @@
 
     <string name="text_help_content">***Mini FAQ***
 \n
-\n\'Zainstaluj biblioteki\' - Instaluje/Aktualizauje biblioteki efektów.
+\n\'Zainstaluj biblioteki\' - Instaluje/Aktualizuje biblioteki efektów.
 \n\'Usuń biblioteki\' - Odinstalowuje biblioteki efektów.
-\n\'Tryb bezpieczny\' - Switch the driver to compatible with OpenSL arch.
-\n\'Tryb normalny\' - Switch the driver to unique arch.
-\n\'Tryb kompaktybilności\' - Wybierz tryb kompaktybilności efektów.
+\n\'Tryb bezpieczny\' - Przełącza biblioteki w tryb kompatybilny z OpenSL.
+\n\'Tryb normalny\' - Przełacza biblioteki we własny unikatowy tryb.
+\n\'Tryb kompaktybilności\' - Wybierz tryb kompatybilności efektów.
 \n    \'Normalny\' - Efekty działają globalnie.
-\n    \'Kompaktybilny\' - Efekty działają lokalnie.
+\n    \'Kompatybilny\' - Efekty działają lokalnie.
 \n
 \n<b>Masz kłopot z poprawnym działaniem efektów w odtwarzaczach?</b>
 \n    Przełącz się do 'Trybu bezpiecznego' i spróbuj ponownie.
-\n    Jeżeli nadal masz kłopot wejdź w 'Tryb kompaktybilności', wybierz 'Kompaktybilny' i spróbuj ponownie.
+\n    Jeżeli nadal masz kłopot wejdź w 'Tryb kompatybilności', wybierz 'Kompatybilny' i spróbuj ponownie.
 \n
 \n<b>Forum: http://forum.xda-developers.com/showthread.php?t=2191223</b>
     </string>

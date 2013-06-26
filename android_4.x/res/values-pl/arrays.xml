@@ -15,7 +15,7 @@
 
   <string-array name="compatible_mode">
     <item>Normalny</item>
-    <item>Kompaktybilny</item>
+    <item>Kompatybilny</item>
   </string-array>
 
   <string-array name="colorfulmusic_coeffs">
