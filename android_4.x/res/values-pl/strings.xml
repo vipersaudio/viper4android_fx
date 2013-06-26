@@ -39,8 +39,8 @@
     <string name="pref_xloud_summary_on">eXtra-Loud jest aktywny</string>
     <string name="pref_xloud_summary_off">eXtra-Loud jest nieaktywny</string>
     <string name="pref_xloud_output_amplifer">Wyjściowe wzmocnienie</string>
-    <string name="pref_xloud_spk_lowfreq">Low Response</string>        <!-- jeszcze to -->
-    <string name="pref_xloud_spk_highfreq">High Response</string>        <!-- jeszcze to -->
+    <string name="pref_xloud_spk_lowfreq">Niska częstotliwość</string>
+    <string name="pref_xloud_spk_highfreq">Wysoka częstotliwość</string>
 
     <string name="pref_equalizer_title">Equalizer</string>
     <string name="pref_equalizer_summary_on">FIREqualizer jest aktywny</string>
@@ -105,8 +105,8 @@
 
     <string name="pref_select_colorfulmusic_title">Siła efektu</string>
     <string name="dialog_colorfulmusic">Siła efektu</string>
-    <string name="pref_select_colorfulmusic_mi_title">Select Mid Image Strength</string>        <!-- jeszcze to -->
-    <string name="dialog_colorfulmusic_mi">Mid Image Strength</string>        <!-- jeszcze to -->
+    <string name="pref_select_colorfulmusic_mi_title">Głębia efektu</string>
+    <string name="dialog_colorfulmusic_mi">Głębia efektu</string>
 
     <string name="pref_reverb_title">Echo</string>
     <string name="pref_reverb_summary_on">Pogłos jest aktywny</string>
@@ -115,8 +115,8 @@
     <string name="pref_reverb_roomsize">Wielkość pokoju</string>
     <string name="pref_reverb_width">Pole akustyczne</string>
     <string name="pref_reverb_damp">Współczynnik tłumienia</string>
-    <string name="pref_reverb_wet">Wet Signal</string>        <!-- jeszcze to -->
-    <string name="pref_reverb_dry">Dry Signal</string>        <!-- jeszcze to -->
+    <string name="pref_reverb_wet">Przetworzony sygnał</string>
+    <string name="pref_reverb_dry">Oryginalny sygnał</string>
 
     <string name="eq_preset_acoustic">Akustyczny</string>
     <string name="eq_preset_bass_booster">Wzmocnienie bassu</string>
@@ -166,7 +166,7 @@
 
     <string name="text_su_missing">Brak dostępu do uprawnień roota.</string>
 
-    <string name="text_busybox_missing">Brak busyboxa. 
+    <string name="text_busybox_missing">Brak busyboxa.
 \nViPER4Android do poprawnego działania wymaga zainstalowanego busyboxa.
     </string>
 
