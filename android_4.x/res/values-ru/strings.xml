@@ -28,7 +28,7 @@
     <string name="pref_playback_summary_off">Автоматическая регулировка усиления (AGC) отключена</string>
     <string name="pref_playback_output_threshold">Порог выходного сигнала</string>
     <string name="pref_playback_maxgain">Максимальное усиление</string>
-    <string name="pref_xloud_title">Экстра-громкость Xloud</string>
+    <string name="pref_xloud_title">Экстра-громкость</string>
     <string name="pref_xloud_summary_on">Xloud включен</string>
     <string name="pref_xloud_summary_off">Xloud отключен</string>
     <string name="pref_xloud_output_amplifer">Усиление выходного сигнала</string>
@@ -130,7 +130,7 @@
     <string name="text_effectprofile">Профиль эффектов</string>
     <string name="text_loadfxprofile">Загрузить профиль</string>
     <string name="text_savefxprofile">Сохранить профиль</string>
-    <string name="text_pleaseinputname">"Пожалуйста, введите Название профиля 
+    <string name="text_pleaseinputname">Пожалуйста, введите Название профиля
 \nИсключите знаки \'=\'</string>
     <string name="text_profilesaved_ok">Профиль сохранен.</string>
     <string name="text_profilesaved_err">Невозможно сохранить профиль, т.к. профиль с таким названием уже существует.</string>
@@ -143,18 +143,18 @@
     <string name="text_modeswitchok">Драйвер установлен успешно. Пожалуйста, перезагрузите устройство.</string>
     <string name="text_modeswitchfailed">Драйвер не установлен. Пожалуйста, проверьте наличие busybox.</string>
     <string name="text_su_missing">Требуется наличие Root прав (su binary).</string>
-    <string name="text_busybox_missing">"Busybox не обнаружен.
-\nДля использования ViPER4Android, необходимо установить Busybox."</string>
+    <string name="text_busybox_missing">Busybox не обнаружен.
+\nДля использования ViPER4Android, необходимо установить Busybox.</string>
     <string name="text_ok">Ok</string>
     <string name="text_cancel">Отмена</string>
     <string name="text_select_cpu">Пожалуйста, выберите ваш процессор (кодек)</string>
-    <string name="text_drvvernotmatch">"Для использования ViPER4Android, необходимо установить/обновить драйвер V4A.
+    <string name="text_drvvernotmatch">Для использования ViPER4Android, необходимо установить/обновить драйвер V4A.
 \nПроцесс установки пройдет автоматически. 
-\nУстановить/Обновить сейчас?"</string>
+\nУстановить/Обновить сейчас?</string>
     <string name="text_drvuninst_confim">Вы действительно хотите удалить v4a драйвер?</string>
     <string name="text_user_statistics">v4a.active</string>
     <string name="text_commode">Режим совместимости с FX</string>
-    <string name="text_drv_blank" />
+    <string name="text_drv_blank"></string>
     <string name="text_uninstall">Удалить драйвер</string>
     <string name="text_install">Установить драйвер</string>
     <string name="text_drvinst_ok">Драйвер установлен. Пожалуйста, перезагрузите устройство.</string>
@@ -163,45 +163,45 @@
     <string name="text_changelog">Что нового</string>
     <string name="text_drv_status">Состояние драйвера</string>
     <string name="text_drv_status_view">
-\n\
-\n\Версия драйвера: %1$s
-\n\NEON включен: %2$s
-\n\V4A включен: %3$s 
-\n\Состояние: %4$s 
-\n\Обработка: %5$s 
-\n\Тип обработки: %6$s
-\n\Частота дискретизации: %7$d 
-\n\Каналов: %8$
-\n\
+\n
+\nВерсия драйвера: %1$s
+\nNEON включен: %2$s
+\nV4A включен: %3$s 
+\nСостояние: %4$s
+\nОбработка: %5$s 
+\nТип обработки: %6$s
+\nЧастота дискретизации: %7$d 
+\nКаналов: %8$d
+\n
 </string>
     <string name="text_service_error">Не удалось запустить ViPER4Android.</string>
     <string name="about_title">Описание и помощь</string>
     <string name="about_text">"***О ViPER4Android***
-\n\
-\n\'libv4a_xx_xx.so' это ядро ViPER4Android. 
-\n\'ViPER4Android.apk' это панель управления ViPER4Android. 
-\n\Основа приложения - код DSPManager для CyanogenMod.
-\n\Версия %1$s (FX), Codename Beautiful.
-\n\
-\n\Copyright © 2006-2016, vipercn.com. All rights reserved.
-\n\Коммерческое использование без официального разрешения запрещено.
-\n\Официальный форум: forum.vipersaudio.co
+\n
+\n\'libv4a_xx_xx.so\' это ядро ViPER4Android. 
+\n\'ViPER4Android.apk\' это панель управления ViPER4Android. 
+\nОснова приложения - код DSPManager для CyanogenMod.
+\nВерсия %1$s (FX), Codename "Beautiful".
+\n
+\nCopyright © 2006-2016, vipercn.com. All rights reserved.
+\nКоммерческое использование без официального разрешения запрещено.
+\nОфициальный форум: forum.vipersaudio.co
 </string>
-    <string name="text_help_content">"***Общая справка*** 
-\n\
-\n\'Install Driver' - Установить драйвер эффектов.
-\n\'Uninstall Driver' - Удалить драйвер эффектов. 
-\n\'Switch to Safe Mode' - Переключить драйвер в безопасный режим. 
-\n\'Switch to Normal Mode' - Переключить драйвер в нормальный режим. 
-\n\'FX Compatible Mode' - Установить режим совместимости с FX. 
-\n\'Normal' - Сделать ViPER4Android глобальным эффектом. 
-\n\'Compatible' - Сделать ViPER4Android локальным эффектом. 
-\n\
-\n\<b>Не работают эффекты в сторонних медиаплеерах?</b> 
-\n\Переключить драйвер в безопасный режим (переключите в Safe Mode) и попробуйте снова. 
-\n\Если не помогло, можно переключиться в режим совместимости с FX и попробовать еще раз. 
- 
- "<b>Forum: http://forum.xda-developers.com/showthread.php?t=2191223</b>" "</string>
+    <string name="text_help_content">***Общая справка*** 
+\n
+\n\'Install Driver\' - Установить драйвер эффектов.
+\n\'Uninstall Driver\' - Удалить драйвер эффектов. 
+\n\'Switch to Safe Mode\' - Переключить драйвер в безопасный режим. 
+\n\'Switch to Normal Mode\' - Переключить драйвер в нормальный режим. 
+\n\'FX Compatible Mode\' - Установить режим совместимости с FX. 
+\n\'Normal\' - Сделать ViPER4Android глобальным эффектом. 
+\n\'Compatible\' - Сделать ViPER4Android локальным эффектом. 
+\n
+\n<b>Не работают эффекты в сторонних медиаплеерах?</b> 
+\nПереключить драйвер в безопасный режим (переключите в Safe Mode) и попробуйте снова. 
+\nЕсли не помогло, можно переключиться в режим совместимости с FX и попробовать еще раз. 
+\n
+\n<b>Forum: http://forum.xda-developers.com/showthread.php?t=2191223</b></string>
     <string name="text_forum_link">http://forum.xda-developers.com/showthread.php?t=2191223</string>
     <string name="text_view_forum">Форум</string>
     <string name="text_checkupdate">Проверка обновлений</string>

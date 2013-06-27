@@ -28,7 +28,7 @@
     <string name="pref_playback_summary_off">Автоматическая регулировка усиления (AGC) отключена</string>
     <string name="pref_playback_output_threshold">Порог выходного сигнала</string>
     <string name="pref_playback_maxgain">Максимальное усиление</string>
-    <string name="pref_xloud_title">Экстра-громкость Xloud</string>
+    <string name="pref_xloud_title">Экстра-громкость</string>
     <string name="pref_xloud_summary_on">Xloud включен</string>
     <string name="pref_xloud_summary_off">Xloud отключен</string>
     <string name="pref_xloud_output_amplifer">Усиление выходного сигнала</string>
@@ -56,9 +56,9 @@
     <string name="pref_fidelity_vb_mode">Тип баса</string>
     <string name="pref_fidelity_vb_mode_title">Выберите тип баса</string>
     <string name="pref_fidelity_vb_bassfreq">Частота баса</string>
-    <string name="pref_fidelity_vb_bassfreq_title">Выберите частоту</string>
+    <string name="pref_fidelity_vb_bassfreq_title">Выберите частоту баса</string>
     <string name="pref_fidelity_vb_bassgain">Усиление баса</string>
-    <string name="pref_fidelity_vb_bassgain_title">Выберите усиление</string>
+    <string name="pref_fidelity_vb_bassgain_title">Выберите усиление баса</string>
     <string name="pref_fidelity_vc_summary_on">ViPER Clarity включен</string>
     <string name="pref_fidelity_vc_summary_off">ViPER Clarity отключен</string>
     <string name="pref_fidelity_vc_enable">Включение ViPER Clarity</string>
@@ -131,7 +131,7 @@
     <string name="text_effectprofile">Профиль эффектов</string>
     <string name="text_loadfxprofile">Загрузить профиль</string>
     <string name="text_savefxprofile">Сохранить профиль</string>
-    <string name="text_pleaseinputname">"Пожалуйста, введите Название профиля
+    <string name="text_pleaseinputname">Пожалуйста, введите Название профиля
 \n\Исключите знаки \'=\'</string>
     <string name="text_profilesaved_ok">Профиль сохранен.</string>
     <string name="text_profilesaved_err">Невозможно сохранить профиль, т.к. профиль с таким названием уже существует.</string>
@@ -140,17 +140,17 @@
     <string name="text_profileload_err">Не удается загрузить профиль.</string>
     <string name="text_rwsd_error">Не удается произвести чтение/запись с внешних накопителей.</string>
     <string name="text_su_missing">Требуется наличие Root прав (su binary).</string>
-    <string name="text_busybox_missing">"Busybox не обнаружен.
-\n\Для использования ViPER4Android, необходимо установить Busybox."</string>
+    <string name="text_busybox_missing">Busybox не обнаружен.
+\n\Для использования ViPER4Android, необходимо установить Busybox.</string>
     <string name="text_ok">Ok</string>
     <string name="text_cancel">Отмена</string>
     <string name="text_select_cpu">Пожалуйста, выберите ваш процессор (кодек)</string>
-    <string name="text_drvvernotmatch">"Для использования ViPER4Android, необходимо установить/обновить драйвер V4A.
-\n\Процесс установки пройдет автоматически. 
-\n\Установить/Обновить сейчас?"</string>
+    <string name="text_drvvernotmatch">Для использования ViPER4Android, необходимо установить/обновить драйвер V4A.
+\n\Процесс установки пройдет автоматически.
+\n\Установить/Обновить сейчас?</string>
     <string name="text_drvuninst_confim">Вы действительно хотите удалить v4a драйвер?</string>
     <string name="text_user_statistics">v4a.active</string>
-    <string name="text_drv_blank" />
+    <string name="text_drv_blank"></string>
     <string name="text_uninstall">Удалить драйвер</string>
     <string name="text_install">Установить драйвер</string>
     <string name="text_drvinst_ok">Драйвер установлен. Пожалуйста, перезагрузите устройство.</string>
@@ -162,11 +162,11 @@
 \n\
 \n\Версия драйвера: %1$s
 \n\NEON включен: %2$s
-\n\V4A включен: %3$s 
+\n\V4A включен: %3$s
 \n\Состояние: %4$s
 \n\Обработка: %5$s 
 \n\Тип обработки: %6$s
-\n\Частота дискретизации: %7$d 
+\n\Частота дискретизации: %7$d
 \n\Каналов: %8$d
 \n\
 </string>
