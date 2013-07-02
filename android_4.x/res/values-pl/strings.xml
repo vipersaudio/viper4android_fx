@@ -27,7 +27,7 @@
     <string name="pref_fx_limiter_threshold">Próg limitu</string>
     <string name="pref_spkfx_limiter_title">Bariera (Limiter)</string>
     <string name="pref_spkfx_limiter_threshold">Próg limitu</string>
-    <string name="pref_output_gain">Wyjściowe wzmocnienie</string>
+    <string name="pref_output_gain">Wzmocnienie wyjściowe</string>
 
     <string name="pref_playback_title">Wzmocnienie</string>
     <string name="pref_playback_summary_on">PlaybackAGC jest aktywny</string>
@@ -62,7 +62,7 @@
     <string name="pref_fidelity_title">Wierność dźwięku</string>
     <string name="pref_fidelity_vb_summary_on">Bass ViPER jest aktywny</string>
     <string name="pref_fidelity_vb_summary_off">Bass ViPER jest nieaktywny</string>
-    <string name="pref_fidelity_vb_enable">Bass ViPER</string>
+    <string name="pref_fidelity_vb_enable">Stan</string>
     <string name="pref_fidelity_vb_mode">Tryb bassu</string>
     <string name="pref_fidelity_vb_mode_title">Tryb bassu</string>
     <string name="pref_fidelity_vb_bassfreq">Częstotliwość bassu</string>
@@ -71,7 +71,7 @@
     <string name="pref_fidelity_vb_bassgain_title">Wzmocnienie bassu</string>
     <string name="pref_fidelity_vc_summary_on">Czystość ViPER jest aktywna</string>
     <string name="pref_fidelity_vc_summary_off">Czystość ViPER jest nieaktywna</string>
-    <string name="pref_fidelity_vc_enable">Czystość ViPER</string>
+    <string name="pref_fidelity_vc_enable">Stan</string>
     <string name="pref_fidelity_vc_mode">Tryb czystości dźwięku</string>
     <string name="pref_fidelity_vc_mode_title">Tryb czystości dźwięku</string>
     <string name="pref_fidelity_vc_bassgain">Czystość</string>
