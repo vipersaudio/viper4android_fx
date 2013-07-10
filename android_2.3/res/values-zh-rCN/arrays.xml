@@ -232,8 +232,10 @@
   <string-array name="vclarity_mode">
     <item>自然处理</item>
     <item>醇氧+</item>
+    <item>XHiFi</item>
   </string-array>
   <string-array name="vclarity_boost">
+    <item>基础调整</item>
     <item>3.5 分贝</item>
     <item>6.0 分贝</item>
     <item>8.0 分贝</item>

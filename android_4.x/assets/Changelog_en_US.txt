@@ -1,13 +1,10 @@
-﻿ViPER4Android FX v2.2.0.9
+﻿ViPER4Android FX v2.2.1.0
 Codename: Beautiful
 Copyright (C) 2006-2016 vipercn.com
 Forum: forum.vipersaudio.com
 
-Latest: v2.2.0.9
-1.Add fidelity control system.
-2.Optimize Headphone Surround Engine+ for VFP platform.
-3.Fix some bugs.
-4.Add update check.
+Latest: v2.2.1.0
+1.Add XHiFi clarity mode.
 
 ===Attention===
 The convolver and headphone surround+ are disabled in "Without VFP".
@@ -128,4 +125,7 @@ The convolver and headphone surround+ are disabled in "Without VFP".
 2.Optimize Headphone Surround Engine+ for VFP platform.
 3.Fix some bugs.
 4.Add update check.
+
+[v2.2.1.0]
+1.Add XHiFi clarity mode.
 ************

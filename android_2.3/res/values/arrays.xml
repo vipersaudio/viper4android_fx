@@ -489,14 +489,17 @@
   </string-array>
 
   <string-array name="vclarity_mode">
-    <item>Natural Clarity</item>
+    <item>Natural</item>
     <item>OZone+</item>
+    <item>XHiFi</item>
   </string-array>
   <string-array name="vclarity_mode_values"  translatable="false">
     <item>0</item>
     <item>1</item>
+    <item>2</item>
   </string-array>
   <string-array name="vclarity_boost">
+    <item>Default</item>
     <item>3.5 dB</item>
     <item>6.0 dB</item>
     <item>8.0 dB</item>
@@ -508,6 +511,7 @@
     <item>14.8 dB</item>
   </string-array>
   <string-array name="vclarity_boost_values"  translatable="false">
+    <item>0</item>
     <item>50</item>
     <item>100</item>
     <item>150</item>

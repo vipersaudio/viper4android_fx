@@ -1,13 +1,10 @@
-﻿ViPER4Android FX v2.2.0.9
+﻿ViPER4Android FX v2.2.1.0
 代號：Beautiful
 Copyright (C) 2006-2016 vipercn.com
 官方論壇：forum.vipersaudio.com
 
-最新版：v2.2.0.9
-1、增加保真控制功能。
-2、針對VFP平臺優化耳機環繞核擎+。
-3、修復一些潛藏的bug。
-4、增加新版本查詢功能。
+最新版：v2.2.1.0
+1、新增一個XHiFi細節模式。
 
 ===請注意===
 在無浮點運算能力的平臺上(NOVFP)，脉衝反饋和耳機環繞核擎+效果是無效的。
@@ -130,4 +127,7 @@ Copyright (C) 2006-2016 vipercn.com
 2、針對VFP平臺優化耳機環繞核擎+。
 3、修復一些潛藏的bug。
 4、增加新版本查詢功能。
+
+[v2.2.1.0]
+1、新增一個XHiFi細節模式。
 ************

@@ -457,14 +457,12 @@
   </string-array>
 
   <string-array name="vclarity_mode">
-    <item>Natural Clarity</item>
+    <item>Natural</item>
     <item>OZone+</item>
-  </string-array>
-  <string-array name="vclarity_mode_values"  translatable="false">
-    <item>0</item>
-    <item>1</item>
+    <item>XHiFi</item>
   </string-array>
   <string-array name="vclarity_boost">
+    <item>0 дБ</item>
     <item>3.5 дБ</item>
     <item>6.0 дБ</item>
     <item>8.0 дБ</item>
@@ -474,17 +472,6 @@
     <item>13.0 дБ</item>
     <item>14.0 дБ</item>
     <item>14.8 дБ</item>
-  </string-array>
-  <string-array name="vclarity_boost_values"  translatable="false">
-    <item>50</item>
-    <item>100</item>
-    <item>150</item>
-    <item>200</item>
-    <item>250</item>
-    <item>300</item>
-    <item>350</item>
-    <item>400</item>
-    <item>450</item>
   </string-array>
 
   <string-array name="speaker_lowfreq">

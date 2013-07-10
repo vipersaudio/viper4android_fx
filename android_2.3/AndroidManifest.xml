@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.vipercn.viper4android" android:versionCode="2207"
-	android:versionName="2.2.0.7" android:installLocation="auto">
+	package="com.vipercn.viper4android" android:versionCode="2210"
+	android:versionName="2.2.1.0" android:installLocation="auto">
 
 	<uses-sdk android:minSdkVersion="10"/>
 

@@ -196,12 +196,12 @@
     <item>Nauszne wysokiej klasy(v1)</item>
     <item>Nauszne uniwersalne(v1)</item>
     <item>Douszne uniwersalne(v1)</item>
-    <item>Douszne Apple'owe</item>
-    <item>Douszne Monster'y</item>
+    <item>Douszne Apple\'owe</item>
+    <item>Douszne Monster\'y</item>
     <item>Douszne Motoroli</item>
-    <item>Douszne Philips'y</item>
-    <item>Philips'y SHP 2000</item>
-    <item>Philips'y SHP 9000</item>
+    <item>Douszne Philips\'y</item>
+    <item>Philips\'y SHP 2000</item>
+    <item>Philips\'y SHP 9000</item>
     <item>Nieznany Typ I</item>
     <item>Nieznany Typ II</item>
     <item>Nieznany Typ III</item>
@@ -237,8 +237,10 @@
   <string-array name="vclarity_mode">
     <item>Naturalna czystość dźwięku</item>
     <item>OZone+</item>
+    <item>XHiFi</item>
   </string-array>
   <string-array name="vclarity_boost">
+    <item>0 dB</item>
     <item>3.5 dB</item>
     <item>6.0 dB</item>
     <item>8.0 dB</item>
