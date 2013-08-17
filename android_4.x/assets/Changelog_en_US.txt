@@ -7,6 +7,7 @@ Latest: v2.2.1.1
 1.Add differential surround (Haas effect).
 2.Add channel pan setting.
 3.More settings for field surround.
+4.Support android 4.3.
 
 ===Attention===
 The convolver and headphone surround+ are disabled in "Without VFP".
@@ -135,4 +136,5 @@ The convolver and headphone surround+ are disabled in "Without VFP".
 1.Add differential surround (Haas effect).
 2.Add channel pan setting.
 3.More settings for field surround.
+4.Support android 4.3.
 ************
