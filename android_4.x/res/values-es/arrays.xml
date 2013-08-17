@@ -20,13 +20,27 @@
 
   <string-array name="colorfulmusic_coeffs">
     <item>Leve</item>
-    <item>Moderado</item>
+    <item>Nivel 1</item>
+    <item>Nivel 2</item>
+    <item>Nivel 3</item>
+    <item>Nivel 4</item>
+    <item>Nivel 5</item>
+    <item>Nivel 6</item>
+    <item>Nivel 7</item>
     <item>Extremo</item>
   </string-array>
 
   <string-array name="colorfulmusic_midimage">
     <item>Leve</item>
-    <item>Moderado</item>
+    <item>Nivel 1</item>
+    <item>Nivel 2</item>
+    <item>Nivel 3</item>
+    <item>Nivel 4</item>
+    <item>Nivel 5</item>
+    <item>Nivel 6</item>
+    <item>Nivel 7</item>
+    <item>Nivel 8</item>
+    <item>Nivel 9</item>
     <item>Extremo</item>
   </string-array>
 

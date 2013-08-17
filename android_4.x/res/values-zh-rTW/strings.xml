@@ -28,6 +28,7 @@
     <string name="pref_spkfx_limiter_title">總輸出門檻限制</string>
     <string name="pref_spkfx_limiter_threshold">輸出強度</string>
     <string name="pref_output_gain">輸出增益</string>
+    <string name="pref_output_pan">聲道平衡</string>
 
     <string name="pref_playback_title">播放增益控制</string>
     <string name="pref_playback_summary_on">播放增益控制已啟用</string>
@@ -107,6 +108,14 @@
     <string name="dialog_colorfulmusic">臨場感模擬強度</string>
     <string name="pref_select_colorfulmusic_mi_title">選擇人聲強度</string>
     <string name="dialog_colorfulmusic_mi">人聲強度</string>
+
+    <string name="pref_diffsurr_title">差分環繞</string>
+    <string name="pref_diffsurr_summary_on">差分環繞已啟用</string>
+    <string name="pref_diffsurr_summary_off">差分環繞已停用</string>
+    <string name="pref_diffsurr_enable">啟用</string>
+
+    <string name="pref_select_diffsurr_ms_title">選擇延遲時間</string>
+    <string name="dialog_diffsurr_ms">延遲時間</string>
 
     <string name="pref_reverb_title">空間模擬</string>
     <string name="pref_reverb_summary_on">空間模擬已啟用</string>

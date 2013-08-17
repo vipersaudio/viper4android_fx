@@ -23,6 +23,7 @@
     <string name="pref_spkfx_limiter_title">Potencia Principal(limitador)</string>
     <string name="pref_spkfx_limiter_threshold">Límite Umbral</string>
     <string name="pref_output_gain">Potencia de Salida</string>
+    <string name="pref_output_pan">Canal Saldo</string>
     <string name="pref_playback_title">Control de Potencia reproducción</string>
     <string name="pref_playback_summary_on">PlaybackAGC esta activado</string>
     <string name="pref_playback_summary_off">PlaybackAGC esta desactivado</string>
@@ -69,6 +70,12 @@
     <string name="dialog_colorfulmusic">Fuerza de Field Surround</string>
     <string name="pref_select_colorfulmusic_mi_title">Seleccione fuerza de Mid Image</string>
     <string name="dialog_colorfulmusic_mi">Fuerza de Mid Image</string>
+    <string name="pref_diffsurr_title">Diferencial Surround</string>
+    <string name="pref_diffsurr_summary_on">Dif surround esta activado</string>
+    <string name="pref_diffsurr_summary_off">Dif surround esta desactivado</string>
+    <string name="pref_diffsurr_enable">Habilitar</string>
+    <string name="pref_select_diffsurr_ms_title">Seleccione Retraso Tiempo</string>
+    <string name="dialog_diffsurr_ms">Retraso Tiempo</string>
     <string name="pref_reverb_title">Reverberación</string>
     <string name="pref_reverb_summary_on">Reverberación esta activada</string>
     <string name="pref_reverb_summary_off">Reverberación esta desacivada</string>

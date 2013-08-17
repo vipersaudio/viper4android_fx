@@ -20,13 +20,27 @@
 
     <string-array name="colorfulmusic_coeffs">
         <item>Слабый</item>
-        <item>Средний</item>
+        <item>Yровень 1</item>
+        <item>Yровень 2</item>
+        <item>Yровень 3</item>
+        <item>Yровень 4</item>
+        <item>Yровень 5</item>
+        <item>Yровень 6</item>
+        <item>Yровень 7</item>
         <item>Максимальный</item>
     </string-array>
 
     <string-array name="colorfulmusic_midimage">
         <item>Слабый</item>
-        <item>Средний</item>
+        <item>Yровень 1</item>
+        <item>Yровень 2</item>
+        <item>Yровень 3</item>
+        <item>Yровень 4</item>
+        <item>Yровень 5</item>
+        <item>Yровень 6</item>
+        <item>Yровень 7</item>
+        <item>Yровень 8</item>
+        <item>Yровень 9</item>
         <item>Максимальный</item>
     </string-array>
 

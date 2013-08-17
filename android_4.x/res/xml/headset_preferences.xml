@@ -52,6 +52,14 @@
 			android:defaultValue="150" android:dialogTitle="@string/dialog_colorfulmusic_mi" android:entries="@array/colorfulmusic_midimage" android:entryValues="@array/colorfulmusic_midimage_values" android:title="@string/pref_select_colorfulmusic_mi_title" android:key="viper4android.headphonefx.colorfulmusic.midimage"/>
 	</PreferenceCategory>
 
+	<PreferenceCategory android:title="@string/pref_diffsurr_title">
+		<CheckBoxPreference android:key="viper4android.headphonefx.diffsurr.enable"
+			android:disableDependentsState="false" android:summaryOn="@string/pref_diffsurr_summary_on"
+			android:summaryOff="@string/pref_diffsurr_summary_off" android:title="@string/pref_diffsurr_enable"></CheckBoxPreference>
+		<com.vipercn.viper4android.preference.SummariedListPreference
+			android:defaultValue="500" android:dialogTitle="@string/dialog_diffsurr_ms" android:entries="@array/diffsurround_delay" android:entryValues="@array/diffsurround_delay_values" android:title="@string/pref_select_diffsurr_ms_title" android:key="viper4android.headphonefx.diffsurr.delay"/>
+	</PreferenceCategory>
+
 	<PreferenceCategory android:title="@string/pref_vhs_title">
 		<CheckBoxPreference android:key="viper4android.headphonefx.vhs.enable"
 			android:disableDependentsState="false" android:summaryOn="@string/pref_vhs_summary_on"
@@ -158,6 +166,8 @@
 	<PreferenceCategory android:title="@string/pref_fx_limiter_title">
 		<com.vipercn.viper4android.preference.SummariedListPreference
 			android:entries="@array/output_volume" android:dialogTitle="@string/pref_effect_title" android:key="viper4android.headphonefx.outvol" android:defaultValue="100" android:title="@string/pref_output_gain" android:entryValues="@array/output_volume_values"/>
+		<com.vipercn.viper4android.preference.SummariedListPreference
+			android:entries="@array/channel_pan" android:dialogTitle="@string/pref_effect_title" android:key="viper4android.headphonefx.channelpan" android:defaultValue="0" android:title="@string/pref_output_pan" android:entryValues="@array/channel_pan_values"/>
 		<com.vipercn.viper4android.preference.SummariedListPreference
 			android:entries="@array/output_db" android:dialogTitle="@string/pref_effect_title" android:key="viper4android.headphonefx.limiter" android:defaultValue="100" android:title="@string/pref_fx_limiter_threshold" android:entryValues="@array/output_db_values"/>
 	</PreferenceCategory>

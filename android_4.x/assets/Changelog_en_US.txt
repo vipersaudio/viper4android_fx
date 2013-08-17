@@ -1,10 +1,12 @@
-﻿ViPER4Android FX v2.2.1.0
+﻿ViPER4Android FX v2.2.1.1
 Codename: Beautiful
 Copyright (C) 2006-2016 vipercn.com
 Forum: forum.vipersaudio.com
 
-Latest: v2.2.1.0
-1.Add XHiFi clarity mode.
+Latest: v2.2.1.1
+1.Add differential surround (Haas effect).
+2.Add channel pan setting.
+3.More settings for field surround.
 
 ===Attention===
 The convolver and headphone surround+ are disabled in "Without VFP".
@@ -128,4 +130,9 @@ The convolver and headphone surround+ are disabled in "Without VFP".
 
 [v2.2.1.0]
 1.Add XHiFi clarity mode.
+
+[v2.2.1.1]
+1.Add differential surround (Haas effect).
+2.Add channel pan setting.
+3.More settings for field surround.
 ************

@@ -28,6 +28,7 @@
     <string name="pref_spkfx_limiter_title">Master Gate (Limiter)</string>
     <string name="pref_spkfx_limiter_threshold">Limite Umbral</string>
     <string name="pref_output_gain">Ganancia de Salida</string>
+    <string name="pref_output_pan">Canal Saldo</string>
 
     <string name="pref_playback_title">Playback Control de Ganancia</string>
     <string name="pref_playback_summary_on">PlaybackAGC esta Activado</string>
@@ -107,6 +108,14 @@
     <string name="dialog_colorfulmusic">Intensidad del Ámbito Surround</string>
     <string name="pref_select_colorfulmusic_mi_title">Seleccionar Intensidad Mid Image</string>
     <string name="dialog_colorfulmusic_mi">Intensidad Mid Image</string>
+
+    <string name="pref_diffsurr_title">Diferencial Surround</string>
+    <string name="pref_diffsurr_summary_on">Dif Surround esta Activado</string>
+    <string name="pref_diffsurr_summary_off">Dif Surround esta Desactivado</string>
+    <string name="pref_diffsurr_enable">Activado</string>
+
+    <string name="pref_select_diffsurr_ms_title">Seleccione Retraso Tiempo</string>
+    <string name="dialog_diffsurr_ms">Retraso Tiempo</string>
 
     <string name="pref_reverb_title">Reverberacion</string>
     <string name="pref_reverb_summary_on">Reverberacion esta Activada</string>

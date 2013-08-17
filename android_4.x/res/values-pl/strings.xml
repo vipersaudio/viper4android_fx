@@ -28,6 +28,7 @@
     <string name="pref_spkfx_limiter_title">Bariera (Limiter)</string>
     <string name="pref_spkfx_limiter_threshold">Próg limitu</string>
     <string name="pref_output_gain">Wyjściowe wzmocnienie</string>
+    <string name="pref_output_pan">Kanał Saldo</string>
 
     <string name="pref_playback_title">Wzmocnienie</string>
     <string name="pref_playback_summary_on">PlaybackAGC jest aktywny</string>

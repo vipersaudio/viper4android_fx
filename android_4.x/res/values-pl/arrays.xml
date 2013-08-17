@@ -20,13 +20,27 @@
 
   <string-array name="colorfulmusic_coeffs">
     <item>Delikatna</item>
-    <item>Umiarkowana</item>
+    <item>Poziom 1</item>
+    <item>Poziom 2</item>
+    <item>Poziom 3</item>
+    <item>Poziom 4</item>
+    <item>Poziom 5</item>
+    <item>Poziom 6</item>
+    <item>Poziom 7</item>
     <item>Mocna</item>
   </string-array>
 
   <string-array name="colorfulmusic_midimage">
     <item>Delikatna</item>
-    <item>Umiarkowana</item>
+    <item>Poziom 1</item>
+    <item>Poziom 2</item>
+    <item>Poziom 3</item>
+    <item>Poziom 4</item>
+    <item>Poziom 5</item>
+    <item>Poziom 6</item>
+    <item>Poziom 7</item>
+    <item>Poziom 8</item>
+    <item>Poziom 9</item>
     <item>Mocna</item>
   </string-array>
 

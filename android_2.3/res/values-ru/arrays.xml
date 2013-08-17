@@ -22,25 +22,29 @@
         <item>libv4a_xhifi_gb_T2.so</item>
         <item>libv4a_xhifi_gb_NEON.so</item>
     </string-array>
-        <string-array name="colorfulmusic_coeffs">
+    <string-array name="colorfulmusic_coeffs">
         <item>Слабый</item>
-        <item>Средний</item>
+        <item>Yровень 1</item>
+        <item>Yровень 2</item>
+        <item>Yровень 3</item>
+        <item>Yровень 4</item>
+        <item>Yровень 5</item>
+        <item>Yровень 6</item>
+        <item>Yровень 7</item>
         <item>Максимальный</item>
-    </string-array>
-	<string-array name="colorfulmusic_coeffs_values">
-        <item>120;200</item>
-        <item>160;500</item>
-        <item>200;800</item>
     </string-array>
     <string-array name="colorfulmusic_midimage">
         <item>Слабый</item>
-        <item>Средний</item>
+        <item>Yровень 1</item>
+        <item>Yровень 2</item>
+        <item>Yровень 3</item>
+        <item>Yровень 4</item>
+        <item>Yровень 5</item>
+        <item>Yровень 6</item>
+        <item>Yровень 7</item>
+        <item>Yровень 8</item>
+        <item>Yровень 9</item>
         <item>Максимальный</item>
-    </string-array>
-	 <string-array name="colorfulmusic_midimage_values">
-        <item>100</item>
-        <item>120</item>
-        <item>150</item>
     </string-array>
     <string-array name="reverb_roomsize">
         <item>25м²</item>
@@ -55,7 +59,7 @@
         <item>652м²</item>
         <item>1200м²</item>
     </string-array>
-	    <string-array name="reverb_roomsize_values">
+	<string-array name="reverb_roomsize_values">
         <item>0</item>
         <item>10</item>
         <item>20</item>
@@ -81,7 +85,7 @@
         <item>26м</item>
         <item>36м</item>
     </string-array>
-	 <string-array name="reverb_roomwidth_values">
+	<string-array name="reverb_roomwidth_values">
         <item>0</item>
         <item>10</item>
         <item>20</item>
@@ -120,7 +124,7 @@
         <item>90</item>
         <item>100</item>
     </string-array>
-	 <string-array name="equalizer_preset_modes">
+	<string-array name="equalizer_preset_modes">
         <item>@string/eq_preset_acoustic</item>
         <item>@string/eq_preset_bass_booster</item>
         <item>@string/eq_preset_bass_reducer</item>
@@ -164,7 +168,7 @@
         <item>Нормальное</item>
         <item>Высокое</item>
     </string-array>
-	 <string-array name="vhs_qual_values">
+	<string-array name="vhs_qual_values">
         <item>0</item>
         <item>1</item>
     </string-array>
@@ -232,7 +236,7 @@
         <item>-6.0 дБ</item>
         <item>-10.5 дБ</item>
     </string-array>
-	  <string-array name="output_дБ_values">
+	<string-array name="output_дБ_values">
         <item>100</item>
         <item>90</item>
         <item>80</item>
@@ -264,7 +268,7 @@
         <item>-26.0 дБ</item>
         <item>-40.0 дБ</item>
     </string-array>
-	 <string-array name="output_volume_values">
+	<string-array name="output_volume_values">
         <item>200</item>
         <item>190</item>
         <item>180</item>
@@ -403,7 +407,7 @@
         <item>1000;6200;60;120;0;0</item>
         <item>1000;6200;80;140;0;0</item>
         <item>800;6200;80;140;0;0</item>
-</string-array>
+    </string-array>
 
   <string-array name="vbass_mode">
     <item>Natural Bass</item>
@@ -474,7 +478,7 @@
     <item>14.8 дБ</item>
   </string-array>
 
-  <string-array name="speaker_lowfreq">
+    <string-array name="speaker_lowfreq">
         <item>100 Гц</item>
         <item>140 Гц</item>
         <item>180 Гц</item>
@@ -496,7 +500,7 @@
         <item>7000 Гц</item>
         <item>8000 Гц</item>
     </string-array>
- <string-array name="speaker_highfreq_values">
+    <string-array name="speaker_highfreq_values">
         <item>3000</item>
         <item>4000</item>
         <item>5000</item>

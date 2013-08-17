@@ -28,6 +28,7 @@
     <string name="pref_spkfx_limiter_title">总输出门(限幅)</string>
     <string name="pref_spkfx_limiter_threshold">限制级别</string>
     <string name="pref_output_gain">输出增益</string>
+    <string name="pref_output_pan">声道平衡</string>
 
     <string name="pref_playback_title">回放增益控制</string>
     <string name="pref_playback_summary_on">回放增益控制已启用</string>
@@ -107,6 +108,14 @@
     <string name="dialog_colorfulmusic">场环绕强度</string>
     <string name="pref_select_colorfulmusic_mi_title">选择中央强度</string>
     <string name="dialog_colorfulmusic_mi">中央强度</string>
+
+    <string name="pref_diffsurr_title">差分环绕</string>
+    <string name="pref_diffsurr_summary_on">差分环绕已启用</string>
+    <string name="pref_diffsurr_summary_off">差分环绕已禁用</string>
+    <string name="pref_diffsurr_enable">启用</string>
+
+    <string name="pref_select_diffsurr_ms_title">选择延迟时间</string>
+    <string name="dialog_diffsurr_ms">延迟时间</string>
 
     <string name="pref_reverb_title">数字混响</string>
     <string name="pref_reverb_summary_on">数字混响已启用</string>

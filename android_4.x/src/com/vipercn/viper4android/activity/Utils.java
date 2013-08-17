@@ -321,6 +321,8 @@ public class Utils
         		bwOutput.write("viper4android.headphonefx.convolver.enable=boolean=" + szValue + "\n");
         		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.colorfulmusic.enable", false));
         		bwOutput.write("viper4android.headphonefx.colorfulmusic.enable=boolean=" + szValue + "\n");
+        		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.diffsurr.enable", false));
+        		bwOutput.write("viper4android.headphonefx.diffsurr.enable=boolean=" + szValue + "\n");
         		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.vhs.enable", false));
         		bwOutput.write("viper4android.headphonefx.vhs.enable=boolean=" + szValue + "\n");
         		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.reverb.enable", false));
@@ -353,6 +355,8 @@ public class Utils
         		bwOutput.write("viper4android.headphonefx.colorfulmusic.coeffs=string=" + szValue + "\n");
         		szValue = preferences.getString("viper4android.headphonefx.colorfulmusic.midimage", "150");
         		bwOutput.write("viper4android.headphonefx.colorfulmusic.midimage=string=" + szValue + "\n");
+        		szValue = preferences.getString("viper4android.headphonefx.diffsurr.delay", "500");
+        		bwOutput.write("viper4android.headphonefx.diffsurr.delay=string=" + szValue + "\n");
         		szValue = preferences.getString("viper4android.headphonefx.vhs.qual", "0");
         		bwOutput.write("viper4android.headphonefx.vhs.qual=string=" + szValue + "\n");
         		szValue = preferences.getString("viper4android.headphonefx.reverb.roomsize", "0");
@@ -383,6 +387,8 @@ public class Utils
         		bwOutput.write("viper4android.headphonefx.cure.crossfeed=string=" + szValue + "\n");
         		szValue = preferences.getString("viper4android.headphonefx.outvol", "100");
         		bwOutput.write("viper4android.headphonefx.outvol=string=" + szValue + "\n");
+        		szValue = preferences.getString("viper4android.headphonefx.channelpan", "0");
+        		bwOutput.write("viper4android.headphonefx.channelpan=string=" + szValue + "\n");
         		szValue = preferences.getString("viper4android.headphonefx.limiter", "100");
         		bwOutput.write("viper4android.headphonefx.limiter=string=" + szValue + "\n");
         		szValue = preferences.getString("viper4android.speakerfx.limiter", "100");

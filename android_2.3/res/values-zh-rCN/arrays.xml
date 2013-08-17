@@ -15,13 +15,27 @@
 
   <string-array name="colorfulmusic_coeffs">
     <item>轻微</item>
-    <item>中等</item>
+    <item>级别1</item>
+    <item>级别2</item>
+    <item>级别3</item>
+    <item>级别4</item>
+    <item>级别5</item>
+    <item>级别6</item>
+    <item>级别7</item>
     <item>极端</item>
   </string-array>
 
   <string-array name="colorfulmusic_midimage">
     <item>轻微</item>
-    <item>中等</item>
+    <item>级别1</item>
+    <item>级别2</item>
+    <item>级别3</item>
+    <item>级别4</item>
+    <item>级别5</item>
+    <item>级别6</item>
+    <item>级别7</item>
+    <item>级别8</item>
+    <item>级别9</item>
     <item>极端</item>
   </string-array>
 

@@ -23,6 +23,7 @@
     <string name="pref_spkfx_limiter_title">Ограничитель</string>
     <string name="pref_spkfx_limiter_threshold">Предельный порог</string>
     <string name="pref_output_gain">Усиление выходного сигнала</string>
+    <string name="pref_output_pan">канал Баланс</string>
     <string name="pref_playback_title">Регулировка усиления</string>
     <string name="pref_playback_summary_on">Автоматическая регулировка усиления (AGC) включена</string>
     <string name="pref_playback_summary_off">Автоматическая регулировка усиления (AGC) отключена</string>

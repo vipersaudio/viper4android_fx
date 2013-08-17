@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.vipercn.viper4android" android:versionCode="2210"
-	android:versionName="2.2.1.0" android:installLocation="auto">
+	package="com.vipercn.viper4android" android:versionCode="2211"
+	android:versionName="2.2.1.1" android:installLocation="auto">
 
     <uses-sdk android:minSdkVersion="14"/>
 
@@ -12,7 +12,7 @@
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
 	<uses-permission android:name="android.permission.ACCESS_SUPERUSER"></uses-permission>
 
-	<application android:icon="@drawable/icon" android:label="@string/app_name" android:persistent="true">
+	<application android:icon="@drawable/icon" android:label="@string/app_name" android:persistent="true" android:allowBackup="true">
 		<activity android:label="@string/app_name" android:name=".activity.ViPER4Android"
 		    android:configChanges="orientation"
 		    android:screenOrientation="nosensor">

@@ -37,26 +37,78 @@
 
   <string-array name="colorfulmusic_coeffs">
     <item>Slight</item>
-    <item>Moderate</item>
+    <item>Level 1</item>
+    <item>Level 2</item>
+    <item>Level 3</item>
+    <item>Level 4</item>
+    <item>Level 5</item>
+    <item>Level 6</item>
+    <item>Level 7</item>
     <item>Extreme</item>
   </string-array>
 
   <string-array name="colorfulmusic_coeffs_values" translatable="false">
     <item>120;200</item>
+    <item>130;275</item>
+    <item>140;350</item>
+    <item>150;425</item>
     <item>160;500</item>
+    <item>170;575</item>
+    <item>180;650</item>
+    <item>190;725</item>
     <item>200;800</item>
   </string-array>
 
   <string-array name="colorfulmusic_midimage">
     <item>Slight</item>
-    <item>Moderate</item>
+    <item>Level 1</item>
+    <item>Level 2</item>
+    <item>Level 3</item>
+    <item>Level 4</item>
+    <item>Level 5</item>
+    <item>Level 6</item>
+    <item>Level 7</item>
+    <item>Level 8</item>
+    <item>Level 9</item>
     <item>Extreme</item>
   </string-array>
 
   <string-array name="colorfulmusic_midimage_values" translatable="false">
     <item>100</item>
+    <item>110</item>
     <item>120</item>
+    <item>130</item>
+    <item>140</item>
     <item>150</item>
+    <item>160</item>
+    <item>170</item>
+    <item>180</item>
+    <item>190</item>
+    <item>200</item>
+  </string-array>
+
+  <string-array name="diffsurround_delay">
+    <item>2 ms</item>
+    <item>5 ms</item>
+    <item>8 ms</item>
+    <item>10 ms</item>
+    <item>12 ms</item>
+    <item>14 ms</item>
+    <item>16 ms</item>
+    <item>18 ms</item>
+    <item>20 ms</item>
+  </string-array>
+
+  <string-array name="diffsurround_delay_values" translatable="false">
+    <item>200</item>
+    <item>500</item>
+    <item>800</item>
+    <item>1000</item>
+    <item>1200</item>
+    <item>1400</item>
+    <item>1600</item>
+    <item>1800</item>
+    <item>2000</item>
   </string-array>
 
   <string-array name="reverb_roomsize">
@@ -325,6 +377,34 @@
     <item>10</item>
     <item>5</item>
     <item>1</item>
+  </string-array>
+
+  <string-array name="channel_pan">
+    <item>1.0 : 0.0</item>
+    <item>0.9 : 0.1</item>
+    <item>0.8 : 0.2</item>
+    <item>0.7 : 0.3</item>
+    <item>0.6 : 0.4</item>
+    <item>0.5 : 0.5</item>
+    <item>0.4 : 0.6</item>
+    <item>0.3 : 0.7</item>
+    <item>0.2 : 0.8</item>
+    <item>0.1 : 0.9</item>
+    <item>0.0 : 1.0</item>
+  </string-array>
+
+  <string-array name="channel_pan_values" translatable="false">
+    <item>-100</item>
+    <item>-80</item>
+    <item>-60</item>
+    <item>-40</item>
+    <item>-20</item>
+    <item>0</item>
+    <item>20</item>
+    <item>40</item>
+    <item>60</item>
+    <item>80</item>
+    <item>100</item>
   </string-array>
 
   <string-array name="dynamicsystem_bass">
