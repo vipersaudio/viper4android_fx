@@ -2,15 +2,15 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
   <string-array name="cpu_platform_fx">
-    <item>Without VFP (PXA920)</item>
-    <item>With VFP</item>
-    <item>CortexA8 with NEON</item>
-    <item>CortexA9/15 with NEON</item>
+    <item>Sin VFP (PXA920)</item>
+    <item>Con VFP</item>
+    <item>CortexA8 con NEON</item>
+    <item>CortexA9/15 con NEON</item>
   </string-array>
 
   <string-array name="cpu_platform_xhifi">
     <item>NVIDIA Tegra2</item>
-    <item>CortexAx with NEON</item>
+    <item>CortexAx con NEON</item>
   </string-array>
 
   <string-array name="compatible_mode">
@@ -19,7 +19,7 @@
   </string-array>
 
   <string-array name="colorfulmusic_coeffs">
-    <item>Leve</item>
+    <item>Nivel</item>
     <item>Nivel 1</item>
     <item>Nivel 2</item>
     <item>Nivel 3</item>
@@ -31,7 +31,7 @@
   </string-array>
 
   <string-array name="colorfulmusic_midimage">
-    <item>Leve</item>
+    <item>Nivel</item>
     <item>Nivel 1</item>
     <item>Nivel 2</item>
     <item>Nivel 3</item>
