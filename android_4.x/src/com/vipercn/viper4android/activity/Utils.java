@@ -3,6 +3,7 @@ package com.vipercn.viper4android.activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
 
@@ -848,7 +849,7 @@ public class Utils
     	String szCmdLine[] = new String[4];
     	szCmdLine[0] = szMount + " -o remount,rw /system /system";
     	szCmdLine[1] = szRemove + " /system/lib/soundfx/libv4a_fx_ics.so";
-    	szCmdLine[2] = szSync;
+    	szCmdLine[2] = szSync;  /* FIXME: do i need a 'sync' to flush io buffer ? */
     	szCmdLine[3] = szMount + " -o remount,ro /system /system";
     	runRootCommand(szCmdLine, 200);
     }
@@ -943,9 +944,17 @@ public class Utils
     	String szChmod  = szToolbox + " chmod";
     	String szSync   = szToolbox + " sync";
 
-    	String szSystemConf = Environment.getExternalStorageDirectory() + "/v4a_audio_system.conf";
-    	String szVendorConf = Environment.getExternalStorageDirectory() + "/v4a_audio_vendor.conf";
+    	// Generate temp config file path, thanks to 'ste71m'
+    	String szExternalStoragePathName = Environment.getExternalStorageDirectory().getAbsolutePath();
+    	if (Build.VERSION.SDK_INT >= 18)
+    	{
+    		if (szExternalStoragePathName.endsWith("/emulated/0"))
+    			szExternalStoragePathName = szExternalStoragePathName.replace("/emulated/0", "/emulated/legacy");
+    	}
+    	String szSystemConf = szExternalStoragePathName + "/v4a_audio_system.conf";
+    	String szVendorConf = szExternalStoragePathName + "/v4a_audio_vendor.conf";
 
+    	// Check vendor directory
     	boolean bExistsVendor = false;
     	if (fileExists("/system/vendor/etc/audio_effects.conf"))
     		bExistsVendor = true;
@@ -956,14 +965,14 @@ public class Utils
 	    	String szCopyConfToSD[] = new String[3];
 	    	szCopyConfToSD[0] = MakeCopyCmdLine(szPreferenceName, ctx, "/system/etc/audio_effects.conf", szSystemConf);
 	    	szCopyConfToSD[1] = MakeCopyCmdLine(szPreferenceName, ctx, "/system/vendor/etc/audio_effects.conf", szVendorConf);
-	    	szCopyConfToSD[2] = szSync;
+	    	szCopyConfToSD[2] = szSync;  /* FIXME: do i need a 'sync' to flush io buffer ? */
 	    	runRootCommand(szCopyConfToSD, 100);
     	}
     	else
     	{
     		String szCopyConfToSD[] = new String[2];
 	    	szCopyConfToSD[0] = MakeCopyCmdLine(szPreferenceName, ctx, "/system/etc/audio_effects.conf", szSystemConf);
-	    	szCopyConfToSD[1] = szSync;
+	    	szCopyConfToSD[1] = szSync;  /* FIXME: do i need a 'sync' to flush io buffer ? */
 	    	runRootCommand(szCopyConfToSD, 100);
     	}
 
@@ -981,7 +990,7 @@ public class Utils
 	        	szRemoveTmpFiles[1] = szRemove + " " + szSystemConf + ".out";
 	        	szRemoveTmpFiles[2] = szRemove + " " + szVendorConf;
 	        	szRemoveTmpFiles[3] = szRemove + " " + szVendorConf + ".out";
-	        	szRemoveTmpFiles[4] = szSync;
+	        	szRemoveTmpFiles[4] = szSync;  /* FIXME: do i need a 'sync' to flush io buffer ? */
 	        	runRootCommand(szRemoveTmpFiles, 100);
     		}
     		else
@@ -989,7 +998,7 @@ public class Utils
 	        	String szRemoveTmpFiles[] = new String[3];
 	        	szRemoveTmpFiles[0] = szRemove + " " + szSystemConf;
 	        	szRemoveTmpFiles[1] = szRemove + " " + szSystemConf + ".out";
-	        	szRemoveTmpFiles[2] = szSync;
+	        	szRemoveTmpFiles[2] = szSync;  /* FIXME: do i need a 'sync' to flush io buffer ? */
 	        	runRootCommand(szRemoveTmpFiles, 100);
     		}
         	return false;
@@ -1004,11 +1013,11 @@ public class Utils
     		szCopyToSystem[1] = MakeCopyCmdLine(szPreferenceName, ctx, szSystemConf + ".out", "/system/etc/audio_effects.conf");
     		szCopyToSystem[2] = MakeCopyCmdLine(szPreferenceName, ctx, szVendorConf + ".out", "/system/vendor/etc/audio_effects.conf");
     		szCopyToSystem[3] = MakeCopyCmdLine(szPreferenceName, ctx, szBaseDrvPathName, "/system/lib/soundfx/libv4a_fx_ics.so");
-    		szCopyToSystem[4] = szSync;
+    		szCopyToSystem[4] = szSync;  /* FIXME: do i need a 'sync' to flush io buffer ? */
     		szCopyToSystem[5] = szChmod + " 644 /system/etc/audio_effects.conf";
     		szCopyToSystem[6] = szChmod + " 644 /system/vendor/etc/audio_effects.conf";
     		szCopyToSystem[7] = szChmod + " 644 /system/lib/soundfx/libv4a_fx_ics.so";
-    		szCopyToSystem[8] = szSync;
+    		szCopyToSystem[8] = szSync;  /* FIXME: do i need a 'sync' to flush io buffer ? */
     		szCopyToSystem[9] = szMount + " -o remount,ro /system /system";
     		runRootCommand(szCopyToSystem, 200);
     	}
@@ -1019,10 +1028,10 @@ public class Utils
     		szCopyToSystem[0] = szMount + " -o remount,rw /system /system";
     		szCopyToSystem[1] = MakeCopyCmdLine(szPreferenceName, ctx, szSystemConf + ".out", "/system/etc/audio_effects.conf");
     		szCopyToSystem[2] = MakeCopyCmdLine(szPreferenceName, ctx, szBaseDrvPathName, "/system/lib/soundfx/libv4a_fx_ics.so");
-    		szCopyToSystem[3] = szSync;
+    		szCopyToSystem[3] = szSync;  /* FIXME: do i need a 'sync' to flush io buffer ? */
     		szCopyToSystem[4] = szChmod + " 644 /system/etc/audio_effects.conf";
     		szCopyToSystem[5] = szChmod + " 644 /system/lib/soundfx/libv4a_fx_ics.so";
-    		szCopyToSystem[6] = szSync;
+    		szCopyToSystem[6] = szSync;  /* FIXME: do i need a 'sync' to flush io buffer ? */
     		szCopyToSystem[7] = szMount + " -o remount,ro /system /system";
     		runRootCommand(szCopyToSystem, 200);
     	}
@@ -1035,7 +1044,7 @@ public class Utils
 	    	szRemoveTmpFiles[1] = szRemove + " " + szSystemConf + ".out";
 	    	szRemoveTmpFiles[2] = szRemove + " " + szVendorConf;
 	    	szRemoveTmpFiles[3] = szRemove + " " + szVendorConf + ".out";
-	    	szRemoveTmpFiles[4] = szSync;
+	    	szRemoveTmpFiles[4] = szSync;  /* FIXME: do i need a 'sync' to flush io buffer ? */
 	    	runRootCommand(szRemoveTmpFiles, 100);
     	}
     	else
@@ -1043,7 +1052,7 @@ public class Utils
 	    	String szRemoveTmpFiles[] = new String[3];
 	    	szRemoveTmpFiles[0] = szRemove + " " + szSystemConf;
 	    	szRemoveTmpFiles[1] = szRemove + " " + szSystemConf + ".out";
-	    	szRemoveTmpFiles[2] = szSync;
+	    	szRemoveTmpFiles[2] = szSync;  /* FIXME: do i need a 'sync' to flush io buffer ? */
 	    	runRootCommand(szRemoveTmpFiles, 100);
     	}
 

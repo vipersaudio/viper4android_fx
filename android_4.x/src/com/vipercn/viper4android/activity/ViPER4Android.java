@@ -334,6 +334,8 @@ public final class ViPER4Android extends FragmentActivity
 		                    	{
 		                    		String[] szV4A_CPU = getResources().getStringArray(R.array.cpu_platform_fx_values);
 		                    		String V4ALIB = szV4A_CPU[which];
+		                    		if (Build.VERSION.SDK_INT >= 18) V4ALIB = V4ALIB + ".jb";
+		                    		else V4ALIB = V4ALIB + ".ics";
 		                    		if (Utils.InstallDrv_FX(V4ASettingsPreference, mActivityContext, V4ALIB))
 		                    		{
 		                    			AlertDialog.Builder mResult = new AlertDialog.Builder(mActivityContext);
@@ -1098,6 +1100,8 @@ public final class ViPER4Android extends FragmentActivity
                     	{
                     		String[] szV4A_CPU = getResources().getStringArray(R.array.cpu_platform_fx_values);
                     		String V4ALIB = szV4A_CPU[which];
+                    		if (Build.VERSION.SDK_INT >= 18) V4ALIB = V4ALIB + ".jb";
+                    		else V4ALIB = V4ALIB + ".ics";
                     		if (Utils.InstallDrv_FX(V4ASettingsPreference, mActivityContext, V4ALIB))
                     		{
                     			AlertDialog.Builder mResult = new AlertDialog.Builder(mActivityContext);

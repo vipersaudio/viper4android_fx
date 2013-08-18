@@ -89,7 +89,7 @@ public final class MainDSPScreen extends PreferenceFragment
 				        	String szSync   = szToolbox + " sync";
 							String szCmdLine[] = new String[3];
 							szCmdLine[0] = szCopy;
-							szCmdLine[1] = szSync;
+							szCmdLine[1] = szSync;  /* FIXME: do i need a 'sync' to flush io buffer ? */
 							szCmdLine[2] = szChmod + " 777 " + szDstFile;
 							Utils.runRootCommand(szCmdLine, 100);
 				    	}
@@ -105,7 +105,7 @@ public final class MainDSPScreen extends PreferenceFragment
 				        	String szSync   = szToolbox + " sync";
 				        	String szCmdLine[] = new String[2];
 				        	szCmdLine[0] = szRemove + " " + szDstFile;
-				        	szCmdLine[1] = szSync;
+				        	szCmdLine[1] = szSync;  /* FIXME: do i need a 'sync' to flush io buffer ? */
 							Utils.runRootCommand(szCmdLine, 100);
 				    	}
 					}
