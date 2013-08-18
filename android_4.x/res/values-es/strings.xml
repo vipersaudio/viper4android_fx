@@ -104,8 +104,8 @@
     <string name="pref_colorfulmusic_summary_off">Ámbito Surround esta Desactivado</string>
     <string name="pref_colorfulmusic_enable">Activado</string>
 
-    <string name="pref_select_colorfulmusic_title">Seleccione de intensidad del Ámbito Surround</string>
-    <string name="dialog_colorfulmusic">Intensidad del Ámbito Surround</string>
+    <string name="pref_select_colorfulmusic_title">Seleccionar Intensidad de Ámbito Surround</string>
+    <string name="dialog_colorfulmusic">Intensidad de Ámbito Surround</string>
     <string name="pref_select_colorfulmusic_mi_title">Seleccionar Intensidad Mid Image</string>
     <string name="dialog_colorfulmusic_mi">Intensidad Mid Image</string>
 
