@@ -19,7 +19,7 @@
   </string-array>
 
   <string-array name="colorfulmusic_coeffs">
-    <item>Nivel</item>
+    <item>Leve</item>
     <item>Nivel 1</item>
     <item>Nivel 2</item>
     <item>Nivel 3</item>
@@ -31,7 +31,7 @@
   </string-array>
 
   <string-array name="colorfulmusic_midimage">
-    <item>Nivel</item>
+    <item>Leve</item>
     <item>Nivel 1</item>
     <item>Nivel 2</item>
     <item>Nivel 3</item>
