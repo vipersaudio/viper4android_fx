@@ -1,286 +1,264 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-
-  <string-array name="cpu_platform_fx">
-    <item>Bez VFP (PXA920)</item>
-    <item>Z VFP</item>
-    <item>CortexA8 z NEON</item>
-    <item>CortexA9/15 z NEON</item>
-  </string-array>
-
-  <string-array name="cpu_platform_xhifi">
-    <item>NVIDIA Tegra2</item>
-    <item>CortexAx z NEON</item>
-  </string-array>
-
-  <string-array name="compatible_mode">
-    <item>Normalny</item>
-    <item>Kompatybilny</item>
-  </string-array>
-
-  <string-array name="colorfulmusic_coeffs">
-    <item>Delikatna</item>
-    <item>Poziom 1</item>
-    <item>Poziom 2</item>
-    <item>Poziom 3</item>
-    <item>Poziom 4</item>
-    <item>Poziom 5</item>
-    <item>Poziom 6</item>
-    <item>Poziom 7</item>
-    <item>Mocna</item>
-  </string-array>
-
-  <string-array name="colorfulmusic_midimage">
-    <item>Delikatna</item>
-    <item>Poziom 1</item>
-    <item>Poziom 2</item>
-    <item>Poziom 3</item>
-    <item>Poziom 4</item>
-    <item>Poziom 5</item>
-    <item>Poziom 6</item>
-    <item>Poziom 7</item>
-    <item>Poziom 8</item>
-    <item>Poziom 9</item>
-    <item>Mocna</item>
-  </string-array>
-
-  <string-array name="reverb_roomsize">
-    <item>25m2</item>
-    <item>36m2</item>
-    <item>49m2</item>
-    <item>64m2</item>
-    <item>81m2</item>
-    <item>100m2</item>
-    <item>121m2</item>
-    <item>203m2</item>
-    <item>347m2</item>
-    <item>652m2</item>
-    <item>1200m2</item>
-  </string-array>
-
-  <string-array name="reverb_roomwidth">
-    <item>5m</item>
-    <item>6m</item>
-    <item>7m</item>
-    <item>8m</item>
-    <item>9m</item>
-    <item>10m</item>
-    <item>11m</item>
-    <item>14m</item>
-    <item>19m</item>
-    <item>26m</item>
-    <item>36m</item>
-  </string-array>
-
-  <string-array name="reverb_percent">
-    <item>0 Procent</item>
-    <item>10 Procent</item>
-    <item>20 Procent</item>
-    <item>30 Procent</item>
-    <item>40 Procent</item>
-    <item>50 Procent</item>
-    <item>60 Procent</item>
-    <item>70 Procent</item>
-    <item>80 Procent</item>
-    <item>90 Procent</item>
-    <item>100 Procent</item>
-  </string-array>
-
-  <string-array name="cure_crossfeed">
-    <item>Delikatny</item>
-    <item>Umiarkowany</item>
-    <item>Mocny</item>
-  </string-array>
-
-  <string-array name="vhs_qual">
-    <item>Normalna</item>
-    <item>Wysoka</item>
-  </string-array>
-
-  <string-array name="playbackgain_ratio">
-    <item>Delikatna</item>
-    <item>Umiarkowana</item>
-    <item>Mocna</item>
-  </string-array>
-
-  <string-array name="multi_factor">
-    <item>1x</item>
-    <item>2x</item>
-    <item>3x</item>
-    <item>4x</item>
-    <item>5x</item>
-    <item>6x</item>
-    <item>7x</item>
-    <item>8x</item>
-    <item>9x</item>
-    <item>10x</item>
-    <item>Inf</item>
-  </string-array>
-
-  <string-array name="amplification_db">
-    <item>0 dB</item>
-    <item>3.5 dB</item>
-    <item>6.0 dB</item>
-    <item>9.5 dB</item>
-    <item>12.0 dB</item>
-    <item>14.0 dB</item>
-    <item>18.0 dB</item>
-    <item>20.0 dB</item>
-  </string-array>
-
-  <string-array name="output_db">
-    <item>0 dB</item>
-    <item>-1.0 dB</item>
-    <item>-1.9 dB</item>
-    <item>-3.0 dB</item>
-    <item>-6.0 dB</item>
-    <item>-10.5 dB</item>
-  </string-array>
-
-  <string-array name="output_volume">
-    <item>6.0 dB</item>
-    <item>5.6 dB</item>
-    <item>5.1 dB</item>
-    <item>4.6 dB</item>
-    <item>4.1 dB</item>
-    <item>3.5 dB</item>
-    <item>2.9 dB</item>
-    <item>2.3 dB</item>
-    <item>1.6 dB</item>
-    <item>0.8 dB</item>
-    <item>0 dB</item>
-    <item>-1.0 dB</item>
-    <item>-1.9 dB</item>
-    <item>-3.0 dB</item>
-    <item>-4.4 dB</item>
-    <item>-6.0 dB</item>
-    <item>-8.0 dB</item>
-    <item>-10.5 dB</item>
-    <item>-14.0 dB</item>
-    <item>-20.0 dB</item>
-    <item>-26.0 dB</item>
-    <item>-40.0 dB</item>
-  </string-array>
-
-  <string-array name="dynamicsystem_bass">
-    <item>0 Procent</item>
-    <item>1 Procent</item>
-    <item>2 Procent</item>
-    <item>3 Procent</item>
-    <item>4 Procent</item>
-    <item>5 Procent</item>
-    <item>6 Procent</item>
-    <item>7 Procent</item>
-    <item>8 Procent</item>
-    <item>9 Procent</item>
-    <item>10 Procent</item>
-    <item>12 Procent</item>
-    <item>14 Procent</item>
-    <item>16 Procent</item>
-    <item>18 Procent</item>
-    <item>20 Procent</item>
-    <item>22 Procent</item>
-    <item>24 Procent</item>
-    <item>26 Procent</item>
-    <item>28 Procent</item>
-    <item>30 Procent</item>
-    <item>33 Procent</item>
-    <item>36 Procent</item>
-    <item>40 Procent</item>
-    <item>45 Procent</item>
-    <item>50 Procent</item>
-    <item>55 Procent</item>
-    <item>60 Procent</item>
-    <item>70 Procent</item>
-    <item>80 Procent</item>
-    <item>90 Procent</item>
-    <item>100 Procent</item>
-    <item>120 Procent</item>
-    <item>150 Procent</item>
-    <item>200 Procent</item>
-  </string-array>
-
-  <string-array name="dynamicsystem_outputs">
-    <item>Nauszne z mocnym bassem(v2)</item>
-    <item>Nauszne wysokiej klasy(v2)</item>
-    <item>Nauszne uniwersalne(v2)</item>
-    <item>Nauszne niskiej klasy(v2)</item>
-    <item>Douszne uniwersalne(v2)</item>
-    <item>Nauszne z mocnym bassem(v1)</item>
-    <item>Nauszne wysokiej klasy(v1)</item>
-    <item>Nauszne uniwersalne(v1)</item>
-    <item>Douszne uniwersalne(v1)</item>
-    <item>Douszne Apple\'owe</item>
-    <item>Douszne Monster\'y</item>
-    <item>Douszne Motoroli</item>
-    <item>Douszne Philips\'y</item>
-    <item>Philips\'y SHP 2000</item>
-    <item>Philips\'y SHP 9000</item>
-    <item>Nieznany Typ I</item>
-    <item>Nieznany Typ II</item>
-    <item>Nieznany Typ III</item>
-    <item>Nieznany Typ IV</item>
-  </string-array>
-
-  <string-array name="vbass_mode">
-    <item>Naturalny Bass</item>
-    <item>Czysty Bass+</item>
-  </string-array>
-  <string-array name="vbass_freq">
-    <item>40 Hz</item>
-    <item>50 Hz</item>
-    <item>60 Hz</item>
-    <item>80 Hz</item>
-    <item>100 Hz</item>
-  </string-array>
-  <string-array name="vbass_boost">
-    <item>3.5 dB</item>
-    <item>6.0 dB</item>
-    <item>8.0 dB</item>
-    <item>10.0 dB</item>
-    <item>11.0 dB</item>
-    <item>12.0 dB</item>
-    <item>13.0 dB</item>
-    <item>14.0 dB</item>
-    <item>14.8 dB</item>
-    <item>15.6 dB</item>
-    <item>16.3 dB</item>
-    <item>17.0 dB</item>
-  </string-array>
-
-  <string-array name="vclarity_mode">
-    <item>Naturalna czystość dźwięku</item>
-    <item>OZone+</item>
-    <item>XHiFi</item>
-  </string-array>
-  <string-array name="vclarity_boost">
-    <item>0 dB</item>
-    <item>3.5 dB</item>
-    <item>6.0 dB</item>
-    <item>8.0 dB</item>
-    <item>10.0 dB</item>
-    <item>11.0 dB</item>
-    <item>12.0 dB</item>
-    <item>13.0 dB</item>
-    <item>14.0 dB</item>
-    <item>14.8 dB</item>
-  </string-array>
-
-  <string-array name="speaker_lowfreq">
-    <item>100 Hz</item>
-    <item>140 Hz</item>
-    <item>180 Hz</item>
-    <item>200 Hz</item>
-    <item>220 Hz</item>
-  </string-array>
-
-  <string-array name="speaker_highfreq">
-    <item>3000 Hz</item>
-    <item>4000 Hz</item>
-    <item>5000 Hz</item>
-    <item>6000 Hz</item>
-    <item>7000 Hz</item>
-    <item>8000 Hz</item>
-  </string-array>
-
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="cpu_platform_fx">
+        <item>Bez VFP (PXA920)</item>
+        <item>Z VFP</item>
+        <item>CortexA8 z NEON</item>
+        <item>CortexA9/15 z NEON</item>
+    </string-array>
+    <string-array name="cpu_platform_xhifi">
+        <item>NVIDIA Tegra2</item>
+        <item>CortexAx z NEON</item>
+    </string-array>
+    <string-array name="compatible_mode">
+        <item>Normalny</item>
+        <item>Kompatybilny</item>
+    </string-array>
+    <string-array name="colorfulmusic_coeffs">
+        <item>Delikatna</item>
+        <item>Poziom 1</item>
+        <item>Poziom 2</item>
+        <item>Poziom 3</item>
+        <item>Poziom 4</item>
+        <item>Poziom 5</item>
+        <item>Poziom 6</item>
+        <item>Poziom 7</item>
+        <item>Mocna</item>
+    </string-array>
+    <string-array name="colorfulmusic_midimage">
+        <item>Delikatna</item>
+        <item>Poziom 1</item>
+        <item>Poziom 2</item>
+        <item>Poziom 3</item>
+        <item>Poziom 4</item>
+        <item>Poziom 5</item>
+        <item>Poziom 6</item>
+        <item>Poziom 7</item>
+        <item>Poziom 8</item>
+        <item>Poziom 9</item>
+        <item>Mocna</item>
+    </string-array>
+    <string-array name="reverb_roomsize">
+        <item>25m2</item>
+        <item>36m2</item>
+        <item>49m2</item>
+        <item>64m2</item>
+        <item>81m2</item>
+        <item>100m2</item>
+        <item>121m2</item>
+        <item>203m2</item>
+        <item>347m2</item>
+        <item>652m2</item>
+        <item>1200m2</item>
+    </string-array>
+    <string-array name="reverb_roomwidth">
+        <item>5m</item>
+        <item>6m</item>
+        <item>7m</item>
+        <item>8m</item>
+        <item>9m</item>
+        <item>10m</item>
+        <item>11m</item>
+        <item>14m</item>
+        <item>19m</item>
+        <item>26m</item>
+        <item>36m</item>
+    </string-array>
+    <string-array name="reverb_percent">
+        <item>0 Procent</item>
+        <item>10 Procent</item>
+        <item>20 Procent</item>
+        <item>30 Procent</item>
+        <item>40 Procent</item>
+        <item>50 Procent</item>
+        <item>60 Procent</item>
+        <item>70 Procent</item>
+        <item>80 Procent</item>
+        <item>90 Procent</item>
+        <item>100 Procent</item>
+    </string-array>
+    <string-array name="cure_crossfeed">
+        <item>Delikatny</item>
+        <item>Umiarkowany</item>
+        <item>Mocny</item>
+    </string-array>
+    <string-array name="vhs_qual">
+        <item>Normalna</item>
+        <item>Wysoka</item>
+    </string-array>
+    <string-array name="playbackgain_ratio">
+        <item>Delikatna</item>
+        <item>Umiarkowana</item>
+        <item>Mocna</item>
+    </string-array>
+    <string-array name="multi_factor">
+        <item>1x</item>
+        <item>2x</item>
+        <item>3x</item>
+        <item>4x</item>
+        <item>5x</item>
+        <item>6x</item>
+        <item>7x</item>
+        <item>8x</item>
+        <item>9x</item>
+        <item>10x</item>
+        <item>Inf</item>
+    </string-array>
+    <string-array name="amplification_db">
+        <item>0 dB</item>
+        <item>3.5 dB</item>
+        <item>6.0 dB</item>
+        <item>9.5 dB</item>
+        <item>12.0 dB</item>
+        <item>14.0 dB</item>
+        <item>18.0 dB</item>
+        <item>20.0 dB</item>
+    </string-array>
+    <string-array name="output_db">
+        <item>0 dB</item>
+        <item>-1.0 dB</item>
+        <item>-1.9 dB</item>
+        <item>-3.0 dB</item>
+        <item>-6.0 dB</item>
+        <item>-10.5 dB</item>
+    </string-array>
+    <string-array name="output_volume">
+        <item>6.0 dB</item>
+        <item>5.6 dB</item>
+        <item>5.1 dB</item>
+        <item>4.6 dB</item>
+        <item>4.1 dB</item>
+        <item>3.5 dB</item>
+        <item>2.9 dB</item>
+        <item>2.3 dB</item>
+        <item>1.6 dB</item>
+        <item>0.8 dB</item>
+        <item>0 dB</item>
+        <item>-1.0 dB</item>
+        <item>-1.9 dB</item>
+        <item>-3.0 dB</item>
+        <item>-4.4 dB</item>
+        <item>-6.0 dB</item>
+        <item>-8.0 dB</item>
+        <item>-10.5 dB</item>
+        <item>-14.0 dB</item>
+        <item>-20.0 dB</item>
+        <item>-26.0 dB</item>
+        <item>-40.0 dB</item>
+    </string-array>
+    <string-array name="dynamicsystem_bass">
+        <item>0 Procent</item>
+        <item>1 Procent</item>
+        <item>2 Procent</item>
+        <item>3 Procent</item>
+        <item>4 Procent</item>
+        <item>5 Procent</item>
+        <item>6 Procent</item>
+        <item>7 Procent</item>
+        <item>8 Procent</item>
+        <item>9 Procent</item>
+        <item>10 Procent</item>
+        <item>12 Procent</item>
+        <item>14 Procent</item>
+        <item>16 Procent</item>
+        <item>18 Procent</item>
+        <item>20 Procent</item>
+        <item>22 Procent</item>
+        <item>24 Procent</item>
+        <item>26 Procent</item>
+        <item>28 Procent</item>
+        <item>30 Procent</item>
+        <item>33 Procent</item>
+        <item>36 Procent</item>
+        <item>40 Procent</item>
+        <item>45 Procent</item>
+        <item>50 Procent</item>
+        <item>55 Procent</item>
+        <item>60 Procent</item>
+        <item>70 Procent</item>
+        <item>80 Procent</item>
+        <item>90 Procent</item>
+        <item>100 Procent</item>
+        <item>120 Procent</item>
+        <item>150 Procent</item>
+        <item>200 Procent</item>
+    </string-array>
+    <string-array name="dynamicsystem_outputs">
+        <item>Nauszne z mocnym basem(v2)</item>
+        <item>Nauszne wysokiej klasy(v2)</item>
+        <item>Nauszne uniwersalne(v2)</item>
+        <item>Nauszne niskiej klasy(v2)</item>
+        <item>Douszne uniwersalne(v2)</item>
+        <item>Nauszne z mocnym basem(v1)</item>
+        <item>Nauszne wysokiej klasy(v1)</item>
+        <item>Nauszne uniwersalne(v1)</item>
+        <item>Douszne uniwersalne(v1)</item>
+        <item>Douszne Apple</item>
+        <item>Douszne Monster</item>
+        <item>Douszne Motoroli</item>
+        <item>Douszne Philips</item>
+        <item>Philips SHP 2000</item>
+        <item>Philips SHP 9000</item>
+        <item>Nieznany Typ I</item>
+        <item>Nieznany Typ II</item>
+        <item>Nieznany Typ III</item>
+        <item>Nieznany Typ IV</item>
+    </string-array>
+    <string-array name="vbass_mode">
+        <item>Naturalny Bas</item>
+        <item>Czysty Bas+</item>
+    </string-array>
+    <string-array name="vbass_freq">
+        <item>40 Hz</item>
+        <item>50 Hz</item>
+        <item>60 Hz</item>
+        <item>80 Hz</item>
+        <item>100 Hz</item>
+    </string-array>
+    <string-array name="vbass_boost">
+        <item>3.5 dB</item>
+        <item>6.0 dB</item>
+        <item>8.0 dB</item>
+        <item>10.0 dB</item>
+        <item>11.0 dB</item>
+        <item>12.0 dB</item>
+        <item>13.0 dB</item>
+        <item>14.0 dB</item>
+        <item>14.8 dB</item>
+        <item>15.6 dB</item>
+        <item>16.3 dB</item>
+        <item>17.0 dB</item>
+    </string-array>
+    <string-array name="vclarity_mode">
+        <item>Naturalna</item>
+        <item>OZone+</item>
+        <item>XHiFi</item>
+    </string-array>
+    <string-array name="vclarity_boost">
+        <item>Domyślnie</item>
+        <item>3.5 dB</item>
+        <item>6.0 dB</item>
+        <item>8.0 dB</item>
+        <item>10.0 dB</item>
+        <item>11.0 dB</item>
+        <item>12.0 dB</item>
+        <item>13.0 dB</item>
+        <item>14.0 dB</item>
+        <item>14.8 dB</item>
+    </string-array>
+    <string-array name="speaker_lowfreq">
+        <item>100 Hz</item>
+        <item>140 Hz</item>
+        <item>180 Hz</item>
+        <item>200 Hz</item>
+        <item>220 Hz</item>
+    </string-array>
+    <string-array name="speaker_highfreq">
+        <item>3000 Hz</item>
+        <item>4000 Hz</item>
+        <item>5000 Hz</item>
+        <item>6000 Hz</item>
+        <item>7000 Hz</item>
+        <item>8000 Hz</item>
+    </string-array>
 </resources>
