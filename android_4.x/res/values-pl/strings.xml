@@ -28,7 +28,7 @@
     <string name="pref_spkfx_limiter_title">Bariera (Limiter)</string>
     <string name="pref_spkfx_limiter_threshold">Próg limitu</string>
     <string name="pref_output_gain">Wzmocnienie wyjściowe</string>
-    <string name="pref_output_pan">Channel Pan</string>
+    <string name="pref_output_pan">Wyrównanie (balans)</string>
 
     <string name="pref_playback_title">Wzmocnienie</string>
     <string name="pref_playback_summary_on">Aktywny</string>
@@ -116,8 +116,8 @@
     <string name="pref_diffsurr_summary_off">Nieaktywny</string>
     <string name="pref_diffsurr_enable">Efekt Haas</string>
 
-    <string name="pref_select_diffsurr_ms_title">Wybierz opóźnienie</string>
-    <string name="dialog_diffsurr_ms">Opóźnienie</string>
+    <string name="pref_select_diffsurr_ms_title">Opóźnienie</string>
+    <string name="dialog_diffsurr_ms">Wybierz opóźnienie</string>
 
     <string name="pref_reverb_title">Echo</string>
     <string name="pref_reverb_summary_on">Aktywny</string>
