@@ -73,18 +73,18 @@
         <item>Максимальный</item>
     </string-array>
 
-	<string-array name="colorfulmusic_midimage_values" translatable="false">
-		<item>100</item>
-		<item>110</item>
-		<item>120</item>
-		<item>130</item>
-		<item>140</item>
-		<item>150</item>
-		<item>160</item>
-		<item>170</item>
-		<item>180</item>
-		<item>190</item>
-		<item>200</item>
+    <string-array name="colorfulmusic_midimage_values" translatable="false">
+	<item>100</item>
+	<item>110</item>
+	<item>120</item>
+	<item>130</item>
+	<item>140</item>
+	<item>150</item>
+	<item>160</item>
+	<item>170</item>
+	<item>180</item>
+	<item>190</item>
+	<item>200</item>
     </string-array>
 
     <string-array name="diffsurround_delay">
@@ -648,4 +648,3 @@
     </string-array>
 
 </resources>
--80
