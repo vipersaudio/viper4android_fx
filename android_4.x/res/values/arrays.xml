@@ -9,10 +9,10 @@
     </string-array>
 
     <string-array name="cpu_platform_fx_values" translatable="false">
-	<item>libv4a_fx_gb_NOVFP.so</item>
-	<item>libv4a_fx_gb_VFP.so</item>
-	<item>libv4a_fx_gb_CortexA8.so</item>
-	<item>libv4a_fx_gb_CortexA9.so</item>
+	<item>libv4a_fx_ics_NOVFP.so</item>
+	<item>libv4a_fx_ics_VFP.so</item>
+	<item>libv4a_fx_ics_CortexA8.so</item>
+	<item>libv4a_fx_ics_CortexA9.so</item>
     </string-array>
   
     <string-array name="cpu_platform_xhifi">
@@ -21,8 +21,18 @@
     </string-array>
 
     <string-array name="cpu_platform_xhifi_values" translatable="false">
-	<item>libv4a_xhifi_gb_T2.so</item>
-	<item>libv4a_xhifi_gb_NEON.so</item>
+	<item>libv4a_xhifi_ics_T2.so</item>
+	<item>libv4a_xhifi_ics_NEON.so</item>
+    </string-array>
+  
+    <string-array name="compatible_mode">
+        <item>Нормальный</item>
+        <item>Совместимый</item>
+    </string-array>
+
+    <string-array name="compatible_mode_values" translatable="false">
+	<item>global</item>
+	<item>local</item>
     </string-array>
   
     <string-array name="colorfulmusic_coeffs">
@@ -363,7 +373,7 @@
 	<item>50</item>
 	<item>40</item>
 	<item>30</item>
-    <item>20</item>
+	<item>20</item>
 	<item>10</item>
 	<item>5</item>
 	<item>1</item>
@@ -552,7 +562,7 @@
 	<item>15.6 дБ</item>
 	<item>16.3 дБ</item>
 	<item>17.0 дБ</item>
-   </string-array>	
+    </string-array>	
    <string-array name="vbass_boost_values"  translatable="false">
 	<item>50</item>
 	<item>100</item>
