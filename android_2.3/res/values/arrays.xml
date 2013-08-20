@@ -399,32 +399,32 @@
 
   <string-array name="dynamicsystem_bass">
     <item>0 Percent</item>
-	<item>1 Percent</item>
-	<item>2 Percent</item>
-	<item>3 Percent</item>
-	<item>4 Percent</item>
-	<item>5 Percent</item>
-	<item>6 Percent</item>
-	<item>7 Percent</item>
-	<item>8 Percent</item>
-	<item>9 Percent</item>
+    <item>1 Percent</item>
+    <item>2 Percent</item>
+    <item>3 Percent</item>
+    <item>4 Percent</item>
+    <item>5 Percent</item>
+    <item>6 Percent</item>
+    <item>7 Percent</item>
+    <item>8 Percent</item>
+    <item>9 Percent</item>
     <item>10 Percent</item>
-	<item>12 Percent</item>
-	<item>14 Percent</item>
-	<item>16 Percent</item>
-	<item>18 Percent</item>
+    <item>12 Percent</item>
+    <item>14 Percent</item>
+    <item>16 Percent</item>
+    <item>18 Percent</item>
     <item>20 Percent</item>
-	<item>22 Percent</item>
-	<item>24 Percent</item>
-	<item>26 Percent</item>
-	<item>28 Percent</item>
+    <item>22 Percent</item>
+    <item>24 Percent</item>
+    <item>26 Percent</item>
+    <item>28 Percent</item>
     <item>30 Percent</item>
-	<item>33 Percent</item>
-	<item>36 Percent</item>
+    <item>33 Percent</item>
+    <item>36 Percent</item>
     <item>40 Percent</item>
-	<item>45 Percent</item>
+    <item>45 Percent</item>
     <item>50 Percent</item>
-	<item>55 Percent</item>
+    <item>55 Percent</item>
     <item>60 Percent</item>
     <item>70 Percent</item>
     <item>80 Percent</item>
@@ -437,32 +437,32 @@
 
   <string-array name="dynamicsystem_bass_values" translatable="false">
     <item>0</item>
-	<item>1</item>
-	<item>2</item>
-	<item>3</item>
-	<item>4</item>
-	<item>5</item>
-	<item>6</item>
-	<item>7</item>
-	<item>8</item>
-	<item>9</item>
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+    <item>4</item>
+    <item>5</item>
+    <item>6</item>
+    <item>7</item>
+    <item>8</item>
+    <item>9</item>
     <item>10</item>
-	<item>12</item>
-	<item>14</item>
-	<item>16</item>
-	<item>18</item>
+    <item>12</item>
+    <item>14</item>
+    <item>16</item>
+    <item>18</item>
     <item>20</item>
-	<item>22</item>
-	<item>24</item>
-	<item>26</item>
-	<item>28</item>
+    <item>22</item>
+    <item>24</item>
+    <item>26</item>
+    <item>28</item>
     <item>30</item>
-	<item>33</item>
-	<item>36</item>
+    <item>33</item>
+    <item>36</item>
     <item>40</item>
-	<item>45</item>
+    <item>45</item>
     <item>50</item>
-	<item>55</item>
+    <item>55</item>
     <item>60</item>
     <item>70</item>
     <item>80</item>
