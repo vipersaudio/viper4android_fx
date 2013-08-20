@@ -114,7 +114,7 @@
     <string name="pref_diffsurr_title">Psychoakustyka</string>
     <string name="pref_diffsurr_summary_on">Aktywny</string>
     <string name="pref_diffsurr_summary_off">Nieaktywny</string>
-    <string name="pref_diffsurr_enable">Efekt Haas</string>
+    <string name="pref_diffsurr_enable">Efekt Haasa</string>
 
     <string name="pref_select_diffsurr_ms_title">Opóźnienie</string>
     <string name="dialog_diffsurr_ms">Wybierz opóźnienie</string>
