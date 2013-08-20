@@ -170,8 +170,8 @@
 	
     <string name="text_opensafemode">Безопасный режим</string>
     <string name="text_closesafemode">Нормальный режим</string>	
-    <string name="text_modeswitchok">Драйвер установлен успешно. Пожалуйста, перезагрузите устройство.</string>
-    <string name="text_modeswitchfailed">Драйвер не установлен. Пожалуйста, проверьте наличие busybox.</string>
+    <string name="text_modeswitchok">Режим переключен успешно. Пожалуйста, перезагрузите устройство.</string>
+    <string name="text_modeswitchfailed">Режим переключен не успешно. Пожалуйста, проверьте наличие busybox.</string>
 	
     <string name="text_su_missing">Требуется наличие Root прав (su binary).</string>
 	
