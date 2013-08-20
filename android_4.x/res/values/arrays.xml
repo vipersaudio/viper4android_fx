@@ -616,7 +616,7 @@
 	<item>140</item>
 	<item>180</item>
 	<item>200</item>
-		<item>220</item>
+	<item>220</item>
     </string-array>	
 	
     <string-array name="speaker_highfreq">
