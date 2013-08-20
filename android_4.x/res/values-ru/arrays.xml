@@ -3,7 +3,7 @@
 
     <string-array name="cpu_platform_fx">
         <item>Без VFP (PXA920)</item>
-        <item>С VFP</item>
+        <item>С VFP (PXA920)</item>
         <item>CortexA8 с NEON</item>
         <item>CortexA9/15 с NEON</item>
     </string-array>
