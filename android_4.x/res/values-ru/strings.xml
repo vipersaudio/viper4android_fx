@@ -133,13 +133,13 @@
     <string name="eq_preset_classical">Классика</string>
     <string name="eq_preset_deep">Глубина</string>
     <string name="eq_preset_flat">Плоский</string>
-	<string name="eq_preset_r_and_b">R&amp;B</string>
+    <string name="eq_preset_r_and_b">R&amp;B</string>
     <string name="eq_preset_rock">Рок</string>
     <string name="eq_preset_small_speakers">Маленькие динамики</string>
     <string name="eq_preset_treble_booster">Усиленные ВЧ</string>
     <string name="eq_preset_treble_reducer">Ослабленные ВЧ</string>
     <string name="eq_preset_vocal_booster">Усиленный вокал</string>
-	<string name="eq_preset_custom">Пользовательская</string>
+    <string name="eq_preset_custom">Пользовательская</string>
 	
     <string name="text_ir_dir_isempty">ViPER4Android: Папка с IR сэмплами %1$s пуста.</string>
     <string name="text_token_lost">ViPER4Android: Невозможно запустить эффекты, попробуйте обновить драйвера.</string>
@@ -180,10 +180,10 @@
     </string>
 
     <string name="text_ok">Ok</string>
-	<string name="text_cancel">Отмена</string>	
+    <string name="text_cancel">Отмена</string>	
     <string name="text_select_cpu">Пожалуйста, выберите ваш процессор (кодек)</string>
     
-	<string name="text_drvvernotmatch">Для использования ViPER4Android, необходимо установить/обновить драйвер V4A.
+    <string name="text_drvvernotmatch">Для использования ViPER4Android, необходимо установить/обновить драйвер V4A.
 \nПроцесс установки пройдет автоматически. 
 \nУстановить/Обновить сейчас?
     </string>
