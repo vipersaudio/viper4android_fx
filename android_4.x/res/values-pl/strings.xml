@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ViPER4Android FX</string>
-    <string name="select_configuration_title">ViPER4Android FX</string>
+    <string name="app_name">ViPER FX</string>
+    <string name="select_configuration_title">ViPER FX</string>
     <string name="headset_title">Słuchawki</string>
     <string name="speaker_title">Głośnik</string>
     <string name="bluetooth_title">Bluetooth</string>
@@ -11,67 +11,69 @@
     <string name="dsp_settings_speaker">Ustawienia - Głośnik</string>
     <string name="dsp_settings_bluetooth">Ustawienia - Bluetooth</string>
 
-    <string name="pref_dsp_enable">Stan</string>
+    <string name="pref_dsp_enable">Główny przełącznik</string>
     <string name="pref_effect_title">Siła efektu</string>
-    <string name="dialog_effect">Siła efektu</string>
+    <string name="dialog_effect">Wybierz siłę efektu</string>
 
-    <string name="pref_fx_master_title">Silnik efektów</string>
-    <string name="pref_fx_master_summary_on">V4A-FX jest włączony</string>
-    <string name="pref_fx_master_summary_off">V4A-FX jest wyłączony</string>
+    <string name="pref_fx_master_title">ViPER4Android FX</string>
+    <string name="pref_fx_master_summary_on">Włączony</string>
+    <string name="pref_fx_master_summary_off">Wyłączony</string>
 
-    <string name="pref_spkfx_master_title">Silnik efektów</string>
-    <string name="pref_spkfx_master_summary_on">V4A-SpeakerFX jest włączony</string>
-    <string name="pref_spkfx_master_summary_off">V4A-SpeakerFX jest wyłączony</string>
+    <string name="pref_spkfx_master_title">ViPER4Android FX</string>
+    <string name="pref_spkfx_master_summary_on">Włączony</string>
+    <string name="pref_spkfx_master_summary_off">Wyłączony</string>
 
     <string name="pref_fx_limiter_title">Bariera (Limiter)</string>
     <string name="pref_fx_limiter_threshold">Próg limitu</string>
     <string name="pref_spkfx_limiter_title">Bariera (Limiter)</string>
     <string name="pref_spkfx_limiter_threshold">Próg limitu</string>
-    <string name="pref_output_gain">Wyjściowe wzmocnienie</string>
-    <string name="pref_output_pan">Kanał Saldo</string>
+    <string name="pref_output_gain">Wzmocnienie wyjściowe</string>
+    <string name="pref_output_pan">Wyrównanie (balans)</string>
 
     <string name="pref_playback_title">Wzmocnienie</string>
-    <string name="pref_playback_summary_on">PlaybackAGC jest aktywny</string>
-    <string name="pref_playback_summary_off">PlaybackAGC jest nieaktywny</string>
+    <string name="pref_playback_summary_on">Aktywny</string>
+    <string name="pref_playback_summary_off">Nieaktywny</string>
+    <string name="pref_playback_enable">PlaybackAGC</string>
     <string name="pref_playback_output_threshold">Moc wyjściowa</string>
     <string name="pref_playback_maxgain">Mnożnik wzmocnienia</string>
 
     <string name="pref_xloud_title">Wysoka głośność</string>
-    <string name="pref_xloud_summary_on">eXtra-Loud jest aktywny</string>
-    <string name="pref_xloud_summary_off">eXtra-Loud jest nieaktywny</string>
+    <string name="pref_xloud_summary_on">Aktywny</string>
+    <string name="pref_xloud_summary_off">Nieaktywny</string>
+    <string name="pref_xloud_enable">eXtra-Loud</string>
     <string name="pref_xloud_output_amplifer">Wyjściowe wzmocnienie</string>
     <string name="pref_xloud_spk_lowfreq">Niska częstotliwość</string>
     <string name="pref_xloud_spk_highfreq">Wysoka częstotliwość</string>
 
     <string name="pref_equalizer_title">Equalizer</string>
-    <string name="pref_equalizer_summary_on">FIREqualizer jest aktywny</string>
-    <string name="pref_equalizer_summary_off">FIREqualizer jest nieaktywny</string>
-    <string name="pref_equalizer_enable">Stan</string>
+    <string name="pref_equalizer_summary_on">Aktywny</string>
+    <string name="pref_equalizer_summary_off">Nieaktywny</string>
+    <string name="pref_equalizer_enable">FIREqualizer</string>
     <string name="pref_equalizer_preset_title">Wybierz profil</string>
 
-    <string name="pref_dynamicsystem_title">Dynamika dźwięku</string>
-    <string name="pref_dynamicsystem_summary_on">Dynamika jest aktywna</string>
-    <string name="pref_dynamicsystem_summary_off">Dynamika jest nieaktywna</string>
-    <string name="pref_dynamicsystem_enable">Stan</string>
+    <string name="pref_dynamicsystem_title">Dynamika</string>
+    <string name="pref_dynamicsystem_summary_on">Aktywna</string>
+    <string name="pref_dynamicsystem_summary_off">Nieaktywna</string>
+    <string name="pref_dynamicsystem_enable">Dynamika dźwięku</string>
     <string name="pref_dynamicsystem_output">Słuchawki</string>
     <string name="pref_dynamicsystem_output_title">Słuchawki</string>
-    <string name="pref_dynamicsystem_bass">Dynamiczność bassu</string>
+    <string name="pref_dynamicsystem_bass">Dynamiczność basu</string>
     <string name="pref_dynamicsystem_tube_title">Symulator tuby (6N1J)</string>
-    <string name="pref_dynamicsystem_tube_summary_on">Symulator tuby jest aktywny</string>
-    <string name="pref_dynamicsystem_tube_summary_off">Symulator tuby jest nieaktywny</string>
+    <string name="pref_dynamicsystem_tube_summary_on">Aktywny</string>
+    <string name="pref_dynamicsystem_tube_summary_off">Nieaktywny</string>
 
     <string name="pref_fidelity_title">Wierność dźwięku</string>
-    <string name="pref_fidelity_vb_summary_on">Bass ViPER jest aktywny</string>
-    <string name="pref_fidelity_vb_summary_off">Bass ViPER jest nieaktywny</string>
-    <string name="pref_fidelity_vb_enable">Bass ViPER</string>
-    <string name="pref_fidelity_vb_mode">Tryb bassu</string>
-    <string name="pref_fidelity_vb_mode_title">Tryb bassu</string>
-    <string name="pref_fidelity_vb_bassfreq">Częstotliwość bassu</string>
-    <string name="pref_fidelity_vb_bassfreq_title">Częstotliwość bassu</string>
-    <string name="pref_fidelity_vb_bassgain">Wzmocnienie bassu</string>
-    <string name="pref_fidelity_vb_bassgain_title">Wzmocnienie bassu</string>
-    <string name="pref_fidelity_vc_summary_on">Czystość ViPER jest aktywna</string>
-    <string name="pref_fidelity_vc_summary_off">Czystość ViPER jest nieaktywna</string>
+    <string name="pref_fidelity_vb_summary_on">Aktywny</string>
+    <string name="pref_fidelity_vb_summary_off">Nieaktywny</string>
+    <string name="pref_fidelity_vb_enable">Bas ViPER</string>
+    <string name="pref_fidelity_vb_mode">Tryb basu</string>
+    <string name="pref_fidelity_vb_mode_title">Tryb basu</string>
+    <string name="pref_fidelity_vb_bassfreq">Częstotliwość basu</string>
+    <string name="pref_fidelity_vb_bassfreq_title">Częstotliwość basu</string>
+    <string name="pref_fidelity_vb_bassgain">Wzmocnienie basu</string>
+    <string name="pref_fidelity_vb_bassgain_title">Wzmocnienie basu</string>
+    <string name="pref_fidelity_vc_summary_on">Aktywna</string>
+    <string name="pref_fidelity_vc_summary_off">Nieaktywna</string>
     <string name="pref_fidelity_vc_enable">Czystość ViPER</string>
     <string name="pref_fidelity_vc_mode">Tryb czystości dźwięku</string>
     <string name="pref_fidelity_vc_mode_title">Tryb czystości dźwięku</string>
@@ -79,40 +81,48 @@
     <string name="pref_fidelity_vc_bassgain_title">Czystość</string>
 
     <string name="pref_curesystem_title">Ochrona słuchu</string>
-    <string name="pref_curesystem_summary_on">Cure Tech+ jest aktywny</string>
-    <string name="pref_curesystem_summary_off">Cure Tech+ jest nieaktywny</string>
-    <string name="pref_curesystem_enable">Stan</string>
+    <string name="pref_curesystem_summary_on">Aktywny</string>
+    <string name="pref_curesystem_summary_off">Nieaktywny</string>
+    <string name="pref_curesystem_enable">Cure Tech +</string>
     <string name="pref_select_cure_cf_title">Obustronny efekt</string>
     <string name="dialog_cure_crossfeed">Obustronny efekt</string>
 
     <string name="pref_convolver_title">Convolver</string>
-    <string name="pref_convolver_summary_on">Convolver jest aktywny</string>
-    <string name="pref_convolver_summary_off">Convolver jest nieaktywny</string>
-    <string name="pref_convolver_enable">Stan</string>
+    <string name="pref_convolver_summary_on">Aktywny</string>
+    <string name="pref_convolver_summary_off">Nieaktywny</string>
+    <string name="pref_convolver_enable">Convolver</string>
     <string name="pref_convolver_knl">Impulsy</string>
     <string name="pref_convolver_knl_title">Wybierz impulsy</string>
 
     <string name="pref_vhs_title">Wirtualny dźwięk przestrzenny+</string>
-    <string name="pref_vhs_summary_on">VHS+ jest aktywny</string>
-    <string name="pref_vhs_summary_off">VHS+ jest nieaktywny</string>
-    <string name="pref_vhs_enable">Stan</string>
+    <string name="pref_vhs_summary_on">Aktywny</string>
+    <string name="pref_vhs_summary_off">Nieaktywny</string>
+    <string name="pref_vhs_enable">VHS+</string>
     <string name="pref_select_vhs_qual_title">Jakość efektu</string>
-    <string name="dialog_vhs_qual">Jakość efektu</string>
+    <string name="dialog_vhs_qual">Wybierz jakość efektu</string>
 
     <string name="pref_colorfulmusic_title">Dźwięk przestrzenny</string>
-    <string name="pref_colorfulmusic_summary_on">Dźwięk przestrzenny jest aktywny</string>
-    <string name="pref_colorfulmusic_summary_off">Dźwięk przestrzenny jest nieaktywny</string>
-    <string name="pref_colorfulmusic_enable">Stan</string>
+    <string name="pref_colorfulmusic_summary_on">Aktywny</string>
+    <string name="pref_colorfulmusic_summary_off">Nieaktywny</string>
+    <string name="pref_colorfulmusic_enable">Dźwięk przestrzenny</string>
 
     <string name="pref_select_colorfulmusic_title">Siła efektu</string>
-    <string name="dialog_colorfulmusic">Siła efektu</string>
+    <string name="dialog_colorfulmusic">Wybierz siłę efektu</string>
     <string name="pref_select_colorfulmusic_mi_title">Głębia efektu</string>
-    <string name="dialog_colorfulmusic_mi">Głębia efektu</string>
+    <string name="dialog_colorfulmusic_mi">Wybierz głębię efektu</string>
+
+    <string name="pref_diffsurr_title">Psychoakustyka</string>
+    <string name="pref_diffsurr_summary_on">Aktywny</string>
+    <string name="pref_diffsurr_summary_off">Nieaktywny</string>
+    <string name="pref_diffsurr_enable">Efekt Haasa</string>
+
+    <string name="pref_select_diffsurr_ms_title">Opóźnienie</string>
+    <string name="dialog_diffsurr_ms">Wybierz opóźnienie</string>
 
     <string name="pref_reverb_title">Echo</string>
-    <string name="pref_reverb_summary_on">Pogłos jest aktywny</string>
-    <string name="pref_reverb_summary_off">Pogłos jest nieaktywny</string>
-    <string name="pref_reverb_enable">Stan</string>
+    <string name="pref_reverb_summary_on">Aktywny</string>
+    <string name="pref_reverb_summary_off">Nieaktywny</string>
+    <string name="pref_reverb_enable">Pogłos</string>
     <string name="pref_reverb_roomsize">Wielkość pokoju</string>
     <string name="pref_reverb_width">Pole akustyczne</string>
     <string name="pref_reverb_damp">Współczynnik tłumienia</string>
@@ -120,8 +130,8 @@
     <string name="pref_reverb_dry">Oryginalny sygnał</string>
 
     <string name="eq_preset_acoustic">Akustyczny</string>
-    <string name="eq_preset_bass_booster">Wzmocnienie bassu</string>
-    <string name="eq_preset_bass_reducer">Redukcja bassu</string>
+    <string name="eq_preset_bass_booster">Wzmocnienie basu</string>
+    <string name="eq_preset_bass_reducer">Redukcja basu</string>
     <string name="eq_preset_classical">Klasyczny</string>
     <string name="eq_preset_deep">Głęboki</string>
     <string name="eq_preset_flat">Płaski</string>
@@ -135,7 +145,7 @@
 
     <string name="text_ir_dir_isempty">Brak przykładowych impulsów w %1$s.</string>
     <string name="text_token_lost">Napotkano błąd, spróbuj ponownie załadować biblioteki.</string>
-    <string name="text_enabled">Enabled</string>
+    <string name="text_enabled">Włączone</string>
     <string name="text_disabled">Domyślna</string>
     <string name="text_headset">Słuchawki</string>
     <string name="text_bluetooth">Bluetooth</string>
@@ -175,7 +185,7 @@
     <string name="text_cancel">Anuluj</string>
     <string name="text_select_cpu">Wybierz procesor</string>
 
-    <string name="text_drvvernotmatch">Do korzystania z ViPER4Android konieczna jest instalacja/aktualizacja dodatkowych bibliotek. 
+    <string name="text_drvvernotmatch">Do korzystania z ViPER4Android konieczna jest instalacja/aktualizacja dodatkowych bibliotek.
 \nZainstalować/Zaktualizować je teraz?
     </string>
 
@@ -183,7 +193,6 @@
 
     <string name="text_commode">Tryb kompatybilności</string>
 
-    <string name="text_drv_blank" />
     <string name="text_uninstall">Usuń biblioteki</string>
     <string name="text_install">Zainstaluj biblioteki</string>
     <string name="text_drvinst_ok">Biblioteki zostały zainstalowane, zrestartuj telefon.</string>
@@ -209,7 +218,7 @@
     <string name="about_title">Informacje i pomoc</string>
     <string name="about_text">***O ViPER4Android***
 \n
-\n\'libv4a_xx_xx.so\' jest jądrem/silnikiem aplikacji.
+\n\'libv4a_xx_xx.so\' jest jądrem\/silnikiem aplikacji.
 \nCopyright © 2006-2016, vipercn.com. Wszelkie prawa zastrzeżone.
 \nKomercyjne rozpowszechnianie bez zgody twórcy jest zabronione.
 \nOficjalne forum: forum.vipersaudio.com
@@ -217,24 +226,24 @@
 \nNiewielkie części kodu zostały oparte o DSPManager grupy CyanogenMod.
 \n
 \nWersja %1$s (FX), Codename Beautiful.
-\n
     </string>
 
     <string name="text_help_content">***Mini FAQ***
 \n
-\n\'Zainstaluj biblioteki\' - Instaluje/Aktualizuje biblioteki efektów.
+\n\'Zainstaluj biblioteki\' - Instaluje\/Aktualizuje biblioteki efektów.
 \n\'Usuń biblioteki\' - Odinstalowuje biblioteki efektów.
 \n\'Tryb bezpieczny\' - Przełącza biblioteki w tryb kompatybilny z OpenSL.
 \n\'Tryb normalny\' - Przełącza biblioteki we własny unikatowy tryb.
 \n\'Tryb kompatybilności\' - Wybierz tryb kompatybilności efektów.
-\n    \'Normalny\' - Efekty działają globalnie.
-\n    \'Kompatybilny\' - Efekty działają lokalnie.
+\n \'Normalny\' - Efekty działają globalnie.
+\n \'Kompatybilny\' - Efekty działają lokalnie.
 \n
 \n<b>Masz kłopot z poprawnym działaniem efektów w odtwarzaczach?</b>
-\n    Przełącz się do \'Trybu bezpiecznego\' i spróbuj ponownie.
-\n    Jeżeli nadal masz kłopot wejdź w \'Tryb kompatybilności\', wybierz \'Kompatybilny\' i spróbuj ponownie.
+\n Przełącz się do 'Trybu bezpiecznego' i spróbuj ponownie.
+\n Jeżeli nadal masz kłopot wejdź w \'Tryb kompatybilności\', wybierz \'Kompatybilny\' i spróbuj ponownie.
 \n
 \n<b>Forum: http://forum.xda-developers.com/showthread.php?t=2191223</b>
     </string>
+
     <string name="text_checkupdate">Sprawdź aktualizacje</string>
 </resources>
