@@ -26,6 +26,7 @@ import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.audiofx.AudioEffect;
 import android.os.Binder;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -619,7 +620,8 @@ public class HeadsetService extends Service
 				else mDriverIsReady = true;
 			}
 
-			startForeground(ViPER4Android.NOTIFY_FOREGROUND_ID, new Notification());
+			if (Build.VERSION.SDK_INT < 18)
+				startForeground(ViPER4Android.NOTIFY_FOREGROUND_ID, new Notification());
 
 			IntentFilter audioFilter = new IntentFilter();
 			audioFilter.addAction(AudioEffect.ACTION_OPEN_AUDIO_EFFECT_CONTROL_SESSION);
@@ -667,7 +669,8 @@ public class HeadsetService extends Service
 		{
 			tmDrvStatusCommTimer.cancel();
 
-			stopForeground(true);
+			if (Build.VERSION.SDK_INT < 18)
+				stopForeground(true);
 
 			unregisterReceiver(mAudioSessionReceiver);
 			unregisterReceiver(mScreenOnReceiver);
