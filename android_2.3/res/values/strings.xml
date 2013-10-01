@@ -96,8 +96,8 @@
     <string name="pref_vhs_summary_on">VHS+ is enabled</string>
     <string name="pref_vhs_summary_off">VHS+ is disabled</string>
     <string name="pref_vhs_enable">Enable</string>
-    <string name="pref_select_vhs_qual_title">Select Effect Quality</string>
-    <string name="dialog_vhs_qual">Effect Quality</string>
+    <string name="pref_select_vhs_qual_title">Select Effect Level</string>
+    <string name="dialog_vhs_qual">Effect Level</string>
 
     <string name="pref_colorfulmusic_title">Field Surround</string>
     <string name="pref_colorfulmusic_summary_on">Field surround is enabled</string>
@@ -151,6 +151,7 @@
     <string name="text_bluetooth">Bluetooth</string>
     <string name="text_speaker">Speaker</string>
     <string name="text_showtrayicon">Show Notification</string>
+    <string name="text_hidetrayicon">Hide Notification</string>
     <string name="text_lockeffect">Lock Effect Mode</string>
     <string name="text_yes">Yes</string>
     <string name="text_no">No</string>
@@ -170,15 +171,8 @@
     <string name="text_profileload_err">Can not load the profile.</string>
     <string name="text_rwsd_error">Can not read/write external storage.</string>
 
-    <string name="text_su_missing">Root permission (su binary) required.</string>
-
-    <string name="text_busybox_missing">Busybox not found.
-\nIn order to use ViPER4Android, you need to install busybox first.
-    </string>
-
     <string name="text_ok">OK</string>
     <string name="text_cancel">Cancel</string>
-    <string name="text_select_cpu">Please select your CPU</string>
 
     <string name="text_drvvernotmatch">In order to use ViPER4Android, you need to install/update the V4A driver.
 \nThe installation process will be done automatically.
@@ -186,8 +180,6 @@
     </string>
 
     <string name="text_drvuninst_confim">Do you really want to uninstall v4a driver?</string>
-
-    <string name="text_user_statistics">v4a.active</string>
 
     <string name="text_drv_blank"></string>
     <string name="text_uninstall">Uninstall Driver</string>

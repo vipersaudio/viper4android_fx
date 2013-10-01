@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-  <string-array name="cpu_platform_fx">
-    <item>没有VFP(PXA920)</item>
-    <item>带有VFP的ARM</item>
-    <item>带有NEON的A8</item>
-    <item>带有NEON的A9/15</item>
-  </string-array>
-
-  <string-array name="cpu_platform_xhifi">
-    <item>英伟达图睿2</item>
-    <item>带有NEON的A系列</item>
-  </string-array>
-
   <string-array name="colorfulmusic_coeffs">
     <item>轻微</item>
     <item>级别1</item>
@@ -88,8 +76,11 @@
   </string-array>
 
   <string-array name="vhs_qual">
-    <item>标准质量</item>
-    <item>高质量(消耗更多的CPU)</item>
+    <item>级别1</item>
+    <item>级别2</item>
+    <item>级别3</item>
+    <item>级别4</item>
+    <item>级别5</item>
   </string-array>
 
   <string-array name="playbackgain_ratio">

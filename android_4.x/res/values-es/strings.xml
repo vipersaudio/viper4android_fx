@@ -96,8 +96,8 @@
     <string name="pref_vhs_summary_on">VHS+ esta Activado</string>
     <string name="pref_vhs_summary_off">VHS+ esta Desactivado</string>
     <string name="pref_vhs_enable">Activado</string>
-    <string name="pref_select_vhs_qual_title">Seleccione Efecto de Calidad</string>
-    <string name="dialog_vhs_qual">Efecto de Calidad</string>
+    <string name="pref_select_vhs_qual_title">Seleccione Efecto de Nivel</string>
+    <string name="dialog_vhs_qual">Efecto de Nivel</string>
 
     <string name="pref_colorfulmusic_title">Ámbito Surround</string>
     <string name="pref_colorfulmusic_summary_on">Ámbito Surround esta Activado</string>
@@ -168,11 +168,6 @@
     <string name="text_profileload_err">No se puede cargar el perfil.</string>
     <string name="text_rwsd_error">No se puede leer/escribir en almacenamiento externo.</string>
 
-    <string name="text_opensafemode">Cambie al Modo Seguro</string>
-    <string name="text_closesafemode">Cambie al Modo Normal</string>
-    <string name="text_modeswitchok">Driver del controlador instalado con éxito, por favor reinicie su teléfono.</string>
-    <string name="text_modeswitchfailed">Driver del controlador aplicado sin éxito, confirme busybox se ha instalado, por favor.</string>
-
     <string name="text_su_missing">Permisos Root (su binary) requerido.</string>
 
     <string name="text_busybox_missing">Busybox no encontrado.
@@ -181,7 +176,6 @@
 
     <string name="text_ok">Aceptar</string>
     <string name="text_cancel">Cancelar</string>
-    <string name="text_select_cpu">Por favor seleccione su CPU</string>
 
     <string name="text_drvvernotmatch">Para utilizar ViPER4Android, necesita instalar / actualizar el controlador V4A.
 \nEl proceso de instalación se realizará automáticamente.
@@ -190,7 +184,6 @@
 
     <string name="text_drvuninst_confim">¿Realmente desea desinstalar el controlador v4a?</string>
 
-    <string name="text_user_statistics">v4a. activado</string>
     <string name="text_commode">Modo FX Compatible</string>
 
     <string name="text_drv_blank"></string>
@@ -235,15 +228,12 @@
 \n
 \n\'Instalar Driver\' - Instalar/Actualizar driver efecto ViPER4.
 \n\'Desinstalar Driver\' - Desinstalar driver efecto ViPER4.
-\n\'Cambiar a Modo Seguro\' - Cambie el driver a compatible con OpenSL arch.
-\n\'Cambiar a Modo Normal\' - Cambie el driver único arch.
 \n\'Modo Compatible FX\' - Ajuste el modo efecto compatible
 \n    \'Normal\' - Haga ViPER4 como un efecto global.
 \n    \'Compatible\' - Haga ViPER4 como un efecto local.
 \n
-\n<b>¿No tienes el efecto ViPER4 en ningun reproductor?</b>
-\n    Puede cambiar el controlador al modo seguro (cambia a modo seguro) y vuelva a intentarlo.
-\n    Si todavía no tiene ningún efecto, puede cambiar el modo de fx a compatible y vuelva a intentarlo.
+\n<b>¿No tienes el efecto ViPER4 en ningún reproductor?</b>
+\n    Puede cambiar el modo de fx a compatible y vuelva a intentarlo.
 \n
 \n<b>Forum: http://forum.xda-developers.com/showthread.php?t=2191223</b>
     </string>

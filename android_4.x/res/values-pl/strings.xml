@@ -98,8 +98,8 @@
     <string name="pref_vhs_summary_on">Aktywny</string>
     <string name="pref_vhs_summary_off">Nieaktywny</string>
     <string name="pref_vhs_enable">VHS+</string>
-    <string name="pref_select_vhs_qual_title">Jakość efektu</string>
-    <string name="dialog_vhs_qual">Wybierz jakość efektu</string>
+    <string name="pref_select_vhs_qual_title">Poziom efektu</string>
+    <string name="dialog_vhs_qual">Wybierz poziom efektu</string>
 
     <string name="pref_colorfulmusic_title">Dźwięk przestrzenny</string>
     <string name="pref_colorfulmusic_summary_on">Aktywny</string>
@@ -170,11 +170,6 @@
     <string name="text_profileload_err">Nie można wczytać profilu.</string>
     <string name="text_rwsd_error">Nie można odczytać karty SD.</string>
 
-    <string name="text_opensafemode">Tryb bezpieczny</string>
-    <string name="text_closesafemode">Tryb normalny</string>
-    <string name="text_modeswitchok">Pomyślnie zmieniono tryb, zrestartuj telefon.</string>
-    <string name="text_modeswitchfailed">Błąd przy przełączaniu trybu, upewnij się, że busybox jest poprawnie zainstalowany.</string>
-
     <string name="text_su_missing">Brak dostępu do uprawnień roota.</string>
 
     <string name="text_busybox_missing">Brak busyboxa.
@@ -183,7 +178,6 @@
 
     <string name="text_ok">Ok</string>
     <string name="text_cancel">Anuluj</string>
-    <string name="text_select_cpu">Wybierz procesor</string>
 
     <string name="text_drvvernotmatch">Do korzystania z ViPER4Android konieczna jest instalacja/aktualizacja dodatkowych bibliotek.
 \nZainstalować/Zaktualizować je teraz?
@@ -232,15 +226,9 @@
 \n
 \n\'Zainstaluj biblioteki\' - Instaluje\/Aktualizuje biblioteki efektów.
 \n\'Usuń biblioteki\' - Odinstalowuje biblioteki efektów.
-\n\'Tryb bezpieczny\' - Przełącza biblioteki w tryb kompatybilny z OpenSL.
-\n\'Tryb normalny\' - Przełącza biblioteki we własny unikatowy tryb.
 \n\'Tryb kompatybilności\' - Wybierz tryb kompatybilności efektów.
 \n \'Normalny\' - Efekty działają globalnie.
 \n \'Kompatybilny\' - Efekty działają lokalnie.
-\n
-\n<b>Masz kłopot z poprawnym działaniem efektów w odtwarzaczach?</b>
-\n Przełącz się do \'Trybu bezpiecznego\' i spróbuj ponownie.
-\n Jeżeli nadal masz kłopot wejdź w \'Tryb kompatybilności\', wybierz \'Kompatybilny\' i spróbuj ponownie.
 \n
 \n<b>Forum: http://forum.xda-developers.com/showthread.php?t=2191223</b>
     </string>
