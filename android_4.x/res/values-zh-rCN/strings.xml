@@ -96,8 +96,8 @@
     <string name="pref_vhs_summary_on">耳机环绕核擎+ 已启用</string>
     <string name="pref_vhs_summary_off">耳机环绕核擎+ 已禁用</string>
     <string name="pref_vhs_enable">启用</string>
-    <string name="pref_select_vhs_qual_title">选择效果质量</string>
-    <string name="dialog_vhs_qual">效果质量</string>
+    <string name="pref_select_vhs_qual_title">选择效果级别</string>
+    <string name="dialog_vhs_qual">效果级别</string>
 
     <string name="pref_colorfulmusic_title">场环绕</string>
     <string name="pref_colorfulmusic_summary_on">场环绕已启用</string>
@@ -149,6 +149,7 @@
     <string name="text_bluetooth">蓝牙设备</string>
     <string name="text_speaker">扬声器</string>
     <string name="text_showtrayicon">显示通知栏图标</string>
+    <string name="text_hidetrayicon">隐藏通知栏图标</string>
     <string name="text_lockeffect">锁定效果模式</string>
     <string name="text_yes">是</string>
     <string name="text_no">否</string>
@@ -168,20 +169,8 @@
     <string name="text_profileload_err">无法加载配置文件。</string>
     <string name="text_rwsd_error">无法读写外置存储设备。</string>
 
-    <string name="text_opensafemode">切换到安全模式</string>
-    <string name="text_closesafemode">切换到正常模式</string>
-    <string name="text_modeswitchok">驱动模式切换成功，请重启手机以生效。</string>
-    <string name="text_modeswitchfailed">驱动模式切换失败，请确认busybox已经安装。</string>
-
-    <string name="text_su_missing">ViPER4Android需要ROOT权限和su二进制文件，请确认已经安装了最新的Superuser并对V4A进行了授权。</string>
-
-    <string name="text_busybox_missing">Busybox未找到。
-\n为了正常使用ViPER4Android，需要安装Busybox。
-    </string>
-
     <string name="text_ok">确定</string>
     <string name="text_cancel">取消</string>
-    <string name="text_select_cpu">请选择CPU平台</string>
 
     <string name="text_drvvernotmatch">为了正常使用ViPER4Android音效，您需要安装或更新V4A驱动程序。
 \n安装或更新过程将会自动完成，卸载时可以使用菜单中的卸载驱动。
@@ -233,15 +222,12 @@
 \n
 \n\'安装驱动\' - 安装或更新V4A驱动程序。
 \n\'卸载驱动\' - 卸载V4A驱动程序。
-\n\'切换到安全模式\' - 将驱动程序切换到OpenSL架构。
-\n\'切换到正常模式\' - 将驱动程序切换到独特架构。
 \n\'音效兼容模式\' - 设定音效的兼容模式。
 \n    \'正常模式\' - 将V4A用作全局音效。
 \n    \'兼容模式\' - 将V4A用作局部音效。
 \n
 \n<b>您是否遇到过在大多数播放器上V4A无效的问题？</b>
-\n    您可以先尝试将驱动程序切换到安全模式，然后再试。
-\n    如果依然无效，您可以将音效模式切换到兼容模式，然后再试。
+\n    您可以将音效模式切换到兼容模式，然后再试。
 \n
 \n<b>论坛：http://forum.vipersaudio.com</b>
     </string>

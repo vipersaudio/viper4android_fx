@@ -1,25 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="cpu_platform_fx">
-        <item>Without VFP (PXA920)</item>
-        <item>With VFP</item>
-        <item>CortexA8 with NEON</item>
-        <item>CortexA9/15 with NEON</item>
-    </string-array>
-    <string-array name="cpu_platform_fx_values">
-        <item>libv4a_fx_ics_NOVFP.so</item>
-        <item>libv4a_fx_ics_VFP.so</item>
-        <item>libv4a_fx_ics_CortexA8.so</item>
-        <item>libv4a_fx_ics_CortexA9.so</item>
-    </string-array>
-    <string-array name="cpu_platform_xhifi">
-        <item>NVIDIA Tegra2</item>
-        <item>CortexAx with NEON</item>
-    </string-array>
-    <string-array name="cpu_platform_xhifi_values">
-        <item>libv4a_xhifi_ics_T2.so</item>
-        <item>libv4a_xhifi_ics_NEON.so</item>
-    </string-array>
     <string-array name="compatible_mode">
         <item>Normal</item>
         <item>Compatible</item>
@@ -217,12 +197,18 @@
         <item>2</item>
     </string-array>
     <string-array name="vhs_qual">
-        <item>Normal</item>
-        <item>High</item>
+        <item>Level 1</item>
+        <item>Level 2</item>
+        <item>Level 3</item>
+        <item>Level 4</item>
+        <item>Level 5</item>
     </string-array>
     <string-array name="vhs_qual_values">
         <item>0</item>
         <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
     </string-array>
     <string-array name="playbackgain_ratio">
         <item>Slight</item>

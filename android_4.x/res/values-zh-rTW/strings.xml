@@ -96,8 +96,8 @@
     <string name="pref_vhs_summary_on">耳機環繞核擎+ 已啟用</string>
     <string name="pref_vhs_summary_off">耳機環繞核擎+ 已停用</string>
     <string name="pref_vhs_enable">啟用</string>
-    <string name="pref_select_vhs_qual_title">選擇效果質量</string>
-    <string name="dialog_vhs_qual">效果質量</string>
+    <string name="pref_select_vhs_qual_title">選擇效果強度</string>
+    <string name="dialog_vhs_qual">效果強度</string>
 
     <string name="pref_colorfulmusic_title">臨場感模擬</string>
     <string name="pref_colorfulmusic_summary_on">臨場感模擬已啟用</string>
@@ -148,7 +148,8 @@
     <string name="text_headset">頭戴設備</string>
     <string name="text_bluetooth">藍牙設備</string>
     <string name="text_speaker">揚聲器</string>
-    <string name="text_showtrayicon">顯示通知欄圖標</string>
+    <string name="text_showtrayicon">啟用通知欄圖標</string>
+    <string name="text_hidetrayicon">停用通知欄圖標</string>
     <string name="text_lockeffect">鎖定效果模式</string>
     <string name="text_yes">是</string>
     <string name="text_no">否</string>
@@ -168,20 +169,8 @@
     <string name="text_profileload_err">無法加載配置文件。</string>
     <string name="text_rwsd_error">無法讀寫外置存儲裝置。</string>
 
-    <string name="text_opensafemode">切換到安全模式</string>
-    <string name="text_closesafemode">切換到正常模式</string>
-    <string name="text_modeswitchok">驅動模式切換成功，請重啟手機以生效。</string>
-    <string name="text_modeswitchfailed">驅動模式切換失敗，請確認busybox已經安裝。</string>
-
-    <string name="text_su_missing">ViPER4Android需要ROOT權限和su二進制程式，請確認已經安裝了最新的Superuser並對V4A進行了授權。</string>
-
-    <string name="text_busybox_missing">Busybox未找到。
-\n爲了正常使用ViPER4Android，需要安裝Busybox。
-    </string>
-
     <string name="text_ok">確定</string>
     <string name="text_cancel">取消</string>
-    <string name="text_select_cpu">請選擇CPU平臺</string>
 
     <string name="text_drvvernotmatch">爲了正常使用ViPER4Android音效，您需要安裝或更新V4A驅動程式。
 \n安裝或更新過程將會自動完成，卸載時可以使用菜單中的卸載驅動。
@@ -233,15 +222,12 @@
 \n
 \n\'安裝驅動\' - 安裝或更新V4A驅動程式。
 \n\'卸載驅動\' - 卸載V4A驅動程式。
-\n\'切換到安全模式\' - 將驅動程式切換到OpenSL架構。
-\n\'切換到正常模式\' - 將驅動程式切換到獨特架構。
 \n\'音效兼容模式\' - 設定音效的兼容模式。
 \n    \'正常模式\' - 將V4A用作全局音效。
 \n    \'兼容模式\' - 將V4A用作局部音效。
 \n
 \n<b>您是否遇到过在大多数播放器上V4A无效的问题？</b>
-\n    您可以先尝试将驱动程序切换到安全模式，然后再试。
-\n    如果依然无效，您可以将音效模式切换到兼容模式，然后再试。
+\n    您可以将音效模式切换到兼容模式，然后再试。
 \n
 \n<b>論壇：http://forum.vipersaudio.com</b>
     </string>

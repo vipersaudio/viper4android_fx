@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<<<<<<< HEAD
     <string-array name="cpu_platform_fx">
         <item>Bez VFP (PXA920)</item>
         <item>Z VFP</item>
@@ -10,6 +11,8 @@
         <item>NVIDIA Tegra2</item>
         <item>CortexAx z NEON</item>
     </string-array>
+=======
+>>>>>>> 0739d7dc3adb8554d2b108017313af94112cb966
     <string-array name="compatible_mode">
         <item>Normalny</item>
         <item>Kompatybilny</item>
@@ -83,8 +86,16 @@
         <item>Mocny</item>
     </string-array>
     <string-array name="vhs_qual">
+<<<<<<< HEAD
         <item>Normalna</item>
         <item>Wysoka</item>
+=======
+        <item>Poziom 1</item>
+        <item>Poziom 2</item>
+        <item>Poziom 3</item>
+        <item>Poziom 4</item>
+        <item>Poziom 5</item>
+>>>>>>> 0739d7dc3adb8554d2b108017313af94112cb966
     </string-array>
     <string-array name="playbackgain_ratio">
         <item>Delikatna</item>
