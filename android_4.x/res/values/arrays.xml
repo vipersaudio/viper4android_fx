@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="drvinst_prefer">
+        <item>Super Audio Quality</item>
+        <item>High Audio Quality</item>
+        <item>Power Saving</item>
+    </string-array>
+    <string-array name="drvinst_prefer_values">
+        <item>sq</item>
+        <item>hq</item>
+        <item>lq</item>
+    </string-array>
+    <string-array name="ui_prefer">
+        <item>Beginner</item>
+        <item>Moderate</item>
+        <item>Expert</item>
+    </string-array>
+    <string-array name="ui_prefer_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
     <string-array name="compatible_mode">
         <item>Normal</item>
         <item>Compatible</item>
@@ -55,6 +75,40 @@
         <item>180</item>
         <item>190</item>
         <item>200</item>
+    </string-array>
+    <string-array name="conv_cross_channel">
+        <item>0 Percent</item>
+        <item>5 Percent</item>
+        <item>10 Percent</item>
+        <item>15 Percent</item>
+        <item>20 Percent</item>
+        <item>25 Percent</item>
+        <item>30 Percent</item>
+        <item>35 Percent</item>
+        <item>40 Percent</item>
+        <item>45 Percent</item>
+        <item>50 Percent</item>
+        <item>55 Percent</item>
+        <item>60 Percent</item>
+        <item>70 Percent</item>
+        <item>80 Percent</item>
+    </string-array>
+    <string-array name="conv_cross_channel_values">
+        <item>0</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+        <item>60</item>
+        <item>70</item>
+        <item>80</item>
     </string-array>
     <string-array name="diffsurround_delay">
         <item>2 ms</item>

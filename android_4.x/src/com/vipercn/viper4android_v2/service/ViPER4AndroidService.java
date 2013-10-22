@@ -35,6 +35,8 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.widget.Toast;
 
+import com.vipercn.viper4android_v2.activity.IRSUtils;
+import com.vipercn.viper4android_v2.activity.StaticEnvironment;
 import com.vipercn.viper4android_v2.activity.V4AJniInterface;
 import com.vipercn.viper4android_v2.activity.ViPER4Android;
 
@@ -72,8 +74,62 @@ public class ViPER4AndroidService extends Service
 		{
 			try
 			{
-				mInstance = AudioEffect.class.getConstructor(UUID.class, UUID.class, Integer.TYPE, Integer.TYPE).newInstance(EFFECT_TYPE_NULL, uModuleID, 0, nAudioSession);
 				Log.i("ViPER4Android", "Creating viper4android module, " + uModuleID.toString());
+				mInstance = AudioEffect.class.getConstructor(UUID.class, UUID.class, Integer.TYPE, Integer.TYPE)
+							.newInstance(EFFECT_TYPE_NULL, uModuleID, 0, nAudioSession);
+
+				if (mInstance != null)
+				{
+					AudioEffect.Descriptor adModuleDescriptor = mInstance.getDescriptor();
+					Log.i("ViPER4Android", "Effect name : " + adModuleDescriptor.name);
+					Log.i("ViPER4Android", "Type id : " + adModuleDescriptor.type.toString());
+					Log.i("ViPER4Android", "Unique id : " + adModuleDescriptor.uuid.toString());
+					Log.i("ViPER4Android", "Implementor : " + adModuleDescriptor.implementor);
+					Log.i("ViPER4Android", "Connect mode : " + adModuleDescriptor.connectMode);
+
+					mInstance.setControlStatusListener(new AudioEffect.OnControlStatusChangeListener()
+					{
+						@Override
+						public void onControlStatusChange(AudioEffect effect, boolean controlGranted)
+						{
+							if (!controlGranted)
+							{
+								Log.i("ViPER4Android", "We lost effect control token");
+								Toast.makeText(ViPER4AndroidService.this,
+									getString(getResources().getIdentifier("text_token_lost", "string", getApplicationInfo().packageName)),
+									Toast.LENGTH_LONG).show();
+							}
+							else
+							{
+								Log.i("ViPER4Android", "We got effect control token");
+								updateSystem(true);
+							}
+						}
+					});
+
+					mInstance.setEnableStatusListener(new AudioEffect.OnEnableStatusChangeListener()
+					{
+						@Override
+						public void onEnableStatusChange(AudioEffect effect, boolean enabled)
+						{
+							String mode = getAudioOutputRouting();
+							SharedPreferences preferences = getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + "." + mode, 0);
+							String szEnableKey = "viper4android.headphonefx.enable";
+							if (mode.equalsIgnoreCase("speaker")) szEnableKey = "viper4android.speakerfx.enable";
+							boolean bShouldEnabled = preferences.getBoolean(szEnableKey, false);
+							if (bShouldEnabled != enabled)
+							{
+								Log.i("ViPER4Android", "Engine status is " + enabled + ", but we expected " + bShouldEnabled);
+								Log.i("ViPER4Android", "Im sure you are experiencing no effect, because the effect is controlling by system now");
+								Log.i("ViPER4Android", "I really have no idea to solve this problem, the fucking android, Im sorry bro");
+								Toast.makeText(ViPER4AndroidService.this,
+										getString(getResources().getIdentifier("text_token_lost", "string", getApplicationInfo().packageName)),
+										Toast.LENGTH_LONG).show();
+							}
+							else Log.i("ViPER4Android", "Everything is under control for now");
+						}
+					});
+				}
 			}
 			catch (Exception e)
 			{
@@ -86,7 +142,10 @@ public class ViPER4AndroidService extends Service
 		{
 			Log.i("ViPER4Android", "Free viper4android module.");
 			if (mInstance != null)
-				mInstance.release();
+			{
+				try { mInstance.release(); }
+				catch (Exception e) {}
+			}
 			mInstance = null;
 		}
 
@@ -231,7 +290,7 @@ public class ViPER4AndroidService extends Service
 			}
 		}
 
-		@SuppressWarnings("unused")  /* For future use */
+		@SuppressWarnings("unused")
 		public void setParameter_px4_vxString(int param, String szData)
 		{
 			int stringLen = szData.length();
@@ -411,6 +470,97 @@ public class ViPER4AndroidService extends Service
 			setParameter_px4_vx4x2(ViPER4AndroidService.PARAM_HPFX_CONV_COMMITBUFFER, nKernelBufferID, nHashCode);
 		}
 
+		private void ProceedIRBuffer_Speaker(IRSUtils irs)
+		{
+			// 1. Tell driver to prepare kernel buffer
+			Random rndMachine = new Random(System.currentTimeMillis());
+			int nKernelBufferID = rndMachine.nextInt();
+			setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_SPKFX_CONV_PREPAREBUFFER, nKernelBufferID, irs.GetChannels(), 0);
+
+			// 2. Read entire ir data and get hash code
+			byte[] baKernelData = irs.ReadEntireData();
+			if (baKernelData == null)
+			{
+				// Read failed
+				setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_SPKFX_CONV_PREPAREBUFFER, 0, 0, 1);
+				return;
+			}
+			if (baKernelData.length <= 0)
+			{
+				// Empty ir file
+				setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_SPKFX_CONV_PREPAREBUFFER, 0, 0, 1);
+				return;
+			}
+			long nlHashCode = IRSUtils.HashIRS(baKernelData, baKernelData.length);
+			int nHashCode = (int)((long)nlHashCode & 0xFFFFFFFF);
+
+			Log.i("ViPER4Android", "[Kernel] Channels = " + irs.GetChannels() + ", Frames = " + irs.GetSampleCount() + ", Bytes = " + baKernelData.length + ", Hash = " + nHashCode);
+
+			// 3. Split kernel data and send to driver
+			int nBlockSize = 8184;  /* 8192(packet size) - sizeof(int) - sizeof(int), 8184 bytes = 2046 float samples = 1023 stereo frames */
+			int nRestBytes = baKernelData.length, nSendOffset = 0;
+			while (nRestBytes > 0)
+			{
+				int nMinBlockSize = Math.min(nBlockSize, nRestBytes);
+				byte[] baSendData = new byte[nMinBlockSize];
+				System.arraycopy(baKernelData, nSendOffset, baSendData, 0, nMinBlockSize);
+				nSendOffset += nMinBlockSize;
+				nRestBytes -= nMinBlockSize;
+				// Send to driver
+				int nFramesCount = nMinBlockSize / 4;  /* sizeof(float) = 4 */
+				setParameter_px4_vx2x8192(ViPER4AndroidService.PARAM_SPKFX_CONV_SETBUFFER, nKernelBufferID, nFramesCount, baSendData);
+			}
+
+			// 4. Tell driver to commit kernel buffer
+			setParameter_px4_vx4x2(ViPER4AndroidService.PARAM_SPKFX_CONV_COMMITBUFFER, nKernelBufferID, nHashCode);
+		}
+		private void ProceedIRBuffer_Headphone(IRSUtils irs)
+		{
+			// 1. Tell driver to prepare kernel buffer
+			Random rndMachine = new Random(System.currentTimeMillis());
+			int nKernelBufferID = rndMachine.nextInt();
+			setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_HPFX_CONV_PREPAREBUFFER, nKernelBufferID, irs.GetChannels(), 0);
+
+			// 2. Read entire ir data and get hash code
+			byte[] baKernelData = irs.ReadEntireData();
+			if (baKernelData == null)
+			{
+				// Read failed
+				setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_HPFX_CONV_PREPAREBUFFER, 0, 0, 1);
+				return;
+			}
+			if (baKernelData.length <= 0)
+			{
+				// Empty ir file
+				setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_HPFX_CONV_PREPAREBUFFER, 0, 0, 1);
+				return;
+			}
+			long nlHashCode = IRSUtils.HashIRS(baKernelData, baKernelData.length);
+			int nHashCode = (int)((long)nlHashCode & 0xFFFFFFFF);
+
+			Log.i("ViPER4Android", "[Kernel] Channels = " + irs.GetChannels() + ", Frames = " + irs.GetSampleCount() + ", Bytes = " + baKernelData.length + ", Hash = " + nHashCode);
+
+			// 3. Split kernel data and send to driver
+			int nBlockSize = 8184;  /* 8192(packet size) - sizeof(int) - sizeof(int), 8184 bytes = 2046 float samples = 1023 stereo frames */
+			int nRestBytes = baKernelData.length, nSendOffset = 0, nPacketIndex = 0;
+			while (nRestBytes > 0)
+			{
+				int nMinBlockSize = Math.min(nBlockSize, nRestBytes);
+				byte[] baSendData = new byte[nMinBlockSize];
+				System.arraycopy(baKernelData, nSendOffset, baSendData, 0, nMinBlockSize);
+				nSendOffset += nMinBlockSize;
+				nRestBytes -= nMinBlockSize;
+				Log.i("ViPER4Android", "Setting kernel buffer, index = " + nPacketIndex + ", length = " + nMinBlockSize);
+				nPacketIndex++;
+				// Send to driver
+				int nFramesCount = nMinBlockSize / 4;  /* sizeof(float) = 4 */
+				setParameter_px4_vx2x8192(ViPER4AndroidService.PARAM_HPFX_CONV_SETBUFFER, nKernelBufferID, nFramesCount, baSendData);
+			}
+
+			// 4. Tell driver to commit kernel buffer
+			setParameter_px4_vx4x2(ViPER4AndroidService.PARAM_HPFX_CONV_COMMITBUFFER, nKernelBufferID, nHashCode);
+		}
+
 		public void SetConvIRFile(String szConvIRFile, boolean bSpeakerParam)
 		{
 			/* Commit irs when called here
@@ -442,22 +592,39 @@ public class ViPER4AndroidService extends Service
 					int nCommand = ViPER4AndroidService.PARAM_HPFX_CONV_PREPAREBUFFER;
 					if (bSpeakerParam) nCommand = ViPER4AndroidService.PARAM_SPKFX_CONV_PREPAREBUFFER;
 
-					// Get ir file info
-					int[] iaIRInfo = V4AJniInterface.GetImpulseResponseInfoArray(szConvIRFile);
-					if (iaIRInfo == null) setParameter_px4_vx4x3(nCommand, 0, 0, 1);
+					Log.i("ViPER4Android", "We are going to load irs through internal method");
+					IRSUtils irs = new IRSUtils();
+					if (irs.LoadIRS(szConvIRFile))
+					{
+						/* Proceed buffer */
+						if (bSpeakerParam) ProceedIRBuffer_Speaker(irs);
+						else ProceedIRBuffer_Headphone(irs);
+						irs.Release();
+					}
 					else
 					{
-						if (iaIRInfo.length != 4) setParameter_px4_vx4x3(nCommand, 0, 0, 1);
-						else
+						if (V4AJniInterface.IsLibraryUsable())
 						{
-							if (iaIRInfo[0] == 0) setParameter_px4_vx4x3(nCommand, 0, 0, 1);
+							Log.i("ViPER4Android", "We are going to load irs through jni");
+							// Get ir file info
+							int[] iaIRInfo = V4AJniInterface.GetImpulseResponseInfoArray(szConvIRFile);
+							if (iaIRInfo == null) setParameter_px4_vx4x3(nCommand, 0, 0, 1);
 							else
 							{
-								/* Proceed buffer */
-								if (bSpeakerParam) ProceedIRBuffer_Speaker(szConvIRFile, iaIRInfo[1], iaIRInfo[2], iaIRInfo[3]);
-								else ProceedIRBuffer_Headphone(szConvIRFile, iaIRInfo[1], iaIRInfo[2], iaIRInfo[3]);
+								if (iaIRInfo.length != 4) setParameter_px4_vx4x3(nCommand, 0, 0, 1);
+								else
+								{
+									if (iaIRInfo[0] == 0) setParameter_px4_vx4x3(nCommand, 0, 0, 1);
+									else
+									{
+										/* Proceed buffer */
+										if (bSpeakerParam) ProceedIRBuffer_Speaker(szConvIRFile, iaIRInfo[1], iaIRInfo[2], iaIRInfo[3]);
+										else ProceedIRBuffer_Headphone(szConvIRFile, iaIRInfo[1], iaIRInfo[2], iaIRInfo[3]);
+									}
+								}
 							}
 						}
+						else Log.i("ViPER4Android", "Failed to load " + szConvIRFile);
 					}
 				}
 			}
@@ -491,6 +658,8 @@ public class ViPER4AndroidService extends Service
 	public static final int PARAM_SET_COMM_STATUS = 36865;
 	public static final int PARAM_SET_UPDATE_STATUS = 36866;
 	public static final int PARAM_SET_RESET_STATUS = 36867;
+	public static final int PARAM_SET_DOPROCESS_STATUS = 36868;
+	public static final int PARAM_SET_FORCEENABLE_STATUS = 36869;
 	/***************************************/
 
 	/* ViPER4Android FX Types */
@@ -506,63 +675,66 @@ public class ViPER4AndroidService extends Service
 	public static final int PARAM_HPFX_CONV_PREPAREBUFFER = 65540;
 	public static final int PARAM_HPFX_CONV_SETBUFFER = 65541;
 	public static final int PARAM_HPFX_CONV_COMMITBUFFER = 65542;
-	public static final int PARAM_HPFX_VHE_PROCESS_ENABLED = 65543;
-	public static final int PARAM_HPFX_VHE_EFFECT_LEVEL = 65544;
-	public static final int PARAM_HPFX_FIREQ_PROCESS_ENABLED = 65545;
-	public static final int PARAM_HPFX_FIREQ_BANDLEVEL = 65546;
-	public static final int PARAM_HPFX_COLM_PROCESS_ENABLED = 65547;
-	public static final int PARAM_HPFX_COLM_WIDENING = 65548;
-	public static final int PARAM_HPFX_COLM_MIDIMAGE = 65549;
-	public static final int PARAM_HPFX_COLM_DEPTH = 65550;
-	public static final int PARAM_HPFX_DIFFSURR_PROCESS_ENABLED = 65551;
-	public static final int PARAM_HPFX_DIFFSURR_DELAYTIME = 65552;
-	public static final int PARAM_HPFX_REVB_PROCESS_ENABLED = 65553;
-	public static final int PARAM_HPFX_REVB_ROOMSIZE = 65554;
-	public static final int PARAM_HPFX_REVB_WIDTH = 65555;
-	public static final int PARAM_HPFX_REVB_DAMP = 65556;
-	public static final int PARAM_HPFX_REVB_WET = 65557;
-	public static final int PARAM_HPFX_REVB_DRY = 65558;
-	public static final int PARAM_HPFX_AGC_PROCESS_ENABLED = 65559;
-	public static final int PARAM_HPFX_AGC_RATIO = 65560;
-	public static final int PARAM_HPFX_AGC_VOLUME = 65561;
-	public static final int PARAM_HPFX_AGC_MAXSCALER = 65562;
-	public static final int PARAM_HPFX_DYNSYS_PROCESS_ENABLED = 65563;
-	public static final int PARAM_HPFX_DYNSYS_ENABLETUBE = 65564;
-	public static final int PARAM_HPFX_DYNSYS_XCOEFFS = 65565;
-	public static final int PARAM_HPFX_DYNSYS_YCOEFFS = 65566;
-	public static final int PARAM_HPFX_DYNSYS_SIDEGAIN = 65567;
-	public static final int PARAM_HPFX_DYNSYS_BASSGAIN = 65568;
-	public static final int PARAM_HPFX_VIPERBASS_PROCESS_ENABLED = 65569;
-	public static final int PARAM_HPFX_VIPERBASS_MODE = 65570;
-	public static final int PARAM_HPFX_VIPERBASS_SPEAKER = 65571;
-	public static final int PARAM_HPFX_VIPERBASS_BASSGAIN = 65572;
-	public static final int PARAM_HPFX_VIPERCLARITY_PROCESS_ENABLED = 65573;
-	public static final int PARAM_HPFX_VIPERCLARITY_MODE = 65574;
-	public static final int PARAM_HPFX_VIPERCLARITY_CLARITY = 65575;
-	public static final int PARAM_HPFX_CURE_PROCESS_ENABLED = 65576;
-	public static final int PARAM_HPFX_CURE_CROSSFEED = 65577;
-	public static final int PARAM_HPFX_OUTPUT_VOLUME = 65578;
-	public static final int PARAM_HPFX_OUTPUT_PAN = 65579;
-	public static final int PARAM_HPFX_LIMITER_THRESHOLD = 65580;
-	public static final int PARAM_SPKFX_CONV_PROCESS_ENABLED = 65581;
-	public static final int PARAM_SPKFX_CONV_UPDATEKERNEL_DEPRECATED = 65582;  /* DEPRECATED in 4.x system, use buffer instead */
-	public static final int PARAM_SPKFX_CONV_PREPAREBUFFER = 65583;
-	public static final int PARAM_SPKFX_CONV_SETBUFFER = 65584;
-	public static final int PARAM_SPKFX_CONV_COMMITBUFFER = 65585;
-	public static final int PARAM_SPKFX_FIREQ_PROCESS_ENABLED = 65586;
-	public static final int PARAM_SPKFX_FIREQ_BANDLEVEL = 65587;
-	public static final int PARAM_SPKFX_REVB_PROCESS_ENABLED = 65588;
-	public static final int PARAM_SPKFX_REVB_ROOMSIZE = 65589;
-	public static final int PARAM_SPKFX_REVB_WIDTH = 65590;
-	public static final int PARAM_SPKFX_REVB_DAMP = 65591;
-	public static final int PARAM_SPKFX_REVB_WET = 65592;
-	public static final int PARAM_SPKFX_REVB_DRY = 65593;
-	public static final int PARAM_SPKFX_AGC_PROCESS_ENABLED = 65594;
-	public static final int PARAM_SPKFX_AGC_RATIO = 65595;
-	public static final int PARAM_SPKFX_AGC_VOLUME = 65596;
-	public static final int PARAM_SPKFX_AGC_MAXSCALER = 65597;
-	public static final int PARAM_SPKFX_OUTPUT_VOLUME = 65598;
-	public static final int PARAM_SPKFX_LIMITER_THRESHOLD = 65599;
+	public static final int PARAM_HPFX_CONV_CROSSCHANNEL = 65543;
+	public static final int PARAM_HPFX_VHE_PROCESS_ENABLED = 65544;
+	public static final int PARAM_HPFX_VHE_EFFECT_LEVEL = 65545;
+	public static final int PARAM_HPFX_FIREQ_PROCESS_ENABLED = 65546;
+	public static final int PARAM_HPFX_FIREQ_BANDLEVEL = 65547;
+	public static final int PARAM_HPFX_COLM_PROCESS_ENABLED = 65548;
+	public static final int PARAM_HPFX_COLM_WIDENING = 65549;
+	public static final int PARAM_HPFX_COLM_MIDIMAGE = 65550;
+	public static final int PARAM_HPFX_COLM_DEPTH = 65551;
+	public static final int PARAM_HPFX_DIFFSURR_PROCESS_ENABLED = 65552;
+	public static final int PARAM_HPFX_DIFFSURR_DELAYTIME = 65553;
+	public static final int PARAM_HPFX_REVB_PROCESS_ENABLED = 65554;
+	public static final int PARAM_HPFX_REVB_ROOMSIZE = 65555;
+	public static final int PARAM_HPFX_REVB_WIDTH = 65556;
+	public static final int PARAM_HPFX_REVB_DAMP = 65557;
+	public static final int PARAM_HPFX_REVB_WET = 65558;
+	public static final int PARAM_HPFX_REVB_DRY = 65559;
+	public static final int PARAM_HPFX_AGC_PROCESS_ENABLED = 65560;
+	public static final int PARAM_HPFX_AGC_RATIO = 65561;
+	public static final int PARAM_HPFX_AGC_VOLUME = 65562;
+	public static final int PARAM_HPFX_AGC_MAXSCALER = 65563;
+	public static final int PARAM_HPFX_DYNSYS_PROCESS_ENABLED = 65564;
+	public static final int PARAM_HPFX_DYNSYS_ENABLETUBE = 65565;
+	public static final int PARAM_HPFX_DYNSYS_XCOEFFS = 65566;
+	public static final int PARAM_HPFX_DYNSYS_YCOEFFS = 65567;
+	public static final int PARAM_HPFX_DYNSYS_SIDEGAIN = 65568;
+	public static final int PARAM_HPFX_DYNSYS_BASSGAIN = 65569;
+	public static final int PARAM_HPFX_VIPERBASS_PROCESS_ENABLED = 65570;
+	public static final int PARAM_HPFX_VIPERBASS_MODE = 65571;
+	public static final int PARAM_HPFX_VIPERBASS_SPEAKER = 65572;
+	public static final int PARAM_HPFX_VIPERBASS_BASSGAIN = 65573;
+	public static final int PARAM_HPFX_VIPERCLARITY_PROCESS_ENABLED = 65574;
+	public static final int PARAM_HPFX_VIPERCLARITY_MODE = 65575;
+	public static final int PARAM_HPFX_VIPERCLARITY_CLARITY = 65576;
+	public static final int PARAM_HPFX_CURE_PROCESS_ENABLED = 65577;
+	public static final int PARAM_HPFX_CURE_CROSSFEED = 65578;
+	public static final int PARAM_HPFX_OUTPUT_VOLUME = 65579;
+	public static final int PARAM_HPFX_OUTPUT_PAN = 65580;
+	public static final int PARAM_HPFX_LIMITER_THRESHOLD = 65581;
+	public static final int PARAM_SPKFX_CONV_PROCESS_ENABLED = 65582;
+	public static final int PARAM_SPKFX_CONV_UPDATEKERNEL_DEPRECATED = 65583;  /* DEPRECATED in 4.x system, use buffer instead */
+	public static final int PARAM_SPKFX_CONV_PREPAREBUFFER = 65584;
+	public static final int PARAM_SPKFX_CONV_SETBUFFER = 65585;
+	public static final int PARAM_SPKFX_CONV_COMMITBUFFER = 65586;
+	public static final int PARAM_SPKFX_CONV_CROSSCHANNEL = 65587;
+	public static final int PARAM_SPKFX_FIREQ_PROCESS_ENABLED = 65588;
+	public static final int PARAM_SPKFX_FIREQ_BANDLEVEL = 65589;
+	public static final int PARAM_SPKFX_REVB_PROCESS_ENABLED = 65590;
+	public static final int PARAM_SPKFX_REVB_ROOMSIZE = 65591;
+	public static final int PARAM_SPKFX_REVB_WIDTH = 65592;
+	public static final int PARAM_SPKFX_REVB_DAMP = 65593;
+	public static final int PARAM_SPKFX_REVB_WET = 65594;
+	public static final int PARAM_SPKFX_REVB_DRY = 65595;
+	public static final int PARAM_SPKFX_CORR_PROCESS_ENABLED = 65596;
+	public static final int PARAM_SPKFX_AGC_PROCESS_ENABLED = 65597;
+	public static final int PARAM_SPKFX_AGC_RATIO = 65598;
+	public static final int PARAM_SPKFX_AGC_VOLUME = 65599;
+	public static final int PARAM_SPKFX_AGC_MAXSCALER = 65600;
+	public static final int PARAM_SPKFX_OUTPUT_VOLUME = 65601;
+	public static final int PARAM_SPKFX_LIMITER_THRESHOLD = 65602;
 	/***************************************/
 
 	private final LocalBinder mBinder = new LocalBinder();
@@ -570,13 +742,28 @@ public class ViPER4AndroidService extends Service
 	protected boolean mUseBluetooth = false;
 	protected boolean mUseUSBSoundCard = false;
 	protected String mPreviousMode = "none";
-	private float[] mOverriddenEqualizerLevels;
+	private float[] mOverriddenEqualizerLevels = null;
 
+	private int[] mDriverVersion = new int[4];
 	private boolean mServicePrepared = false;
 	private boolean mDriverIsReady = false;
 	private V4ADSPModule mGeneralFX = null;
 	private SparseArray<V4ADSPModule> mGeneralFXList = new SparseArray<V4ADSPModule>();
 	private ResourceMutex mV4AMutex = new ResourceMutex();
+
+	private static final String ACTION_QUERY_DRIVERSTATUS = "com.vipercn.viper4android_v2.QUERY_DRIVERSTATUS";
+	private static final String ACTION_QUERY_DRIVERSTATUS_RESULT = "com.vipercn.viper4android_v2.QUERY_DRIVERSTATUS_RESULT";
+	private static final String ACTION_QUERY_EQUALIZER = "com.vipercn.viper4android_v2.QUERY_EQUALIZER";
+	private static final String ACTION_QUERY_EQUALIZER_RESULT = "com.vipercn.viper4android_v2.QUERY_EQUALIZER_RESULT";
+	private static final String ACTION_TAKEOVER_EFFECT = "com.vipercn.viper4android_v2.TAKEOVER_EFFECT";
+	private static final String ACTION_TAKEOVER_EFFECT_RESULT = "com.vipercn.viper4android_v2.TAKEOVER_EFFECT_RESULT";
+	private static final String ACTION_RELEASE_EFFECT = "com.vipercn.viper4android_v2.RELEASE_EFFECT";
+	private static final String ACTION_SET_ENABLED = "com.vipercn.viper4android_v2.SET_ENABLED";
+	private static final String ACTION_SET_EQUALIZER = "com.vipercn.viper4android_v2.SET_EQUALIZER";
+	private boolean m3rdEnabled = false;
+	private boolean m3rdEqualizerEnabled = false;
+	private float[] m3rdEqualizerLevels = null;
+	private boolean mWorkingWith3rd = false;
 
 	private final Timer tmDrvStatusCommTimer = new Timer();
 	private static Handler hDrvStatusCommTimerHandler = new Handler()
@@ -646,6 +833,172 @@ public class ViPER4AndroidService extends Service
 	    	}
 	    }
 	};
+
+	/****** 3rd API Interface ******/
+	private final BroadcastReceiver m3rdAPI_QUERY_DRIVERSTATUS_Receiver = new BroadcastReceiver()
+	{
+		@Override
+		public void onReceive(Context context, Intent intent)
+		{
+			Log.i("ViPER4Android", "m3rdAPI_QUERY_DRIVERSTATUS_Receiver::onReceive()");
+			Intent itResult = new Intent(ACTION_QUERY_DRIVERSTATUS_RESULT);
+			itResult.putExtra("driver_ready", mServicePrepared && mDriverIsReady);
+			itResult.putExtra("enabled", GetDriverEnabled());
+			sendBroadcast(itResult);
+		}
+	};
+	private final BroadcastReceiver m3rdAPI_QUERY_EQUALIZER_Receiver = new BroadcastReceiver()
+	{
+		@Override
+		public void onReceive(Context context, Intent intent)
+		{
+			Log.i("ViPER4Android", "m3rdAPI_QUERY_EQUALIZER_Receiver::onReceive()");
+			Intent itResult = new Intent(ACTION_QUERY_EQUALIZER_RESULT);
+
+			String mode = getAudioOutputRouting();
+			SharedPreferences preferences = getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + "." + mode, 0);
+			boolean bEQEnabled = preferences.getBoolean("viper4android.headphonefx.fireq.enable", false);
+			itResult.putExtra("equalizer_enabled", bEQEnabled);
+			itResult.putExtra("equalizer_bandcount", 10);
+			float[] faEQBands = new float[]{ 31.0f, 62.0f, 125.0f, 250.0f, 500.0f, 1000.0f, 2000.0f, 4000.0f, 8000.0f, 16000.0f };
+			itResult.putExtra("equalizer_bandfreq", faEQBands);
+			sendBroadcast(itResult);
+		}
+	};
+	private final BroadcastReceiver m3rdAPI_TAKEOVER_EFFECT_Receiver = new BroadcastReceiver()
+	{
+		@Override
+		public void onReceive(Context context, Intent intent)
+		{
+			Log.i("ViPER4Android", "m3rdAPI_TAKEOVER_EFFECT_Receiver::onReceive()");
+			Intent itResult = new Intent(ACTION_TAKEOVER_EFFECT_RESULT);
+
+			if (!intent.hasExtra("token"))
+			{
+				Log.i("ViPER4Android", "m3rdAPI_TAKEOVER_EFFECT_Receiver, no token found");
+				itResult.putExtra("granted", false);
+				sendBroadcast(itResult);
+				return;
+			}
+			else
+			{
+				int nToken = intent.getIntExtra("token", 0);
+				if (nToken == 0)
+				{
+					Log.i("ViPER4Android", "m3rdAPI_TAKEOVER_EFFECT_Receiver, invalid token found");
+					itResult.putExtra("granted", false);
+					sendBroadcast(itResult);
+					return;
+				}
+				else
+				{
+					mWorkingWith3rd = true;
+					Log.i("ViPER4Android", "m3rdAPI_TAKEOVER_EFFECT_Receiver, token = " + nToken);
+					itResult.putExtra("granted", true);
+					sendBroadcast(itResult);
+					return;
+				}
+			}
+		}
+	};
+	private final BroadcastReceiver m3rdAPI_RELEASE_EFFECT_Receiver = new BroadcastReceiver()
+	{
+		@Override
+		public void onReceive(Context context, Intent intent)
+		{
+			Log.i("ViPER4Android", "m3rdAPI_RELEASE_EFFECT_Receiver::onReceive()");
+			mWorkingWith3rd = false;
+
+			if (!intent.hasExtra("token")) updateSystem(false);
+			else
+			{
+				int nToken = intent.getIntExtra("token", 0);
+				Log.i("ViPER4Android", "m3rdAPI_RELEASE_EFFECT_Receiver, token = " + nToken);
+				updateSystem(false);
+			}
+		}
+	};
+	private final BroadcastReceiver m3rdAPI_SET_ENABLED_Receiver = new BroadcastReceiver()
+	{
+		@Override
+		public void onReceive(Context context, Intent intent)
+		{
+			Log.i("ViPER4Android", "m3rdAPI_SET_ENABLED_Receiver::onReceive()");
+
+			if (!mWorkingWith3rd) return;
+			if (!intent.hasExtra("token"))
+			{
+				Log.i("ViPER4Android", "m3rdAPI_SET_ENABLED_Receiver, no token found");
+				return;
+			}
+			else
+			{
+				int nToken = intent.getIntExtra("token", 0);
+				if (nToken == 0)
+				{
+					Log.i("ViPER4Android", "m3rdAPI_SET_ENABLED_Receiver, invalid token found");
+					return;
+				}
+				else
+				{
+					if (!intent.hasExtra("enabled")) return;
+					m3rdEnabled = intent.getBooleanExtra("enabled", false);
+					Log.i("ViPER4Android", "m3rdAPI_SET_ENABLED_Receiver, token = " + nToken + ", enabled = " + m3rdEnabled);
+					updateSystem(false);
+					return;
+				}
+			}
+		}
+	};
+	private final BroadcastReceiver m3rdAPI_SET_EQUALIZER_Receiver = new BroadcastReceiver()
+	{
+		@Override
+		public void onReceive(Context context, Intent intent)
+		{
+			Log.i("ViPER4Android", "m3rdAPI_SET_EQUALIZER_Receiver::onReceive()");
+
+			if (!mWorkingWith3rd) return;
+			if (!intent.hasExtra("token"))
+			{
+				Log.i("ViPER4Android", "m3rdAPI_SET_EQUALIZER_Receiver, no token found");
+				return;
+			}
+			else
+			{
+				int nToken = intent.getIntExtra("token", 0);
+				if (nToken == 0)
+				{
+					Log.i("ViPER4Android", "m3rdAPI_SET_EQUALIZER_Receiver, invalid token found");
+					return;
+				}
+				else
+				{
+					Log.i("ViPER4Android", "m3rdAPI_SET_EQUALIZER_Receiver, token = " + nToken);
+					if (intent.hasExtra("enabled"))
+					{
+						m3rdEqualizerEnabled = intent.getBooleanExtra("enabled", m3rdEqualizerEnabled);
+						Log.i("ViPER4Android", "m3rdAPI_SET_EQUALIZER_Receiver, enable equalizer = " + m3rdEqualizerEnabled);
+					}
+					if (intent.hasExtra("bandcount") && intent.hasExtra("bandvalues"))
+					{
+						int nBandCount = intent.getIntExtra("bandcount", 0);
+						float[] nBandValues = intent.getFloatArrayExtra("bandvalues");
+						if ((nBandCount != 10) || (nBandValues == null))
+						{
+							Log.i("ViPER4Android", "m3rdAPI_SET_EQUALIZER_Receiver, invalid band parameters");
+							return;
+						}
+						Log.i("ViPER4Android", "m3rdAPI_SET_EQUALIZER_Receiver, got new eq band values");
+						if (m3rdEqualizerLevels == null) m3rdEqualizerLevels = new float[10];
+						System.arraycopy(nBandValues, 0, m3rdEqualizerLevels, 0, nBandCount);
+					}
+				}
+				updateSystem(false);
+				return;
+			}
+		}
+	};
+	/*******************************/
 
     private final BroadcastReceiver mAudioSessionReceiver = new BroadcastReceiver()
     {
@@ -839,6 +1192,14 @@ public class ViPER4AndroidService extends Service
 		super.onCreate();
 		mServicePrepared = false;
 
+        boolean bJniLoaded = V4AJniInterface.CheckLibrary();
+        Log.i("ViPER4Android", "Jni library status = " + bJniLoaded);
+
+        mDriverVersion[0] = 0;
+        mDriverVersion[1] = 0;
+        mDriverVersion[2] = 0;
+        mDriverVersion[3] = 0;
+
 		try
 		{
 			CancelNotification();
@@ -860,14 +1221,26 @@ public class ViPER4AndroidService extends Service
 			else
 			{
 				mDriverIsReady = true;
-				String szDriverVer = GetDriverVersion();
-				if (szDriverVer.equals("0.0.0.0")) mDriverIsReady = false;
+				int nVerDWord = mGeneralFX.getParameter_px4_vx4x1(PARAM_GET_DRIVER_VERSION);
+				int VMain, VSub, VExt, VBuild;
+				VMain  = (nVerDWord & 0xFF000000) >> 24;
+				VSub   = (nVerDWord & 0x00FF0000) >> 16;
+				VExt   = (nVerDWord & 0x0000FF00) >>  8;
+				VBuild = (nVerDWord & 0x000000FF) >>  0;
+				if ((VMain == 0) && (VSub == 0) && (VExt == 0) && (VBuild == 0))
+					mDriverIsReady = false;
 				else mDriverIsReady = true;
-			}
 
+				mDriverVersion[0] = VMain;
+				mDriverVersion[1] = VSub;
+				mDriverVersion[2] = VExt;
+				mDriverVersion[3] = VBuild;
+			}
+			StaticEnvironment.SetDriverStatus(mDriverIsReady, mDriverVersion[0] + "." + mDriverVersion[1] + "." + mDriverVersion[2] + "." + mDriverVersion[3]);
+
+			SharedPreferences prefSettings = getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", 0);
 			if (mDriverIsReady)
 			{
-				SharedPreferences prefSettings = getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", 0);
 				boolean bDriverConfigured = prefSettings.getBoolean("viper4android.settings.driverconfigured", false);
 				if (!bDriverConfigured)
 				{
@@ -878,6 +1251,14 @@ public class ViPER4AndroidService extends Service
 						edPrefSettings.commit();
 					}
 				}
+			}
+
+			// If the current mode is Compatible, we should release the global module
+			String szCompatibleMode = prefSettings.getString("viper4android.settings.compatiblemode", "global");
+			if (!szCompatibleMode.equalsIgnoreCase("global") && (mGeneralFX != null))
+			{
+				mGeneralFX.release();
+				mGeneralFX = null;
 			}
 
 			if (Build.VERSION.SDK_INT < 18)
@@ -907,6 +1288,13 @@ public class ViPER4AndroidService extends Service
 			registerReceiver(mShowNotifyReceiver, new IntentFilter(ViPER4Android.ACTION_SHOW_NOTIFY));
 			registerReceiver(mCancelNotifyReceiver, new IntentFilter(ViPER4Android.ACTION_CANCEL_NOTIFY));
 
+			registerReceiver(m3rdAPI_QUERY_DRIVERSTATUS_Receiver, new IntentFilter(ACTION_QUERY_DRIVERSTATUS));
+			registerReceiver(m3rdAPI_QUERY_EQUALIZER_Receiver, new IntentFilter(ACTION_QUERY_EQUALIZER));
+			registerReceiver(m3rdAPI_TAKEOVER_EFFECT_Receiver, new IntentFilter(ACTION_TAKEOVER_EFFECT));
+			registerReceiver(m3rdAPI_RELEASE_EFFECT_Receiver, new IntentFilter(ACTION_RELEASE_EFFECT));
+			registerReceiver(m3rdAPI_SET_ENABLED_Receiver, new IntentFilter(ACTION_SET_ENABLED));
+			registerReceiver(m3rdAPI_SET_EQUALIZER_Receiver, new IntentFilter(ACTION_SET_EQUALIZER));
+
 			Log.i("ViPER4Android", "Service launched.");
 
 			updateSystem(true);
@@ -917,6 +1305,8 @@ public class ViPER4AndroidService extends Service
 		}
 		catch (Exception e)
 		{
+			// We log error only when v4a cant run
+			Log.e("ViPER4Android", "Fatal error, [ViPER4AndroidService]onCreate::Exception, msg = " + e.getMessage());
 			mServicePrepared = false;
 			CancelNotification();
 			System.exit(0);
@@ -943,6 +1333,13 @@ public class ViPER4AndroidService extends Service
 			unregisterReceiver(mPreferenceUpdateReceiver);
 			unregisterReceiver(mShowNotifyReceiver);
 			unregisterReceiver(mCancelNotifyReceiver);
+
+			unregisterReceiver(m3rdAPI_QUERY_DRIVERSTATUS_Receiver);
+			unregisterReceiver(m3rdAPI_QUERY_EQUALIZER_Receiver);
+			unregisterReceiver(m3rdAPI_TAKEOVER_EFFECT_Receiver);
+			unregisterReceiver(m3rdAPI_RELEASE_EFFECT_Receiver);
+			unregisterReceiver(m3rdAPI_SET_ENABLED_Receiver);
+			unregisterReceiver(m3rdAPI_SET_EQUALIZER_Receiver);
 
 			CancelNotification();
 
@@ -1008,15 +1405,8 @@ public class ViPER4AndroidService extends Service
 
 	public String GetDriverVersion()
 	{
-		int nVerDWord = 0;
-		if (mGeneralFX != null && mDriverIsReady)
-			nVerDWord = mGeneralFX.getParameter_px4_vx4x1(PARAM_GET_DRIVER_VERSION);
-		int VMain, VSub, VExt, VBuild;
-		VMain  = (nVerDWord & 0xFF000000) >> 24;
-		VSub   = (nVerDWord & 0x00FF0000) >> 16;
-		VExt   = (nVerDWord & 0x0000FF00) >>  8;
-		VBuild = (nVerDWord & 0x000000FF) >>  0;
-		return VMain + "." + VSub + "." + VExt + "." + VBuild;
+		return mDriverVersion[0] + "." + mDriverVersion[1] + "." +
+			   mDriverVersion[2] + "." + mDriverVersion[3];
 	}
 
 	public boolean GetDriverNEON()
@@ -1148,51 +1538,18 @@ public class ViPER4AndroidService extends Service
 			return;
 		}
 
-		AudioEffect.Descriptor mFXVerify = mGeneralFX.mInstance.getDescriptor();
-		if (mFXVerify == null)
+		try
 		{
-			Log.i("ViPER4Android", "updateSystem(): Effects token lost!");
+			if (!mGeneralFX.mInstance.hasControl())
+			{
+				Log.i("ViPER4Android", "The effect is controlling by system now");
+				return;
+			}
+		}
+		catch (Exception e)
+		{
+			Log.i("ViPER4Android", "updateSystem_Global(), Exception = " + e.getMessage());
 			return;
-		}
-		if (!mFXVerify.uuid.equals(ID_V4A_GENERAL_FX))
-		{
-			Toast.makeText(ViPER4AndroidService.this,
-					getString(getResources().getIdentifier("text_token_lost", "string", getApplicationInfo().packageName)),
-					Toast.LENGTH_LONG).show();
-
-			Log.i("ViPER4Android", "updateSystem(): Effects token lost!");
-			Log.i("ViPER4Android", "updateSystem(): The effect has been replaced by system!");
-			Log.i("ViPER4Android", "updateSystem(): Reloading driver");
-			try
-			{
-				mGeneralFX.release();
-				mGeneralFX = new V4ADSPModule(ID_V4A_GENERAL_FX, 0);
-				if ((mGeneralFX == null) || (mGeneralFX.mInstance == null)) return;
-			}
-			catch (Exception e)
-			{
-				return;
-			}
-		}
-		if (!mGeneralFX.mInstance.hasControl())
-		{
-			Toast.makeText(ViPER4AndroidService.this,
-					getString(getResources().getIdentifier("text_token_lost", "string", getApplicationInfo().packageName)),
-					Toast.LENGTH_LONG).show();
-
-			Log.i("ViPER4Android", "updateSystem(): Effects token lost!");
-			Log.i("ViPER4Android", "updateSystem(): The effect has been taken over by system!");
-			Log.i("ViPER4Android", "updateSystem(): Reloading driver");
-			try
-			{
-				mGeneralFX.release();
-				mGeneralFX = new V4ADSPModule(ID_V4A_GENERAL_FX, 0);
-				if ((mGeneralFX == null) || (mGeneralFX.mInstance == null)) return;
-			}
-			catch (Exception e)
-			{
-				return;
-			}
 		}
 
 		if (mLocalFX) updateSystem_Module(preferences, nFXType, mGeneralFX, bRequireReset, true);
@@ -1241,25 +1598,40 @@ public class ViPER4AndroidService extends Service
 
 			/* FIR Equalizer */
 			Log.i("ViPER4Android", "updateSystem(): Updating FIR Equalizer.");
-			if (mOverriddenEqualizerLevels != null)
+			if (!mWorkingWith3rd)
 			{
-				for (int i = 0; i < mOverriddenEqualizerLevels.length; i ++)
-					SetV4AEqualizerBandLevel(i, (int)Math.round(Float.valueOf(mOverriddenEqualizerLevels[i]) * 100), true, v4aModule);
+				if (mOverriddenEqualizerLevels != null)
+				{
+					for (int i = 0; i < mOverriddenEqualizerLevels.length; i ++)
+						SetV4AEqualizerBandLevel(i, (int)Math.round(Float.valueOf(mOverriddenEqualizerLevels[i]) * 100), true, v4aModule);
+				}
+				else
+				{
+					String[] levels = preferences.getString("viper4android.headphonefx.fireq.custom", "0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;").split(";");
+					for (short i = 0; i < levels.length; i ++)
+						SetV4AEqualizerBandLevel(i, (int)Math.round(Float.valueOf(levels[i]) * 100), true, v4aModule);
+				}
+				if (preferences.getBoolean("viper4android.headphonefx.fireq.enable", false))
+					v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_FIREQ_PROCESS_ENABLED, 1);
+				else v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_FIREQ_PROCESS_ENABLED, 0);
 			}
 			else
 			{
-				String[] levels = preferences.getString("viper4android.headphonefx.fireq.custom", "0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;").split(";");
-				for (short i = 0; i < levels.length; i ++)
-					SetV4AEqualizerBandLevel(i, (int)Math.round(Float.valueOf(levels[i]) * 100), true, v4aModule);
+				if (m3rdEqualizerLevels != null)
+				{
+					for (int i = 0; i < m3rdEqualizerLevels.length; i ++)
+						SetV4AEqualizerBandLevel(i, (int)Math.round(Float.valueOf(m3rdEqualizerLevels[i]) * 100), true, v4aModule);
+				}
+				if (m3rdEqualizerEnabled)
+					v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_FIREQ_PROCESS_ENABLED, 1);
+				else v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_FIREQ_PROCESS_ENABLED, 0);
 			}
-			if (preferences.getBoolean("viper4android.headphonefx.fireq.enable", false))
-				v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_FIREQ_PROCESS_ENABLED, 1);
-			else v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_FIREQ_PROCESS_ENABLED, 0);
 
 			/* Convolver */
 			Log.i("ViPER4Android", "updateSystem(): Updating Convolver.");
 			String szConvIRFileName = preferences.getString("viper4android.headphonefx.convolver.kernel", "");
 			v4aModule.SetConvIRFile(szConvIRFileName, false);
+			v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_CONV_CROSSCHANNEL, Integer.valueOf(preferences.getString("viper4android.headphonefx.convolver.crosschannel", "0")));
 			if (preferences.getBoolean("viper4android.headphonefx.convolver.enable", false))
 				v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_CONV_PROCESS_ENABLED, 1);
 			else v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_CONV_PROCESS_ENABLED, 0);
@@ -1351,6 +1723,10 @@ public class ViPER4AndroidService extends Service
 				v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_CURE_PROCESS_ENABLED, 1);
 			else v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_CURE_PROCESS_ENABLED, 0);
 
+			/* Speaker Optimization */
+			Log.i("ViPER4Android", "updateSystem(): Shutting down speaker optimizer.");
+			v4aModule.setParameter_px4_vx4x1(PARAM_SPKFX_CORR_PROCESS_ENABLED, 0);
+
 			/* Limiter */
 			Log.i("ViPER4Android", "updateSystem(): Updating Limiter.");
 			v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_OUTPUT_VOLUME, Integer.valueOf(preferences.getString("viper4android.headphonefx.outvol", "100")));
@@ -1358,9 +1734,31 @@ public class ViPER4AndroidService extends Service
 			v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_LIMITER_THRESHOLD, Integer.valueOf(preferences.getString("viper4android.headphonefx.limiter", "100")));
 
 			/* Master Switch */
-			boolean bMasterControl = preferences.getBoolean("viper4android.headphonefx.enable", false);
-			if (mMasterSwitchOff) bMasterControl = false;
-			v4aModule.mInstance.setEnabled(bMasterControl);
+			if (!mWorkingWith3rd)
+			{
+				boolean bForceEnable = preferences.getBoolean("viper4android.global.forceenable.enable", false);
+				if (bForceEnable) v4aModule.setParameter_px4_vx4x1(PARAM_SET_FORCEENABLE_STATUS, 1);
+				else v4aModule.setParameter_px4_vx4x1(PARAM_SET_FORCEENABLE_STATUS, 0);
+	
+				boolean bMasterControl = preferences.getBoolean("viper4android.headphonefx.enable", false);
+				if (mMasterSwitchOff) bMasterControl = false;
+				if (bMasterControl) v4aModule.setParameter_px4_vx4x1(PARAM_SET_DOPROCESS_STATUS, 1);
+				else v4aModule.setParameter_px4_vx4x1(PARAM_SET_DOPROCESS_STATUS, 0);
+				v4aModule.mInstance.setEnabled(bMasterControl);
+			}
+			else
+			{
+				if (m3rdEnabled)
+				{
+					v4aModule.setParameter_px4_vx4x1(PARAM_SET_DOPROCESS_STATUS, 1);
+					v4aModule.mInstance.setEnabled(true);
+				}
+				else
+				{
+					v4aModule.setParameter_px4_vx4x1(PARAM_SET_DOPROCESS_STATUS, 0);
+					v4aModule.mInstance.setEnabled(false);
+				}
+			}
 		}
 		/******************************************************************************************************/
 		/********************************************* Speaker FX *********************************************/
@@ -1370,20 +1768,34 @@ public class ViPER4AndroidService extends Service
 
 			/* FIR Equalizer */
 			Log.i("ViPER4Android", "updateSystem(): Updating FIR Equalizer.");
-			if (mOverriddenEqualizerLevels != null)
+			if (!mWorkingWith3rd)
 			{
-				for (int i = 0; i < mOverriddenEqualizerLevels.length; i ++)
-					SetV4AEqualizerBandLevel(i, (int)Math.round(Float.valueOf(mOverriddenEqualizerLevels[i]) * 100), false, v4aModule);
+				if (mOverriddenEqualizerLevels != null)
+				{
+					for (int i = 0; i < mOverriddenEqualizerLevels.length; i ++)
+						SetV4AEqualizerBandLevel(i, (int)Math.round(Float.valueOf(mOverriddenEqualizerLevels[i]) * 100), false, v4aModule);
+				}
+				else
+				{
+					String[] levels = preferences.getString("viper4android.headphonefx.fireq.custom", "0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;").split(";");
+					for (short i = 0; i < levels.length; i ++)
+						SetV4AEqualizerBandLevel(i, (int)Math.round(Float.valueOf(levels[i]) * 100), false, v4aModule);
+				}
+				if (preferences.getBoolean("viper4android.headphonefx.fireq.enable", false))
+					v4aModule.setParameter_px4_vx4x1(PARAM_SPKFX_FIREQ_PROCESS_ENABLED, 1);
+				else v4aModule.setParameter_px4_vx4x1(PARAM_SPKFX_FIREQ_PROCESS_ENABLED, 0);
 			}
 			else
 			{
-				String[] levels = preferences.getString("viper4android.headphonefx.fireq.custom", "0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;").split(";");
-				for (short i = 0; i < levels.length; i ++)
-					SetV4AEqualizerBandLevel(i, (int)Math.round(Float.valueOf(levels[i]) * 100), false, v4aModule);
+				if (m3rdEqualizerLevels != null)
+				{
+					for (int i = 0; i < m3rdEqualizerLevels.length; i ++)
+						SetV4AEqualizerBandLevel(i, (int)Math.round(Float.valueOf(m3rdEqualizerLevels[i]) * 100), false, v4aModule);
+				}
+				if (m3rdEqualizerEnabled)
+					v4aModule.setParameter_px4_vx4x1(PARAM_SPKFX_FIREQ_PROCESS_ENABLED, 1);
+				else v4aModule.setParameter_px4_vx4x1(PARAM_SPKFX_FIREQ_PROCESS_ENABLED, 0);
 			}
-			if (preferences.getBoolean("viper4android.headphonefx.fireq.enable", false))
-				v4aModule.setParameter_px4_vx4x1(PARAM_SPKFX_FIREQ_PROCESS_ENABLED, 1);
-			else v4aModule.setParameter_px4_vx4x1(PARAM_SPKFX_FIREQ_PROCESS_ENABLED, 0);
 
 			/* ViPER's Reverberation */
 			Log.i("ViPER4Android", "updateSystem(): Updating Reverberation.");
@@ -1400,9 +1812,16 @@ public class ViPER4AndroidService extends Service
 			Log.i("ViPER4Android", "updateSystem(): Updating Convolver.");
 			String szConvIRFileName = preferences.getString("viper4android.headphonefx.convolver.kernel", "");
 			v4aModule.SetConvIRFile(szConvIRFileName, true);
+			v4aModule.setParameter_px4_vx4x1(PARAM_SPKFX_CONV_CROSSCHANNEL, Integer.valueOf(preferences.getString("viper4android.headphonefx.convolver.crosschannel", "0")));
 			if (preferences.getBoolean("viper4android.headphonefx.convolver.enable", false))
 				v4aModule.setParameter_px4_vx4x1(PARAM_SPKFX_CONV_PROCESS_ENABLED, 1);
 			else v4aModule.setParameter_px4_vx4x1(PARAM_SPKFX_CONV_PROCESS_ENABLED, 0);
+
+			/* Speaker Optimization */
+			Log.i("ViPER4Android", "updateSystem(): Updating Speaker Optimizer.");
+			if (preferences.getBoolean("viper4android.speakerfx.spkopt.enable", false))
+				v4aModule.setParameter_px4_vx4x1(PARAM_SPKFX_CORR_PROCESS_ENABLED, 1);
+			else v4aModule.setParameter_px4_vx4x1(PARAM_SPKFX_CORR_PROCESS_ENABLED, 0);
 
 			/* eXtraLoud */
 			Log.i("ViPER4Android", "updateSystem(): Updating eXtraLoud.");
@@ -1419,9 +1838,31 @@ public class ViPER4AndroidService extends Service
 			v4aModule.setParameter_px4_vx4x1(PARAM_SPKFX_LIMITER_THRESHOLD, Integer.valueOf(preferences.getString("viper4android.speakerfx.limiter", "100")));
 
 			/* Master Switch */
-			boolean bMasterControl = preferences.getBoolean("viper4android.speakerfx.enable", false);
-			if (mMasterSwitchOff) bMasterControl = false;
-			v4aModule.mInstance.setEnabled(bMasterControl);
+			if (!mWorkingWith3rd)
+			{
+				boolean bForceEnable = preferences.getBoolean("viper4android.global.forceenable.enable", false);
+				if (bForceEnable) v4aModule.setParameter_px4_vx4x1(PARAM_SET_FORCEENABLE_STATUS, 1);
+				else v4aModule.setParameter_px4_vx4x1(PARAM_SET_FORCEENABLE_STATUS, 0);
+	
+				boolean bMasterControl = preferences.getBoolean("viper4android.speakerfx.enable", false);
+				if (mMasterSwitchOff) bMasterControl = false;
+				if (bMasterControl) v4aModule.setParameter_px4_vx4x1(PARAM_SET_DOPROCESS_STATUS, 1);
+				else v4aModule.setParameter_px4_vx4x1(PARAM_SET_DOPROCESS_STATUS, 0);
+				v4aModule.mInstance.setEnabled(bMasterControl);
+			}
+			else
+			{
+				if (m3rdEnabled)
+				{
+					v4aModule.setParameter_px4_vx4x1(PARAM_SET_DOPROCESS_STATUS, 1);
+					v4aModule.mInstance.setEnabled(true);
+				}
+				else
+				{
+					v4aModule.setParameter_px4_vx4x1(PARAM_SET_DOPROCESS_STATUS, 0);
+					v4aModule.mInstance.setEnabled(false);
+				}
+			}
 		}
 		/******************************************************************************************************/
 

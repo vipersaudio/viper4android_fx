@@ -4,7 +4,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := V4AJniUtils
 
-LOCAL_ARM_MODE := arm
+LOCAL_ARM_MODE := thumb
 LOCAL_SRC_FILES := \
 	libsndfile/G72x/g721.c libsndfile/G72x/g723_16.c libsndfile/G72x/g723_24.c libsndfile/G72x/g723_40.c libsndfile/G72x/g72x.c \
 	libsndfile/GSM610/add.c libsndfile/GSM610/code.c libsndfile/GSM610/decode.c libsndfile/GSM610/gsm_create.c libsndfile/GSM610/gsm_decode.c \

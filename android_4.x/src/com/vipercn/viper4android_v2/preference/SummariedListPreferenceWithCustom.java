@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import com.vipercn.viper4android_v2.R;
+import com.vipercn.viper4android_v2.activity.StaticEnvironment;
 import com.vipercn.viper4android_v2.activity.Utils;
 
 import android.app.AlertDialog.Builder;
@@ -33,13 +34,13 @@ public class SummariedListPreferenceWithCustom extends ListPreference
 				setEntries(new String[0]);
 				setEntryValues(new String[0]);
 				String szTip = getContext().getResources().getString(R.string.text_ir_dir_isempty);
-				szTip = String.format(szTip, Environment.getExternalStorageDirectory() + "/ViPER4Android/Kernel/");
+				szTip = String.format(szTip, StaticEnvironment.GetV4AKernelPath());
 				Toast.makeText(getContext(), szTip, Toast.LENGTH_LONG).show();
 				super.onPrepareDialogBuilder(builder);
 				return;
 			}
 
-			final String szKernelPath = Environment.getExternalStorageDirectory() + "/ViPER4Android/Kernel/";
+			final String szKernelPath = StaticEnvironment.GetV4AKernelPath();
 			File mKnlFile = new File(szKernelPath);
 
 			if (!mKnlFile.exists())
@@ -57,7 +58,7 @@ public class SummariedListPreferenceWithCustom extends ListPreference
 			if (szKnlList.isEmpty())
 			{
 				String szTip = getContext().getResources().getString(R.string.text_ir_dir_isempty);
-				szTip = String.format(szTip, Environment.getExternalStorageDirectory() + "/ViPER4Android/Kernel/");
+				szTip = String.format(szTip, StaticEnvironment.GetV4AKernelPath());
 				Toast.makeText(getContext(), szTip, Toast.LENGTH_LONG).show();
 			}
 			else Collections.sort(szKnlList);
@@ -80,7 +81,7 @@ public class SummariedListPreferenceWithCustom extends ListPreference
 			setEntries(new String[0]);
 			setEntryValues(new String[0]);
 			String szTip = getContext().getResources().getString(R.string.text_ir_dir_isempty);
-			szTip = String.format(szTip, Environment.getExternalStorageDirectory() + "/ViPER4Android/Kernel/");
+			szTip = String.format(szTip, StaticEnvironment.GetV4AKernelPath());
 			Toast.makeText(getContext(), szTip, Toast.LENGTH_LONG).show();
 			super.onPrepareDialogBuilder(builder);
 		}

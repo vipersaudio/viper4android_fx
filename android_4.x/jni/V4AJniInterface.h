@@ -10,6 +10,14 @@ extern "C" {
 #endif
 /*
  * Class:     com_vipercn_viper4android_v2_activity_V4AJniInterface
+ * Method:    CheckLibraryUsable
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniInterface_CheckLibraryUsable
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     com_vipercn_viper4android_v2_activity_V4AJniInterface
  * Method:    CheckCPUHasNEON
  * Signature: ()I
  */

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+  <string-array name="drvinst_prefer">
+    <item>顶级音质</item>
+    <item>高音质</item>
+    <item>省电优先</item>
+  </string-array>
+
   <string-array name="colorfulmusic_coeffs">
     <item>轻微</item>
     <item>级别1</item>

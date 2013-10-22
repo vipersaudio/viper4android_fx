@@ -15,6 +15,11 @@
     <string name="pref_effect_title">選擇效果強度</string>
     <string name="dialog_effect">效果強度</string>
 
+    <string name="pref_force_enable_text">強行啟用V4A音效</string>
+    <string name="pref_force_enable_warn">開啟強行啟用后可以解決大部份播放器無音效的問題，但可能會在某些ROM上造成其他影響，如沒有聲音和加快耗電等問題。
+\n如果遇到類似現象，請關閉這個功能。
+    </string>
+
     <string name="pref_fx_master_title">效果總開關</string>
     <string name="pref_fx_master_summary_on">V4A效果已開啓</string>
     <string name="pref_fx_master_summary_off">V4A效果已關閉</string>
@@ -42,6 +47,10 @@
     <string name="pref_xloud_output_amplifer">音量放大強度</string>
     <string name="pref_xloud_spk_lowfreq">低頻響應頻率</string>
     <string name="pref_xloud_spk_highfreq">高頻響應頻率</string>
+
+    <string name="pref_spk_opt_title">揚聲器優化</string>
+    <string name="pref_spk_opt_summary_on">揚聲器優化已啟用</string>
+    <string name="pref_spk_opt_summary_off">揚聲器優化已停用</string>
 
     <string name="pref_equalizer_title">FIR等化器</string>
     <string name="pref_equalizer_summary_on">FIR等化器已啓用</string>
@@ -91,6 +100,8 @@
     <string name="pref_convolver_enable">啟用</string>
     <string name="pref_convolver_knl">脈衝回饋模擬樣本</string>
     <string name="pref_convolver_knl_title">選擇脈衝回饋模擬樣本</string>
+    <string name="pref_convolver_crosschannel">通道交叉</string>
+    <string name="pref_convolver_crosschannel_title">選擇通道交叉</string>
 
     <string name="pref_vhs_title">耳機環繞核擎+</string>
     <string name="pref_vhs_summary_on">耳機環繞核擎+ 已啟用</string>
@@ -142,7 +153,7 @@
     <string name="eq_preset_custom">自定義</string>
 
     <string name="text_ir_dir_isempty">ViPER4Android: 脈衝回饋效果樣本資料夾 %1$s 是空的。</string>
-    <string name="text_token_lost">ViPER4Android: 喪失音效控制權，嘗試重載驅動。</string>
+    <string name="text_token_lost">ViPER4Android: 某個程式已經請求操作系統禁用全局音效，因此V4A將會被臨時停用。</string>
     <string name="text_enabled">已啓用</string>
     <string name="text_disabled">已停用</string>
     <string name="text_headset">頭戴設備</string>
@@ -172,6 +183,11 @@
     <string name="text_ok">確定</string>
     <string name="text_cancel">取消</string>
 
+    <string name="text_drvinst_prefer">請選擇您的偏好</string>
+    <string name="text_drvinst_sqdrv">最高音質需要至少雙核的CPU，而且可能會加快電量消耗。
+\n您確定要繼續嗎？
+    </string>
+
     <string name="text_drvvernotmatch">爲了正常使用ViPER4Android音效，您需要安裝或更新V4A驅動程式。
 \n安裝或更新過程將會自動完成，卸載時可以使用菜單中的卸載驅動。
 \n現在安裝或更新嗎？
@@ -179,13 +195,16 @@
 
     <string name="text_drvuninst_confim">您確定要卸載V4A驅動程式嗎？</string>
 
+    <string name="text_uiprefer">界面控制級別</string>
+    <string name="text_uiprefer_dialog">請選擇您的偏好</string>
+
     <string name="text_commode">音效兼容模式</string>
 
     <string name="text_uninstall">卸載驅動</string>
     <string name="text_install">安裝驅動</string>
     <string name="text_drvinst_ok">驅動已安裝，請重啟手機以生效。</string>
     <string name="text_drvuninst_ok">驅動已卸載，請重啟手機以生效。</string>
-    <string name="text_drvinst_failed">驅動安裝失敗，請確認您的手機已經ROOT並且安裝了busybox。</string>
+    <string name="text_drvinst_failed">驅動安裝失敗，請確認您的手機已經ROOT並且安裝了su二進制檔案。</string>
 
     <string name="text_changelog">更新日誌</string>
     <string name="text_drv_status">驅動程式狀態</string>
@@ -228,6 +247,9 @@
 \n
 \n<b>您是否遇到过在大多数播放器上V4A无效的问题？</b>
 \n    您可以将音效模式切换到兼容模式，然后再试。
+\n
+\n<b>如何更改當前的音頻處理品質？</b>
+\n    在菜單中卸載驅動，重啟手機后選擇您期望的品質模式。
 \n
 \n<b>論壇：http://forum.vipersaudio.com</b>
     </string>

@@ -43,6 +43,10 @@
     <string name="pref_xloud_spk_lowfreq">Low Response</string>
     <string name="pref_xloud_spk_highfreq">High Response</string>
 
+    <string name="pref_spk_opt_title">Speaker Optimization</string>
+    <string name="pref_spk_opt_summary_on">Speaker optimization is enabled</string>
+    <string name="pref_spk_opt_summary_off">Speaker optimization is disabled</string>
+
     <string name="pref_equalizer_title">FIREqualizer</string>
     <string name="pref_equalizer_summary_on">FIREqualizer is enabled</string>
     <string name="pref_equalizer_summary_off">FIREqualizer is disabled</string>
@@ -173,6 +177,11 @@
 
     <string name="text_ok">OK</string>
     <string name="text_cancel">Cancel</string>
+
+    <string name="text_drvinst_prefer">Please choose your preference</string>
+    <string name="text_drvinst_sqdrv">Super audio quality needs at least dual-core cpu and may speeds up battery drain.
+\nDo you want continue?
+    </string>
 
     <string name="text_drvvernotmatch">In order to use ViPER4Android, you need to install/update the V4A driver.
 \nThe installation process will be done automatically.

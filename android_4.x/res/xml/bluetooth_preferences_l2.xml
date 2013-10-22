@@ -6,6 +6,8 @@
 		<CheckBoxPreference android:key="viper4android.headphonefx.enable"
 			android:summaryOn="@string/pref_fx_master_summary_on" android:summaryOff="@string/pref_fx_master_summary_off"
 			android:disableDependentsState="false" android:title="@string/pref_dsp_enable"></CheckBoxPreference>
+		<CheckBoxPreference android:key="viper4android.global.forceenable.enable"
+			android:disableDependentsState="false" android:title="@string/pref_force_enable_text"></CheckBoxPreference>
 	</PreferenceCategory>
 
 	<PreferenceCategory android:title="@string/pref_playback_title">
@@ -40,6 +42,8 @@
 			android:summaryOff="@string/pref_convolver_summary_off" android:title="@string/pref_convolver_enable"></CheckBoxPreference>
 		<com.vipercn.viper4android_v2.preference.SummariedListPreferenceWithCustom
 			android:defaultValue="" android:dialogTitle="@string/pref_convolver_knl_title" android:title="@string/pref_convolver_knl" android:key="viper4android.headphonefx.convolver.kernel"/>
+		<com.vipercn.viper4android_v2.preference.SummariedListPreference
+			android:defaultValue="0" android:dialogTitle="@string/pref_convolver_crosschannel_title" android:entries="@array/conv_cross_channel" android:entryValues="@array/conv_cross_channel_values" android:title="@string/pref_convolver_crosschannel" android:key="viper4android.headphonefx.convolver.crosschannel"/>
 	</PreferenceCategory>
 
 	<PreferenceCategory android:title="@string/pref_colorfulmusic_title">
