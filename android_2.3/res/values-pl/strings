@@ -45,7 +45,7 @@
     <string name="pref_equalizer_preset_title">Wybierz profil</string>
     <string name="pref_dynamicsystem_title">Dynamika</string>
     <string name="pref_dynamicsystem_summary_on">Aktywna</string>
-    <string name="pref_dynamicsystem_summary_off">Nieaktywny</string>
+    <string name="pref_dynamicsystem_summary_off">Nieaktywna</string>
     <string name="pref_dynamicsystem_enable">Dynamika dźwięku</string>
     <string name="pref_dynamicsystem_output">Słuchawki</string>
     <string name="pref_dynamicsystem_output_title">Słuchawki</string>
