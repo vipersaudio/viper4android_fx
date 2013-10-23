@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="drvinst_prefer">
+        <item>B. wysoka jakość dźwięku</item>
+        <item>Wysoka jakość dźwięku</item>
+        <item>Oszczędność baterii</item>
+    </string-array>
+    <string-array name="ui_prefer">
+        <item>Początkujący</item>
+        <item>Standardowy</item>
+        <item>Zaawansowany</item>
+    </string-array>
     <string-array name="compatible_mode">
         <item>Normalny</item>
         <item>Kompatybilny</item>
@@ -27,6 +37,23 @@
         <item>Poziom 8</item>
         <item>Poziom 9</item>
         <item>Mocna</item>
+    </string-array>
+    <string-array name="conv_cross_channel">
+        <item>0 Procent</item>
+        <item>5 Procent</item>
+        <item>10 Procent</item>
+        <item>15 Procent</item>
+        <item>20 Procent</item>
+        <item>25 Procent</item>
+        <item>30 Procent</item>
+        <item>35 Procent</item>
+        <item>40 Procent</item>
+        <item>45 Procent</item>
+        <item>50 Procent</item>
+        <item>55 Procent</item>
+        <item>60 Procent</item>
+        <item>70 Procent</item>
+        <item>80 Procent</item>
     </string-array>
     <string-array name="reverb_roomsize">
         <item>25m2</item>

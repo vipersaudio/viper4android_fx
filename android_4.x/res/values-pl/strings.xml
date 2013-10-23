@@ -15,6 +15,12 @@
     <string name="pref_effect_title">Siła efektu</string>
     <string name="dialog_effect">Wybierz siłę efektu</string>
 
+    <string name="pref_force_enable_text">Wymuś aktywację</string>
+    <string name="pref_force_enable_warn">Włączenie opcji powinno rozwiązać problem z brakiem efektów.
+\nJednak w kilku romach możne doprowadzić do utraty dzwięku lub wysokiego zużycia energii.
+\nPostępuj z rozwagą. W przypadku problemów wyłącz tą opcję.
+    </string>
+
     <string name="pref_fx_master_title">ViPER4Android FX</string>
     <string name="pref_fx_master_summary_on">Włączony</string>
     <string name="pref_fx_master_summary_off">Wyłączony</string>
@@ -44,6 +50,11 @@
     <string name="pref_xloud_output_amplifer">Wyjściowe wzmocnienie</string>
     <string name="pref_xloud_spk_lowfreq">Niska częstotliwość</string>
     <string name="pref_xloud_spk_highfreq">Wysoka częstotliwość</string>
+
+    <string name="pref_spk_opt_title">Optymalizacja</string>
+    <string name="pref_spk_opt_summary_on">Aktywna</string>
+    <string name="pref_spk_opt_summary_off">Nieaktywna</string>
+    <string name="pref_spk_opt_enable">Optymalizacja</string>
 
     <string name="pref_equalizer_title">Equalizer</string>
     <string name="pref_equalizer_summary_on">Aktywny</string>
@@ -93,6 +104,8 @@
     <string name="pref_convolver_enable">Convolver</string>
     <string name="pref_convolver_knl">Impulsy</string>
     <string name="pref_convolver_knl_title">Wybierz impulsy</string>
+    <string name="pref_convolver_crosschannel">Cross Channel</string>
+    <string name="pref_convolver_crosschannel_title">Wybierz Cross Channel</string>
 
     <string name="pref_vhs_title">Wirtualny dźwięk przestrzenny+</string>
     <string name="pref_vhs_summary_on">Aktywny</string>
@@ -144,7 +157,7 @@
     <string name="eq_preset_custom">Własny</string>
 
     <string name="text_ir_dir_isempty">Brak przykładowych impulsów w %1$s.</string>
-    <string name="text_token_lost">Napotkano błąd, spróbuj ponownie załadować biblioteki.</string>
+    <string name="text_token_lost">Niektóre programy wymagają wyłączenie swoich efektów. Do tego czasu V4A nie będzie aktywny.</string>
     <string name="text_enabled">Włączone</string>
     <string name="text_disabled">Domyślna</string>
     <string name="text_headset">Słuchawki</string>
@@ -179,11 +192,19 @@
     <string name="text_ok">Ok</string>
     <string name="text_cancel">Anuluj</string>
 
+    <string name="text_drvinst_prefer">Wybierz silnik efektów</string>
+    <string name="text_drvinst_sqdrv">B. wysoka jakość wymaga co najmniej dwurdzeniowego procesora i może zwiększysz zużycie baterii.
+\nKontynuować?
+    </string>
+
     <string name="text_drvvernotmatch">Do korzystania z ViPER4Android konieczna jest instalacja/aktualizacja dodatkowych bibliotek.
 \nZainstalować/Zaktualizować je teraz?
     </string>
 
     <string name="text_drvuninst_confim">Czy na pewno chcesz usunąć dodatkowe biblioteki?</string>
+
+    <string name="text_uiprefer">Interfejs</string>
+    <string name="text_uiprefer_dialog">Wybierz interfejs</string>
 
     <string name="text_commode">Tryb kompatybilności</string>
 
@@ -191,7 +212,7 @@
     <string name="text_install">Zainstaluj biblioteki</string>
     <string name="text_drvinst_ok">Biblioteki zostały zainstalowane, zrestartuj telefon.</string>
     <string name="text_drvuninst_ok">Biblioteki zostały usunięte, zrestartuj telefon.</string>
-    <string name="text_drvinst_failed">Błąd przy instalacji bibliotek, brak roota bądź busyboxa.</string>
+    <string name="text_drvinst_failed">Błąd przy instalacji bibliotek, brak roota.</string>
 
     <string name="text_changelog">Lista zmian</string>
     <string name="text_drv_status">Pokaż stan</string>
@@ -229,6 +250,12 @@
 \n\'Tryb kompatybilności\' - Wybierz tryb kompatybilności efektów.
 \n \'Normalny\' - Efekty działają globalnie.
 \n \'Kompatybilny\' - Efekty działają lokalnie.
+\n
+\n<b>Efekty V4A nie działają w Twoich odtwarzaczach?</b>
+\n    Przełącz się w tryb kompatybilności i spróbuj ponownie.
+\n
+\n<b>Jak zmienić jakość dźwięku?</b>
+\n    Odinstaluj biblioteki w menu, zrestartuj telefon i wybierz nowy silnik efektów przy uruchamianiu aplikacji.
 \n
 \n<b>Forum: http://forum.xda-developers.com/showthread.php?t=2191223</b>
     </string>
