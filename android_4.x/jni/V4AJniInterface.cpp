@@ -6,6 +6,14 @@
 #include "V4AJniInterface.h"
 #include "sndfile.h"
 
+JNIEXPORT jint JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniInterface_CheckLibraryUsable
+(
+	JNIEnv *env, jclass cls
+)
+{
+	return (jint)1;
+}
+
 JNIEXPORT jint JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniInterface_CheckCPUHasNEON
 (
 	JNIEnv *env, jclass cls

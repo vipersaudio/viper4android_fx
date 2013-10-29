@@ -43,6 +43,10 @@
     <string name="pref_xloud_spk_lowfreq">低頻響應頻率</string>
     <string name="pref_xloud_spk_highfreq">高頻響應頻率</string>
 
+    <string name="pref_spk_opt_title">揚聲器優化</string>
+    <string name="pref_spk_opt_summary_on">揚聲器優化已啟用</string>
+    <string name="pref_spk_opt_summary_off">揚聲器優化已停用</string>
+
     <string name="pref_equalizer_title">FIR等化器</string>
     <string name="pref_equalizer_summary_on">FIR等化器已啓用</string>
     <string name="pref_equalizer_summary_off">FIR等化器已停用</string>
@@ -166,6 +170,11 @@
 
     <string name="text_ok">確定</string>
     <string name="text_cancel">取消</string>
+
+    <string name="text_drvinst_prefer">請選擇您的偏好</string>
+    <string name="text_drvinst_sqdrv">最高音質需要至少雙核的CPU，而且可能會加快電量消耗。
+\n您確定要繼續嗎？
+    </string>
 
     <string name="text_drvvernotmatch">爲了正常使用ViPER4Android音效，您需要安裝或更新V4A驅動程式。
 \n安裝或更新過程將會自動完成，卸載時可以使用菜單中的卸載驅動。

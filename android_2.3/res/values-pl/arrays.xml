@@ -1,43 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="drvinst_prefer">
-        <item>Super Audio Quality</item>
-        <item>High Audio Quality</item>
-        <item>Power Saving</item>
+        <item>Bardzo wysoka jakość dźwięku</item>
+        <item>Wysoka jakość dźwięku</item>
+        <item>Oszczędzanie energii</item>
     </string-array>
     <string-array name="drvinst_prefer_values">
         <item>sq</item>
         <item>hq</item>
         <item>lq</item>
     </string-array>
-    <string-array name="ui_prefer">
-        <item>Beginner</item>
-        <item>Moderate</item>
-        <item>Expert</item>
-    </string-array>
-    <string-array name="ui_prefer_values">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-    </string-array>
-    <string-array name="compatible_mode">
-        <item>Normal</item>
-        <item>Compatible</item>
-    </string-array>
-    <string-array name="compatible_mode_values">
-        <item>global</item>
-        <item>local</item>
-    </string-array>
     <string-array name="colorfulmusic_coeffs">
-        <item>Slight</item>
-        <item>Level 1</item>
-        <item>Level 2</item>
-        <item>Level 3</item>
-        <item>Level 4</item>
-        <item>Level 5</item>
-        <item>Level 6</item>
-        <item>Level 7</item>
-        <item>Extreme</item>
+        <item>Delikatna</item>
+        <item>Poziom 1</item>
+        <item>Poziom 2</item>
+        <item>Poziom 3</item>
+        <item>Poziom 4</item>
+        <item>Poziom 5</item>
+        <item>Poziom 6</item>
+        <item>Poziom 7</item>
+        <item>Mocna</item>
     </string-array>
     <string-array name="colorfulmusic_coeffs_values">
         <item>120;200</item>
@@ -51,17 +33,17 @@
         <item>200;800</item>
     </string-array>
     <string-array name="colorfulmusic_midimage">
-        <item>Slight</item>
-        <item>Level 1</item>
-        <item>Level 2</item>
-        <item>Level 3</item>
-        <item>Level 4</item>
-        <item>Level 5</item>
-        <item>Level 6</item>
-        <item>Level 7</item>
-        <item>Level 8</item>
-        <item>Level 9</item>
-        <item>Extreme</item>
+        <item>Delikatna</item>
+        <item>Poziom 1</item>
+        <item>Poziom 2</item>
+        <item>Poziom 3</item>
+        <item>Poziom 4</item>
+        <item>Poziom 5</item>
+        <item>Poziom 6</item>
+        <item>Poziom 7</item>
+        <item>Poziom 8</item>
+        <item>Poziom 9</item>
+        <item>Mocna</item>
     </string-array>
     <string-array name="colorfulmusic_midimage_values">
         <item>100</item>
@@ -75,40 +57,6 @@
         <item>180</item>
         <item>190</item>
         <item>200</item>
-    </string-array>
-    <string-array name="conv_cross_channel">
-        <item>0 Percent</item>
-        <item>5 Percent</item>
-        <item>10 Percent</item>
-        <item>15 Percent</item>
-        <item>20 Percent</item>
-        <item>25 Percent</item>
-        <item>30 Percent</item>
-        <item>35 Percent</item>
-        <item>40 Percent</item>
-        <item>45 Percent</item>
-        <item>50 Percent</item>
-        <item>55 Percent</item>
-        <item>60 Percent</item>
-        <item>70 Percent</item>
-        <item>80 Percent</item>
-    </string-array>
-    <string-array name="conv_cross_channel_values">
-        <item>0</item>
-        <item>5</item>
-        <item>10</item>
-        <item>15</item>
-        <item>20</item>
-        <item>25</item>
-        <item>30</item>
-        <item>35</item>
-        <item>40</item>
-        <item>45</item>
-        <item>50</item>
-        <item>55</item>
-        <item>60</item>
-        <item>70</item>
-        <item>80</item>
     </string-array>
     <string-array name="diffsurround_delay">
         <item>2 ms</item>
@@ -185,17 +133,17 @@
         <item>100</item>
     </string-array>
     <string-array name="reverb_percent">
-        <item>0 Percent</item>
-        <item>10 Percent</item>
-        <item>20 Percent</item>
-        <item>30 Percent</item>
-        <item>40 Percent</item>
-        <item>50 Percent</item>
-        <item>60 Percent</item>
-        <item>70 Percent</item>
-        <item>80 Percent</item>
-        <item>90 Percent</item>
-        <item>100 Percent</item>
+        <item>0 Procent</item>
+        <item>10 Procent</item>
+        <item>20 Procent</item>
+        <item>30 Procent</item>
+        <item>40 Procent</item>
+        <item>50 Procent</item>
+        <item>60 Procent</item>
+        <item>70 Procent</item>
+        <item>80 Procent</item>
+        <item>90 Procent</item>
+        <item>100 Procent</item>
     </string-array>
     <string-array name="reverb_percent_values">
         <item>0</item>
@@ -210,7 +158,7 @@
         <item>90</item>
         <item>100</item>
     </string-array>
-    <string-array name="equalizer_preset_modes">
+    <array name="equalizer_preset_modes">
         <item>@string/eq_preset_acoustic</item>
         <item>@string/eq_preset_bass_booster</item>
         <item>@string/eq_preset_bass_reducer</item>
@@ -224,7 +172,7 @@
         <item>@string/eq_preset_treble_reducer</item>
         <item>@string/eq_preset_vocal_booster</item>
         <item>@string/eq_preset_custom</item>
-    </string-array>
+    </array>
     <string-array name="equalizer_preset_values">
         <item>4.5;4.5;3.5;1.2;1.0;0.5;1.4;1.75;3.5;2.5;</item>
         <item>10.0;6.5;4.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;</item>
@@ -237,13 +185,13 @@
         <item>6.5;6.5;4.0;0.0;0.0;0.0;0.0;0.0;-6.5;-4.0;</item>
         <item>0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;4.0;6.5;</item>
         <item>0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;-6.5;-4.0;</item>
-        <item>-2.5;-2.5;0.0;0.0;0.0;0.0;0.6;3.5;1.5;-2.0;</item>
+        <item>-2.5;-2.5;0.0;0.0;0.0;0.0;0.0;3.5;1.5;-2.0;</item>
         <item>custom</item>
     </string-array>
     <string-array name="cure_crossfeed">
-        <item>Slight</item>
-        <item>Moderate</item>
-        <item>Extreme</item>
+        <item>Delikatny</item>
+        <item>Umiarkowany</item>
+        <item>Mocny</item>
     </string-array>
     <string-array name="cure_crossfeed_values">
         <item>0</item>
@@ -251,11 +199,11 @@
         <item>2</item>
     </string-array>
     <string-array name="vhs_qual">
-        <item>Level 1</item>
-        <item>Level 2</item>
-        <item>Level 3</item>
-        <item>Level 4</item>
-        <item>Level 5</item>
+        <item>Poziom 1</item>
+        <item>Poziom 2</item>
+        <item>Poziom 3</item>
+        <item>Poziom 4</item>
+        <item>Poziom 5</item>
     </string-array>
     <string-array name="vhs_qual_values">
         <item>0</item>
@@ -265,9 +213,9 @@
         <item>4</item>
     </string-array>
     <string-array name="playbackgain_ratio">
-        <item>Slight</item>
-        <item>Moderate</item>
-        <item>Extreme</item>
+        <item>Delikatna</item>
+        <item>Umiarkowana</item>
+        <item>Mocna</item>
     </string-array>
     <string-array name="playbackgain_ratio_values">
         <item>50</item>
@@ -411,41 +359,41 @@
         <item>100</item>
     </string-array>
     <string-array name="dynamicsystem_bass">
-        <item>0 Percent</item>
-        <item>1 Percent</item>
-        <item>2 Percent</item>
-        <item>3 Percent</item>
-        <item>4 Percent</item>
-        <item>5 Percent</item>
-        <item>6 Percent</item>
-        <item>7 Percent</item>
-        <item>8 Percent</item>
-        <item>9 Percent</item>
-        <item>10 Percent</item>
-        <item>12 Percent</item>
-        <item>14 Percent</item>
-        <item>16 Percent</item>
-        <item>18 Percent</item>
-        <item>20 Percent</item>
-        <item>22 Percent</item>
-        <item>24 Percent</item>
-        <item>26 Percent</item>
-        <item>28 Percent</item>
-        <item>30 Percent</item>
-        <item>33 Percent</item>
-        <item>36 Percent</item>
-        <item>40 Percent</item>
-        <item>45 Percent</item>
-        <item>50 Percent</item>
-        <item>55 Percent</item>
-        <item>60 Percent</item>
-        <item>70 Percent</item>
-        <item>80 Percent</item>
-        <item>90 Percent</item>
-        <item>100 Percent</item>
-        <item>120 Percent</item>
-        <item>150 Percent</item>
-        <item>200 Percent</item>
+        <item>0 Procent</item>
+        <item>1 Procent</item>
+        <item>2 Procent</item>
+        <item>3 Procent</item>
+        <item>4 Procent</item>
+        <item>5 Procent</item>
+        <item>6 Procent</item>
+        <item>7 Procent</item>
+        <item>8 Procent</item>
+        <item>9 Procent</item>
+        <item>10 Procent</item>
+        <item>12 Procent</item>
+        <item>14 Procent</item>
+        <item>16 Procent</item>
+        <item>18 Procent</item>
+        <item>20 Procent</item>
+        <item>22 Procent</item>
+        <item>24 Procent</item>
+        <item>26 Procent</item>
+        <item>28 Procent</item>
+        <item>30 Procent</item>
+        <item>33 Procent</item>
+        <item>36 Procent</item>
+        <item>40 Procent</item>
+        <item>45 Procent</item>
+        <item>50 Procent</item>
+        <item>55 Procent</item>
+        <item>60 Procent</item>
+        <item>70 Procent</item>
+        <item>80 Procent</item>
+        <item>90 Procent</item>
+        <item>100 Procent</item>
+        <item>120 Procent</item>
+        <item>150 Procent</item>
+        <item>200 Procent</item>
     </string-array>
     <string-array name="dynamicsystem_bass_values">
         <item>0</item>
@@ -485,25 +433,25 @@
         <item>200</item>
     </string-array>
     <string-array name="dynamicsystem_outputs">
-        <item>Extreme Headphone(v2)</item>
-        <item>High-end Headphone(v2)</item>
-        <item>Common Headphone(v2)</item>
-        <item>Low-end Headphone(v2)</item>
-        <item>Common Earphone(v2)</item>
-        <item>Extreme Headphone(v1)</item>
-        <item>High-end Headphone(v1)</item>
-        <item>Common Headphone(v1)</item>
-        <item>Common Earphone(v1)</item>
-        <item>Apple Earphone</item>
-        <item>Monster Earphone</item>
-        <item>Moto Earphone</item>
-        <item>Philips Earphone</item>
+        <item>Nauszne z mocnym basem(v2)</item>
+        <item>Nauszne wysokiej klasy(v2)</item>
+        <item>Nauszne uniwersalne(v2)</item>
+        <item>Nauszne niskiej klasy(v2)</item>
+        <item>Douszne uniwersalne(v2)</item>
+        <item>Nauszne z mocnym basem(v1)</item>
+        <item>Nauszne wysokiej klasy(v1)</item>
+        <item>Nauszne uniwersalne(v1</item>
+        <item>Douszne uniwersalne(v1)</item>
+        <item>Douszne Apple</item>
+        <item>Douszne Monster</item>
+        <item>Douszne Motoroli</item>
+        <item>Douszne Philips</item>
         <item>SHP2000</item>
         <item>SHP9000</item>
-        <item>Unknown Type I</item>
-        <item>Unknown Type II</item>
-        <item>Unknown Type III</item>
-        <item>Unknown Type IV</item>
+        <item>Nieznany Typ I</item>
+        <item>Nieznany Typ II</item>
+        <item>Nieznany Typ III</item>
+        <item>Nieznany Typ IV</item>
     </string-array>
     <string-array name="dynamicsystem_outputs_values">
         <item>140;6200;40;60;10;80</item>
@@ -527,8 +475,8 @@
         <item>800;6200;80;140;0;0</item>
     </string-array>
     <string-array name="vbass_mode">
-        <item>Natural Bass</item>
-        <item>Pure Bass+</item>
+        <item>Naturalny Bas</item>
+        <item>Czysty Bas+</item>
     </string-array>
     <string-array name="vbass_mode_values">
         <item>0</item>
@@ -577,7 +525,7 @@
         <item>600</item>
     </string-array>
     <string-array name="vclarity_mode">
-        <item>Natural</item>
+        <item>Naturalna</item>
         <item>OZone+</item>
         <item>XHiFi</item>
     </string-array>
@@ -587,7 +535,7 @@
         <item>2</item>
     </string-array>
     <string-array name="vclarity_boost">
-        <item>Default</item>
+        <item>Domyślnie</item>
         <item>3.5 dB</item>
         <item>6.0 dB</item>
         <item>8.0 dB</item>

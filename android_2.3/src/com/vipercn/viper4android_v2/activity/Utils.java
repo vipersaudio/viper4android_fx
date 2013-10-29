@@ -396,6 +396,8 @@ public class Utils
         		bwOutput.write("viper4android.headphonefx.enable=boolean=" + szValue + "\n");
         		szValue = String.valueOf(preferences.getBoolean("viper4android.speakerfx.enable", false));
         		bwOutput.write("viper4android.speakerfx.enable=boolean=" + szValue + "\n");
+        		szValue = String.valueOf(preferences.getBoolean("viper4android.speakerfx.spkopt.enable", false));
+        		bwOutput.write("viper4android.speakerfx.spkopt.enable=boolean=" + szValue + "\n");
         		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.playbackgain.enable", false));
         		bwOutput.write("viper4android.headphonefx.playbackgain.enable=boolean=" + szValue + "\n");
         		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.fireq.enable", false));
@@ -434,6 +436,8 @@ public class Utils
         		bwOutput.write("viper4android.headphonefx.fireq.custom=string=" + szValue + "\n");
         		szValue = preferences.getString("viper4android.headphonefx.convolver.kernel", "");
         		bwOutput.write("viper4android.headphonefx.convolver.kernel=string=" + szValue + "\n");
+        		szValue = preferences.getString("viper4android.headphonefx.convolver.crosschannel", "0");
+        		bwOutput.write("viper4android.headphonefx.convolver.crosschannel=string=" + szValue + "\n");
         		szValue = preferences.getString("viper4android.headphonefx.colorfulmusic.coeffs", "120;200");
         		bwOutput.write("viper4android.headphonefx.colorfulmusic.coeffs=string=" + szValue + "\n");
         		szValue = preferences.getString("viper4android.headphonefx.colorfulmusic.midimage", "150");

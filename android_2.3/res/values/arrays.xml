@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+  <string-array name="drvinst_prefer">
+    <item>Super Audio Quality</item>
+    <item>High Audio Quality</item>
+    <item>Power Saving</item>
+  </string-array>
+
+  <string-array name="drvinst_prefer_values">
+    <item>sq</item>
+    <item>hq</item>
+    <item>lq</item>
+  </string-array>
+
   <string-array name="colorfulmusic_coeffs">
     <item>Slight</item>
     <item>Level 1</item>

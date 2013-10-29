@@ -1,5 +1,6 @@
 package com.vipercn.viper4android_v2.activity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -56,6 +57,19 @@ public final class MainDSPScreen extends PreferenceFragment
 				}
 			}
 
+			if ("viper4android.global.forceenable.enable".equals(key))
+			{
+				if (sharedPreferences.getBoolean(key, false))
+				{
+					// If force-enable switched on, popup a warning
+	    			AlertDialog.Builder mResult = new AlertDialog.Builder(getActivity());
+	    			mResult.setTitle("ViPER4Android");
+	    			mResult.setMessage(getActivity().getResources().getString(R.string.pref_force_enable_warn));
+	    			mResult.setNegativeButton(getActivity().getResources().getString(R.string.text_ok), null);
+	    			mResult.show();
+				}
+			}
+
 			getActivity().sendBroadcast(new Intent(ViPER4Android.ACTION_UPDATE_PREFERENCES));
 		}
 	};
@@ -66,11 +80,14 @@ public final class MainDSPScreen extends PreferenceFragment
 		super.onCreate(savedInstanceState);
 		String config = getArguments().getString("config");
 
-		getPreferenceManager().setSharedPreferencesName(ViPER4Android.SHARED_PREFERENCES_BASENAME + "." + config);
+		SharedPreferences prefSettings = getActivity().getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", 0);
+		int nControlLevel = prefSettings.getInt("viper4android.settings.uiprefer", 0);
+		if ((nControlLevel < 0) || (nControlLevel > 2)) nControlLevel = 0;
 
+		getPreferenceManager().setSharedPreferencesName(ViPER4Android.SHARED_PREFERENCES_BASENAME + "." + config);
 		try
 		{
-			int xmlId = R.xml.class.getField(config + "_preferences").getInt(null);
+			int xmlId = R.xml.class.getField(config + "_preferences_l" + nControlLevel).getInt(null);
 			addPreferencesFromResource(xmlId);
 		}
 		catch (Exception e)
