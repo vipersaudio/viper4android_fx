@@ -5,7 +5,7 @@
     <string name="headset_title">Słuchawki</string>
     <string name="speaker_title">Głośnik</string>
     <string name="bluetooth_title">Bluetooth</string>
-    <string name="audio_effects">Efekty Audio</string>
+    <string name="audio_effects">Efekty dźwiękowe</string>
 
     <string name="dsp_settings_headset">Ustawienia - Słuchawki</string>
     <string name="dsp_settings_speaker">Ustawienia - Głośnik</string>
@@ -55,7 +55,7 @@
 
     <string name="pref_dynamicsystem_title">Dynamika</string>
     <string name="pref_dynamicsystem_summary_on">Aktywna</string>
-    <string name="pref_dynamicsystem_summary_off">Nieaktywny</string>
+    <string name="pref_dynamicsystem_summary_off">Nieaktywna</string>
     <string name="pref_dynamicsystem_enable">Dynamika dźwięku</string>
     <string name="pref_dynamicsystem_output">Słuchawki</string>
     <string name="pref_dynamicsystem_output_title">Słuchawki</string>
@@ -148,13 +148,13 @@
     <string name="text_ir_dir_isempty">Brak przykładowych impulsów w %1$s.</string>
     <string name="text_token_lost">Napotkano błąd, spróbuj ponownie załadować biblioteki.</string>
     <string name="text_enabled">Włączone</string>
-    <string name="text_disabled">Domyślna</string>
+    <string name="text_disabled">Wyłączone</string>
     <string name="text_headset">Słuchawki</string>
     <string name="text_bluetooth">Bluetooth</string>
     <string name="text_speaker">Głośnik</string>
     <string name="text_showtrayicon">Pokaż powiadomienia</string>
     <string name="text_hidetrayicon">Ukryj powiadomienia</string>
-    <string name="text_lockeffect">Strona główna</string>
+    <string name="text_lockeffect">Stosuj do wsz. urządzeń</string>
     <string name="text_yes">Tak</string>
     <string name="text_no">Nie</string>
     <string name="text_normal">Prawidłowy</string>
@@ -168,7 +168,7 @@
     </string>
     <string name="text_profilesaved_ok">Zapisano profil.</string>
     <string name="text_profilesaved_err">Nie można zapisać, profil o podanej nazwie już istnieje.</string>
-    <string name="text_profilesaved_overwrite">Profil o takiej nazwie już istnieje, nadpisać?</string>
+    <string name="text_profilesaved_overwrite">Profil o takiej nazwie już istnieje, zastąpić?</string>
     <string name="text_profileload_ok">Wczytano profil.</string>
     <string name="text_profileload_err">Nie można wczytać profilu.</string>
 
@@ -176,12 +176,12 @@
     <string name="text_ok">OK</string>
     <string name="text_cancel">Anuluj</string>
     <string name="text_drvinst_prefer">Wybierz swoje preferencje</string>
-    <string name="text_drvinst_sqdrv">B. wysoka jakość wymaga co najmniej dwurdzeniowego procesora i może zwiększysz zużycie baterii.
+    <string name="text_drvinst_sqdrv">B. wysoka jakość wymaga co najmniej dwurdzeniowego procesora i może zwiększyć zużycie baterii.
 \nKontynuować?
     </string>
 
     <string name="text_drvvernotmatch">Do korzystania z ViPER4Android konieczna jest instalacja/aktualizacja dodatkowych bibliotek.
-\nZainstalować/Zaktualizować je teraz?
+\nZainstalować/zaktualizować je teraz?
     </string>
 
     <string name="text_drvuninst_confim">Czy na pewno chcesz usunąć dodatkowe biblioteki?</string>
