@@ -3,30 +3,30 @@
     <string name="app_name">ViPER4Android FX</string>
     <string name="select_configuration_title">ViPER4Android FX</string>
     <string name="headset_title">耳機</string>
-    <string name="speaker_title">揚聲器</string>
-    <string name="bluetooth_title">藍牙設備</string>
-    <string name="audio_effects">音頻效果</string>
+    <string name="speaker_title">喇叭</string>
+    <string name="bluetooth_title">藍牙裝置</string>
+    <string name="audio_effects">音訊效果</string>
 
     <string name="dsp_settings_headset">音效設定 - 耳機</string>
-    <string name="dsp_settings_speaker">音效設定 - 揚聲器</string>
-    <string name="dsp_settings_bluetooth">音效設定 - 藍牙設備</string>
+    <string name="dsp_settings_speaker">音效設定 - 喇叭</string>
+    <string name="dsp_settings_bluetooth">音效設定 - 藍牙裝置</string>
 
     <string name="pref_dsp_enable">啓用</string>
     <string name="pref_effect_title">選擇效果強度</string>
     <string name="dialog_effect">效果強度</string>
 
     <string name="pref_force_enable_text">強行啟用V4A音效</string>
-    <string name="pref_force_enable_warn">開啟強行啟用后可以解決大部份播放器無音效的問題，但可能會在某些ROM上造成其他影響，如沒有聲音和加快耗電等問題。
+    <string name="pref_force_enable_warn">開啟強行啟用後可以解決大部份播放器無音效的問題，但可能會在某些ROM上造成其他影響，如沒有聲音和加快耗電等問題。
 \n如果遇到類似現象，請關閉這個功能。
     </string>
 
-    <string name="pref_fx_master_title">效果總開關</string>
-    <string name="pref_fx_master_summary_on">V4A效果已開啓</string>
-    <string name="pref_fx_master_summary_off">V4A效果已關閉</string>
+    <string name="pref_fx_master_title">音效總開關</string>
+    <string name="pref_fx_master_summary_on">V4A音效已開啓</string>
+    <string name="pref_fx_master_summary_off">V4A音效已關閉</string>
 
-    <string name="pref_spkfx_master_title">效果總開關</string>
-    <string name="pref_spkfx_master_summary_on">V4A揚聲器效果已開啓</string>
-    <string name="pref_spkfx_master_summary_off">V4A揚聲器效果已關閉</string>
+    <string name="pref_spkfx_master_title">音效總開關</string>
+    <string name="pref_spkfx_master_summary_on">V4A喇叭音效已開啓</string>
+    <string name="pref_spkfx_master_summary_off">V4A喇叭音效已關閉</string>
 
     <string name="pref_fx_limiter_title">總輸出門檻限制</string>
     <string name="pref_fx_limiter_threshold">輸出強度</string>
@@ -48,9 +48,9 @@
     <string name="pref_xloud_spk_lowfreq">低頻響應頻率</string>
     <string name="pref_xloud_spk_highfreq">高頻響應頻率</string>
 
-    <string name="pref_spk_opt_title">揚聲器優化</string>
-    <string name="pref_spk_opt_summary_on">揚聲器優化已啟用</string>
-    <string name="pref_spk_opt_summary_off">揚聲器優化已停用</string>
+    <string name="pref_spk_opt_title">喇叭優化</string>
+    <string name="pref_spk_opt_summary_on">喇叭優化已啟用</string>
+    <string name="pref_spk_opt_summary_off">喇叭優化已停用</string>
 
     <string name="pref_equalizer_title">FIR等化器</string>
     <string name="pref_equalizer_summary_on">FIR等化器已啓用</string>
@@ -150,35 +150,35 @@
     <string name="eq_preset_treble_booster">高音強化</string>
     <string name="eq_preset_treble_reducer">高音弱化</string>
     <string name="eq_preset_vocal_booster">人聲強化</string>
-    <string name="eq_preset_custom">自定義</string>
+    <string name="eq_preset_custom">自訂</string>
 
     <string name="text_ir_dir_isempty">ViPER4Android: 脈衝回饋效果樣本資料夾 %1$s 是空的。</string>
-    <string name="text_token_lost">ViPER4Android: 某個程式已經請求操作系統禁用全局音效，因此V4A將會被臨時停用。</string>
+    <string name="text_token_lost">ViPER4Android: 某個程式已經請求操作系統停用全局音效，因此V4A將會被臨時停用。</string>
     <string name="text_enabled">已啓用</string>
     <string name="text_disabled">已停用</string>
-    <string name="text_headset">頭戴設備</string>
-    <string name="text_bluetooth">藍牙設備</string>
-    <string name="text_speaker">揚聲器</string>
-    <string name="text_showtrayicon">啟用通知欄圖標</string>
-    <string name="text_hidetrayicon">停用通知欄圖標</string>
-    <string name="text_lockeffect">鎖定效果模式</string>
+    <string name="text_headset">頭戴裝置</string>
+    <string name="text_bluetooth">藍牙裝置</string>
+    <string name="text_speaker">喇叭</string>
+    <string name="text_showtrayicon">啟用狀態列圖示</string>
+    <string name="text_hidetrayicon">停用狀態列圖示</string>
+    <string name="text_lockeffect">鎖定音效模式</string>
     <string name="text_yes">是</string>
     <string name="text_no">否</string>
     <string name="text_normal">正常</string>
-    <string name="text_abnormal">出錯</string>
+    <string name="text_abnormal">發生錯誤</string>
 
     <string name="text_effectprofile">音效配置</string>
-    <string name="text_loadfxprofile">加載音效配置</string>
-    <string name="text_savefxprofile">保存音效配置</string>
-    <string name="text_pleaseinputname">請輸入配置文件的名稱
+    <string name="text_loadfxprofile">載入音效配置</string>
+    <string name="text_savefxprofile">儲存音效配置</string>
+    <string name="text_pleaseinputname">請輸入配置檔案的名稱
 \n不能包含\'=\'
     </string>
-    <string name="text_profilesaved_ok">配置文件已保存。</string>
-    <string name="text_profilesaved_err">無法保存配置文件，名稱已經存在。</string>
-    <string name="text_profilesaved_overwrite">配置文件名稱已經存在，是否需要覆蓋？</string>
-    <string name="text_profileload_ok">配置文件已加載。</string>
-    <string name="text_profileload_err">無法加載配置文件。</string>
-    <string name="text_rwsd_error">無法讀寫外置存儲裝置。</string>
+    <string name="text_profilesaved_ok">配置檔案已儲存。</string>
+    <string name="text_profilesaved_err">無法儲存配置檔案，名稱已經存在。</string>
+    <string name="text_profilesaved_overwrite">配置檔案名稱已經存在，是否需要覆蓋？</string>
+    <string name="text_profileload_ok">配置檔案已載入。</string>
+    <string name="text_profileload_err">無法載入配置檔案。</string>
+    <string name="text_rwsd_error">無法讀寫外部儲存裝置。</string>
 
     <string name="text_ok">確定</string>
     <string name="text_cancel">取消</string>
@@ -189,28 +189,28 @@
     </string>
 
     <string name="text_drvvernotmatch">爲了正常使用ViPER4Android音效，您需要安裝或更新V4A驅動程式。
-\n安裝或更新過程將會自動完成，卸載時可以使用菜單中的卸載驅動。
+\n安裝或更新過程將會自動完成，解除安裝時可以使用選單中的解除安裝驅動程式。
 \n現在安裝或更新嗎？
     </string>
 
-    <string name="text_drvuninst_confim">您確定要卸載V4A驅動程式嗎？</string>
+    <string name="text_drvuninst_confim">您確定要解除安裝V4A驅動程式嗎？</string>
 
     <string name="text_uiprefer">界面控制級別</string>
     <string name="text_uiprefer_dialog">請選擇您的偏好</string>
 
     <string name="text_commode">音效兼容模式</string>
 
-    <string name="text_uninstall">卸載驅動</string>
-    <string name="text_install">安裝驅動</string>
-    <string name="text_drvinst_ok">驅動已安裝，請重啟手機以生效。</string>
-    <string name="text_drvuninst_ok">驅動已卸載，請重啟手機以生效。</string>
-    <string name="text_drvinst_failed">驅動安裝失敗，請確認您的手機已經ROOT並且安裝了su二進制檔案。</string>
+    <string name="text_uninstall">解除安裝驅動程式</string>
+    <string name="text_install">安裝驅動程式</string>
+    <string name="text_drvinst_ok">驅動程式已安裝，請重啟手機以生效。</string>
+    <string name="text_drvuninst_ok">驅動程式已解除安裝，請重啟手機以生效。</string>
+    <string name="text_drvinst_failed">驅動安裝失敗，請確認您的手機已經取得 ROOT 權限並且安裝了su二進制檔案。</string>
 
-    <string name="text_changelog">更新日誌</string>
+    <string name="text_changelog">更新資訊</string>
     <string name="text_drv_status">驅動程式狀態</string>
     <string name="text_drv_status_view">
 \n
-\n驅動版本: %1$s
+\n驅動程式版本: %1$s
 \nNEON已啟用: %2$s
 \n已啟用: %3$s
 \n狀態: %4$s
@@ -220,18 +220,18 @@
 \n聲道數量: %8$d
 \n
     </string>
-    <string name="text_service_error">無法和ViPER4Android背景服務建立連接，可能是無法加載驅動或背景服務程序已被殺死。</string>
+    <string name="text_service_error">無法和ViPER4Android背景服務建立連接，可能是無法載入驅動程式或背景服務程序已被殺死。</string>
 
-    <string name="about_title">幫助和關于</string>
-    <string name="about_text">***關于ViPER4Android***
+    <string name="about_title">幫助和關於</string>
+    <string name="about_text">***關於ViPER4Android***
 \n
 \n\'libv4a_xx_xx.so\'是ViPER4Android的核心組件。
 \n版權所有© 2006-2016，vipercn.com。保留所有權利。
-\n未經官方許可，不可用于商業用途(包括有連帶/包含關系的廣告營收等)。
+\n未經官方許可，不可用於商業用途(包括有連帶/包含關系的廣告營收等)。
 \n官方論壇: forum.vipersaudio.com
 \n
 \n\'ViPER4Android.apk\'是ViPER4Android的控制面板。
-\n基于Cyanogenmod的DSPManager中部分代碼而做。
+\n基於Cyanogenmod的DSPManager中部分代碼而做。
 \n
 \n版本 %1$s (FX), 代碼 "Beautiful"。
 \n
@@ -239,17 +239,17 @@
 
     <string name="text_help_content">***一般性幫助***
 \n
-\n\'安裝驅動\' - 安裝或更新V4A驅動程式。
-\n\'卸載驅動\' - 卸載V4A驅動程式。
+\n\'安裝驅動程式\' - 安裝或更新V4A驅動程式。
+\n\'解除安裝驅動\' - 解除安裝V4A驅動程式。
 \n\'音效兼容模式\' - 設定音效的兼容模式。
 \n    \'正常模式\' - 將V4A用作全局音效。
 \n    \'兼容模式\' - 將V4A用作局部音效。
 \n
-\n<b>您是否遇到过在大多数播放器上V4A无效的问题？</b>
-\n    您可以将音效模式切换到兼容模式，然后再试。
+\n<b>您是否遇到過在大多數播放器上V4A無效的問題？</b>
+\n    您可以將音效模式切換到兼容模式，然後再試。
 \n
-\n<b>如何更改當前的音頻處理品質？</b>
-\n    在菜單中卸載驅動，重啟手機后選擇您期望的品質模式。
+\n<b>如何更改當前的音訊處理品質？</b>
+\n    在選單中解除安裝驅動程式，重啟手機後選擇您期望的品質模式。
 \n
 \n<b>論壇：http://forum.vipersaudio.com</b>
     </string>

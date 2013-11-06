@@ -217,6 +217,7 @@
   <string-array name="vbass_mode">
     <item>自然低音</item>
     <item>醇低音+</item>
+    <item>低音炮</item>
   </string-array>
   <string-array name="vbass_freq">
     <item>40 赫茲</item>

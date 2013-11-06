@@ -177,57 +177,42 @@ public final class ViPER4Android extends FragmentActivity
 		}
 	}
 
-	private boolean ProcessDriverCheck()
+	private void ProcessDriverCheck()
 	{
-		Log.i("ViPER4Android", "Enter ProcessDriverCheck()");
+		boolean bDriverIsUsable = false;
 
-		if (!StaticEnvironment.DriverInited())
-		{
-			Log.i("ViPER4Android", "Android audio effect engine not prepared");
-			return false;
-		}
+		Utils.AudioEffectUtils aeuUtils = (new Utils()).new AudioEffectUtils();
+		if (!aeuUtils.IsViPER4AndroidEngineFound())
+			bDriverIsUsable = false;
 		else
 		{
-			if (!StaticEnvironment.DriverIsUsable())
+			PackageManager packageMgr = getPackageManager();
+			PackageInfo packageInfo = null;
+			String szApkVer = "";
+			try
 			{
-				Log.i("ViPER4Android", "Android audio effect engine reports the v4a driver is not usable");
-			    Message message = new Message();
-			    message.what = 0xA00A;
-			    message.obj = (Context)this;
-			    hProceedDriverHandler.sendMessage(message);
-				return true;	
+				int[] iaDrvVer = aeuUtils.GetViPER4AndroidEngineVersion();
+				String szDriverVersion = iaDrvVer[0] + "." + iaDrvVer[1] + "." + iaDrvVer[2] + "." + iaDrvVer[3];
+				packageInfo = packageMgr.getPackageInfo(getPackageName(), 0);
+				szApkVer = packageInfo.versionName;
+				if (!szApkVer.equalsIgnoreCase(szDriverVersion))
+					bDriverIsUsable = false;
+				else bDriverIsUsable = true;
 			}
-			else
+			catch (NameNotFoundException e)
 			{
-				String szDrvVer = StaticEnvironment.DriverVersion();
-				PackageManager packageMgr = getPackageManager();
-				PackageInfo packageInfo = null;
-				String szApkVer = "";
-				try
-				{
-					packageInfo = packageMgr.getPackageInfo(getPackageName(), 0);
-					szApkVer = packageInfo.versionName;
-					if (!szApkVer.equalsIgnoreCase(szDrvVer))
-					{
-						Log.i("ViPER4Android", "Driver version is not compatible with apk");
-				        Message message = new Message();
-				        message.what = 0xA00A;
-				        message.obj = (Context)this;
-				        hProceedDriverHandler.sendMessage(message);
-				        return true;
-					}
-					else
-					{
-						Log.i("ViPER4Android", "Good, driver is fine");
-						return true;
-					}
-				}
-				catch (NameNotFoundException e)
-				{
-					Log.i("ViPER4Android", "Can not get application version, msg = " + e.getMessage());
-					return false;
-				}
+				Log.i("ViPER4Android", "Cannot found ViPER4Android's apk [weird]");
+				bDriverIsUsable = true;
 			}
+		}
+
+		if (!bDriverIsUsable)
+		{
+			Log.i("ViPER4Android", "Android audio effect engine reports the v4a driver is not usable");
+		    Message message = new Message();
+		    message.what = 0xA00A;
+		    message.obj = (Context)this;
+		    hProceedDriverHandler.sendMessage(message);
 		}
 	}
 
@@ -304,7 +289,6 @@ public final class ViPER4Android extends FragmentActivity
     protected ViewPager viewPager;
 
     private ArrayList<String> mProfileList = new ArrayList<String>();
-    private boolean mKillAllThread = false;
     private Context mActivityContext = this;
     private ViPER4AndroidService mAudioServiceInstance = null;
 
@@ -436,6 +420,22 @@ public final class ViPER4Android extends FragmentActivity
 	    }
 	};
 
+    private ServiceConnection mAudioServiceConnection = new ServiceConnection()
+	{
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder binder)
+        {
+        	ViPER4AndroidService service = ((ViPER4AndroidService.LocalBinder)binder).getService();
+            mAudioServiceInstance = service;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name)
+        {
+        	Log.i("ViPER4Android", "ViPER4Android service disconnected.");
+        }
+    };
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -452,10 +452,10 @@ public final class ViPER4Android extends FragmentActivity
         }
 
         // Start background service
-        mKillAllThread = false;
         Log.i("ViPER4Android", "Starting service, reason = ViPER4Android::onCreate");
         Intent serviceIntent = new Intent(this, ViPER4AndroidService.class);
         startService(serviceIntent);
+        bindService(serviceIntent, mAudioServiceConnection, Context.BIND_IMPORTANT);
 
         // Setup ui
         setContentView(R.layout.top);
@@ -554,13 +554,8 @@ public final class ViPER4Android extends FragmentActivity
 				StaticEnvironment.InitEnvironment(mActivityContext);
 
 				// Driver check loop
-				Log.i("ViPER4Android", "Begin driver check");
-				while (!mKillAllThread)
-				{
-					if (ProcessDriverCheck()) break;
-					SystemClock.sleep(1000);
-				}
-				Log.i("ViPER4Android", "End driver check");
+				Log.i("ViPER4Android", "Check driver");
+				ProcessDriverCheck();
 			}
 		});
 		postInitThread.start();
@@ -570,57 +565,39 @@ public final class ViPER4Android extends FragmentActivity
     public void onDestroy()
     {
     	Log.i("ViPER4Android", "Main activity onDestroy()");
-    	mKillAllThread = true;
+    	unbindService(mAudioServiceConnection);
+    	mAudioServiceInstance = null;
     	super.onDestroy();
     }
 
     @Override
     public void onResume()
     {
+    	Log.i("ViPER4Android", "Main activity onResume()");
+
         super.onResume();
 
-        Log.i("ViPER4Android", "Main activity onResume()");
-        mKillAllThread = false;
-
-        ServiceConnection connection = new ServiceConnection()
+        if (mAudioServiceInstance != null)
         {
-            @Override
-            public void onServiceConnected(ComponentName name, IBinder binder)
+            String routing = mAudioServiceInstance.getAudioOutputRouting();
+            String[] entries = pagerAdapter.getEntries();
+            for (int i = 0; i < entries.length; i++)
             {
-            	ViPER4AndroidService service = ((ViPER4AndroidService.LocalBinder)binder).getService();
-                mAudioServiceInstance = service;
-
-                String routing = service.getAudioOutputRouting();
-                String[] entries = pagerAdapter.getEntries();
-                for (int i = 0; i < entries.length; i++)
+                if (routing.equals(entries[i]))
                 {
-                    if (routing.equals(entries[i]))
-                    {
-                        viewPager.setCurrentItem(i);
-                        actionBar.selectTab(actionBar.getTabAt(i));
-                        break;
-                    }
+                    viewPager.setCurrentItem(i);
+                    actionBar.selectTab(actionBar.getTabAt(i));
+                    break;
                 }
-                unbindService(this);
             }
-
-            @Override
-            public void onServiceDisconnected(ComponentName name)
-            { Log.i("ViPER4Android", "ViPER4Android service disconnected."); }
-        };
-
-        Log.i("ViPER4Android", "Binding service, reason = ViPER4Android::onResume");
-        Intent serviceIntent = new Intent(this, ViPER4AndroidService.class);
-        bindService(serviceIntent, connection, 0);
+        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-    	Log.i("ViPER4Android", "Enter onCreateOptionsMenu()");
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
-        Log.i("ViPER4Android", "Exit onCreateOptionsMenu()");
         return true;
     }
 
@@ -805,10 +782,14 @@ public final class ViPER4Android extends FragmentActivity
 							else if (mAudioServiceInstance.GetDriverEffectType() == ViPER4AndroidService.V4A_FX_TYPE_SPEAKER)
 								szDrvEffType = getResources().getString(R.string.text_speaker);
 
+							Utils.AudioEffectUtils aeuUtils = (new Utils()).new AudioEffectUtils();
+							int[] iaDrvVer = aeuUtils.GetViPER4AndroidEngineVersion();
+							String szDriverVersion = iaDrvVer[0] + "." + iaDrvVer[1] + "." + iaDrvVer[2] + "." + iaDrvVer[3];
+
 							String szDrvStatus = "";
 							szDrvStatus = getResources().getString(R.string.text_drv_status_view);
 							szDrvStatus = String.format(szDrvStatus,
-									mAudioServiceInstance.GetDriverVersion(), szDrvNEONEnabled,
+									szDriverVersion, szDrvNEONEnabled,
 									szDrvEnabled, szDrvUsable, szDrvProcess,
 									szDrvEffType,
 									mAudioServiceInstance.GetDriverSamplingRate(),

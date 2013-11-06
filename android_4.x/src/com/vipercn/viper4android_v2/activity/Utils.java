@@ -3,6 +3,7 @@ package com.vipercn.viper4android_v2.activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.media.audiofx.AudioEffect;
 import android.os.Environment;
 import android.util.Log;
 
@@ -27,9 +28,127 @@ import java.util.StringTokenizer;
 import com.stericson.RootTools.*;
 import com.stericson.RootTools.execution.CommandCapture;
 import com.vipercn.viper4android_v2.activity.V4AJniInterface;
+import com.vipercn.viper4android_v2.service.ViPER4AndroidService;
 
 public class Utils
 {
+	public class AudioEffectUtils
+	{
+		private AudioEffect.Descriptor[] mAudioEffectList = null;
+		private boolean mHasViPER4AndroidEngine = false;
+		private int[] mV4AEngineVersion = new int[4];
+
+		public AudioEffectUtils()
+		{
+			try { mAudioEffectList = AudioEffect.queryEffects(); }
+			catch (Exception e)
+			{
+				mAudioEffectList = null;
+				mHasViPER4AndroidEngine = false;
+				mV4AEngineVersion[0] = 0;
+				mV4AEngineVersion[1] = 0;
+				mV4AEngineVersion[2] = 0;
+				mV4AEngineVersion[3] = 0;
+				Log.e("ViPER4Android_Utils", "Failed to query audio effects");
+				return;
+			}
+			if (mAudioEffectList == null)
+			{
+				mHasViPER4AndroidEngine = false;
+				mV4AEngineVersion[0] = 0;
+				mV4AEngineVersion[1] = 0;
+				mV4AEngineVersion[2] = 0;
+				mV4AEngineVersion[3] = 0;
+				Log.e("ViPER4Android_Utils", "Failed to query audio effects");
+				return;
+			}
+
+			AudioEffect.Descriptor aeViPER4AndroidEngine = null;
+			Log.i("ViPER4Android_Utils", "Found " + mAudioEffectList.length + " effects");
+			for (int i = 0; i < mAudioEffectList.length; i++)
+			{
+				if (mAudioEffectList[i] == null) continue;
+				try
+				{
+					AudioEffect.Descriptor aeEffect = mAudioEffectList[i];
+					Log.i("ViPER4Android_Utils", "[" + (i + 1) + "], " + aeEffect.name + ", " + aeEffect.implementor);
+					if (aeEffect.uuid.equals(ViPER4AndroidService.ID_V4A_GENERAL_FX))
+					{
+						Log.i("ViPER4Android_Utils", "Perfect, found ViPER4Android engine at " + (i + 1));
+						aeViPER4AndroidEngine = aeEffect;
+					}
+				}
+				catch (Exception e) { continue; }
+			}
+
+			if (aeViPER4AndroidEngine == null)
+			{
+				Log.i("ViPER4Android_Utils", "ViPER4Android engine not found");
+				mHasViPER4AndroidEngine = false;
+				mV4AEngineVersion[0] = 0;
+				mV4AEngineVersion[1] = 0;
+				mV4AEngineVersion[2] = 0;
+				mV4AEngineVersion[3] = 0;
+				return;
+			}
+
+			// Extract engine version
+			try
+			{
+				String szV4AVersionLine = aeViPER4AndroidEngine.name;
+				if (szV4AVersionLine.contains("[") && szV4AVersionLine.contains("]"))
+				{
+					if (szV4AVersionLine.length() >= 23)
+					{
+						// szV4AVersionLine should be "ViPER4Android [A.B.C.D]"
+						szV4AVersionLine = szV4AVersionLine.substring(15);
+						while (szV4AVersionLine.endsWith("]"))
+							szV4AVersionLine = szV4AVersionLine.substring(0, szV4AVersionLine.length() - 1);
+						// szV4AVersionLine should be "A.B.C.D"
+						String [] szVerBlocks = szV4AVersionLine.split("\\.");
+						if (szVerBlocks.length == 4)
+						{
+							mV4AEngineVersion[0] = Integer.parseInt(szVerBlocks[0]);
+							mV4AEngineVersion[1] = Integer.parseInt(szVerBlocks[1]);
+							mV4AEngineVersion[2] = Integer.parseInt(szVerBlocks[2]);
+							mV4AEngineVersion[3] = Integer.parseInt(szVerBlocks[3]);
+						}
+						Log.i("ViPER4Android_Utils", "The version of ViPER4Android engine is " +
+								mV4AEngineVersion[0] + "." +
+								mV4AEngineVersion[1] + "." +
+								mV4AEngineVersion[2] + "." +
+								mV4AEngineVersion[3]);
+						mHasViPER4AndroidEngine = true;
+						return;
+					}
+				}
+			}
+			catch (Exception e) {}
+
+			Log.e("ViPER4Android_Utils", "Cannot extract ViPER4Android engine version");
+			mHasViPER4AndroidEngine = false;
+			mV4AEngineVersion[0] = 0;
+			mV4AEngineVersion[1] = 0;
+			mV4AEngineVersion[2] = 0;
+			mV4AEngineVersion[3] = 0;
+		}
+
+		public AudioEffect.Descriptor[] GetAudioEffectList()
+		{
+			return mAudioEffectList;
+		}
+
+		public boolean IsViPER4AndroidEngineFound()
+		{
+			return mHasViPER4AndroidEngine;
+		}
+
+		public int[] GetViPER4AndroidEngineVersion()
+		{
+			return mV4AEngineVersion;
+		}
+	}
+
     public static class CPUInfo
     {
     	private boolean m_bCPUHasNEON = false;
@@ -698,6 +817,8 @@ public class Utils
     			Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
     			ShellCommand.SendShellCommand(VBoX + " rm " + szDriverPathName, 1.0f);
     			Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
+    	    	ShellCommand.SendShellCommand(VBoX + " sync", 5.0f);
+    			Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
     			ShellCommand.SendShellCommand(VBoX + " mount -o remount,ro /system", 5.0f);
     			Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
     			ShellCommand.CloseShell();
@@ -930,47 +1051,150 @@ public class Utils
     	String szBaseDrvPathName = GetBasePath(ctx);
     	if (szBaseDrvPathName.endsWith("/")) szBaseDrvPathName = szBaseDrvPathName + "libv4a_fx_ics.so";
     	else szBaseDrvPathName = szBaseDrvPathName + "/libv4a_fx_ics.so";
+    	int nShellCmdReturn = 0; boolean bSuccess = false;
 	    if (bExistsVendor)
 	    {
 	    	// Copy files
-	    	ShellCommand.SendShellCommand(VBoX + " mount -o remount,rw /system", 5.0f);
-	    	Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
-	    	ShellCommand.SendShellCommand(VBoX + " rm /system/lib/soundfx/libv4a_fx_ics.so", 1.0f);
-	    	Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
-	    	ShellCommand.SendShellCommand(VBoX + " cp " + szBaseDrvPathName + " /system/lib/soundfx/libv4a_fx_ics.so", 1.0f);
-	    	Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
-	    	ShellCommand.SendShellCommand(VBoX + " cp " + szSystemConf + ".out" + " /system/etc/audio_effects.conf", 1.0f);
-	    	Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
-	    	ShellCommand.SendShellCommand(VBoX + " cp " + szVendorConf + ".out" + " /system/vendor/etc/audio_effects.conf", 1.0f);
-	    	Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
+	    	bSuccess = ShellCommand.SendShellCommand(VBoX + " mount -o remount,rw /system", 5.0f); nShellCmdReturn = ShellCommand.GetLastReturnValue();
+	    	if (!bSuccess || (nShellCmdReturn != 0))
+	    	{
+	    		new File(szSystemConf).delete();
+	    		new File(szVendorConf).delete();
+	    		new File(szSystemConf + ".out").delete();
+	    		new File(szVendorConf + ".out").delete();
+	    		Log.e("ViPER4Android", "Cannot remount /system");
+	    		ShellCommand.CloseShell();
+	    		return false;
+	    	}
+	    	ShellCommand.SendShellCommand(VBoX + " rm /system/lib/soundfx/libv4a_fx_ics.so", 1.0f); nShellCmdReturn = ShellCommand.GetLastReturnValue();
+	    	Log.i("ViPER4Android", "Command return = " + nShellCmdReturn);
+	    	bSuccess = ShellCommand.SendShellCommand(VBoX + " cp " + szBaseDrvPathName + " /system/lib/soundfx/libv4a_fx_ics.so", 1.0f); nShellCmdReturn = ShellCommand.GetLastReturnValue();
+	    	if (!bSuccess || (nShellCmdReturn != 0))
+	    	{
+	    		new File(szSystemConf).delete();
+	    		new File(szVendorConf).delete();
+	    		new File(szSystemConf + ".out").delete();
+	    		new File(szVendorConf + ".out").delete();
+	    		Log.e("ViPER4Android", "Cannot copy V4A driver to /system");
+	    		ShellCommand.CloseShell();
+	    		return false;
+	    	}
+	    	bSuccess = ShellCommand.SendShellCommand(VBoX + " cp " + szSystemConf + ".out" + " /system/etc/audio_effects.conf", 1.0f); nShellCmdReturn = ShellCommand.GetLastReturnValue();
+	    	if (!bSuccess || (nShellCmdReturn != 0))
+	    	{
+	    		new File(szSystemConf).delete();
+	    		new File(szVendorConf).delete();
+	    		new File(szSystemConf + ".out").delete();
+	    		new File(szVendorConf + ".out").delete();
+	    		Log.e("ViPER4Android", "Cannot copy audio config to /system");
+	    		ShellCommand.CloseShell();
+	    		return false;
+	    	}
+	    	bSuccess = ShellCommand.SendShellCommand(VBoX + " cp " + szVendorConf + ".out" + " /system/vendor/etc/audio_effects.conf", 1.0f); nShellCmdReturn = ShellCommand.GetLastReturnValue();
+	    	if (!bSuccess || (nShellCmdReturn != 0))
+	    	{
+	    		new File(szSystemConf).delete();
+	    		new File(szVendorConf).delete();
+	    		new File(szSystemConf + ".out").delete();
+	    		new File(szVendorConf + ".out").delete();
+	    		Log.e("ViPER4Android", "Cannot copy audio config to /system/vendor");
+	    		ShellCommand.CloseShell();
+	    		return false;
+	    	}
 	    	// Modify permission
-	    	ShellCommand.SendShellCommand(VBoX + " chmod 644 /system/etc/audio_effects.conf", 1.0f);
-	    	Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
-	    	ShellCommand.SendShellCommand(VBoX + " chmod 644 /system/vendor/etc/audio_effects.conf", 1.0f);
-	    	Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
-	    	ShellCommand.SendShellCommand(VBoX + " chmod 644 /system/lib/soundfx/libv4a_fx_ics.so", 1.0f);
-	    	Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
-		   	ShellCommand.SendShellCommand(VBoX + " mount -o remount,ro /system", 5.0f);
-		   	Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
+	    	bSuccess = ShellCommand.SendShellCommand(VBoX + " chmod 644 /system/etc/audio_effects.conf", 1.0f); nShellCmdReturn = ShellCommand.GetLastReturnValue();
+	    	if (!bSuccess || (nShellCmdReturn != 0))
+	    	{
+	    		new File(szSystemConf).delete();
+	    		new File(szVendorConf).delete();
+	    		new File(szSystemConf + ".out").delete();
+	    		new File(szVendorConf + ".out").delete();
+	    		Log.e("ViPER4Android", "Cannot change config's permission [/system]");
+	    		ShellCommand.CloseShell();
+	    		return false;
+	    	}
+	    	bSuccess = ShellCommand.SendShellCommand(VBoX + " chmod 644 /system/vendor/etc/audio_effects.conf", 1.0f); nShellCmdReturn = ShellCommand.GetLastReturnValue();
+	    	if (!bSuccess || (nShellCmdReturn != 0))
+	    	{
+	    		new File(szSystemConf).delete();
+	    		new File(szVendorConf).delete();
+	    		new File(szSystemConf + ".out").delete();
+	    		new File(szVendorConf + ".out").delete();
+	    		Log.e("ViPER4Android", "Cannot change config's permission [/system/vendor]");
+	    		ShellCommand.CloseShell();
+	    		return false;
+	    	}
+	    	bSuccess = ShellCommand.SendShellCommand(VBoX + " chmod 644 /system/lib/soundfx/libv4a_fx_ics.so", 1.0f); nShellCmdReturn = ShellCommand.GetLastReturnValue();
+	    	if (!bSuccess || (nShellCmdReturn != 0))
+	    	{
+	    		new File(szSystemConf).delete();
+	    		new File(szVendorConf).delete();
+	    		new File(szSystemConf + ".out").delete();
+	    		new File(szVendorConf + ".out").delete();
+	    		Log.e("ViPER4Android", "Cannot change driver's permission");
+	    		ShellCommand.CloseShell();
+	    		return false;
+	    	}
+	    	ShellCommand.SendShellCommand(VBoX + " sync", 5.0f); nShellCmdReturn = ShellCommand.GetLastReturnValue();
+	    	Log.i("ViPER4Android", "Command return = " + nShellCmdReturn);
+		   	ShellCommand.SendShellCommand(VBoX + " mount -o remount,ro /system", 5.0f); nShellCmdReturn = ShellCommand.GetLastReturnValue();
+		   	Log.i("ViPER4Android", "Command return = " + nShellCmdReturn);
 	    }
 	    else
 	    {
 	    	// Copy files
-	    	ShellCommand.SendShellCommand(VBoX + " mount -o remount,rw /system", 5.0f);
-	    	Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
-	    	ShellCommand.SendShellCommand(VBoX + " rm /system/lib/soundfx/libv4a_fx_ics.so", 1.0f);
-	    	Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
-	    	ShellCommand.SendShellCommand(VBoX + " cp " + szBaseDrvPathName + " /system/lib/soundfx/libv4a_fx_ics.so", 1.0f);
-	    	Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
-	    	ShellCommand.SendShellCommand(VBoX + " cp " + szSystemConf + ".out" + " /system/etc/audio_effects.conf", 1.0f);
-	    	Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
+	    	bSuccess = ShellCommand.SendShellCommand(VBoX + " mount -o remount,rw /system", 5.0f); nShellCmdReturn = ShellCommand.GetLastReturnValue();
+	    	if (!bSuccess || (nShellCmdReturn != 0))
+	    	{
+	    		new File(szSystemConf).delete();
+	    		new File(szSystemConf + ".out").delete();
+	    		Log.e("ViPER4Android", "Cannot remount /system");
+	    		ShellCommand.CloseShell();
+	    		return false;
+	    	}
+	    	ShellCommand.SendShellCommand(VBoX + " rm /system/lib/soundfx/libv4a_fx_ics.so", 1.0f); nShellCmdReturn = ShellCommand.GetLastReturnValue();
+	    	Log.i("ViPER4Android", "Command return = " + nShellCmdReturn);
+	    	bSuccess = ShellCommand.SendShellCommand(VBoX + " cp " + szBaseDrvPathName + " /system/lib/soundfx/libv4a_fx_ics.so", 1.0f); nShellCmdReturn = ShellCommand.GetLastReturnValue();
+	    	if (!bSuccess || (nShellCmdReturn != 0))
+	    	{
+	    		new File(szSystemConf).delete();
+	    		new File(szSystemConf + ".out").delete();
+	    		Log.e("ViPER4Android", "Cannot copy V4A driver to /system");
+	    		ShellCommand.CloseShell();
+	    		return false;
+	    	}
+	    	bSuccess = ShellCommand.SendShellCommand(VBoX + " cp " + szSystemConf + ".out" + " /system/etc/audio_effects.conf", 1.0f); nShellCmdReturn = ShellCommand.GetLastReturnValue();
+	    	if (!bSuccess || (nShellCmdReturn != 0))
+	    	{
+	    		new File(szSystemConf).delete();
+	    		new File(szSystemConf + ".out").delete();
+	    		Log.e("ViPER4Android", "Cannot copy audio config to /system");
+	    		ShellCommand.CloseShell();
+	    		return false;
+	    	}
 	    	// Modify permission
-	    	ShellCommand.SendShellCommand(VBoX + " chmod 644 /system/etc/audio_effects.conf", 1.0f);
-	    	Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
-	    	ShellCommand.SendShellCommand(VBoX + " chmod 644 /system/lib/soundfx/libv4a_fx_ics.so", 1.0f);
-	    	Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
-		   	ShellCommand.SendShellCommand(VBoX + " mount -o remount,ro /system", 5.0f);
-		   	Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
+	    	bSuccess = ShellCommand.SendShellCommand(VBoX + " chmod 644 /system/etc/audio_effects.conf", 1.0f); nShellCmdReturn = ShellCommand.GetLastReturnValue();
+	    	if (!bSuccess || (nShellCmdReturn != 0))
+	    	{
+	    		new File(szSystemConf).delete();
+	    		new File(szSystemConf + ".out").delete();
+	    		Log.e("ViPER4Android", "Cannot change config's permission [/system]");
+	    		ShellCommand.CloseShell();
+	    		return false;
+	    	}
+	    	bSuccess = ShellCommand.SendShellCommand(VBoX + " chmod 644 /system/lib/soundfx/libv4a_fx_ics.so", 1.0f); nShellCmdReturn = ShellCommand.GetLastReturnValue();
+	    	if (!bSuccess || (nShellCmdReturn != 0))
+	    	{
+	    		new File(szSystemConf).delete();
+	    		new File(szSystemConf + ".out").delete();
+	    		Log.e("ViPER4Android", "Cannot change driver's permission");
+	    		ShellCommand.CloseShell();
+	    		return false;
+	    	}
+	    	ShellCommand.SendShellCommand(VBoX + " sync", 5.0f); nShellCmdReturn = ShellCommand.GetLastReturnValue();
+	    	Log.i("ViPER4Android", "Command return = " + nShellCmdReturn);
+		   	ShellCommand.SendShellCommand(VBoX + " mount -o remount,ro /system", 5.0f); nShellCmdReturn = ShellCommand.GetLastReturnValue();
+		   	Log.i("ViPER4Android", "Command return = " + nShellCmdReturn);
 	    }
 
 		/* Cleanup temp file(s) and close root shell */

@@ -237,6 +237,7 @@
     <string-array name="vbass_mode">
 		<item>Natural Bass</item>
 		<item>Pure Bass+</item>
+		<item>Subwoofer</item>
     </string-array>	
 
     <string-array name="vbass_freq">

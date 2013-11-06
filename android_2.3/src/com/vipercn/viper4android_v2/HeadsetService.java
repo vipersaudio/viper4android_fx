@@ -256,6 +256,7 @@ public class HeadsetService extends Service
 	public static final int PARAM_GET_SAMPLINGRATE = 32775;
 	public static final int PARAM_GET_CHANNELS = 32776;
 	public static final int PARAM_GET_CONVUSABLE = 32777;
+	public static final int PARAM_GET_CONVKNLID = 32778;
 	/*******************************/
 
 	/* ViPER4Android Driver Status Control */

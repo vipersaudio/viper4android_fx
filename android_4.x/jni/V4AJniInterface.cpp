@@ -6,6 +6,19 @@
 #include "V4AJniInterface.h"
 #include "sndfile.h"
 
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, "ViPER4Android_v2", __VA_ARGS__)
+
+JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved)
+{
+	LOGI("Loading JNI ...");
+	return JNI_VERSION_1_1;
+}
+
+JNIEXPORT void JNI_OnUnload(JavaVM* vm, void* reserved)
+{
+	LOGI("Unloading JNI ...");
+}
+
 JNIEXPORT jint JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniInterface_CheckLibraryUsable
 (
 	JNIEnv *env, jclass cls

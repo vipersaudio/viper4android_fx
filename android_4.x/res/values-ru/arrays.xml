@@ -529,10 +529,12 @@
     <string-array name="vbass_mode">
         <item>Natural Bass</item>
         <item>Pure Bass+</item>
+        <item>Subwoofer</item>
     </string-array>
     <string-array name="vbass_mode_values">
         <item>0</item>
         <item>1</item>
+        <item>2</item>
     </string-array>
     <string-array name="vbass_freq">
         <item>40 Гц</item>
