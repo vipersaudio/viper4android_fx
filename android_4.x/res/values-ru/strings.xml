@@ -17,8 +17,8 @@
     
 	<string name="pref_force_enable_text">Принудительное включение V4A</string>
     <string name="pref_force_enable_warn">"Принудительное включение V4A может помочь решить проблему с неактивными эффектами. 
-n\Но при этом, на некоторых прошивках, Вы можете получить неожиданные результаты, такие как отсутствие звука или быстрый разряд батареи. 
-n\Поэтому, используййте данную опцию на свой страх и риск. Если все же описанное выше произойдет, то пожалуйста, выключите даннуюопцию."
+\nНо при этом, на некоторых прошивках, Вы можете получить неожиданные результаты, такие как отсутствие звука или быстрый разряд батареи. 
+\nПоэтому, используййте данную опцию на свой страх и риск. Если все же описанное выше произойдет, то пожалуйста, выключите даннуюопцию."
     </string>
     
     <string name="pref_fx_master_title">Обработка</string>
@@ -49,11 +49,11 @@ n\Поэтому, используййте данную опцию на свой
     <string name="pref_xloud_spk_lowfreq">Низкая частота</string>
     <string name="pref_xloud_spk_highfreq">Высокая частота</string>
     
-	<string name="pref_spk_opt_title">Оптимизация звука динамика</string>
+    <string name="pref_spk_opt_title">Оптимизация звука динамика</string>
     <string name="pref_spk_opt_summary_on">Оптимизация звука включена</string>
     <string name="pref_spk_opt_summary_off">Оптимизация звука отключена</string>
     
-	<string name="pref_equalizer_title">Эквалайзер</string>
+    <string name="pref_equalizer_title">Эквалайзер</string>
     <string name="pref_equalizer_summary_on">Эквалайзер включен</string>
     <string name="pref_equalizer_summary_off">Эквалайзер отключен</string>
     <string name="pref_equalizer_enable">Включение эквалайзера</string>
@@ -101,7 +101,7 @@ n\Поэтому, используййте данную опцию на свой
     <string name="pref_convolver_enable">Включение конвольвера</string>
     <string name="pref_convolver_knl">Импульсный отклик (сэмпл)</string>
     <string name="pref_convolver_knl_title">Выберите сэмпл</string>
-	<string name="pref_convolver_crosschannel">Cross Channel</string>
+    <string name="pref_convolver_crosschannel">Cross Channel</string>
     <string name="pref_convolver_crosschannel_title">Выберите Cross Channel</string>
     
     <string name="pref_vhs_title">Virtual Headphone Surround+</string>
@@ -172,7 +172,7 @@ n\Поэтому, используййте данную опцию на свой
     <string name="text_loadfxprofile">Загрузить профиль</string>
     <string name="text_savefxprofile">Сохранить профиль</string>
     <string name="text_pleaseinputname">"Пожалуйста, введите название профиля 
-n\Исключите знак '='"
+\nИсключите знак '='"
     </string>
     <string name="text_profilesaved_ok">Профиль сохранен.</string>
     <string name="text_profilesaved_err">Невозможно сохранить профиль, т.к. профиль с таким названием уже существует.</string>
@@ -184,14 +184,14 @@ n\Исключите знак '='"
     <string name="text_ok">Ok</string>
     <string name="text_cancel">Отмена</string>
 	
-	<string name="text_drvinst_prefer">Пожалуйста, выберите драйвер</string>
+    <string name="text_drvinst_prefer">Пожалуйста, выберите драйвер</string>
     <string name="text_drvinst_sqdrv">"Для Супер качества звука нужен, по крайней мере, двухъядерный процессор, при этом будет увеличен разряд батареи. 
-n\Вы хотите продолжить?"
+\nВы хотите продолжить?"
     </string>
    
     <string name="text_drvvernotmatch">"Для использования ViPER4Android, необходимо установить/обновить драйвер V4A. 
-n\Процесс установки пройдет автоматически. 
-n\Установить/Обновить сейчас?"
+\nПроцесс установки пройдет автоматически. 
+\nУстановить/Обновить сейчас?"
     </string>
     
     <string name="text_drvuninst_confim">Вы действительно хотите удалить v4a драйвер?</string>
@@ -199,7 +199,7 @@ n\Установить/Обновить сейчас?"
     <string name="text_uiprefer">Настройка интерфейса</string>
     <string name="text_uiprefer_dialog">Пожалуйста, выберите свой навык</string>
 	
-	<string name="text_commode">Режим совместимости FX</string>
+    <string name="text_commode">Режим совместимости FX</string>
     
     <string name="text_drv_blank" />
     <string name="text_uninstall">Удалить драйвер</string>
@@ -211,42 +211,42 @@ n\Установить/Обновить сейчас?"
     <string name="text_changelog">Что нового</string>
     <string name="text_drv_status">Состояние драйвера</string>
     <string name="text_drv_status_view">"
-n\
-n\Версия драйвера: %1$s 
-n\NEON включен: %2$s 
-n\V4A включен: %3$s 
-n\Состояние: %4$s 
-n\Обработка: %5$s 
-n\Тип обработки: %6$s 
-n\Частота дискретизации: %7$d 
-n\Каналов: %8$d 
-n\"
+\n
+\nВерсия драйвера: %1$s 
+\nNEON включен: %2$s 
+\nV4A включен: %3$s 
+\nСостояние: %4$s 
+\nОбработка: %5$s 
+\nТип обработки: %6$s 
+\nЧастота дискретизации: %7$d 
+\nКаналов: %8$d 
+\n"
     </string>
     <string name="text_service_error">Не удалось запустить ViPER4Android.</string>
 
     <string name="about_title">Описание и помощь</string>
     <string name="about_text">"***О ViPER4Android***
-n\
-n\'libv4a_xx_xx.so' это ядро ViPER4Android. 
-n\Copyright © 2006-2016, vipercn.com. All rights reserved.
-n\Коммерческое использование без официального разрешения запрещено.
-n\Официальный форум: forum.vipersaudio.com
-n\
-n\'ViPER4Android.apk' это панель управления ViPER4Android. 
-n\Основа приложения - код DSPManager для CyanogenMod.
-n\
-n\Версия %1$s (FX), Codename Beautiful.
-n\"
+\n
+\n'libv4a_xx_xx.so' это ядро ViPER4Android. 
+\nCopyright © 2006-2016, vipercn.com. All rights reserved.
+\nКоммерческое использование без официального разрешения запрещено.
+\nОфициальный форум: forum.vipersaudio.com
+\n
+\n'ViPER4Android.apk' это панель управления ViPER4Android. 
+\nОснова приложения - код DSPManager для CyanogenMod.
+\n
+\nВерсия %1$s (FX), Codename Beautiful.
+\n"
     </string>
     
     <string name="text_help_content">"***Общая справка***
-n\
-n\'Install Driver' - Установить драйвер эффектов. 
-n\'Uninstall Driver' - Удалить драйвер эффектов. 
-n\'FX Compatible Mode' - Установить режим совместимости с FX. 
-n\'Normal' - Сделать ViPER4Android глобальным эффектом. 
-n\'Compatible' - Сделать ViPER4Android локальным эффектом.
-n\"
+\n
+\n'Install Driver' - Установить драйвер эффектов. 
+\n'Uninstall Driver' - Удалить драйвер эффектов. 
+\n'FX Compatible Mode' - Установить режим совместимости с FX. 
+\n'Normal' - Сделать ViPER4Android глобальным эффектом. 
+\n'Compatible' - Сделать ViPER4Android локальным эффектом.
+\n"
     </string>
     <string name="text_forum_link">http://forum.xda-developers.com/showthread.php?t=2191223</string>
     <string name="text_view_forum">Форум</string>
@@ -255,5 +255,5 @@ n\"
     <string name="text_updatelink">http://vipersaudio.com/swupdate/viper4android/download.html</string>
     <string name="text_su_missing">Требуется наличие Root прав (su binary).</string>
     <string name="text_busybox_missing">"Busybox не обнаружен. 
-n\Для использования ViPER4Android, необходимо установить Busybox."</string>
+\nДля использования ViPER4Android, необходимо установить Busybox."</string>
 </resources>
