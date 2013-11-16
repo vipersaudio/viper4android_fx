@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="drvinst_prefer">
-        <item>Супер качество звука</item>
         <item>Высокое качество звука</item>
+        <item>Стандартное качество звука</item>
         <item>Энергосбережение</item>
     </string-array>
     <string-array name="drvinst_prefer_values">
