@@ -199,7 +199,7 @@
     <string name="text_uiprefer">Настройка интерфейса</string>
     <string name="text_uiprefer_dialog">Пожалуйста, выберите свой навык</string>
 	
-    <string name="text_commode">Режим FX-совместимостиFX</string>
+    <string name="text_commode">Режим FX-совместимоиFX</string>
     
     <string name="text_drv_blank" />
     <string name="text_uninstall">Удалить драйвер</string>
@@ -243,7 +243,7 @@
 \n
 \n'Install Driver' - Установить драйвер эффектов. 
 \n'Uninstall Driver' - Удалить драйвер эффектов. 
-\n'FX Compatible Mode' - Установить режим FX-совместимо.
+\n'FX Compatible Mode' - Установить режим FX-совместстиимо.
 \n'Normal' - Сделать ViPER4Android глобальным эффектом. 
 \n'Compatible' - Сделать ViPER4Android локальным эффектом.
 \n"
