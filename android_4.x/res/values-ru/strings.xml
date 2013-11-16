@@ -199,7 +199,7 @@
     <string name="text_uiprefer">Настройка интерфейса</string>
     <string name="text_uiprefer_dialog">Пожалуйста, выберите свой навык</string>
 	
-    <string name="text_commode">Режим совместимости FX</string>
+    <string name="text_commode">Режим FX-совместимостиFX</string>
     
     <string name="text_drv_blank" />
     <string name="text_uninstall">Удалить драйвер</string>
@@ -233,7 +233,7 @@
 \nОфициальный форум: forum.vipersaudio.com
 \n
 \n'ViPER4Android.apk' это панель управления ViPER4Android. 
-\nОснова приложения - код DSPManager для CyanogenMod.
+\nЗа основу приложения взят код DSPManager для CyanogenMod.
 \n
 \nВерсия %1$s (FX), Codename Beautiful.
 \n"
@@ -243,7 +243,7 @@
 \n
 \n'Install Driver' - Установить драйвер эффектов. 
 \n'Uninstall Driver' - Удалить драйвер эффектов. 
-\n'FX Compatible Mode' - Установить режим совместимости с FX. 
+\n'FX Compatible Mode' - Установить режим FX-совместимо.
 \n'Normal' - Сделать ViPER4Android глобальным эффектом. 
 \n'Compatible' - Сделать ViPER4Android локальным эффектом.
 \n"
