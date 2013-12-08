@@ -113,7 +113,7 @@ public class ViPER4AndroidService extends Service
 						@Override
 						public void onEnableStatusChange(AudioEffect effect, boolean enabled)
 						{
-							String mode = getAudioOutputRouting();
+							String mode = getAudioOutputRouting(getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", MODE_PRIVATE));
 							SharedPreferences preferences = getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + "." + mode, 0);
 							String szEnableKey = "viper4android.headphonefx.enable";
 							if (mode.equalsIgnoreCase("speaker")) szEnableKey = "viper4android.speakerfx.enable";
@@ -771,12 +771,13 @@ public class ViPER4AndroidService extends Service
 	/***************************************/
 
 	private final LocalBinder mBinder = new LocalBinder();
-	protected boolean mUseHeadset = false;
-	protected boolean mUseBluetooth = false;
-	protected boolean mUseUSBSoundCard = false;
-	protected String mPreviousMode = "none";
-	private float[] mOverriddenEqualizerLevels = null;
 
+	protected static boolean mUseHeadset = false;
+	protected static boolean mUseBluetooth = false;
+	protected static boolean mUseUSBSoundCard = false;
+	protected static String mPreviousMode = "none";
+
+	private float[] mOverriddenEqualizerLevels = null;
 	private boolean mDriverIsReady = false;
 	private V4ADSPModule mGeneralFX = null;
 	private SparseArray<V4ADSPModule> mGeneralFXList = new SparseArray<V4ADSPModule>();
@@ -841,7 +842,7 @@ public class ViPER4AndroidService extends Service
 			Log.i("ViPER4Android", "m3rdAPI_QUERY_EQUALIZER_Receiver::onReceive()");
 			Intent itResult = new Intent(ACTION_QUERY_EQUALIZER_RESULT);
 
-			String mode = getAudioOutputRouting();
+			String mode = getAudioOutputRouting(getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", MODE_PRIVATE));
 			SharedPreferences preferences = getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + "." + mode, 0);
 			boolean bEQEnabled = preferences.getBoolean("viper4android.headphonefx.fireq.enable", false);
 			itResult.putExtra("equalizer_enabled", bEQEnabled);
@@ -1065,7 +1066,7 @@ public class ViPER4AndroidService extends Service
 		{
 			Log.i("ViPER4Android", "mShowNotifyReceiver::onReceive()");
 
-			String mode = getAudioOutputRouting();
+			String mode = getAudioOutputRouting(getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", MODE_PRIVATE));
 			if (mode.equalsIgnoreCase("headset"))
 				ShowNotification(getString(getResources().getIdentifier("text_headset", "string", getApplicationInfo().packageName)));
 			else if (mode.equalsIgnoreCase("bluetooth"))
@@ -1177,6 +1178,7 @@ public class ViPER4AndroidService extends Service
 			notificationManager.cancel(0x1234);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void onCreate()
 	{
@@ -1222,9 +1224,28 @@ public class ViPER4AndroidService extends Service
 		if (mAudioManager != null)
 		{
 			mUseBluetooth = mAudioManager.isBluetoothA2dpOn();
-			mUseHeadset = false;
-			mUseUSBSoundCard = false;
+			if (mUseBluetooth)
+			{
+				Log.i("ViPER4Android", "Current is a2dp mode [bluetooth]");
+				mUseHeadset = false;
+				mUseUSBSoundCard = false;
+			}
+			else
+			{
+				mUseHeadset = mAudioManager.isWiredHeadsetOn();
+				if (mUseHeadset)
+				{
+					Log.i("ViPER4Android", "Current is headset mode");
+					mUseUSBSoundCard = false;
+				}
+				else
+				{
+					Log.i("ViPER4Android", "Current is speaker mode");
+					mUseUSBSoundCard = false;
+				}
+			}
 		}
+		Log.i("ViPER4Android", "Get current mode from system [" + getAudioOutputRouting(getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", MODE_PRIVATE)) + "]");
 
 		if (mGeneralFX != null)
 			Log.e("ViPER4Android", "onCreate, mGeneralFX != null");
@@ -1356,9 +1377,9 @@ public class ViPER4AndroidService extends Service
 		updateSystem(false);
 	}
 
-	public String getAudioOutputRouting()
+	public static String getAudioOutputRouting(SharedPreferences prefSettings)
 	{
-		SharedPreferences prefSettings = getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", MODE_PRIVATE);
+		//SharedPreferences prefSettings = getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", MODE_PRIVATE);
 		String szLockedEffect = prefSettings.getString("viper4android.settings.lock_effect", "none");
 		if (szLockedEffect.equalsIgnoreCase("none"))
 		{
@@ -1475,7 +1496,7 @@ public class ViPER4AndroidService extends Service
 
 	protected void updateSystem(boolean bRequireReset)
 	{
-		String mode = getAudioOutputRouting();
+		String mode = getAudioOutputRouting(getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", MODE_PRIVATE));
 		SharedPreferences preferences = getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + "." + mode, 0);
 		Log.i("ViPER4Android", "Begin system update(" + mode + ")");
 

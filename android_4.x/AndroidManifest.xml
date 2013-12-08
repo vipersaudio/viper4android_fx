@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.vipercn.viper4android_v2" android:versionCode="2301"
-	android:versionName="2.3.0.1" android:installLocation="auto">
+	package="com.vipercn.viper4android_v2" android:versionCode="2315"
+	android:versionName="2.3.1.5" android:installLocation="auto">
 
-    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="18"/>
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="19"/>
 
 	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"></uses-permission>
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>

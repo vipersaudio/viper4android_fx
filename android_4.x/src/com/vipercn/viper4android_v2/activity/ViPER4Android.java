@@ -577,18 +577,15 @@ public final class ViPER4Android extends FragmentActivity
 
         super.onResume();
 
-        if (mAudioServiceInstance != null)
+        String routing = ViPER4AndroidService.getAudioOutputRouting(getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", MODE_PRIVATE));
+        String[] entries = pagerAdapter.getEntries();
+        for (int i = 0; i < entries.length; i++)
         {
-            String routing = mAudioServiceInstance.getAudioOutputRouting();
-            String[] entries = pagerAdapter.getEntries();
-            for (int i = 0; i < entries.length; i++)
+            if (routing.equals(entries[i]))
             {
-                if (routing.equals(entries[i]))
-                {
-                    viewPager.setCurrentItem(i);
-                    actionBar.selectTab(actionBar.getTabAt(i));
-                    break;
-                }
+                viewPager.setCurrentItem(i);
+                actionBar.selectTab(actionBar.getTabAt(i));
+                break;
             }
         }
     }

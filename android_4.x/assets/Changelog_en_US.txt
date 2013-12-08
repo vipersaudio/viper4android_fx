@@ -1,12 +1,11 @@
-﻿ViPER4Android FX v2.3.1.3
+﻿ViPER4Android FX v2.3.1.5
 Codename: Beautiful
 Copyright (C) 2006-2016 vipercn.com
 Forum: forum.vipersaudio.com
 
-Latest: v2.3.1.3
-1.Bug fix.
-2.Update translations.
-3.Add a new bass mode.
+Latest: v2.3.1.5
+1.Rewrite FFT implementation, improve speed.
+2.Rewrite most of the framework, fix bugs.
 
 ===Attention===
 The convolver and headphone surround+ are disabled in phones without VFP.
@@ -170,4 +169,8 @@ The convolver and headphone surround+ are disabled in phones without VFP.
 1.Bug fix.
 2.Update translations.
 3.Add a new bass mode.
+
+[v2.3.1.5]
+1.Rewrite FFT implementation, improve speed.
+2.Rewrite most of the framework, fix bugs.
 ************
