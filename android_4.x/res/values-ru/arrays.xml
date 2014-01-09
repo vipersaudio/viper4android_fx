@@ -618,7 +618,7 @@
         <item>180 Гц</item>
         <item>200 Гц</item>
         <item>220 Гц</item>
-     </string-array>
+    </string-array>
     <string-array name="speaker_lowfreq_values">
         <item>100</item>
         <item>140</item>
