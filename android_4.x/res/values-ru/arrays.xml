@@ -582,7 +582,7 @@
         <item>Natural</item>
         <item>OZone+</item>
         <item>XHiFi</item>
-     </string-array>
+    </string-array>
     <string-array name="vclarity_mode_values">
         <item>0</item>
         <item>1</item>
