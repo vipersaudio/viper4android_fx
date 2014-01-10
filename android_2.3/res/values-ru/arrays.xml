@@ -176,10 +176,10 @@
   
     <string-array name="dynamicsystem_bass">
         <item>0 процентов</item>
-        <item>1 процентов</item>
-        <item>2 процентов</item>
-        <item>3 процентов</item>
-        <item>4 процентов</item>
+        <item>1 процент</item>
+        <item>2 процента</item>
+        <item>3 процента</item>
+        <item>4 процента</item>
         <item>5 процентов</item>
         <item>6 процентов</item>
         <item>7 процентов</item>
@@ -191,12 +191,12 @@
         <item>16 процентов</item>
         <item>18 процентов</item>
         <item>20 процентов</item>
-        <item>22 процентов</item>
-        <item>24 процентов</item>
+        <item>22 процента</item>
+        <item>24 процента</item>
         <item>26 процентов</item>
         <item>28 процентов</item>
         <item>30 процентов</item>
-        <item>33 процентов</item>
+        <item>33 процента</item>
         <item>36 процентов</item>
         <item>40 процентов</item>
         <item>45 процентов</item>
