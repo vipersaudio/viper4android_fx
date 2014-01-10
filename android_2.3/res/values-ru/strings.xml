@@ -151,9 +151,9 @@
     <string name="eq_preset_treble_booster">Усилить ВЧ</string>
     <string name="eq_preset_treble_reducer">Ослабить ВЧ</string>
     <string name="eq_preset_vocal_booster">Усилить вокал</string>
-    string name="eq_preset_custom">Вручную</string>
+    <string name="eq_preset_custom">Вручную</string>
 
-    string name="menu_reset">Сброс</string>
+    <string name="menu_reset">Сброс</string>
 
     <string name="text_ir_dir_isempty">ViPER4Android: Папка импульсов %1$s пуста.</string>
     <string name="text_token_lost">ViPER4Android: Невозможно включить эффекты, попробуйте обновить драйвер.</string>
