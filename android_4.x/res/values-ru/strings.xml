@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<!--  Thanks to all 4pda.ru contributors (alphabetically):
+      
+      -Sotik-, Argisht, ihor2284, Lerik-Co, lexus2118, malserg, man'yak, Notarikon, PRO TREK, vladykodi
+      
+      http://4pda.ru/forum/index.php?showtopic=405989
+      
+      2014
+-->    
     <string name="app_name">ViPER FX</string>
     <string name="select_configuration_title">ViPER4Android</string>
     <string name="headset_title">Наушники</string>
