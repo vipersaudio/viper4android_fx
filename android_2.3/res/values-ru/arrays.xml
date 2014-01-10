@@ -2,103 +2,103 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string-array name="colorfulmusic_coeffs">
-        <item>Слабый</item>
-        <item>Yровень 1</item>
-        <item>Yровень 2</item>
-        <item>Yровень 3</item>
-        <item>Yровень 4</item>
-        <item>Yровень 5</item>
-        <item>Yровень 6</item>
-        <item>Yровень 7</item>
-        <item>Максимальный</item>
+        <item>Минимум</item>
+        <item>Уровень 1</item>
+        <item>Уровень 2</item>
+        <item>Уровень 3</item>
+        <item>Уровень 4</item>
+        <item>Уровень 5</item>
+        <item>Уровень 6</item>
+        <item>Уровень 7</item>
+        <item>Максимум</item>
     </string-array>
   
     <string-array name="colorfulmusic_midimage">
-        <item>Слабый</item>
-        <item>Yровень 1</item>
-        <item>Yровень 2</item>
-        <item>Yровень 3</item>
-        <item>Yровень 4</item>
-        <item>Yровень 5</item>
-        <item>Yровень 6</item>
-        <item>Yровень 7</item>
-        <item>Yровень 8</item>
-        <item>Yровень 9</item>
-        <item>Максимальный</item>
+        <item>Минимум</item>
+        <item>Уровень 1</item>
+        <item>Уровень 2</item>
+        <item>Уровень 3</item>
+        <item>Уровень 4</item>
+        <item>Уровень 5</item>
+        <item>Уровень 6</item>
+        <item>Уровень 7</item>
+        <item>Уровень 8</item>
+        <item>Уровень 9</item>
+        <item>Максимум</item>
     </string-array>
 
     <string-array name="diffsurround_delay">
-		<item>2 мсек</item>
-		<item>5 мсек</item>
-		<item>8 мсек</item>
-		<item>10 мсек</item>
-		<item>12 мсек</item>
-		<item>14 мсек</item>
-		<item>16 мсек</item>
-		<item>18 мсек</item>
-		<item>20 мсек</item>
+		<item>2 мс</item>
+		<item>5 мс</item>
+		<item>8 мс</item>
+		<item>10 мс</item>
+		<item>12 мс</item>
+		<item>14 мс</item>
+		<item>16 мс</item>
+		<item>18 мс</item>
+		<item>20 мс</item>
     </string-array>
   
     <string-array name="reverb_roomsize">
-        <item>25м²</item>
-        <item>36м²</item>
-        <item>49м²</item>
-        <item>64м²</item>
-        <item>81м²</item>
-        <item>100м²</item>
-        <item>121м²</item>
-        <item>203м²</item>
-        <item>347м²</item>
-        <item>652м²</item>
-        <item>1200м²</item>
+        <item>25 м²</item>
+        <item>36 м²</item>
+        <item>49 м²</item>
+        <item>64 м²</item>
+        <item>81 м²</item>
+        <item>100 м²</item>
+        <item>121 м²</item>
+        <item>203 м²</item>
+        <item>347 м²</item>
+        <item>652 м²</item>
+        <item>1200 м²</item>
     </string-array>
   
     <string-array name="reverb_roomwidth">
-        <item>5м</item>
-        <item>6м</item>
-        <item>7м</item>
-        <item>8м</item>
-        <item>9м</item>
-        <item>10м</item>
-        <item>11м</item>
-        <item>14м</item>
-        <item>19м</item>
-        <item>26м</item>
-        <item>36м</item>
+        <item>5 м</item>
+        <item>6 м</item>
+        <item>7 м</item>
+        <item>8 м</item>
+        <item>9 м</item>
+        <item>10 м</item>
+        <item>11 м</item>
+        <item>14 м</item>
+        <item>19 м</item>
+        <item>26 м</item>
+        <item>36 м</item>
     </string-array>
   
     <string-array name="reverb_percent">
-        <item>0 Процентов</item>
-        <item>10 Процентов</item>
-        <item>20 Процентов</item>
-        <item>30 Процентов</item>
-        <item>40 Процентов</item>
-        <item>50 Процентов</item>
-        <item>60 Процентов</item>
-        <item>70 Процентов</item>
-        <item>80 Процентов</item>
-        <item>90 Процентов</item>
-        <item>100 Процентов</item>
+        <item>0 процентов</item>
+        <item>10 процентов</item>
+        <item>20 процентов</item>
+        <item>30 процентов</item>
+        <item>40 процентов</item>
+        <item>50 процентов</item>
+        <item>60 процентов</item>
+        <item>70 процентов</item>
+        <item>80 процентов</item>
+        <item>90 процентов</item>
+        <item>100 процентов</item>
     </string-array>
   
     <string-array name="cure_crossfeed">
-        <item>Слабый</item>
+        <item>Минимум</item>
         <item>Средний</item>
-        <item>Максимальный</item>
+        <item>Максимум</item>
     </string-array>
   
     <string-array name="vhs_qual">
-        <item>Yровень 1</item>
-        <item>Yровень 2</item>
-        <item>Yровень 3</item>
-        <item>Yровень 4</item>
-        <item>Yровень 5</item>
+        <item>Уровень 1</item>
+        <item>Уровень 2</item>
+        <item>Уровень 3</item>
+        <item>Уровень 4</item>
+        <item>Уровень 5</item>
     </string-array>
   
     <string-array name="playbackgain_ratio">
-        <item>Слабый</item>
+        <item>Минимум</item>
         <item>Средний</item>
-        <item>Максимальный</item>
+        <item>Максимум</item>
     </string-array>
 
     <string-array name="multi_factor">
@@ -117,121 +117,121 @@
   
     <string-array name="amplification_db">
         <item>0 дБ</item>
-        <item>3.5 дБ</item>
-        <item>6.0 дБ</item>
-        <item>9.5 дБ</item>
-        <item>12.0 дБ</item>
-        <item>14.0 дБ</item>
-        <item>18.0 дБ</item>
-        <item>20.0 дБ</item>
+        <item>3,5 дБ</item>
+        <item>6,0 дБ</item>
+        <item>9,5 дБ</item>
+        <item>12,0 дБ</item>
+        <item>14,0 дБ</item>
+        <item>18,0 дБ</item>
+        <item>20,0 дБ</item>
     </string-array>
 
     <string-array name="output_db">
         <item>0 дБ</item>
-        <item>-1.0 дБ</item>
-        <item>-1.9 дБ</item>
-        <item>-3.0 дБ</item>
-        <item>-6.0 дБ</item>
-        <item>-10.5 дБ</item>
+        <item>-1,0 дБ</item>
+        <item>-1,9 дБ</item>
+        <item>-3,0 дБ</item>
+        <item>-6,0 дБ</item>
+        <item>-10,5 дБ</item>
     </string-array>
   
     <string-array name="output_volume">
-        <item>6.0 дБ</item>
-        <item>5.6 дБ</item>
-        <item>5.1 дБ</item>
-        <item>4.6 дБ</item>
-        <item>4.1 дБ</item>
-        <item>3.5 дБ</item>
-        <item>2.9 дБ</item>
-        <item>2.3 дБ</item>
-        <item>1.6 дБ</item>
-        <item>0.8 дБ</item>
+        <item>6,0 дБ</item>
+        <item>5,6 дБ</item>
+        <item>5,1 дБ</item>
+        <item>4,6 дБ</item>
+        <item>4,1 дБ</item>
+        <item>3,5 дБ</item>
+        <item>2,9 дБ</item>
+        <item>2,3 дБ</item>
+        <item>1,6 дБ</item>
+        <item>0,8 дБ</item>
         <item>0 дБ</item>
-        <item>-1.0 дБ</item>
-        <item>-1.9 дБ</item>
-        <item>-3.0 дБ</item>
-        <item>-4.4 дБ</item>
-        <item>-6.0 дБ</item>
-        <item>-8.0 дБ</item>
-        <item>-10.5 дБ</item>
-        <item>-14.0 дБ</item>
-        <item>-20.0 дБ</item>
-        <item>-26.0 дБ</item>
-        <item>-40.0 дБ</item>
+        <item>-1,0 дБ</item>
+        <item>-1,9 дБ</item>
+        <item>-3,0 дБ</item>
+        <item>-4,4 дБ</item>
+        <item>-6,0 дБ</item>
+        <item>-8,0 дБ</item>
+        <item>-10,5 дБ</item>
+        <item>-14,0 дБ</item>
+        <item>-20,0 дБ</item>
+        <item>-26,0 дБ</item>
+        <item>-40,0 дБ</item>
     </string-array>
 
     <string-array name="channel_pan">
-		<item>1.0 : 0.0</item>
-		<item>0.9 : 0.1</item>
-		<item>0.8 : 0.2</item>
-		<item>0.7 : 0.3</item>
-		<item>0.6 : 0.4</item>
-		<item>0.5 : 0.5</item>
-		<item>0.4 : 0.6</item>
-		<item>0.3 : 0.7</item>
-		<item>0.2 : 0.8</item>
-		<item>0.1 : 0.9</item>
-		<item>0.0 : 1.0</item>
+		<item>1,0 : 0,0</item>
+		<item>0,9 : 0,1</item>
+		<item>0,8 : 0,2</item>
+		<item>0,7 : 0,3</item>
+		<item>0,6 : 0,4</item>
+		<item>0,5 : 0,5</item>
+		<item>0,4 : 0,6</item>
+		<item>0,3 : 0,7</item>
+		<item>0,2 : 0,8</item>
+		<item>0,1 : 0,9</item>
+		<item>0,0 : 1,0</item>
     </string-array>
   
     <string-array name="dynamicsystem_bass">
-        <item>0 Процентов</item>
-        <item>1 Процентов</item>
-        <item>2 Процентов</item>
-        <item>3 Процентов</item>
-        <item>4 Процентов</item>
-        <item>5 Процентов</item>
-        <item>6 Процентов</item>
-        <item>7 Процентов</item>
-        <item>8 Процентов</item>
-        <item>9 Процентов</item>
-        <item>10 Процентов</item>
-        <item>12 Процентов</item>
-        <item>14 Процентов</item>
-        <item>16 Процентов</item>
-        <item>18 Процентов</item>
-        <item>20 Процентов</item>
-        <item>22 Процентов</item>
-        <item>24 Процентов</item>
-        <item>26 Процентов</item>
-        <item>28 Процентов</item>
-        <item>30 Процентов</item>
-        <item>33 Процентов</item>
-        <item>36 Процентов</item>
-        <item>40 Процентов</item>
-        <item>45 Процентов</item>
-        <item>50 Процентов</item>
-        <item>55 Процентов</item>
-        <item>60 Процентов</item>
-        <item>70 Процентов</item>
-        <item>80 Процентов</item>
-        <item>90 Процентов</item>
-        <item>100 Процентов</item>
-        <item>120 Процентов</item>
-        <item>150 Процентов</item>
-        <item>200 Процентов</item>
+        <item>0 процентов</item>
+        <item>1 процентов</item>
+        <item>2 процентов</item>
+        <item>3 процентов</item>
+        <item>4 процентов</item>
+        <item>5 процентов</item>
+        <item>6 процентов</item>
+        <item>7 процентов</item>
+        <item>8 процентов</item>
+        <item>9 процентов</item>
+        <item>10 процентов</item>
+        <item>12 процентов</item>
+        <item>14 процентов</item>
+        <item>16 процентов</item>
+        <item>18 процентов</item>
+        <item>20 процентов</item>
+        <item>22 процентов</item>
+        <item>24 процентов</item>
+        <item>26 процентов</item>
+        <item>28 процентов</item>
+        <item>30 процентов</item>
+        <item>33 процентов</item>
+        <item>36 процентов</item>
+        <item>40 процентов</item>
+        <item>45 процентов</item>
+        <item>50 процентов</item>
+        <item>55 процентов</item>
+        <item>60 процентов</item>
+        <item>70 процентов</item>
+        <item>80 процентов</item>
+        <item>90 процентов</item>
+        <item>100 процентов</item>
+        <item>120 процентов</item>
+        <item>150 процентов</item>
+        <item>200 процентов</item>
     </string-array>
 	
     <string-array name="dynamicsystem_outputs">
-        <item>Экстрим наушники(v2)</item>
-        <item>Качественные наушники(v2)</item>
-        <item>Обычные наушники(v2)</item>
-        <item>Средненькие наушники(v2)</item>
-        <item>Обычная гарнитура(v2)</item>
-        <item>Экстрим наушники(v1)</item>
-        <item>Качественные наушники(v1)</item>
-        <item>Обычные наушники(v1)</item>
-        <item>Обычная гарнитура(v1)</item>
+        <item>Отличные наушники 2</item>
+        <item>Хорошие наушники 2</item>
+        <item>Обычные наушники 2</item>
+        <item>Простые наушники 2</item>
+        <item>Обычная гарнитура 2</item>
+        <item>Отличные наушники 1</item>
+        <item>Хорошие наушники 1</item>
+        <item>Обычные наушники 1</item>
+        <item>Обычная гарнитура 1</item>
         <item>Гарнитура Apple</item>
         <item>Гарнитура Monster</item>
         <item>Гарнитура Moto</item>
         <item>Гарнитура Philips</item>
         <item>SHP2000</item>
         <item>SHP9000</item>
-        <item>Неизвестный тип I</item>
-        <item>Неизвестный тип II</item>
-        <item>Неизвестный тип III</item>
-        <item>Неизвестный тип IV</item>
+        <item>Условный тип 1</item>
+        <item>Условный тип 2</item>
+        <item>Условный тип 3</item>
+        <item>Условный тип 4</item>
     </string-array>
 
     <string-array name="vbass_mode">
@@ -249,18 +249,18 @@
     </string-array>  
 
     <string-array name="vbass_boost">
-		<item>3.5 дБ</item>
-		<item>6.0 дБ</item>
-		<item>8.0 дБ</item>
-		<item>10.0 дБ</item>
-		<item>11.0 дБ</item>
-		<item>12.0 дБ</item>
-		<item>13.0 дБ</item>
-		<item>14.0 дБ</item>
-		<item>14.8 дБ</item>
-		<item>15.6 дБ</item>
-		<item>16.3 дБ</item>
-		<item>17.0 дБ</item>
+		<item>3,5 дБ</item>
+		<item>6,0 дБ</item>
+		<item>8,0 дБ</item>
+		<item>10,0 дБ</item>
+		<item>11,0 дБ</item>
+		<item>12,0 дБ</item>
+		<item>13,0 дБ</item>
+		<item>14,0 дБ</item>
+		<item>14,8 дБ</item>
+		<item>15,6 дБ</item>
+		<item>16,3 дБ</item>
+		<item>17,0 дБ</item>
     </string-array>	
 
     <string-array name="vclarity_mode">
@@ -271,15 +271,15 @@
 
     <string-array name="vclarity_boost">
         <item>По умолчанию</item>
-		<item>3.5 дБ</item>
-		<item>6.0 дБ</item>
-		<item>8.0 дБ</item>
-		<item>10.0 дБ</item>
-		<item>11.0 дБ</item>
-		<item>12.0 дБ</item>
-		<item>13.0 дБ</item>
-		<item>14.0 дБ</item>
-		<item>14.8 дБ</item>
+		<item>3,5 дБ</item>
+		<item>6,0 дБ</item>
+		<item>8,0 дБ</item>
+		<item>10,0 дБ</item>
+		<item>11,0 дБ</item>
+		<item>12,0 дБ</item>
+		<item>13,0 дБ</item>
+		<item>14,0 дБ</item>
+		<item>14,8 дБ</item>
     </string-array>
 	
     <string-array name="speaker_lowfreq">
