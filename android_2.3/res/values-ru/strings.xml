@@ -51,6 +51,10 @@
     <string name="pref_xloud_spk_lowfreq">НЧ</string>
     <string name="pref_xloud_spk_highfreq">ВЧ</string>
 
+    <string name="pref_spk_opt_title">Оптимизация динамика</string>
+    <string name="pref_spk_opt_summary_on">Оптимизация включена</string>
+    <string name="pref_spk_opt_summary_off">Оптимизация отключена</string>
+
     <string name="pref_equalizer_title">Эквалайзер</string>
     <string name="pref_equalizer_summary_on">Эквалайзер включён</string>
     <string name="pref_equalizer_summary_off">Эквалайзер отключён</string>
@@ -141,15 +145,15 @@
     <string name="eq_preset_classical">Классика</string>
     <string name="eq_preset_deep">Глубина</string>
     <string name="eq_preset_flat">Плоский</string>
-	<string name="eq_preset_r_and_b">R&amp;B</string>
+    <string name="eq_preset_r_and_b">R&amp;B</string>
     <string name="eq_preset_rock">Рок</string>
     <string name="eq_preset_small_speakers">Мини-динамики</string>
     <string name="eq_preset_treble_booster">Усилить ВЧ</string>
     <string name="eq_preset_treble_reducer">Ослабить ВЧ</string>
     <string name="eq_preset_vocal_booster">Усилить вокал</string>
-	<string name="eq_preset_custom">Вручную</string>
+    string name="eq_preset_custom">Вручную</string>
 
-	<string name="menu_reset">Сброс</string>
+    string name="menu_reset">Сброс</string>
 
     <string name="text_ir_dir_isempty">ViPER4Android: Папка импульсов %1$s пуста.</string>
     <string name="text_token_lost">ViPER4Android: Невозможно включить эффекты, попробуйте обновить драйвер.</string>
