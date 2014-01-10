@@ -78,7 +78,7 @@
     <string name="pref_dynamicsystem_tube_summary_on">Ламповый звук включён</string>
     <string name="pref_dynamicsystem_tube_summary_off">Ламповый звук отключён</string>
 
-    <string name="pref_fidelity_title">Коррекция АЧХ</string>
+    <string name="pref_fidelity_title">Восстановление звука</string>
     <string name="pref_fidelity_vb_summary_on">Тонкомпенсация включена</string>
     <string name="pref_fidelity_vb_summary_off">Тонкомпенсация отключена</string>
     <string name="pref_fidelity_vb_enable">Тонкомпенсация</string>
@@ -88,9 +88,9 @@
     <string name="pref_fidelity_vb_bassfreq_title">Частота</string>
     <string name="pref_fidelity_vb_bassgain">Усиление</string>
     <string name="pref_fidelity_vb_bassgain_title">Усиление</string>
-    <string name="pref_fidelity_vc_summary_on">Чистый звук включён</string>
-    <string name="pref_fidelity_vc_summary_off">Чистый звук отключён</string>
-    <string name="pref_fidelity_vc_enable">Чистый звук</string>
+    <string name="pref_fidelity_vc_summary_on">Компандер включён</string>
+    <string name="pref_fidelity_vc_summary_off">Компандер отключён</string>
+    <string name="pref_fidelity_vc_enable">Компандер</string>
     <string name="pref_fidelity_vc_mode">Алгоритм</string>
     <string name="pref_fidelity_vc_mode_title">Алгоритм</string>
     <string name="pref_fidelity_vc_bassgain">Уровень</string>
