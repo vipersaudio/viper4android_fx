@@ -328,9 +328,8 @@ public class Utils
         if (path.isDirectory())
         {
             File[] files = path.listFiles();
-            if (null == files) return;      
-            for(int i = 0; i < files.length; i++)
-            	GetFileNameList(files[i], fileExt, fileList);
+            if (null == files) return;
+            for (File file : files) GetFileNameList(file, fileExt, fileList);
         }
         else
         {
@@ -386,12 +385,11 @@ public class Utils
 	    	GetFileNameList(fProfileDirHandle, ".prf", szProfileList);
 
 	    	ArrayList<String> szProfileNameList = new ArrayList<String>();
-	    	for (int idx = 0; idx < szProfileList.size(); idx++)
-	    	{
-	    		String szFileName = szProfileDir + szProfileList.get(idx);
-	    		String szName = GetProfileName(szFileName);
-	    		szProfileNameList.add(szName.trim());
-	    	}
+            for (String aSzProfileList : szProfileList) {
+                String szFileName = szProfileDir + aSzProfileList;
+                String szName = GetProfileName(szFileName);
+                szProfileNameList.add(szName.trim());
+            }
 
 	    	return szProfileNameList;
     	}
@@ -411,16 +409,14 @@ public class Utils
 	    	GetFileNameList(fProfileDirHandle, ".prf", szProfileList);
 
 	    	boolean bFoundProfile = false;
-	    	for (int idx = 0; idx < szProfileList.size(); idx++)
-	    	{
-	    		String szFileName = szProfileDir + szProfileList.get(idx);
-	    		String szName = GetProfileName(szFileName);
-	    		if (szProfileName.trim().equalsIgnoreCase(szName.trim()))
-	    		{
-	    			bFoundProfile = true;
-	    			break;
-	    		}
-	    	}
+            for (String aSzProfileList : szProfileList) {
+                String szFileName = szProfileDir + aSzProfileList;
+                String szName = GetProfileName(szFileName);
+                if (szProfileName.trim().equalsIgnoreCase(szName.trim())) {
+                    bFoundProfile = true;
+                    break;
+                }
+            }
 
 	    	return bFoundProfile;
     	}
@@ -439,16 +435,14 @@ public class Utils
 	    	ArrayList<String> szProfileFileList = new ArrayList<String>();
 	    	GetFileNameList(fProfileDirHandle, ".prf", szProfileFileList);
 	    	String szProfileFileName = "";
-	    	for (int idx = 0; idx < szProfileFileList.size(); idx++)
-	    	{
-	    		String szFileName = szProfileDir + szProfileFileList.get(idx);
-	    		String szName = GetProfileName(szFileName);
-	    		if (szProfileName.trim().equalsIgnoreCase(szName.trim()))
-	    		{
-	    			szProfileFileName = szFileName;
-	    			break;
-	    		}
-	    	}
+            for (String aSzProfileFileList : szProfileFileList) {
+                String szFileName = szProfileDir + aSzProfileFileList;
+                String szName = GetProfileName(szFileName);
+                if (szProfileName.trim().equalsIgnoreCase(szName.trim())) {
+                    szProfileFileName = szFileName;
+                    break;
+                }
+            }
 	    	if (szProfileFileName.equals("")) return false;
 
     		SharedPreferences preferences = ctx.getSharedPreferences(szPreferenceName, Context.MODE_PRIVATE);
@@ -921,7 +915,7 @@ public class Utils
 	    	if (bExistsVendor)
 	    	{
 	    		// Copy files
-	    		bOperationSucceed &= RootTools.remount("/system", "RW");
+	    		bOperationSucceed = RootTools.remount("/system", "RW");
 	    		if (bOperationSucceed) bOperationSucceed &= RootTools.copyFile(szBaseDrvPathName, "/system/lib/soundfx/libv4a_fx_ics.so", false, false);
 	    		if (bOperationSucceed) bOperationSucceed &= RootTools.copyFile(szSystemConf + ".out", "/system/etc/audio_effects.conf", false, false);
 	    		if (bOperationSucceed) bOperationSucceed &= RootTools.copyFile(szVendorConf + ".out", "/system/vendor/etc/audio_effects.conf", false, false);
@@ -936,7 +930,7 @@ public class Utils
 	    	else
 	    	{
 	    		// Copy files
-	    		bOperationSucceed &= RootTools.remount("/system", "RW");
+	    		bOperationSucceed = RootTools.remount("/system", "RW");
 	    		if (bOperationSucceed) bOperationSucceed &= RootTools.copyFile(szBaseDrvPathName, "/system/lib/soundfx/libv4a_fx_ics.so", false, false);
 	    		if (bOperationSucceed) bOperationSucceed &= RootTools.copyFile(szSystemConf + ".out", "/system/etc/audio_effects.conf", false, false);
 	    		// Modify permission

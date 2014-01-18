@@ -186,7 +186,7 @@ public class ShellCommand
 			Log.i("ViPER4Android_ShellCommand", "Shell already opened");
 			return true;
 		}
-		else if (m_bShellOpened && bReopen)
+		else if (m_bShellOpened)
 		{
 			Log.i("ViPER4Android_ShellCommand", "Close current shell");
 			CloseShell();
@@ -229,11 +229,9 @@ public class ShellCommand
 				if (bGotResult)
 				{
 					if (szStdOut != null)
-						for (int i = 0; i < szStdOut.length; i++)
-							Log.i("ViPER4Android_ShellCommand", "stdout: " + szStdOut[i]);
+                        for (String aSzStdOut : szStdOut) Log.i("ViPER4Android_ShellCommand", "stdout: " + aSzStdOut);
 					if (szStdErr != null)
-						for (int i = 0; i < szStdErr.length; i++)
-							Log.i("ViPER4Android_ShellCommand", "stderr: " + szStdErr[i]);
+                        for (String aSzStdErr : szStdErr) Log.i("ViPER4Android_ShellCommand", "stderr: " + aSzStdErr);
 					break;
 				}
 
@@ -270,7 +268,7 @@ public class ShellCommand
 			Log.i("ViPER4Android_ShellCommand", "Shell already opened");
 			return true;
 		}
-		else if (m_bShellOpened && bReopen)
+		else if (m_bShellOpened)
 		{
 			Log.i("ViPER4Android_ShellCommand", "Close current shell");
 			CloseShell();
@@ -309,50 +307,40 @@ public class ShellCommand
 				String[] szStdOut = GetStdOut();
 				if (szStdOut != null)
 				{
-					for (int i = 0; i < szStdOut.length; i++)
-					{
-						Log.i("ViPER4Android_ShellCommand", "stdout: " + szStdOut[i]);
-						if (szStdOut[i].contains("uid"))
-						{
-							Log.i("ViPER4Android_ShellCommand", "Got result");
-							if (szStdOut[i].contains("uid=0"))
-							{
-								bGotResult = true;
-								bAccessGiven = true;
-								break;
-							}
-							else
-							{
-								bGotResult = true;
-								bAccessGiven = false;
-								break;
-							}
-						}
-					}
+                    for (String aSzStdOut : szStdOut) {
+                        Log.i("ViPER4Android_ShellCommand", "stdout: " + aSzStdOut);
+                        if (aSzStdOut.contains("uid")) {
+                            Log.i("ViPER4Android_ShellCommand", "Got result");
+                            if (aSzStdOut.contains("uid=0")) {
+                                bGotResult = true;
+                                bAccessGiven = true;
+                                break;
+                            } else {
+                                bGotResult = true;
+                                bAccessGiven = false;
+                                break;
+                            }
+                        }
+                    }
 				}
 				String[] szStdErr = GetStdErr();
 				if (szStdErr != null)
 				{
-					for (int i = 0; i < szStdErr.length; i++)
-					{
-						Log.i("ViPER4Android_ShellCommand", "stderr: " + szStdErr[i]);
-						if (szStdErr[i].contains("uid"))
-						{
-							Log.i("ViPER4Android_ShellCommand", "Got result");
-							if (szStdErr[i].contains("uid=0"))
-							{
-								bGotResult = true;
-								bAccessGiven = true;
-								break;
-							}
-							else
-							{
-								bGotResult = true;
-								bAccessGiven = false;
-								break;
-							}
-						}
-					}
+                    for (String aSzStdErr : szStdErr) {
+                        Log.i("ViPER4Android_ShellCommand", "stderr: " + aSzStdErr);
+                        if (aSzStdErr.contains("uid")) {
+                            Log.i("ViPER4Android_ShellCommand", "Got result");
+                            if (aSzStdErr.contains("uid=0")) {
+                                bGotResult = true;
+                                bAccessGiven = true;
+                                break;
+                            } else {
+                                bGotResult = true;
+                                bAccessGiven = false;
+                                break;
+                            }
+                        }
+                    }
 				}
 				if (bGotResult) break;
 
@@ -473,14 +461,12 @@ public class ShellCommand
 		String[] szStdOut = GetStdOut();
 		if (szStdOut != null)
 		{
-			for (int i = 0; i < szStdOut.length; i++)
-				Log.i("ViPER4Android_ShellCommand(stdout)", szStdOut[i]);
+            for (String aSzStdOut : szStdOut) Log.i("ViPER4Android_ShellCommand(stdout)", aSzStdOut);
 		}
 		String[] szStdErr = GetStdErr();
 		if (szStdErr != null)
 		{
-			for (int i = 0; i < szStdErr.length; i++)
-				Log.i("ViPER4Android_ShellCommand(stderr)", szStdErr[i]);
+            for (String aSzStdErr : szStdErr) Log.i("ViPER4Android_ShellCommand(stderr)", aSzStdErr);
 		}
 
 		return true;
@@ -535,11 +521,13 @@ public class ShellCommand
 		if (szStdOut != null)
 		{
 			int nRetValue = -65536;
-			for (int i = 0; i < szStdOut.length; i++)
-			{
-				try { nRetValue = Integer.parseInt(szStdOut[i].trim()); }
-				catch (NumberFormatException nfe) { continue; }
-			}
+            for (String aSzStdOut : szStdOut) {
+                try {
+                    nRetValue = Integer.parseInt(aSzStdOut.trim());
+                } catch (NumberFormatException nfe) {
+                    continue;
+                }
+            }
 			return nRetValue;
 		}
 		else return -65536;

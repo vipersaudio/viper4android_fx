@@ -240,8 +240,7 @@ public class StaticEnvironment
 			fosOutput.write(baBlank);
 			fosOutput.flush();
 			fosOutput.close();
-			new File(szFileName).delete();
-			return true;
+            return new File(szFileName).delete();
 		}
 		catch (FileNotFoundException e)
 		{

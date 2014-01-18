@@ -1,19 +1,17 @@
 package com.vipercn.viper4android_v2.activity;
 
 import android.app.ActionBar;
-import android.app.ActionBar.Tab;
-import android.app.ActionBar.TabListener;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
@@ -29,6 +27,7 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -81,9 +80,7 @@ public final class ViPER4Android extends FragmentActivity
 
 		SharedPreferences prefSettings = getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", 0);
 		String szLastVersion = prefSettings.getString("viper4android.settings.lastversion", "");
-		if (szLastVersion == null) return true;
-		if (szLastVersion.equals("")) return true;
-        return !szLastVersion.equalsIgnoreCase(szVersion);
+        return szLastVersion == null || szLastVersion.equals("") || !szLastVersion.equalsIgnoreCase(szVersion);
     }
 
 	private void SetFirstRun()
@@ -255,7 +252,7 @@ public final class ViPER4Android extends FragmentActivity
 	        return "";
 	    }
 	    BufferedReader reader = new BufferedReader(inputStreamReader);
-	    StringBuffer sb = new StringBuffer("");
+	    StringBuilder sb = new StringBuilder("");
 	    String line;
 	    try
 	    {
@@ -281,6 +278,7 @@ public final class ViPER4Android extends FragmentActivity
     protected MyAdapter pagerAdapter;
     protected ActionBar actionBar;
     protected ViewPager viewPager;
+    protected PagerTabStrip pagerTabStrip;
 
     private ArrayList<String> mProfileList = new ArrayList<String>();
     private Context mActivityContext = this;
@@ -454,42 +452,16 @@ public final class ViPER4Android extends FragmentActivity
 
         // Setup ui
         setContentView(R.layout.top);
-        pagerAdapter = new MyAdapter(getFragmentManager(), this);
+        pagerAdapter = new MyAdapter(getFragmentManager(), mActivityContext);
         actionBar = getActionBar();
         viewPager = (ViewPager)findViewById(R.id.viewPager);
+        pagerTabStrip = (PagerTabStrip) findViewById(R.id.pagerTabStrip);
 
-        // Setup action bar
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         actionBar.setDisplayShowTitleEnabled(true);
-        for (String entry : pagerAdapter.getEntries())
-        {
-            ActionBar.Tab tab = actionBar.newTab();
-            tab.setTabListener(new TabListener()
-            {
-                @Override public void onTabReselected(Tab tab, FragmentTransaction ft) {}
-                @Override public void onTabSelected(Tab tab, FragmentTransaction ft) { viewPager.setCurrentItem(tab.getPosition()); }
-                @Override public void onTabUnselected(Tab tab, FragmentTransaction ft) {}
-            });
-            try
-            {
-                int stringId = R.string.class.getField(entry + "_title").getInt(null);
-                tab.setText(getString(stringId));
-            }
-            catch (Exception e)
-            {
-                throw new RuntimeException(e);
-            }
-            actionBar.addTab(tab);
-        }
 
-        // Setup effect setting page
         viewPager.setAdapter(pagerAdapter);
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
-        {
-            @Override public void onPageSelected(int idx) { actionBar.selectTab(actionBar.getTabAt(idx)); }
-            @Override public void onPageScrolled(int arg0, float arg1, int arg2) {}
-            @Override public void onPageScrollStateChanged(int arg0) {}
-        });
+        pagerTabStrip.setDrawFullUnderline(true);
+        pagerTabStrip.setTabIndicatorColor(getResources().getColor(android.R.color.holo_blue_light));
 
         // Show changelog
 		if (CheckFirstRun())
@@ -579,7 +551,6 @@ public final class ViPER4Android extends FragmentActivity
             if (routing.equals(entries[i]))
             {
                 viewPager.setCurrentItem(i);
-                actionBar.selectTab(actionBar.getTabAt(i));
                 break;
             }
         }
@@ -948,8 +919,15 @@ public final class ViPER4Android extends FragmentActivity
 									File mProfileDir = new File(szProfilePath);
 									if (!mProfileDir.exists())
 									{
-										mProfileDir.mkdirs();
-										mProfileDir.mkdir();
+                                        boolean mActionOk = true;
+										mActionOk = mProfileDir.mkdirs();
+										mActionOk &= mProfileDir.mkdir();
+                                        if (!mActionOk)
+                                        {
+                                            Toast.makeText(mActivityContext, getResources().getString(R.string.text_rwsd_error), Toast.LENGTH_LONG).show();
+                                            dismiss();
+                                            return;
+                                        }
 									}
 									mProfileDir = new File(szProfilePath);
 									if (!mProfileDir.exists())
@@ -1267,41 +1245,49 @@ public final class ViPER4Android extends FragmentActivity
     }
 }
 
-class MyAdapter extends FragmentPagerAdapter
-{
+class MyAdapter extends FragmentPagerAdapter {
     private final ArrayList<String> tmpEntries;
+    private final ArrayList<String> tmpTitles;
     private final String[] entries;
+    private final String[] titles;
 
-    public MyAdapter(FragmentManager fm, Context context)
-    {
-    	super(fm);
-
+	public MyAdapter(FragmentManager fm, Context context) {
+		super(fm);
+        Resources res = context.getResources();
         tmpEntries = new ArrayList<String>();
         tmpEntries.add("headset");
         tmpEntries.add("speaker");
         tmpEntries.add("bluetooth");
 
+        tmpTitles = new ArrayList<String>();
+        tmpTitles.add(res.getString(R.string.headset_title).toUpperCase());
+        tmpTitles.add(res.getString(R.string.speaker_title).toUpperCase());
+        tmpTitles.add(res.getString(R.string.bluetooth_title).toUpperCase());
+
         entries = (String[]) tmpEntries.toArray(new String[tmpEntries.size()]);
-    }
-
-    public String[] getEntries()
-    {
-        return entries;
-    }
+        titles = (String[]) tmpTitles.toArray(new String[tmpTitles.size()]);
+	}
 
     @Override
-    public int getCount()
-    {
-        return entries.length;
+    public CharSequence getPageTitle(int position) {
+        return titles[position];
     }
 
-    @Override
-    public Fragment getItem(int position)
-    {
-        final MainDSPScreen dspFragment = new MainDSPScreen();
-        Bundle b = new Bundle();
-        b.putString("config", entries[position]);
-        dspFragment.setArguments(b);
-        return dspFragment;
-    }
+    public String[] getEntries() {
+		return entries;
+	}
+
+	@Override
+	public int getCount() {
+		return entries.length;
+	}
+
+	@Override
+	public Fragment getItem(int position) {
+		final MainDSPScreen v4aFragment = new MainDSPScreen();
+		Bundle b = new Bundle();
+		b.putString("config", entries[position]);
+		v4aFragment.setArguments(b);
+		return v4aFragment;
+	}
 }

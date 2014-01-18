@@ -28,4 +28,5 @@
     <color name="eq_holo_dark">#800099cc</color>
     <color name="cb_shader">#ffccffff</color>
     <color name="cb_shader_alpha">#44ccffff</color>
+    <color name="action_bar_color">#ff0d0d0d</color>
 </resources> 

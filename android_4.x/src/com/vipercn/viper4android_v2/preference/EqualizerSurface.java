@@ -1,5 +1,6 @@
 package com.vipercn.viper4android_v2.preference;
 
+import android.view.View;
 import com.vipercn.viper4android_v2.preference.Biquad;
 import com.vipercn.viper4android_v2.preference.Complex;
 
@@ -29,6 +30,7 @@ public class EqualizerSurface extends SurfaceView
 	private static int SAMPLING_RATE = 44100;
 	public static int MIN_DB = -12;
 	public static int MAX_DB = 12;
+	public static final float CURVE_RESOLUTION = 1.25f;
 
 	private int mWidth;
 	private int mHeight;
@@ -111,7 +113,7 @@ public class EqualizerSurface extends SurfaceView
 	protected void onAttachedToWindow()
 	{
 		super.onAttachedToWindow();
-		setLayerType(View.LAYER_TYPE_HARDWARE, null);
+		setLayerType(LAYER_TYPE_HARDWARE, null);
 		buildLayer();
 	}
 

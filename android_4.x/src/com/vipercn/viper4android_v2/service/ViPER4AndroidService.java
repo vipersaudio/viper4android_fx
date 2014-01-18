@@ -864,8 +864,7 @@ public class ViPER4AndroidService extends Service
 				Log.i("ViPER4Android", "m3rdAPI_TAKEOVER_EFFECT_Receiver, no token found");
 				itResult.putExtra("granted", false);
 				sendBroadcast(itResult);
-				return;
-			}
+            }
 			else
 			{
 				int nToken = intent.getIntExtra("token", 0);
@@ -874,16 +873,14 @@ public class ViPER4AndroidService extends Service
 					Log.i("ViPER4Android", "m3rdAPI_TAKEOVER_EFFECT_Receiver, invalid token found");
 					itResult.putExtra("granted", false);
 					sendBroadcast(itResult);
-					return;
-				}
+                }
 				else
 				{
 					mWorkingWith3rd = true;
 					Log.i("ViPER4Android", "m3rdAPI_TAKEOVER_EFFECT_Receiver, token = " + nToken);
 					itResult.putExtra("granted", true);
 					sendBroadcast(itResult);
-					return;
-				}
+                }
 			}
 		}
 	};
@@ -915,24 +912,21 @@ public class ViPER4AndroidService extends Service
 			if (!intent.hasExtra("token"))
 			{
 				Log.i("ViPER4Android", "m3rdAPI_SET_ENABLED_Receiver, no token found");
-				return;
-			}
+            }
 			else
 			{
 				int nToken = intent.getIntExtra("token", 0);
 				if (nToken == 0)
 				{
 					Log.i("ViPER4Android", "m3rdAPI_SET_ENABLED_Receiver, invalid token found");
-					return;
-				}
+                }
 				else
 				{
 					if (!intent.hasExtra("enabled")) return;
 					m3rdEnabled = intent.getBooleanExtra("enabled", false);
 					Log.i("ViPER4Android", "m3rdAPI_SET_ENABLED_Receiver, token = " + nToken + ", enabled = " + m3rdEnabled);
 					updateSystem(false);
-					return;
-				}
+                }
 			}
 		}
 	};
@@ -947,8 +941,7 @@ public class ViPER4AndroidService extends Service
 			if (!intent.hasExtra("token"))
 			{
 				Log.i("ViPER4Android", "m3rdAPI_SET_EQUALIZER_Receiver, no token found");
-				return;
-			}
+            }
 			else
 			{
 				int nToken = intent.getIntExtra("token", 0);
@@ -980,8 +973,7 @@ public class ViPER4AndroidService extends Service
 					}
 				}
 				updateSystem(false);
-				return;
-			}
+            }
 		}
 	};
 	/*******************************/
@@ -1571,11 +1563,9 @@ public class ViPER4AndroidService extends Service
 				{
 					Log.i("ViPER4Android", String.format("Trouble trying to manage session %d, removing...", sessionId), e);
 					v4aUnderControl.add(sessionId);
-					continue;
-				}
+                }
 			}
-			for (int idx = 0; idx < v4aUnderControl.size(); idx++)
-				mGeneralFXList.remove(v4aUnderControl.get(idx));
+            for (Integer aV4aUnderControl : v4aUnderControl) mGeneralFXList.remove(aV4aUnderControl);
 
 			mV4AMutex.release();
 		}
@@ -1599,7 +1589,7 @@ public class ViPER4AndroidService extends Service
 				if (mOverriddenEqualizerLevels != null)
 				{
 					for (int i = 0; i < mOverriddenEqualizerLevels.length; i ++)
-						SetV4AEqualizerBandLevel(i, (int)Math.round(Float.valueOf(mOverriddenEqualizerLevels[i]) * 100), true, v4aModule);
+						SetV4AEqualizerBandLevel(i, (int)Math.round(mOverriddenEqualizerLevels[i] * 100), true, v4aModule);
 				}
 				else
 				{
@@ -1616,7 +1606,7 @@ public class ViPER4AndroidService extends Service
 				if (m3rdEqualizerLevels != null)
 				{
 					for (int i = 0; i < m3rdEqualizerLevels.length; i ++)
-						SetV4AEqualizerBandLevel(i, (int)Math.round(Float.valueOf(m3rdEqualizerLevels[i]) * 100), true, v4aModule);
+						SetV4AEqualizerBandLevel(i, (int)Math.round(m3rdEqualizerLevels[i] * 100), true, v4aModule);
 				}
 				if (m3rdEqualizerEnabled)
 					v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_FIREQ_PROCESS_ENABLED, 1);
@@ -1769,7 +1759,7 @@ public class ViPER4AndroidService extends Service
 				if (mOverriddenEqualizerLevels != null)
 				{
 					for (int i = 0; i < mOverriddenEqualizerLevels.length; i ++)
-						SetV4AEqualizerBandLevel(i, (int)Math.round(Float.valueOf(mOverriddenEqualizerLevels[i]) * 100), false, v4aModule);
+						SetV4AEqualizerBandLevel(i, (int)Math.round(mOverriddenEqualizerLevels[i] * 100), false, v4aModule);
 				}
 				else
 				{
@@ -1786,7 +1776,7 @@ public class ViPER4AndroidService extends Service
 				if (m3rdEqualizerLevels != null)
 				{
 					for (int i = 0; i < m3rdEqualizerLevels.length; i ++)
-						SetV4AEqualizerBandLevel(i, (int)Math.round(Float.valueOf(m3rdEqualizerLevels[i]) * 100), false, v4aModule);
+						SetV4AEqualizerBandLevel(i, (int)Math.round(m3rdEqualizerLevels[i] * 100), false, v4aModule);
 				}
 				if (m3rdEqualizerEnabled)
 					v4aModule.setParameter_px4_vx4x1(PARAM_SPKFX_FIREQ_PROCESS_ENABLED, 1);
