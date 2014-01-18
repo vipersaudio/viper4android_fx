@@ -320,8 +320,7 @@ public class ViPER4AndroidService extends Service
 				byte[] p = intToByteArray(param);
 				byte[] v = new byte[4];
 				getParameter_Native(p, v);
-				int val = byteArrayToInt(v, 0);
-				return val;
+                return byteArrayToInt(v, 0);
 			}
 			catch (Exception e)
 			{
@@ -407,7 +406,7 @@ public class ViPER4AndroidService extends Service
 			byte[] baIRSName = szConvIRFile.getBytes();
 			int nIRSNameHashCode = 0;
 			if (baIRSName != null)
-				nIRSNameHashCode = (int)(IRSUtils.HashIRS(baIRSName, baIRSName.length) & 0xFFFFFFFF);
+				nIRSNameHashCode = (int)(IRSUtils.HashIRS(baIRSName, baIRSName.length));
 			setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_SPKFX_CONV_COMMITBUFFER, nKernelBufferID, nHashCode, nIRSNameHashCode);
 		}
 		private void ProceedIRBuffer_Headphone(String szConvIRFile, int nChannels, int nFrames, int nBytes)
@@ -475,7 +474,7 @@ public class ViPER4AndroidService extends Service
 			byte[] baIRSName = szConvIRFile.getBytes();
 			int nIRSNameHashCode = 0;
 			if (baIRSName != null)
-				nIRSNameHashCode = (int)(IRSUtils.HashIRS(baIRSName, baIRSName.length) & 0xFFFFFFFF);
+				nIRSNameHashCode = (int)(IRSUtils.HashIRS(baIRSName, baIRSName.length));
 			setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_HPFX_CONV_COMMITBUFFER, nKernelBufferID, nHashCode, nIRSNameHashCode);
 		}
 
@@ -501,7 +500,7 @@ public class ViPER4AndroidService extends Service
 				return;
 			}
 			long nlHashCode = IRSUtils.HashIRS(baKernelData, baKernelData.length);
-			int nHashCode = (int)((long)nlHashCode & 0xFFFFFFFF);
+			int nHashCode = (int)((long) nlHashCode);
 
 			Log.i("ViPER4Android", "[Kernel] Channels = " + irs.GetChannels() + ", Frames = " + irs.GetSampleCount() + ", Bytes = " + baKernelData.length + ", Hash = " + nHashCode);
 
@@ -524,7 +523,7 @@ public class ViPER4AndroidService extends Service
 			byte[] baIRSName = szConvIRFile.getBytes();
 			int nIRSNameHashCode = 0;
 			if (baIRSName != null)
-				nIRSNameHashCode = (int)(IRSUtils.HashIRS(baIRSName, baIRSName.length) & 0xFFFFFFFF);
+				nIRSNameHashCode = (int)(IRSUtils.HashIRS(baIRSName, baIRSName.length));
 			setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_SPKFX_CONV_COMMITBUFFER, nKernelBufferID, nHashCode, nIRSNameHashCode);
 		}
 		private void ProceedIRBuffer_Headphone(IRSUtils irs, String szConvIRFile)
@@ -549,7 +548,7 @@ public class ViPER4AndroidService extends Service
 				return;
 			}
 			long nlHashCode = IRSUtils.HashIRS(baKernelData, baKernelData.length);
-			int nHashCode = (int)((long)nlHashCode & 0xFFFFFFFF);
+			int nHashCode = (int)((long) nlHashCode);
 
 			Log.i("ViPER4Android", "[Kernel] Channels = " + irs.GetChannels() + ", Frames = " + irs.GetSampleCount() + ", Bytes = " + baKernelData.length + ", Hash = " + nHashCode);
 
@@ -574,7 +573,7 @@ public class ViPER4AndroidService extends Service
 			byte[] baIRSName = szConvIRFile.getBytes();
 			int nIRSNameHashCode = 0;
 			if (baIRSName != null)
-				nIRSNameHashCode = (int)(IRSUtils.HashIRS(baIRSName, baIRSName.length) & 0xFFFFFFFF);
+				nIRSNameHashCode = (int)(IRSUtils.HashIRS(baIRSName, baIRSName.length));
 			setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_HPFX_CONV_COMMITBUFFER, nKernelBufferID, nHashCode, nIRSNameHashCode);
 		}
 
@@ -608,7 +607,7 @@ public class ViPER4AndroidService extends Service
 					if (baIRSName != null)
 					{
 						long lIRSNameHash = IRSUtils.HashIRS(baIRSName, baIRSName.length);
-						int iIRSNameHash = (int)(lIRSNameHash & 0xFFFFFFFF);
+						int iIRSNameHash = (int)(lIRSNameHash);
 						int iIRSNameHashInDriver = getParameter_px4_vx4x1(PARAM_GET_CONVKNLID);
 						Log.i("ViPER4Android", "Kernel ID = [driver: " + iIRSNameHashInDriver + ", client: " + iIRSNameHash + "]");
 						if (iIRSNameHash == iIRSNameHashInDriver)
@@ -865,8 +864,7 @@ public class ViPER4AndroidService extends Service
 				Log.i("ViPER4Android", "m3rdAPI_TAKEOVER_EFFECT_Receiver, no token found");
 				itResult.putExtra("granted", false);
 				sendBroadcast(itResult);
-				return;
-			}
+            }
 			else
 			{
 				int nToken = intent.getIntExtra("token", 0);
@@ -875,16 +873,14 @@ public class ViPER4AndroidService extends Service
 					Log.i("ViPER4Android", "m3rdAPI_TAKEOVER_EFFECT_Receiver, invalid token found");
 					itResult.putExtra("granted", false);
 					sendBroadcast(itResult);
-					return;
-				}
+                }
 				else
 				{
 					mWorkingWith3rd = true;
 					Log.i("ViPER4Android", "m3rdAPI_TAKEOVER_EFFECT_Receiver, token = " + nToken);
 					itResult.putExtra("granted", true);
 					sendBroadcast(itResult);
-					return;
-				}
+                }
 			}
 		}
 	};
@@ -916,24 +912,21 @@ public class ViPER4AndroidService extends Service
 			if (!intent.hasExtra("token"))
 			{
 				Log.i("ViPER4Android", "m3rdAPI_SET_ENABLED_Receiver, no token found");
-				return;
-			}
+            }
 			else
 			{
 				int nToken = intent.getIntExtra("token", 0);
 				if (nToken == 0)
 				{
 					Log.i("ViPER4Android", "m3rdAPI_SET_ENABLED_Receiver, invalid token found");
-					return;
-				}
+                }
 				else
 				{
 					if (!intent.hasExtra("enabled")) return;
 					m3rdEnabled = intent.getBooleanExtra("enabled", false);
 					Log.i("ViPER4Android", "m3rdAPI_SET_ENABLED_Receiver, token = " + nToken + ", enabled = " + m3rdEnabled);
 					updateSystem(false);
-					return;
-				}
+                }
 			}
 		}
 	};
@@ -948,8 +941,7 @@ public class ViPER4AndroidService extends Service
 			if (!intent.hasExtra("token"))
 			{
 				Log.i("ViPER4Android", "m3rdAPI_SET_EQUALIZER_Receiver, no token found");
-				return;
-			}
+            }
 			else
 			{
 				int nToken = intent.getIntExtra("token", 0);
@@ -981,8 +973,7 @@ public class ViPER4AndroidService extends Service
 					}
 				}
 				updateSystem(false);
-				return;
-			}
+            }
 		}
 	};
 	/*******************************/
@@ -996,9 +987,8 @@ public class ViPER4AndroidService extends Service
 
 			SharedPreferences prefSettings = getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", MODE_PRIVATE);
 			String szCompatibleMode = prefSettings.getString("viper4android.settings.compatiblemode", "global");
-			boolean mFXInLocalMode = false;
-			if (szCompatibleMode.equals("global")) mFXInLocalMode = false;
-			else mFXInLocalMode = true;
+			boolean mFXInLocalMode;
+            mFXInLocalMode = !szCompatibleMode.equals("global");
 
 			String action = intent.getAction();
 			int sessionId = intent.getIntExtra(AudioEffect.EXTRA_AUDIO_SESSION, 0);
@@ -1147,7 +1137,7 @@ public class ViPER4AndroidService extends Service
 
         int nIconID = getResources().getIdentifier("icon", "drawable", getApplicationInfo().packageName);
 		String szNotifyText = "ViPER4Android FX " + nFXType;
-        CharSequence contentTitle = "ViPER4Android FX", contentText = nFXType;
+        CharSequence contentTitle = "ViPER4Android FX";
         Intent notificationIntent = new Intent(ViPER4AndroidService.this, ViPER4Android.class);
         PendingIntent contentItent = PendingIntent.getActivity(ViPER4AndroidService.this, 0, notificationIntent, 0);
 
@@ -1161,7 +1151,7 @@ public class ViPER4AndroidService extends Service
 				.setSmallIcon(nIconID)
 				.setTicker(szNotifyText)
 				.setContentTitle(contentTitle)
-				.setContentText(contentText)
+				.setContentText(nFXType)
 				.setContentIntent(contentItent)
 				.getNotification();
 	
@@ -1195,8 +1185,8 @@ public class ViPER4AndroidService extends Service
 		else
 		{
 			PackageManager packageMgr = getPackageManager();
-			PackageInfo packageInfo = null;
-			String szApkVer = "";
+			PackageInfo packageInfo;
+			String szApkVer;
 			try
 			{
 				int[] iaDrvVer = aeuUtils.GetViPER4AndroidEngineVersion();
@@ -1516,9 +1506,8 @@ public class ViPER4AndroidService extends Service
 
 		SharedPreferences prefSettings = getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", MODE_PRIVATE);
 		String szCompatibleMode = prefSettings.getString("viper4android.settings.compatiblemode", "global");
-		boolean mFXInLocalMode = false;
-		if (szCompatibleMode.equals("global")) mFXInLocalMode = false;
-		else mFXInLocalMode = true;
+		boolean mFXInLocalMode;
+        mFXInLocalMode = !szCompatibleMode.equals("global");
 
 		Log.i("ViPER4Android", "<+++++++++++++++ Update global effect +++++++++++++++>");
 		updateSystem_Global(preferences, nFXType, bRequireReset, mFXInLocalMode);
@@ -1574,11 +1563,9 @@ public class ViPER4AndroidService extends Service
 				{
 					Log.i("ViPER4Android", String.format("Trouble trying to manage session %d, removing...", sessionId), e);
 					v4aUnderControl.add(sessionId);
-					continue;
-				}
+                }
 			}
-			for (int idx = 0; idx < v4aUnderControl.size(); idx++)
-				mGeneralFXList.remove(v4aUnderControl.get(idx));
+            for (Integer aV4aUnderControl : v4aUnderControl) mGeneralFXList.remove(aV4aUnderControl);
 
 			mV4AMutex.release();
 		}
@@ -1602,7 +1589,7 @@ public class ViPER4AndroidService extends Service
 				if (mOverriddenEqualizerLevels != null)
 				{
 					for (int i = 0; i < mOverriddenEqualizerLevels.length; i ++)
-						SetV4AEqualizerBandLevel(i, (int)Math.round(Float.valueOf(mOverriddenEqualizerLevels[i]) * 100), true, v4aModule);
+						SetV4AEqualizerBandLevel(i, (int)Math.round(mOverriddenEqualizerLevels[i] * 100), true, v4aModule);
 				}
 				else
 				{
@@ -1619,7 +1606,7 @@ public class ViPER4AndroidService extends Service
 				if (m3rdEqualizerLevels != null)
 				{
 					for (int i = 0; i < m3rdEqualizerLevels.length; i ++)
-						SetV4AEqualizerBandLevel(i, (int)Math.round(Float.valueOf(m3rdEqualizerLevels[i]) * 100), true, v4aModule);
+						SetV4AEqualizerBandLevel(i, (int)Math.round(m3rdEqualizerLevels[i] * 100), true, v4aModule);
 				}
 				if (m3rdEqualizerEnabled)
 					v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_FIREQ_PROCESS_ENABLED, 1);
@@ -1772,7 +1759,7 @@ public class ViPER4AndroidService extends Service
 				if (mOverriddenEqualizerLevels != null)
 				{
 					for (int i = 0; i < mOverriddenEqualizerLevels.length; i ++)
-						SetV4AEqualizerBandLevel(i, (int)Math.round(Float.valueOf(mOverriddenEqualizerLevels[i]) * 100), false, v4aModule);
+						SetV4AEqualizerBandLevel(i, (int)Math.round(mOverriddenEqualizerLevels[i] * 100), false, v4aModule);
 				}
 				else
 				{
@@ -1789,7 +1776,7 @@ public class ViPER4AndroidService extends Service
 				if (m3rdEqualizerLevels != null)
 				{
 					for (int i = 0; i < m3rdEqualizerLevels.length; i ++)
-						SetV4AEqualizerBandLevel(i, (int)Math.round(Float.valueOf(m3rdEqualizerLevels[i]) * 100), false, v4aModule);
+						SetV4AEqualizerBandLevel(i, (int)Math.round(m3rdEqualizerLevels[i] * 100), false, v4aModule);
 				}
 				if (m3rdEqualizerEnabled)
 					v4aModule.setParameter_px4_vx4x1(PARAM_SPKFX_FIREQ_PROCESS_ENABLED, 1);

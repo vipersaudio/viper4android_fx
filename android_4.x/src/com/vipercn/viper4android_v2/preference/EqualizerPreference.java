@@ -1,9 +1,11 @@
 package com.vipercn.viper4android_v2.preference;
 
+import java.util.Arrays;
 import java.util.Locale;
 
 import android.content.ComponentName;
 import android.content.Context;
+import android.os.Bundle;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;

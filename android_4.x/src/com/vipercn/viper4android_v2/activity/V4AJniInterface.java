@@ -39,33 +39,29 @@ public class V4AJniInterface
 	{
 		if (!m_JniLoadOK) return false;
 		int nUsable = CheckLibraryUsable();
-		if (nUsable == 1) return true;
-		else return false;
+        return nUsable == 1;
 	}
 
 	public static boolean IsLibraryUsable()
 	{
-		if (!m_JniLoadOK) return false;
-		return true;
-	}
+        return m_JniLoadOK;
+    }
 
 	public static boolean IsCPUSupportNEON()
 	{
 		if (!m_JniLoadOK) return false;
 		int nResult = CheckCPUHasNEON();
 		Log.i("ViPER4Android_Utils", "CPUInfo[jni] = NEON:" + nResult);
-		if (nResult == 0) return false;
-		return true;
-	}
+        return nResult != 0;
+    }
 
 	public static boolean IsCPUSupportVFP()
 	{
 		if (!m_JniLoadOK) return false;
 		int nResult = CheckCPUHasVFP();
 		Log.i("ViPER4Android_Utils", "CPUInfo[jni] = VFP:" + nResult);
-		if (nResult == 0) return false;
-		return true;
-	}
+        return nResult != 0;
+    }
 
 	public static int[] GetImpulseResponseInfoArray(String szIRFileName)
 	{

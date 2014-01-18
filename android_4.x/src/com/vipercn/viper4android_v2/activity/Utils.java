@@ -194,10 +194,8 @@ public class Utils
 	    		frCPUInfoReader.close();
 
 	    		Log.i("ViPER4Android_Utils", "CPUInfo[java] = NEON:" + m_bCPUHasNEON + ", VFP:" + m_bCPUHasVFP);
-	    		if (!m_bCPUHasNEON && !m_bCPUHasVFP)
-	    			return false;
-	    		return true;
-    		}
+                return !(!m_bCPUHasNEON && !m_bCPUHasVFP);
+            }
     		catch (IOException e)
     		{
     			try
@@ -316,8 +314,7 @@ public class Utils
     		} while (true);
     		fis.close();
     		String szNewChecksum = Long.toString(lChecksum);
-    		if (szChecksum.equals(szNewChecksum)) return true;
-    		else return false;
+            return szChecksum.equals(szNewChecksum);
     	}
     	catch (Exception e)
     	{
@@ -331,9 +328,8 @@ public class Utils
         if (path.isDirectory())
         {
             File[] files = path.listFiles();
-            if (null == files) return;      
-            for(int i = 0; i < files.length; i++)
-            	GetFileNameList(files[i], fileExt, fileList);
+            if (null == files) return;
+            for (File file : files) GetFileNameList(file, fileExt, fileList);
         }
         else
         {
@@ -389,12 +385,11 @@ public class Utils
 	    	GetFileNameList(fProfileDirHandle, ".prf", szProfileList);
 
 	    	ArrayList<String> szProfileNameList = new ArrayList<String>();
-	    	for (int idx = 0; idx < szProfileList.size(); idx++)
-	    	{
-	    		String szFileName = szProfileDir + szProfileList.get(idx);
-	    		String szName = GetProfileName(szFileName);
-	    		szProfileNameList.add(szName.trim());
-	    	}
+            for (String aSzProfileList : szProfileList) {
+                String szFileName = szProfileDir + aSzProfileList;
+                String szName = GetProfileName(szFileName);
+                szProfileNameList.add(szName.trim());
+            }
 
 	    	return szProfileNameList;
     	}
@@ -414,16 +409,14 @@ public class Utils
 	    	GetFileNameList(fProfileDirHandle, ".prf", szProfileList);
 
 	    	boolean bFoundProfile = false;
-	    	for (int idx = 0; idx < szProfileList.size(); idx++)
-	    	{
-	    		String szFileName = szProfileDir + szProfileList.get(idx);
-	    		String szName = GetProfileName(szFileName);
-	    		if (szProfileName.trim().equalsIgnoreCase(szName.trim()))
-	    		{
-	    			bFoundProfile = true;
-	    			break;
-	    		}
-	    	}
+            for (String aSzProfileList : szProfileList) {
+                String szFileName = szProfileDir + aSzProfileList;
+                String szName = GetProfileName(szFileName);
+                if (szProfileName.trim().equalsIgnoreCase(szName.trim())) {
+                    bFoundProfile = true;
+                    break;
+                }
+            }
 
 	    	return bFoundProfile;
     	}
@@ -442,16 +435,14 @@ public class Utils
 	    	ArrayList<String> szProfileFileList = new ArrayList<String>();
 	    	GetFileNameList(fProfileDirHandle, ".prf", szProfileFileList);
 	    	String szProfileFileName = "";
-	    	for (int idx = 0; idx < szProfileFileList.size(); idx++)
-	    	{
-	    		String szFileName = szProfileDir + szProfileFileList.get(idx);
-	    		String szName = GetProfileName(szFileName);
-	    		if (szProfileName.trim().equalsIgnoreCase(szName.trim()))
-	    		{
-	    			szProfileFileName = szFileName;
-	    			break;
-	    		}
-	    	}
+            for (String aSzProfileFileList : szProfileFileList) {
+                String szFileName = szProfileDir + aSzProfileFileList;
+                String szName = GetProfileName(szFileName);
+                if (szProfileName.trim().equalsIgnoreCase(szName.trim())) {
+                    szProfileFileName = szFileName;
+                    break;
+                }
+            }
 	    	if (szProfileFileName.equals("")) return false;
 
     		SharedPreferences preferences = ctx.getSharedPreferences(szPreferenceName, Context.MODE_PRIVATE);
@@ -520,7 +511,7 @@ public class Utils
         		bwOutput.write("# Created " + szDate + "\n\n");
         		bwOutput.write("profile_name=" + szProfileName + "\n\n");
 
-        		String szValue = "";
+        		String szValue;
 
         		// boolean values
         		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.enable", false));
@@ -746,8 +737,8 @@ public class Utils
     	if (szBasePath.equals("")) return false;
     	szDstName = szBasePath + "/" + szDstName;	
 
-        InputStream myInput = null;
-        OutputStream myOutput = null;
+        InputStream myInput;
+        OutputStream myOutput;
         String outFileName = szDstName;
         try
         {
@@ -757,7 +748,7 @@ public class Utils
 	        myOutput = new FileOutputStream(outFileName);
 	        myInput = ctx.getAssets().open(szSourceName);
 	        byte[] tBuffer = new byte[4096];  /* 4K page size */
-	        int nLength = 0;
+	        int nLength;
 	        while ((nLength = myInput.read(tBuffer)) > 0)
 	        	myOutput.write(tBuffer, 0, nLength);
 	        myOutput.flush();
@@ -857,7 +848,7 @@ public class Utils
     				szChmod = "toolbox chmod";
     		}
     	}
-    	if ((szChmod == null) || szChmod.equals(""))
+    	if (szChmod.equals(""))
     		return false;
 
     	// Generate temp config file path, thanks to 'ste71m'
@@ -884,7 +875,7 @@ public class Utils
 
     	// Modifing configuration
     	boolean bModifyResult = true;
-    	bModifyResult &= ModifyFXConfig(szSystemConf, szSystemConf + ".out");
+    	bModifyResult = ModifyFXConfig(szSystemConf, szSystemConf + ".out");
     	if (bExistsVendor) bModifyResult &= ModifyFXConfig(szVendorConf, szVendorConf + ".out");
     	if (!bModifyResult)
     	{
@@ -924,7 +915,7 @@ public class Utils
 	    	if (bExistsVendor)
 	    	{
 	    		// Copy files
-	    		bOperationSucceed &= RootTools.remount("/system", "RW");
+	    		bOperationSucceed = RootTools.remount("/system", "RW");
 	    		if (bOperationSucceed) bOperationSucceed &= RootTools.copyFile(szBaseDrvPathName, "/system/lib/soundfx/libv4a_fx_ics.so", false, false);
 	    		if (bOperationSucceed) bOperationSucceed &= RootTools.copyFile(szSystemConf + ".out", "/system/etc/audio_effects.conf", false, false);
 	    		if (bOperationSucceed) bOperationSucceed &= RootTools.copyFile(szVendorConf + ".out", "/system/vendor/etc/audio_effects.conf", false, false);
@@ -939,7 +930,7 @@ public class Utils
 	    	else
 	    	{
 	    		// Copy files
-	    		bOperationSucceed &= RootTools.remount("/system", "RW");
+	    		bOperationSucceed = RootTools.remount("/system", "RW");
 	    		if (bOperationSucceed) bOperationSucceed &= RootTools.copyFile(szBaseDrvPathName, "/system/lib/soundfx/libv4a_fx_ics.so", false, false);
 	    		if (bOperationSucceed) bOperationSucceed &= RootTools.copyFile(szSystemConf + ".out", "/system/etc/audio_effects.conf", false, false);
 	    		// Modify permission
@@ -1051,7 +1042,7 @@ public class Utils
     	String szBaseDrvPathName = GetBasePath(ctx);
     	if (szBaseDrvPathName.endsWith("/")) szBaseDrvPathName = szBaseDrvPathName + "libv4a_fx_ics.so";
     	else szBaseDrvPathName = szBaseDrvPathName + "/libv4a_fx_ics.so";
-    	int nShellCmdReturn = 0; boolean bSuccess = false;
+    	int nShellCmdReturn; boolean bSuccess;
 	    if (bExistsVendor)
 	    {
 	    	// Copy files

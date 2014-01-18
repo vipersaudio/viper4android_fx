@@ -240,8 +240,7 @@ public class StaticEnvironment
 			fosOutput.write(baBlank);
 			fosOutput.flush();
 			fosOutput.close();
-			new File(szFileName).delete();
-			return true;
+            return new File(szFileName).delete();
 		}
 		catch (FileNotFoundException e)
 		{
@@ -273,13 +272,12 @@ public class StaticEnvironment
         	m_szV4AESRoot = m_szExternalStoragePath + "ViPER4Android/";
         	m_szV4AESKernel = m_szV4AESRoot + "Kernel/";
         	m_szV4AESProfile = m_szV4AESRoot + "Profile/";
-        	return;
-    	}
+        }
     	else
     	{
     		boolean bPathFromSDKIsWorking = false;
     		boolean bPathFromLegacyIsWorking = false;
-    		String szExtPath = "";
+    		String szExtPath;
     		{
 	        	if (szExternalStoragePathName.endsWith("/")) szExtPath = szExternalStoragePathName;
 	        	else szExtPath = szExternalStoragePathName + "/";
