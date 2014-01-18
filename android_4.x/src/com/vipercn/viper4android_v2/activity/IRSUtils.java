@@ -39,7 +39,7 @@ public class IRSUtils
 			int nTblIndex = (int)(crcResult ^ bData) & 0xFF;
 			crcResult = ((crcResult >> 8) & 0x00FFFFFF) ^ crcTable[nTblIndex];
 		}
-		return crcResult ^ 0xFFFFFFFF;
+		return ~crcResult;
 	}
 
 	private static final int WAV_HEADER_CHUNK_ID = 0x52494646;	// "RIFF"
@@ -340,7 +340,7 @@ public class IRSUtils
 		bbF32Buffer.order(ByteOrder.nativeOrder());
 		for (int i = 0, idx = 0; i < nSamplesCount; i++, idx += 3)
 		{
-			byte s24_b1 = baS24LEData[idx + 0];
+			byte s24_b1 = baS24LEData[idx];
 			byte s24_b2 = baS24LEData[idx + 1];
 			byte s24_b3 = baS24LEData[idx + 2];
 			int s24 = (int)(s24_b1 & 0xFF | ((s24_b2 & 0xFF) << 8) | ((s24_b3 & 0xFF) << 16));
@@ -383,7 +383,7 @@ public class IRSUtils
 	private static int ReadUnsignedInt(BufferedInputStream bisInput)
 	{
         byte[] baBuffer = new byte[4];
-        int dwReturn = -1;
+        int dwReturn;
         try { dwReturn = bisInput.read(baBuffer); }
         catch (IOException e) { return 0; }
         if (dwReturn == -1) return -1;
@@ -399,7 +399,7 @@ public class IRSUtils
     private static int ReadUnsignedIntLE(BufferedInputStream bisInput)
     {
         byte[] baBuffer = new byte[4];
-        int dwReturn = -1;
+        int dwReturn;
         try { dwReturn = bisInput.read(baBuffer); }
         catch (IOException e) { return 0; }
         if (dwReturn == -1) return -1;
@@ -415,7 +415,7 @@ public class IRSUtils
     private static short ReadUnsignedShortLE(BufferedInputStream bisInput)
     {
         byte[] baBuffer = new byte[2];
-        int dwReturn = -1;
+        int dwReturn;
         try { dwReturn = bisInput.read(baBuffer, 0, 2); }
         catch (IOException e) { return 0; }
         if (dwReturn == -1) return -1;

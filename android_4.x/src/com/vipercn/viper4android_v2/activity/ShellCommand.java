@@ -445,14 +445,14 @@ public class ShellCommand
 		ClearStdOutAndErr();
 		try
 		{
-			int nOldCount = 0;
+			int nOldCount;
 			try { nOldCount = m_diShellStdOut.available() + m_diShellStdErr.available(); }
 			catch (IOException ioe) { nOldCount = 0; }
 			m_doShellStdIn.writeBytes(szCommand + "\n");
 			m_doShellStdIn.flush();
 			for (int nWaitCount = 0; nWaitCount <= Math.round(nMaxWaitSeconds * 10); nWaitCount++)
 			{
-				int nCurrCount = 0;
+				int nCurrCount;
 				try { nCurrCount = m_diShellStdOut.available() + m_diShellStdErr.available(); }
 				catch (IOException ioe) { nCurrCount = 0; }
 				Log.i("ViPER4Android_ShellCommand", "Waiting for command return, idx = " + nWaitCount + ", old = " + nOldCount + ", curr = " + nCurrCount);
@@ -498,14 +498,14 @@ public class ShellCommand
 		ClearStdOutAndErr();
 		try
 		{
-			int nOldCount = 0;
+			int nOldCount;
 			try { nOldCount = m_diShellStdOut.available() + m_diShellStdErr.available(); }
 			catch (IOException ioe) { nOldCount = 0; }
 			m_doShellStdIn.writeBytes(szCommand + "\n");
 			m_doShellStdIn.flush();
 			for (int nWaitCount = 0; nWaitCount <= Math.round(nMaxWaitSeconds * 10); nWaitCount++)
 			{
-				int nCurrCount = 0;
+				int nCurrCount;
 				try { nCurrCount = m_diShellStdOut.available() + m_diShellStdErr.available(); }
 				catch (IOException ioe) { nCurrCount = 0; }
 				Log.i("ViPER4Android_ShellCommand", "Waiting for command return, idx = " + nWaitCount + ", old = " + nOldCount + ", curr = " + nCurrCount);

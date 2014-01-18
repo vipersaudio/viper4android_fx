@@ -67,8 +67,8 @@ public final class ViPER4Android extends FragmentActivity
 	private boolean CheckFirstRun()
 	{
 		PackageManager packageMgr = getPackageManager();
-		PackageInfo packageInfo = null;
-		String szVersion = "";
+		PackageInfo packageInfo;
+		String szVersion;
 		try
 		{
 			packageInfo = packageMgr.getPackageInfo(getPackageName(), 0);
@@ -83,15 +83,14 @@ public final class ViPER4Android extends FragmentActivity
 		String szLastVersion = prefSettings.getString("viper4android.settings.lastversion", "");
 		if (szLastVersion == null) return true;
 		if (szLastVersion.equals("")) return true;
-		if (szLastVersion.equalsIgnoreCase(szVersion)) return false;
-		return true;
-	}
+        return !szLastVersion.equalsIgnoreCase(szVersion);
+    }
 
 	private void SetFirstRun()
 	{
 		PackageManager packageMgr = getPackageManager();
-		PackageInfo packageInfo = null;
-		String szVersion = "";
+		PackageInfo packageInfo;
+		String szVersion;
 		try
 		{
 			packageInfo = packageMgr.getPackageInfo(getPackageName(), 0);
@@ -165,10 +164,8 @@ public final class ViPER4Android extends FragmentActivity
 			HttpGet httpRequest = new HttpGet(szURL);
 			HttpClient httpClient = new DefaultHttpClient();
 			HttpResponse httpResponse = httpClient.execute(httpRequest);
-			if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK)
-				return true;
-			return false;
-		}
+            return httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK;
+        }
 		catch (Exception e)
 		{
 			Log.i("ViPER4Android", "Submit failed, error = " + e.getMessage());
@@ -179,7 +176,7 @@ public final class ViPER4Android extends FragmentActivity
 
 	private void ProcessDriverCheck()
 	{
-		boolean bDriverIsUsable = false;
+		boolean bDriverIsUsable;
 
 		Utils.AudioEffectUtils aeuUtils = (new Utils()).new AudioEffectUtils();
 		if (!aeuUtils.IsViPER4AndroidEngineFound())
@@ -187,17 +184,15 @@ public final class ViPER4Android extends FragmentActivity
 		else
 		{
 			PackageManager packageMgr = getPackageManager();
-			PackageInfo packageInfo = null;
-			String szApkVer = "";
+			PackageInfo packageInfo;
+			String szApkVer;
 			try
 			{
 				int[] iaDrvVer = aeuUtils.GetViPER4AndroidEngineVersion();
 				String szDriverVersion = iaDrvVer[0] + "." + iaDrvVer[1] + "." + iaDrvVer[2] + "." + iaDrvVer[3];
 				packageInfo = packageMgr.getPackageInfo(getPackageName(), 0);
 				szApkVer = packageInfo.versionName;
-				if (!szApkVer.equalsIgnoreCase(szDriverVersion))
-					bDriverIsUsable = false;
-				else bDriverIsUsable = true;
+                bDriverIsUsable = szApkVer.equalsIgnoreCase(szDriverVersion);
 			}
 			catch (NameNotFoundException e)
 			{
@@ -219,9 +214,8 @@ public final class ViPER4Android extends FragmentActivity
 	public static boolean CPUHasQualitySelection()
 	{
 		Utils.CPUInfo mCPUInfo = new Utils.CPUInfo();
-		if (mCPUInfo.HasNEON()) return true;
-		return false;
-	}
+        return mCPUInfo.HasNEON();
+    }
 
 	public static String DetermineCPUWithDriver(String szQual)
 	{
@@ -251,7 +245,7 @@ public final class ViPER4Android extends FragmentActivity
 
 	public static String ReadTextFile(InputStream inputStream)
 	{
-	    InputStreamReader inputStreamReader = null;
+	    InputStreamReader inputStreamReader;
 	    try
 	    {
 	        inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
@@ -425,7 +419,8 @@ public final class ViPER4Android extends FragmentActivity
         @Override
         public void onServiceConnected(ComponentName name, IBinder binder)
         {
-        	ViPER4AndroidService service = ((ViPER4AndroidService.LocalBinder)binder).getService();
+        	ViPER4AndroidService service;
+            service = ((ViPER4AndroidService.LocalBinder)binder).getService();
             mAudioServiceInstance = service;
         }
 
@@ -509,7 +504,7 @@ public final class ViPER4Android extends FragmentActivity
 			szChangelog_AssetsName = szChangelog_AssetsName + ".txt";
 
 			String szChangeLog = "";
-			InputStream isHandle = null;
+			InputStream isHandle;
 			try
 			{
 				isHandle = getAssets().open(szChangelog_AssetsName);
@@ -704,8 +699,8 @@ public final class ViPER4Android extends FragmentActivity
 	        case R.id.about:
 	        {
 				PackageManager packageMgr = getPackageManager();
-				PackageInfo packageInfo = null;
-				String szVersion = "";
+				PackageInfo packageInfo;
+				String szVersion;
 				try
 				{
 					packageInfo = packageMgr.getPackageInfo(getPackageName(), 0);
@@ -783,7 +778,7 @@ public final class ViPER4Android extends FragmentActivity
 							int[] iaDrvVer = aeuUtils.GetViPER4AndroidEngineVersion();
 							String szDriverVersion = iaDrvVer[0] + "." + iaDrvVer[1] + "." + iaDrvVer[2] + "." + iaDrvVer[3];
 
-							String szDrvStatus = "";
+							String szDrvStatus;
 							szDrvStatus = getResources().getString(R.string.text_drv_status_view);
 							szDrvStatus = String.format(szDrvStatus,
 									szDriverVersion, szDrvNEONEnabled,
@@ -817,7 +812,7 @@ public final class ViPER4Android extends FragmentActivity
     			szChangelog_AssetsName = szChangelog_AssetsName + ".txt";
 
     			String szChangeLog = "";
-    			InputStream isHandle = null;
+    			InputStream isHandle;
     			try
     			{
     				isHandle = getAssets().open(szChangelog_AssetsName);
@@ -1182,7 +1177,7 @@ public final class ViPER4Android extends FragmentActivity
             case R.id.compatible:
             {
             	String szCompatibleMode = prefSettings.getString("viper4android.settings.compatiblemode", "global");
-            	int nSelIdx = 0;
+            	int nSelIdx;
             	if (szCompatibleMode.equals("global")) nSelIdx = 0;
             	else nSelIdx = 1;
             	Dialog selectDialog = new AlertDialog.Builder(this)
@@ -1225,7 +1220,7 @@ public final class ViPER4Android extends FragmentActivity
             case R.id.lockeffect:
             {
             	String szLockedEffect = prefSettings.getString("viper4android.settings.lock_effect", "none");
-            	int nLockIndex = -1;
+            	int nLockIndex;
             	if (szLockedEffect.equalsIgnoreCase("none")) nLockIndex = 0;
             	else if (szLockedEffect.equalsIgnoreCase("headset")) nLockIndex = 1;
             	else if (szLockedEffect.equalsIgnoreCase("speaker")) nLockIndex = 2;

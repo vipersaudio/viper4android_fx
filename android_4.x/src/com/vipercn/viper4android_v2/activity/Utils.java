@@ -194,10 +194,8 @@ public class Utils
 	    		frCPUInfoReader.close();
 
 	    		Log.i("ViPER4Android_Utils", "CPUInfo[java] = NEON:" + m_bCPUHasNEON + ", VFP:" + m_bCPUHasVFP);
-	    		if (!m_bCPUHasNEON && !m_bCPUHasVFP)
-	    			return false;
-	    		return true;
-    		}
+                return !(!m_bCPUHasNEON && !m_bCPUHasVFP);
+            }
     		catch (IOException e)
     		{
     			try
@@ -316,8 +314,7 @@ public class Utils
     		} while (true);
     		fis.close();
     		String szNewChecksum = Long.toString(lChecksum);
-    		if (szChecksum.equals(szNewChecksum)) return true;
-    		else return false;
+            return szChecksum.equals(szNewChecksum);
     	}
     	catch (Exception e)
     	{
@@ -520,7 +517,7 @@ public class Utils
         		bwOutput.write("# Created " + szDate + "\n\n");
         		bwOutput.write("profile_name=" + szProfileName + "\n\n");
 
-        		String szValue = "";
+        		String szValue;
 
         		// boolean values
         		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.enable", false));
@@ -746,8 +743,8 @@ public class Utils
     	if (szBasePath.equals("")) return false;
     	szDstName = szBasePath + "/" + szDstName;	
 
-        InputStream myInput = null;
-        OutputStream myOutput = null;
+        InputStream myInput;
+        OutputStream myOutput;
         String outFileName = szDstName;
         try
         {
@@ -757,7 +754,7 @@ public class Utils
 	        myOutput = new FileOutputStream(outFileName);
 	        myInput = ctx.getAssets().open(szSourceName);
 	        byte[] tBuffer = new byte[4096];  /* 4K page size */
-	        int nLength = 0;
+	        int nLength;
 	        while ((nLength = myInput.read(tBuffer)) > 0)
 	        	myOutput.write(tBuffer, 0, nLength);
 	        myOutput.flush();
@@ -857,7 +854,7 @@ public class Utils
     				szChmod = "toolbox chmod";
     		}
     	}
-    	if ((szChmod == null) || szChmod.equals(""))
+    	if (szChmod.equals(""))
     		return false;
 
     	// Generate temp config file path, thanks to 'ste71m'
@@ -884,7 +881,7 @@ public class Utils
 
     	// Modifing configuration
     	boolean bModifyResult = true;
-    	bModifyResult &= ModifyFXConfig(szSystemConf, szSystemConf + ".out");
+    	bModifyResult = ModifyFXConfig(szSystemConf, szSystemConf + ".out");
     	if (bExistsVendor) bModifyResult &= ModifyFXConfig(szVendorConf, szVendorConf + ".out");
     	if (!bModifyResult)
     	{
@@ -1051,7 +1048,7 @@ public class Utils
     	String szBaseDrvPathName = GetBasePath(ctx);
     	if (szBaseDrvPathName.endsWith("/")) szBaseDrvPathName = szBaseDrvPathName + "libv4a_fx_ics.so";
     	else szBaseDrvPathName = szBaseDrvPathName + "/libv4a_fx_ics.so";
-    	int nShellCmdReturn = 0; boolean bSuccess = false;
+    	int nShellCmdReturn; boolean bSuccess;
 	    if (bExistsVendor)
 	    {
 	    	// Copy files
