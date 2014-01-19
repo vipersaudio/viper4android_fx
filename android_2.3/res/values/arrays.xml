@@ -525,6 +525,8 @@
     <item>40 Hz</item>
     <item>50 Hz</item>
     <item>60 Hz</item>
+    <item>66 Hz</item>
+    <item>78 Hz</item>
     <item>80 Hz</item>
     <item>100 Hz</item>
   </string-array>
@@ -532,6 +534,8 @@
     <item>40</item>
     <item>50</item>
     <item>60</item>
+    <item>66</item>
+    <item>78</item>
     <item>80</item>
     <item>100</item>
   </string-array>

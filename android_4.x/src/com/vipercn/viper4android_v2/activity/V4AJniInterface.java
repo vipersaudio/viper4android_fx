@@ -1,7 +1,6 @@
 package com.vipercn.viper4android_v2.activity;
 
 import java.nio.charset.Charset;
-
 import android.util.Log;
 
 public class V4AJniInterface

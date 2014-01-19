@@ -104,7 +104,10 @@
 			android:defaultValue="0"
 			android:title="@string/pref_dynamicsystem_bass"
 			android:entryValues="@array/dynamicsystem_bass_values"/>
-		<CheckBoxPreference android:key="viper4android.headphonefx.dynamicsystem.tube" android:summaryOff="@string/pref_dynamicsystem_tube_summary_off" android:summaryOn="@string/pref_dynamicsystem_tube_summary_on" android:disableDependentsState="false" android:title="@string/pref_dynamicsystem_tube_title"/>
+	</PreferenceCategory>
+
+	<PreferenceCategory android:title="@string/pref_dynamicsystem_tube_title">
+		<CheckBoxPreference android:key="viper4android.headphonefx.tube.enable" android:summaryOff="@string/pref_dynamicsystem_tube_summary_off" android:summaryOn="@string/pref_dynamicsystem_tube_summary_on" android:disableDependentsState="false" android:title="@string/pref_dsp_enable"/>
 	</PreferenceCategory>
 
 	<PreferenceCategory android:title="@string/pref_fidelity_title">

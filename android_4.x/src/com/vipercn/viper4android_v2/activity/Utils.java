@@ -545,14 +545,14 @@ public class Utils
         		bwOutput.write("viper4android.headphonefx.reverb.enable=boolean=" + szValue + "\n");
         		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.dynamicsystem.enable", false));
         		bwOutput.write("viper4android.headphonefx.dynamicsystem.enable=boolean=" + szValue + "\n");
-        		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.dynamicsystem.tube", false));
-        		bwOutput.write("viper4android.headphonefx.dynamicsystem.tube=boolean=" + szValue + "\n");
         		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.fidelity.bass.enable", false));
         		bwOutput.write("viper4android.headphonefx.fidelity.bass.enable=boolean=" + szValue + "\n");
         		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.fidelity.clarity.enable", false));
         		bwOutput.write("viper4android.headphonefx.fidelity.clarity.enable=boolean=" + szValue + "\n");
         		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.cure.enable", false));
         		bwOutput.write("viper4android.headphonefx.cure.enable=boolean=" + szValue + "\n");
+        		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.tube.enable", false));
+        		bwOutput.write("viper4android.headphonefx.tube.enable=boolean=" + szValue + "\n");
 
         		// string values
         		szValue = preferences.getString("viper4android.headphonefx.playbackgain.ratio", "50");

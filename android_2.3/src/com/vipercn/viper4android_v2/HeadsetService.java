@@ -302,20 +302,20 @@ public class HeadsetService extends Service
 	public static final int PARAM_HPFX_AGC_VOLUME = 65562;
 	public static final int PARAM_HPFX_AGC_MAXSCALER = 65563;
 	public static final int PARAM_HPFX_DYNSYS_PROCESS_ENABLED = 65564;
-	public static final int PARAM_HPFX_DYNSYS_ENABLETUBE = 65565;
-	public static final int PARAM_HPFX_DYNSYS_XCOEFFS = 65566;
-	public static final int PARAM_HPFX_DYNSYS_YCOEFFS = 65567;
-	public static final int PARAM_HPFX_DYNSYS_SIDEGAIN = 65568;
-	public static final int PARAM_HPFX_DYNSYS_BASSGAIN = 65569;
-	public static final int PARAM_HPFX_VIPERBASS_PROCESS_ENABLED = 65570;
-	public static final int PARAM_HPFX_VIPERBASS_MODE = 65571;
-	public static final int PARAM_HPFX_VIPERBASS_SPEAKER = 65572;
-	public static final int PARAM_HPFX_VIPERBASS_BASSGAIN = 65573;
-	public static final int PARAM_HPFX_VIPERCLARITY_PROCESS_ENABLED = 65574;
-	public static final int PARAM_HPFX_VIPERCLARITY_MODE = 65575;
-	public static final int PARAM_HPFX_VIPERCLARITY_CLARITY = 65576;
-	public static final int PARAM_HPFX_CURE_PROCESS_ENABLED = 65577;
-	public static final int PARAM_HPFX_CURE_CROSSFEED = 65578;
+	public static final int PARAM_HPFX_DYNSYS_XCOEFFS = 65565;
+	public static final int PARAM_HPFX_DYNSYS_YCOEFFS = 65566;
+	public static final int PARAM_HPFX_DYNSYS_SIDEGAIN = 65567;
+	public static final int PARAM_HPFX_DYNSYS_BASSGAIN = 65568;
+	public static final int PARAM_HPFX_VIPERBASS_PROCESS_ENABLED = 65569;
+	public static final int PARAM_HPFX_VIPERBASS_MODE = 65570;
+	public static final int PARAM_HPFX_VIPERBASS_SPEAKER = 65571;
+	public static final int PARAM_HPFX_VIPERBASS_BASSGAIN = 65572;
+	public static final int PARAM_HPFX_VIPERCLARITY_PROCESS_ENABLED = 65573;
+	public static final int PARAM_HPFX_VIPERCLARITY_MODE = 65574;
+	public static final int PARAM_HPFX_VIPERCLARITY_CLARITY = 65575;
+	public static final int PARAM_HPFX_CURE_PROCESS_ENABLED = 65576;
+	public static final int PARAM_HPFX_CURE_CROSSFEED = 65577;
+	public static final int PARAM_HPFX_TUBE_PROCESS_ENABLED = 65578;
 	public static final int PARAM_HPFX_OUTPUT_VOLUME = 65579;
 	public static final int PARAM_HPFX_OUTPUT_PAN = 65580;
 	public static final int PARAM_HPFX_LIMITER_THRESHOLD = 65581;
@@ -1004,9 +1004,6 @@ public class HeadsetService extends Service
 			int dsBass = Integer.valueOf(preferences.getString("viper4android.headphonefx.dynamicsystem.bass", "0"));
 			dsBass = (dsBass * 20) + 100;
 			mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_DYNSYS_BASSGAIN, dsBass);
-			if (preferences.getBoolean("viper4android.headphonefx.dynamicsystem.tube", false))
-				mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_DYNSYS_ENABLETUBE, 1);
-			else mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_DYNSYS_ENABLETUBE, 0);
 			if (preferences.getBoolean("viper4android.headphonefx.dynamicsystem.enable", false))
 				mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_DYNSYS_PROCESS_ENABLED, 1);
 			else mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_DYNSYS_PROCESS_ENABLED, 0);
@@ -1031,6 +1028,12 @@ public class HeadsetService extends Service
 			if (preferences.getBoolean("viper4android.headphonefx.cure.enable", false))
 				mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_CURE_PROCESS_ENABLED, 1);
 			else mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_CURE_PROCESS_ENABLED, 0);
+
+			/* Tube Simulator */
+			Log.i("ViPER4Android", "updateSystem(): Updating Tube Simulator.");
+			if (preferences.getBoolean("viper4android.headphonefx.tube.enable", false))
+				mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_TUBE_PROCESS_ENABLED, 1);
+			else mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_TUBE_PROCESS_ENABLED, 0);
 
 			/* Speaker Optimization */
 			Log.i("ViPER4Android", "updateSystem(): Shutting down speaker optimizer.");
@@ -1080,6 +1083,10 @@ public class HeadsetService extends Service
 			if (preferences.getBoolean("viper4android.headphonefx.reverb.enable", false))
 				mGeneralFX.setParameter_px4_vx4x1(PARAM_SPKFX_REVB_PROCESS_ENABLED, 1);
 			else mGeneralFX.setParameter_px4_vx4x1(PARAM_SPKFX_REVB_PROCESS_ENABLED, 0);
+
+			/* Tube Simulator */
+			Log.i("ViPER4Android", "updateSystem(): Shutting down tube simulator.");
+			mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_TUBE_PROCESS_ENABLED, 0);
 
 			/* Speaker Optimization */
 			Log.i("ViPER4Android", "updateSystem(): Updating Speaker Optimizer.");
@@ -1276,9 +1283,6 @@ public class HeadsetService extends Service
 			int dsBass = Integer.valueOf(preferences.getString("viper4android.headphonefx.dynamicsystem.bass", "0"));
 			dsBass = (dsBass * 20) + 100;
 			mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_DYNSYS_BASSGAIN, dsBass);
-			if (preferences.getBoolean("viper4android.headphonefx.dynamicsystem.tube", false))
-				mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_DYNSYS_ENABLETUBE, 1);
-			else mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_DYNSYS_ENABLETUBE, 0);
 			if (preferences.getBoolean("viper4android.headphonefx.dynamicsystem.enable", false))
 				mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_DYNSYS_PROCESS_ENABLED, 1);
 			else mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_DYNSYS_PROCESS_ENABLED, 0);
@@ -1303,6 +1307,12 @@ public class HeadsetService extends Service
 			if (preferences.getBoolean("viper4android.headphonefx.cure.enable", false))
 				mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_CURE_PROCESS_ENABLED, 1);
 			else mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_CURE_PROCESS_ENABLED, 0);
+
+			/* Tube Simulator */
+			Log.i("ViPER4Android", "updateSystem(): Updating Tube Simulator.");
+			if (preferences.getBoolean("viper4android.headphonefx.tube.enable", false))
+				mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_TUBE_PROCESS_ENABLED, 1);
+			else mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_TUBE_PROCESS_ENABLED, 0);
 
 			/* Speaker Optimization */
 			Log.i("ViPER4Android", "updateSystem(): Shutting down speaker optimizer.");
@@ -1352,6 +1362,10 @@ public class HeadsetService extends Service
 			if (preferences.getBoolean("viper4android.headphonefx.reverb.enable", false))
 				mGeneralFX.setParameter_px4_vx4x1(PARAM_SPKFX_REVB_PROCESS_ENABLED, 1);
 			else mGeneralFX.setParameter_px4_vx4x1(PARAM_SPKFX_REVB_PROCESS_ENABLED, 0);
+
+			/* Tube Simulator */
+			Log.i("ViPER4Android", "updateSystem(): Shutting down tube simulator.");
+			mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_TUBE_PROCESS_ENABLED, 0);
 
 			/* Speaker Optimization */
 			Log.i("ViPER4Android", "updateSystem(): Updating Speaker Optimizer.");

@@ -251,6 +251,9 @@
 \n<b>如何更改當前的音訊處理品質？</b>
 \n    在選單中解除安裝驅動程式，重啟手機後選擇您期望的品質模式。
 \n
+\n<b>當V4A運行在正常模式下，如何節電？</b>
+\n    當V4A運行在正常模式下時，最好關閉系統的觸控等提示音，可以有效延長1~4倍電池續航時間。
+\n
 \n<b>論壇：http://forum.vipersaudio.com</b>
     </string>
     <string name="text_forum_link">http://forum.vipersaudio.com</string>

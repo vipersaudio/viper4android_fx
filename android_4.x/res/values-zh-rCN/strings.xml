@@ -251,6 +251,9 @@
 \n<b>如何更改当前的音频处理质量？</b>
 \n    在菜单中卸载驱动，重启手机后选择您期望的音质模式。
 \n
+\n<b>当V4A运行在正常模式下，如何节电？</b>
+\n    当V4A运行在正常模式下时，最好关闭系统的触摸等提示音，可以有效延长1~4倍电池续航时间。
+\n
 \n<b>论坛：http://forum.vipersaudio.com</b>
     </string>
     <string name="text_forum_link">http://forum.vipersaudio.com</string>
