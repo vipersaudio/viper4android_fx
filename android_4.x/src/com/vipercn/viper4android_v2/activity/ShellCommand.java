@@ -562,6 +562,35 @@ public class ShellCommand
 		return nExitValue;
 	}
 
+    public static int RootExecuteWithoutShell(String szExecutable)
+    {
+        if (szExecutable == null) return -65536;
+        if (szExecutable.equals("")) return -65536;
+
+        Log.i("ViPER4Android_ShellCommand", "Root executing " + szExecutable + " ...");
+        int nExitValue = -65536;
+        try
+        {
+            Process psProg = Runtime.getRuntime().exec(new String[] {"su", "-c", szExecutable});
+            psProg.waitFor();
+            nExitValue = psProg.exitValue();
+            psProg.destroy();
+        }
+        catch (IOException e)
+        {
+            Log.i("ViPER4Android_ShellCommand", "IOException, msg = " + e.getMessage());
+            return nExitValue;
+        }
+        catch (InterruptedException e)
+        {
+            Log.i("ViPER4Android_ShellCommand", "InterruptedException, msg = " + e.getMessage());
+            return nExitValue;
+        }
+        Log.i("ViPER4Android_ShellCommand", "Program " + szExecutable + " returned " + nExitValue);
+
+        return nExitValue;
+    }
+
 	public static int RootExecuteWithoutShell(String szExecutable, File fDirectory)
 	{
 		if (szExecutable == null) return -65536;
