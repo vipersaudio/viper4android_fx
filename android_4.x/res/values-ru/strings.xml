@@ -2,7 +2,9 @@
 <resources>
 <!--  Thanks to all 4pda.ru contributors (alphabetically):
       
-      -Sotik-, Argisht, ihor2284, Lerik-Co, lexus2118, malserg, man'yak, Notarikon, PRO TREK, vladykodi
+      -Sotik-, Argisht, ihor2284, Lerik-Co, lexus2118, malserg, man'yak,
+      Notarikon, PRO TREK, tranceman111, vladykodi…
+      and many other wonderful people!
       
       http://4pda.ru/forum/index.php?showtopic=405989
       
@@ -246,19 +248,26 @@
 
     <string name="text_help_content">***Краткая справка***
 \n
-\n\'Установить драйвер\' — установить драйвер эффектов. 
-\n\'Удалить драйвер\' — удалить драйвер эффектов. 
+\n\'Установить драйвер\' — установить/обновить драйвер эффектов ViPER4Android.
+\n\'Удалить драйвер\' — удалить драйвер эффектов ViPER4Android.
 \n\'Совместимость\' — установить режим совместимости.
-\n\'Нет\' — сделать ViPER4Android глобальным эффектом. 
-\n\'Включить\' — сделать ViPER4Android локальным эффектом.
+\n    \'Нет\' — сделать ViPER4Android глобальным эффектом.
+\n    \'Включить\' — сделать ViPER4Android локальным эффектом.
 \n
+\n<b>Эффекты v4a не работают во всех или в большинстве медиаплееров?</b>
+\n    Попробуйте включить режим совместимости, перезапустить устройство и проверить ещё раз.
+\n
+\n<b>Как переключить качество звука?</b>
+\n    Удалите драйвер командой в меню, перезапустите устройство и выберите желаемый уровень качества звука.
+\n
+\n<b>Как снизить энергопотребление?</b>
+\n    При отключённой совместимости, отказ от звуков касания и разблокировки может в 4 раза продлить работу от батареи.
+\n
+\n<b>Форум: http://forum.xda-developers.com/showthread.php?t=2191223</b>
     </string>
     <string name="text_forum_link">http://forum.xda-developers.com/showthread.php?t=2191223</string>
     <string name="text_view_forum">Форум</string>
 
     <string name="text_checkupdate">Обновления</string>
     <string name="text_updatelink">http://vipersaudio.com/swupdate/viper4android/download.html</string>
-    <string name="text_su_missing">Необходимы права root (su binary).</string>
-    <string name="text_busybox_missing">Busybox не обнаружен. 
-\nДля использования ViPER4Android необходим busybox.</string>
 </resources>
