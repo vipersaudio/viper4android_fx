@@ -75,9 +75,9 @@
     <string name="pref_dynamicsystem_tube_summary_off">Ламповый звук отключён</string>
 
     <string name="pref_fidelity_title">Восстановление звука</string>
-    <string name="pref_fidelity_vb_summary_on">Тонкомпенсация включена</string>
-    <string name="pref_fidelity_vb_summary_off">Тонкомпенсация отключена</string>
-    <string name="pref_fidelity_vb_enable">Тонкомпенсация</string>
+    <string name="pref_fidelity_vb_summary_on">Усиление баса включено</string>
+    <string name="pref_fidelity_vb_summary_off">Усиление баса отключено</string>
+    <string name="pref_fidelity_vb_enable">Усиление баса</string>
     <string name="pref_fidelity_vb_mode">Алгоритм</string>
     <string name="pref_fidelity_vb_mode_title">Алгоритм</string>
     <string name="pref_fidelity_vb_bassfreq">Частота</string>
