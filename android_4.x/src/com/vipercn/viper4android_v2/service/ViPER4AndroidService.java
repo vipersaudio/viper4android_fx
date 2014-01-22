@@ -1011,7 +1011,13 @@ public class ViPER4AndroidService extends Service
 					if (mGeneralFXList.indexOfKey(sessionId) < 0)
 					{
 						Log.i("ViPER4Android", "Creating local V4ADSPModule ...");
-						mGeneralFXList.put(sessionId, new V4ADSPModule(ID_V4A_GENERAL_FX, sessionId));
+						V4ADSPModule v4aNewDSPModule = new V4ADSPModule(ID_V4A_GENERAL_FX, sessionId);
+						if (v4aNewDSPModule.mInstance == null)
+						{
+							Log.e("ViPER4Android", "Failed to load v4a driver.");
+							v4aNewDSPModule.release();
+						}
+						else mGeneralFXList.put(sessionId, v4aNewDSPModule);
 					}
 					mV4AMutex.release();
 				}
@@ -1238,7 +1244,11 @@ public class ViPER4AndroidService extends Service
 		Log.i("ViPER4Android", "Get current mode from system [" + getAudioOutputRouting(getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", MODE_PRIVATE)) + "]");
 
 		if (mGeneralFX != null)
+		{
 			Log.e("ViPER4Android", "onCreate, mGeneralFX != null");
+			mGeneralFX.release();
+			mGeneralFX = null;
+		}
 
 		SharedPreferences prefSettings = getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", 0);
 		boolean bDriverConfigured = prefSettings.getBoolean("viper4android.settings.driverconfigured", false);
@@ -1252,17 +1262,17 @@ public class ViPER4AndroidService extends Service
 			}
 		}
 		String szCompatibleMode = prefSettings.getString("viper4android.settings.compatiblemode", "global");
-		if (!szCompatibleMode.equalsIgnoreCase("global"))
-		{
-			if (mGeneralFX != null)
-				mGeneralFX.release();
-			mGeneralFX = null;
-		}
-		else
+		if (szCompatibleMode.equalsIgnoreCase("global"))
 		{
 			Log.i("ViPER4Android", "Creating global V4ADSPModule ...");
 			if (mGeneralFX == null)
 				mGeneralFX = new V4ADSPModule(ID_V4A_GENERAL_FX, DEVICE_GLOBAL_OUTPUT_MIXER);
+			if (mGeneralFX.mInstance == null)
+			{
+				Log.e("ViPER4Android", "Found v4a driver, but failed to load.");
+				mGeneralFX.release();
+				mGeneralFX = null;
+			}
 		}
 
 		if (Build.VERSION.SDK_INT < 18)
@@ -1361,6 +1371,109 @@ public class ViPER4AndroidService extends Service
 		return mBinder;
 	}
 
+	@Override  
+    public int onStartCommand(Intent intent, int flags, int startId)
+	{
+		// We should do some driver check in this method, if the driver is abnormal, we need to reload it
+
+		Log.i("ViPER4Android", "Service::onStartCommand [Begin check driver]");
+
+		if (!mDriverIsReady)
+		{
+			Log.e("ViPER4Android", "Service::onStartCommand [V4A Engine not found]");
+			return super.onStartCommand(intent, flags, startId);
+		}
+
+		SharedPreferences prefSettings = getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", 0);
+		String szCompatibleMode = prefSettings.getString("viper4android.settings.compatiblemode", "global");
+		if (!szCompatibleMode.equalsIgnoreCase("global"))
+		{
+			Log.i("ViPER4Android", "Service::onStartCommand [V4A is local effect mode]");
+			return super.onStartCommand(intent, flags, startId);
+		}
+
+		if (mGeneralFX == null)
+		{
+			// Create engine instance
+			Log.i("ViPER4Android", "Service::onStartCommand [Creating global V4ADSPModule ...]");
+			mGeneralFX = new V4ADSPModule(ID_V4A_GENERAL_FX, DEVICE_GLOBAL_OUTPUT_MIXER);
+			if (mGeneralFX.mInstance == null)
+			{
+				// If we reach here, it means android refuse to load v4a driver.
+				// There are only two cases:
+				//   1. The android system not totally booted or media server crashed.
+				//   2. The v4a driver installed not compitable with this android.
+				Log.e("ViPER4Android", "Service::onStartCommand [Found v4a driver, but failed to load]");
+				mGeneralFX.release();
+				mGeneralFX = null;
+				return super.onStartCommand(intent, flags, startId);
+			}
+
+			// Engine instance created, update parameters
+			Log.i("ViPER4Android", "Service::onStartCommand [V4ADSPModule created]");
+			updateSystem(true);  // After all parameters commited, please reset all effects
+			return super.onStartCommand(intent, flags, startId);
+		}
+
+		if (mGeneralFX.mInstance == null)
+		{
+			// We shouldn't go here, but ...
+			// Recreate engine instance
+			mGeneralFX.release();
+			Log.i("ViPER4Android", "Service::onStartCommand [Recreating global V4ADSPModule ...]");
+			mGeneralFX = new V4ADSPModule(ID_V4A_GENERAL_FX, DEVICE_GLOBAL_OUTPUT_MIXER);
+			if (mGeneralFX.mInstance == null)
+			{
+				// If we reach here, it means android refuse to load v4a driver.
+				// There are only two cases:
+				//   1. The android system not totally booted or media server crashed.
+				//   2. The v4a driver installed not compitable with this android.
+				Log.e("ViPER4Android", "Service::onStartCommand [Found v4a driver, but failed to load]");
+				mGeneralFX.release();
+				mGeneralFX = null;
+				return super.onStartCommand(intent, flags, startId);
+			}
+
+			// Engine instance created, update parameters
+			Log.i("ViPER4Android", "Service::onStartCommand [V4ADSPModule created]");
+			updateSystem(true);  // After all parameters commited, please reset all effects
+			return super.onStartCommand(intent, flags, startId);
+		}
+
+		if (!GetDriverUsable())
+		{
+			// V4A driver is malfunction, but what caused this?
+			//   1. Low ram available.
+			//   2. Android audio hal bug.
+			//   3. Media server crashed.
+
+			// Recreate engine instance
+			mGeneralFX.release();
+			Log.i("ViPER4Android", "Service::onStartCommand [Recreating global V4ADSPModule ...]");
+			mGeneralFX = new V4ADSPModule(ID_V4A_GENERAL_FX, DEVICE_GLOBAL_OUTPUT_MIXER);
+			if (mGeneralFX.mInstance == null)
+			{
+				// If we reach here, it means android refuse to load v4a driver.
+				// There are only two cases:
+				//   1. The android system not totally booted or media server crashed.
+				//   2. The v4a driver installed not compitable with this android.
+				Log.e("ViPER4Android", "Service::onStartCommand [Found v4a driver, but failed to load]");
+				mGeneralFX.release();
+				mGeneralFX = null;
+				return super.onStartCommand(intent, flags, startId);
+			}
+
+			// Engine instance created, update parameters
+			Log.i("ViPER4Android", "Service::onStartCommand [V4ADSPModule created]");
+			updateSystem(true);  // After all parameters commited, please reset all effects
+			return super.onStartCommand(intent, flags, startId);
+		}
+
+		Log.i("ViPER4Android", "Service::onStartCommand [Everything is ok]");
+
+		return super.onStartCommand(intent, flags, startId);
+	}
+
 	public void setEqualizerLevels(float[] levels)
 	{
 		mOverriddenEqualizerLevels = levels;
@@ -1383,6 +1496,14 @@ public class ViPER4AndroidService extends Service
 	public boolean GetDriverIsReady()
 	{
 		return mDriverIsReady;
+	}
+
+	public boolean GetDriverLoaded()
+	{
+		if (!mDriverIsReady) return false;
+		if (mGeneralFX == null) return false;
+		if (mGeneralFX.mInstance == null) return false;
+		return true;
 	}
 
 	public void StartStatusUpdating()

@@ -1,13 +1,13 @@
-﻿ViPER4Android FX v2.3.2.0
+﻿ViPER4Android FX v2.3.2.2
 Codename: Beautiful
 Copyright (C) 2006-2016 vipercn.com
 Forum: forum.vipersaudio.com
 
-Latest: v2.3.2.0
-1.Rewrite framework, fix bugs.
-2.Optimize code, speed up about 40%.
-3.Improve audio quality of "High Quality" driver.
-4.Separate tube simulator.
+Latest: v2.3.2.2
+1.Code & UI Updates + addon.d script implementation[4.x]. (Thanks to xLaMbChOpSx)
+2.Improve driver installation. (Thanks to xLaMbChOpSx)
+3.Fix some bugs.
+4.Fully support android 4.4.2
 
 ===Attention===
 The convolver and headphone surround+ are disabled in phones without VFP.
@@ -181,4 +181,10 @@ The convolver and headphone surround+ are disabled in phones without VFP.
 2.Optimize code, speed up about 40%.
 3.Improve audio quality of "High Quality" driver.
 4.Separate tube simulator.
+
+[v2.3.2.2]
+1.Code & UI Updates + addon.d script implementation[4.x]. (Thanks to xLaMbChOpSx)
+2.Improve driver installation. (Thanks to xLaMbChOpSx)
+3.Fix some bugs.
+4.Fully support android 4.4.2
 ************

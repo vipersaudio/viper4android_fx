@@ -12,7 +12,6 @@ import android.util.Log;
 import com.vipercn.viper4android_v2.R;
 import com.vipercn.viper4android_v2.preference.EqualizerPreference;
 import com.vipercn.viper4android_v2.preference.SummariedListPreference;
-import com.vipercn.viper4android_v2.service.ViPER4AndroidService;
 
 public final class MainDSPScreen extends PreferenceFragment
 {

@@ -799,7 +799,7 @@ public class Utils
                     RootTools rtTools = new RootTools();
                     rtTools.deleteFileOrDirectory(szDriverPathName, true);
                     if (RootTools.exists("/system/addon.d/91-v4a.sh"))
-                        rtTools.deleteFileOrDirectory("/system/addon.d/91-v4a.sh",true);
+                        rtTools.deleteFileOrDirectory("/system/addon.d/91-v4a.sh", true);
                 }
                 RootTools.closeAllShells();
             }
@@ -825,7 +825,25 @@ public class Utils
                 ShellCommand.SendShellCommand(VBoX + " mount -o remount,ro /system", 5.0f);
                 Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
                 ShellCommand.CloseShell();
+                if (!FileExists(szDriverPathName)) return;
             }
+
+            // If vbox malfunction, try roottools
+            RootTools.useRoot = true;
+            RootTools.debugMode = true;
+            if (!RootTools.isRootAvailable()) return;
+            if (!RootTools.isAccessGiven()) return;
+            try
+            {
+                RootTools.useRoot = true;
+                RootTools.debugMode = true;
+                RootTools rtTools = new RootTools();
+                rtTools.deleteFileOrDirectory(szDriverPathName, true);
+                if (RootTools.exists("/system/addon.d/91-v4a.sh"))
+                    rtTools.deleteFileOrDirectory("/system/addon.d/91-v4a.sh", true);
+                RootTools.closeAllShells();
+            }
+            catch (IOException e) { return; }
         }
     }
 
@@ -1523,10 +1541,13 @@ public class Utils
     {
         PackageManager pm = ctx.getPackageManager();
         boolean installed = false;
-        try {
+        try
+        {
             pm.getPackageInfo("eu.chainfire.supersu", PackageManager.GET_ACTIVITIES);
             installed = true;
-        } catch (PackageManager.NameNotFoundException e) {
+        }
+        catch (PackageManager.NameNotFoundException e)
+        {
             installed = false;
         }
         return installed;
@@ -1535,6 +1556,15 @@ public class Utils
     // Install ViPER4Android FX driver
     public static boolean InstallDrv_FX(Context ctx, String szDriverName)
     {
-        return !StaticEnvironment.GetVBoXUsable() ? InstallDrv_FX_RootTools(ctx, szDriverName) : InstallDrv_FX_VBoX(ctx, szDriverName);
+    	if (StaticEnvironment.GetVBoXUsable())
+    	{
+    		if (!InstallDrv_FX_VBoX(ctx, szDriverName))
+    		{
+    			// If vbox malfunction, try roottools
+    			return InstallDrv_FX_RootTools(ctx, szDriverName);
+    		}
+    		return true;
+    	}
+    	return InstallDrv_FX_RootTools(ctx, szDriverName);
     }
 }

@@ -1,6 +1,5 @@
 package com.vipercn.viper4android_v2.preference;
 
-import android.view.View;
 import com.vipercn.viper4android_v2.preference.Biquad;
 import com.vipercn.viper4android_v2.preference.Complex;
 
@@ -17,8 +16,6 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
-import android.view.View;
-
 import com.vipercn.viper4android_v2.R;
 
 public class EqualizerSurface extends SurfaceView
