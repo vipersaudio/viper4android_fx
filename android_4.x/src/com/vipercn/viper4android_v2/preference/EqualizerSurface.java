@@ -20,13 +20,12 @@ import com.vipercn.viper4android_v2.R;
 
 public class EqualizerSurface extends SurfaceView
 {
-	private static double FreqTable[] = {27.34375f, 54.6875f, 109.375f, 218.75f, 437.5f, 875f, 1750f, 3500f, 7000f, 14000f};
+	private static final double[] FreqTable = {27.34375f, 54.6875f, 109.375f, 218.75f, 437.5f, 875f, 1750f, 3500f, 7000f, 14000f};
 
-	private static int MIN_FREQ = 10;
-	private static int MAX_FREQ = 21000;
-	private static int SAMPLING_RATE = 44100;
-	public static int MIN_DB = -12;
-	public static int MAX_DB = 12;
+	private static final int MIN_FREQ = 10;
+	private static final int MAX_FREQ = 21000;
+    public static final int MIN_DB = -12;
+	public static final int MAX_DB = 12;
 	public static final float CURVE_RESOLUTION = 1.25f;
 
 	private int mWidth;
@@ -219,14 +218,16 @@ public class EqualizerSurface extends SurfaceView
 		for (int i = 0; i < biquads.length; i ++)
 		{
 			double freq = FreqTable[i];
-			biquads[i].setHighShelf(freq * 2, SAMPLING_RATE, mLevels[i + 1] - mLevels[i], 1);
+            int SAMPLING_RATE = 44100;
+            biquads[i].setHighShelf(freq * 2, SAMPLING_RATE, mLevels[i + 1] - mLevels[i], 1);
 		}
 
 		Path freqResponse = new Path();
 		for (int i = 0; i < 71; i ++)
 		{
 			double freq = reverseProjectX(i / 70f);
-			double omega = freq / SAMPLING_RATE * Math.PI * 2;
+            int SAMPLING_RATE = 44100;
+            double omega = freq / SAMPLING_RATE * Math.PI * 2;
 			Complex z = new Complex(Math.cos(omega), Math.sin(omega));
 
 			/* Evaluate the response at frequency z */

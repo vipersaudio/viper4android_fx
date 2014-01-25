@@ -4,232 +4,19 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.concurrent.TimeoutException;
 
-import android.content.Context;
 import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
-
-import com.stericson.RootTools.*;
-import com.stericson.RootTools.exceptions.RootDeniedException;
-import com.stericson.RootTools.execution.CommandCapture;
 
 public class StaticEnvironment
 {
 	private static boolean m_bEnvironmentInited = false;
 
-	private static boolean m_bVBoXPrepared = false;
-	private static String m_szVBoXPath = "";
-
 	private static String m_szExternalStoragePath = "";
 	private static String m_szV4AESRoot = "";
 	private static String m_szV4AESKernel = "";
 	private static String m_szV4AESProfile = "";
-
-	private static boolean InstallVBox(Context ctx)
-	{
-		Log.i("ViPER4Android", "Installing vbox ...");
-
-		// Copy vbox to local first
-    	Log.i("ViPER4Android", "Extracting vbox to local");
-    	if (!Utils.CopyAssetsToLocal(ctx, "vbox", "vbox"))
-    	{
-    		Log.i("ViPER4Android", "Can not copy vbox to local dir");
-    		return false;
-    	}
-
-    	// Get vbox path
-    	String szVBoxPath = Utils.GetBasePath(ctx);
-    	if (szVBoxPath.equals(""))
-    	{
-    		Log.i("ViPER4Android", "GetBasePath() failed");
-    		return false;
-    	}
-    	if (szVBoxPath.endsWith("/")) szVBoxPath = szVBoxPath + "vbox";
-    	else szVBoxPath = szVBoxPath + "/vbox";
-    	Log.i("ViPER4Android", "vbox path = " + szVBoxPath);
-
-    	boolean bVBoXInstalled = false;
-
-    	// Try toolbox first
-    	Log.i("ViPER4Android", "Now install vbox with viper's method [toolbox]");
-    	{
-    		if (ShellCommand.OpenRootShell(true))
-    		{
-    			/* Toolbox is a basic util for android system */
-    			/* Considering the fragmentation of android, cp and dd commands may not included in all roms */
-    			/* But cat and chmod should included, otherwise android may malfunction */
-    			/* NOTICE: toolbox has no command stdout echo, so I just wait 0.5 secs for executing the command */
-    			boolean bResult = true;
-    			bResult &= ShellCommand.SendShellCommand("toolbox cat " + szVBoxPath + " > /data/vbox", 0.5f);
-    			Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
-    			bResult &= ShellCommand.SendShellCommand("toolbox chmod 777 /data/vbox", 0.5f);
-    			Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
-    			/* I think the best way to check wether vbox was installed is execute it and check the exit value */
-    			bResult &= ShellCommand.SendShellCommand("/data/vbox", 1.0f);  /* vbox has command stdout echo (except dd and cat), so we can wait infinite here */
-    			int nVBoXExitValue = ShellCommand.GetLastReturnValue();  /* If the shell failed to execute vbox, the return value will never equal 0 */
-				if (bResult && (nVBoXExitValue == 0))
-				{
-					Log.i("ViPER4Android", "Good, vbox installed");
-					bVBoXInstalled = true;
-				}
-				else
-				{
-					Log.i("ViPER4Android", "Bad, vbox install failed");
-					bVBoXInstalled = false;
-				}
-				ShellCommand.CloseShell();
-    		}
-    		else
-    		{
-    			Log.i("ViPER4Android", "Can't open root shell");
-    		}
-    	}
-    	if (bVBoXInstalled)
-    		return true;
-
-    	// Try busybox
-    	Log.i("ViPER4Android", "Now install vbox with viper's method [busybox]");
-    	{
-    		if (ShellCommand.OpenRootShell(true))
-    		{
-    			boolean bResult = true;
-    			bResult &= ShellCommand.SendShellCommand("busybox cat " + szVBoxPath + " > /data/vbox", 0.5f);
-    			Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
-    			bResult &= ShellCommand.SendShellCommand("busybox chmod 777 /data/vbox", 0.5f);
-    			Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
-    			/* I think the best way to check wether vbox was installed is execute it and check the exit value */
-    			bResult &= ShellCommand.SendShellCommand("/data/vbox", 1.0f);  /* vbox has command stdout echo (except dd and cat), so we can wait infinite here */
-    			int nVBoXExitValue = ShellCommand.GetLastReturnValue();  /* If the shell failed to execute vbox, the return value will never equal 0 */
-				if (bResult && (nVBoXExitValue == 0))
-				{
-					Log.i("ViPER4Android", "Good, vbox installed");
-					bVBoXInstalled = true;
-				}
-				else
-				{
-					Log.i("ViPER4Android", "Bad, vbox install failed");
-					bVBoXInstalled = false;
-				}
-				ShellCommand.CloseShell();
-    		}
-    		else
-    		{
-    			Log.i("ViPER4Android", "Can't open root shell");
-    		}
-    	}
-    	if (bVBoXInstalled)
-    		return true;
-
-    	// Try direct
-    	Log.i("ViPER4Android", "Now install vbox with viper's method [direct]");
-    	{
-    		if (ShellCommand.OpenRootShell(true))
-    		{
-    			boolean bResult = true;
-    			bResult &= ShellCommand.SendShellCommand("cat " + szVBoxPath + " > /data/vbox", 0.5f);
-    			Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
-    			bResult &= ShellCommand.SendShellCommand("chmod 777 /data/vbox", 0.5f);
-    			Log.i("ViPER4Android", "Command return = " + ShellCommand.GetLastReturnValue());
-    			/* I think the best way to check wether vbox was installed is execute it and check the exit value */
-    			bResult &= ShellCommand.SendShellCommand("/data/vbox", 1.0f);  /* vbox has command stdout echo (except dd and cat), so we can wait infinite here */
-    			int nVBoXExitValue = ShellCommand.GetLastReturnValue();  /* If the shell failed to execute vbox, the return value will never equal 0 */
-				if (bResult && (nVBoXExitValue == 0))
-				{
-					Log.i("ViPER4Android", "Good, vbox installed");
-					bVBoXInstalled = true;
-				}
-				else
-				{
-					Log.i("ViPER4Android", "Bad, vbox install failed");
-					bVBoXInstalled = false;
-				}
-				ShellCommand.CloseShell();
-    		}
-    		else
-    		{
-    			Log.i("ViPER4Android", "Can't open root shell");
-    		}
-    	}
-    	if (bVBoXInstalled)
-    		return true;
-
-    	// Try roottools
-    	Log.i("ViPER4Android", "Now install vbox with roottools");
-    	{
-    		RootTools.useRoot = true;
-    		RootTools.debugMode = true;
-
-    		if (!RootTools.isRootAvailable()) return false;
-    		if (!RootTools.isAccessGiven()) return false;
-
-    		if (!RootTools.copyFile(szVBoxPath, "/data/vbox", false, false))
-    		{
-    			try { RootTools.closeAllShells(); }
-    			catch (IOException e) {}
-    			Log.i("ViPER4Android", "Bad, vbox install failed");
-    			return false;
-    		}
-
-    		boolean bError = false;
-    		CommandCapture ccSetPermission = new CommandCapture(0,
-    				"toolbox chmod 777 /data/vbox",
-    				"busybox chmod 777 /data/vbox",
-    				"chmod 777 /data/vbox");
-    		try { RootTools.getShell(true).add(ccSetPermission).waitForFinish(); }
-    		catch (InterruptedException e) { bError = true; }
-    		catch (IOException e) { bError = true; }
-    		catch (TimeoutException e) { bError = true; }
-    		catch (RootDeniedException e) { bError = true; }
-
-			try { RootTools.closeAllShells(); }
-			catch (IOException e) {}
-
-    		if (bError)
-    		{
-    			Log.i("ViPER4Android", "Bad, vbox install failed");
-    			return false;
-    		}
-    	}
-
-    	// Now lets check vbox
-    	if (ShellCommand.ExecuteWithoutShell("/data/vbox", null) == 0)
-    	{
-    		Log.i("ViPER4Android", "Good, vbox installed");
-    		return true;
-    	}
-    	else
-    	{
-			Log.i("ViPER4Android", "Bad, vbox install failed");
-			return false;
-    	}
-	}
-
-	private static void ProceedVBoX(Context ctx)
-	{
-		// Check vbox
-		Log.i("ViPER4Android", "Checking vbox");
-		if (ShellCommand.ExecuteWithoutShell("/data/vbox", null) == 0)
-		{
-			Log.i("ViPER4Android", "Good, vbox is ok");
-			m_bVBoXPrepared = true;
-			m_szVBoXPath = "/data/vbox";
-			return;
-		}
-
-		// Install vbox
-		if (InstallVBox(ctx))
-		{
-			ShellCommand.CloseShell();
-			m_bVBoXPrepared = true;
-			m_szVBoXPath = "/data/vbox";
-			return;
-		}
-		ShellCommand.CloseShell();
-		m_bVBoXPrepared = false;
-		m_szVBoXPath = "";
-	}
 
 	private static boolean CheckWritable(String szFileName)
 	{
@@ -339,15 +126,8 @@ public class StaticEnvironment
 		return m_bEnvironmentInited;
 	}
 
-	public static void InitEnvironment(Context ctx)
+	public static void InitEnvironment()
 	{
-		if (m_bEnvironmentInited) return;
-		try { ProceedVBoX(ctx); }
-		catch (Exception e)
-		{
-			m_bVBoXPrepared = false;
-			m_szVBoXPath = "";
-		}
 		try { ProceedExternalStoragePath(); }
 		catch (Exception e)
 		{
@@ -364,16 +144,6 @@ public class StaticEnvironment
 	        m_szV4AESProfile = m_szV4AESRoot + "Profile/";
 		}
 		m_bEnvironmentInited = true;
-	}
-
-	public static boolean GetVBoXUsable()
-	{
-		return m_bVBoXPrepared;
-	}
-
-	public static String GetVBoXExecutablePath()
-	{
-		return m_szVBoXPath;
 	}
 
 	public static String GetESPath()

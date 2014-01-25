@@ -5,7 +5,7 @@ import android.util.Log;
 
 public class V4AJniInterface
 {
-	private static boolean m_JniLoadOK = false;
+	private static boolean m_JniLoadOK;
 	static
 	{
 		try
