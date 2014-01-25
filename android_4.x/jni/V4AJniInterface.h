@@ -13,48 +13,48 @@ extern "C" {
  * Method:    CheckLibraryUsable
  * Signature: ()I
  */
-JNIEXPORT jint JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniInterface_CheckLibraryUsable
-  (JNIEnv *, jclass);
+JNIEXPORT jint JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniInterface_CheckLibraryUsable (
+        JNIEnv *, jclass);
 
 /*
  * Class:     com_vipercn_viper4android_v2_activity_V4AJniInterface
  * Method:    CheckCPUHasNEON
  * Signature: ()I
  */
-JNIEXPORT jint JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniInterface_CheckCPUHasNEON
-  (JNIEnv *, jclass);
+JNIEXPORT jint JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniInterface_CheckCPUHasNEON(
+        JNIEnv *, jclass);
 
 /*
  * Class:     com_vipercn_viper4android_v2_activity_V4AJniInterface
  * Method:    CheckCPUHasVFP
  * Signature: ()I
  */
-JNIEXPORT jint JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniInterface_CheckCPUHasVFP
-  (JNIEnv *, jclass);
+JNIEXPORT jint JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniInterface_CheckCPUHasVFP (
+        JNIEnv *, jclass);
 
 /*
  * Class:     com_vipercn_viper4android_v2_activity_V4AJniInterface
  * Method:    GetImpulseResponseInfo
  * Signature: ([B)[I
  */
-JNIEXPORT jintArray JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniInterface_GetImpulseResponseInfo
-  (JNIEnv *, jclass, jbyteArray);
+JNIEXPORT jintArray JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniInterface_GetImpulseResponseInfo (
+        JNIEnv *, jclass, jbyteArray);
 
 /*
  * Class:     com_vipercn_viper4android_v2_activity_V4AJniInterface
  * Method:    ReadImpulseResponse
  * Signature: ([B)[B
  */
-JNIEXPORT jbyteArray JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniInterface_ReadImpulseResponse
-  (JNIEnv *, jclass, jbyteArray);
+JNIEXPORT jbyteArray JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniInterface_ReadImpulseResponse (
+        JNIEnv *, jclass, jbyteArray);
 
 /*
  * Class:     com_vipercn_viper4android_v2_activity_V4AJniInterface
  * Method:    HashImpulseResponse
  * Signature: ([BI)[I
  */
-JNIEXPORT jintArray JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniInterface_HashImpulseResponse
-  (JNIEnv *, jclass, jbyteArray, jint);
+JNIEXPORT jintArray JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniInterface_HashImpulseResponse (
+        JNIEnv *, jclass, jbyteArray, jint);
 
 #ifdef __cplusplus
 }
