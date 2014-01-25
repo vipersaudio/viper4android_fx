@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string-array name="drvinst_prefer">
         <item>Высокое качество</item>
         <item>Стандартное качество</item>
@@ -23,7 +24,7 @@
     <string-array name="compatible_mode">
         <item>Нет</item>
         <item>Включить</item>
-	</string-array>
+    </string-array>
     <string-array name="compatible_mode_values">
         <item>global</item>
         <item>local</item>
@@ -39,7 +40,7 @@
         <item>Уровень 7</item>
         <item>Максимум</item>
     </string-array>
-	<string-array name="colorfulmusic_coeffs_values">
+    <string-array name="colorfulmusic_coeffs_values">
         <item>120;200</item>
         <item>130;275</item>
         <item>140;350</item>
@@ -63,7 +64,7 @@
         <item>Уровень 9</item>
         <item>Максимум</item>
     </string-array>
-	<string-array name="colorfulmusic_midimage_values">
+    <string-array name="colorfulmusic_midimage_values">
         <item>100</item>
         <item>110</item>
         <item>120</item>
@@ -132,7 +133,7 @@
         <item>1800</item>
         <item>2000</item>
     </string-array>
-	<string-array name="reverb_roomsize">
+    <string-array name="reverb_roomsize">
         <item>25 м²</item>
         <item>36 м²</item>
         <item>49 м²</item>
@@ -145,7 +146,7 @@
         <item>652 м²</item>
         <item>1200 м²</item>
     </string-array>
-	<string-array name="reverb_roomsize_values">
+    <string-array name="reverb_roomsize_values">
         <item>0</item>
         <item>10</item>
         <item>20</item>
@@ -171,7 +172,7 @@
         <item>26 м</item>
         <item>36 м</item>
     </string-array>
-	<string-array name="reverb_roomwidth_values">
+    <string-array name="reverb_roomwidth_values">
         <item>0</item>
         <item>10</item>
         <item>20</item>
@@ -197,7 +198,7 @@
         <item>90 процентов</item>
         <item>100 процентов</item>
     </string-array>
-	<string-array name="reverb_percent_values">
+    <string-array name="reverb_percent_values">
         <item>0</item>
         <item>10</item>
         <item>20</item>
@@ -245,7 +246,7 @@
         <item>Средний</item>
         <item>Максимум</item>
     </string-array>
-	<string-array name="cure_crossfeed_values">
+    <string-array name="cure_crossfeed_values">
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -257,7 +258,7 @@
         <item>Уровень 4</item>
         <item>Уровень 5</item>
     </string-array>
-	<string-array name="vhs_qual_values">
+    <string-array name="vhs_qual_values">
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -269,7 +270,7 @@
         <item>Средний</item>
         <item>Максимум</item>
     </string-array>
-	<string-array name="playbackgain_ratio_values">
+    <string-array name="playbackgain_ratio_values">
         <item>50</item>
         <item>100</item>
         <item>300</item>
@@ -287,7 +288,7 @@
         <item>10x</item>
         <item>Бесконечно</item>
     </string-array>
-	<string-array name="multi_factor_values">
+    <string-array name="multi_factor_values">
         <item>100</item>
         <item>200</item>
         <item>300</item>
@@ -359,7 +360,7 @@
         <item>-20,0 дБ</item>
         <item>-26,0 дБ</item>
         <item>-40,0 дБ</item>
-	</string-array>
+    </string-array>
     <string-array name="output_volume_values">
         <item>200</item>
         <item>190</item>
@@ -446,7 +447,7 @@
         <item>120 процентов</item>
         <item>150 процентов</item>
         <item>200 процентов</item>
-	</string-array>
+    </string-array>
     <string-array name="dynamicsystem_bass_values">
         <item>0</item>
         <item>1</item>
@@ -646,4 +647,5 @@
         <item>7000</item>
         <item>8000</item>
     </string-array>
+
 </resources>
