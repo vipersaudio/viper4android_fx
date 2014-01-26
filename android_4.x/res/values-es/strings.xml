@@ -139,21 +139,21 @@
     <string name="text_loadfxprofile">Cargar Perfiles de Efectos</string>
     <string name="text_savefxprofile">Guardar Perfiles de Efectos</string>
     <string name="text_pleaseinputname">Por favor, introduzca el nombre del perfil
-\nNo incluya \'=\'</string>
+\nNo incluya \'=\'
+</string>
     <string name="text_profilesaved_ok">Perfil Guardado.</string>
     <string name="text_profilesaved_err">No se puede guardar el perfil, el nombre ya existe.</string>
     <string name="text_profilesaved_overwrite">El nombre del perfil ya existe, ¿desea sobrescribir?</string>
     <string name="text_profileload_ok">Perfil Cargado.</string>
     <string name="text_profileload_err">No se puede cargar el perfil.</string>
     <string name="text_rwsd_error">No se puede leer/escribir en almacenamiento externo.</string>
-    <string name="text_su_missing">Permisos Root (su binary) requerido.</string>
-    <string name="text_busybox_missing">Busybox no encontrado.
-\nPara utilizar ViPER4Android, necesita instalar busybox primero.</string>
+
     <string name="text_ok">Aceptar</string>
     <string name="text_cancel">Cancelar</string>
     <string name="text_drvvernotmatch">Para utilizar ViPER4Android, necesita instalar / actualizar el controlador V4A.
 \nEl proceso de instalación se realizará automáticamente.
-\nInstalar/actualizar ahora?</string>
+\nInstalar/actualizar ahora?
+</string>
     <string name="text_drvuninst_confim">¿Realmente desea desinstalar el controlador v4a?</string>
     <string name="text_commode">Modo FX Compatible</string>
     <string name="text_drv_blank"></string>
@@ -173,7 +173,8 @@
 \nTipo: %6$s
 \nFrecuencia de muestreo: %7$d
 \nCanales: %8$d
-\n</string>
+\n
+</string>
     <string name="text_service_error">Error al comunicarse con el servicio ViPER4Android.</string>
     <string name="about_title">Ayuda y Acerca de</string>
     <string name="about_text">***About ViPER4Android***
@@ -187,7 +188,8 @@
 \nEn base a un código de Cyanogenmod\'s DSPManager.
 \n
 \nVersion %1$s (FX), Codename "Beautiful".
-\n</string>
+\n
+</string>
     <string name="text_help_content">***Ayuda General***
 \n
 \n\'Instalar Driver\' - Instalar/Actualizar driver efecto ViPER4.

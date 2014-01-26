@@ -11,17 +11,13 @@ import java.io.IOException;
 
 public class StaticEnvironment {
 
-    private static boolean m_bEnvironmentInited = false;
+    private static boolean sEnvironmentInitialized = false;
+    private static String sExternalStoragePath = "";
+    private static String sV4aRoot = "";
+    private static String sV4aKernelPath = "";
+    private static String sV4aProfilePath = "";
 
-    private static String m_szExternalStoragePath = "";
-
-    private static String m_szV4AESRoot = "";
-
-    private static String m_szV4AESKernel = "";
-
-    private static String m_szV4AESProfile = "";
-
-    private static boolean CheckWritable(String szFileName) {
+    private static boolean checkWritable(String szFileName) {
         try {
             byte[] baBlank = new byte[16];
             FileOutputStream fosOutput = new FileOutputStream(szFileName);
@@ -38,7 +34,7 @@ public class StaticEnvironment {
         }
     }
 
-    private static void ProceedExternalStoragePath() {
+    private static void proceedExternalStoragePath() {
         // Get path
         String szExternalStoragePathName = Environment.getExternalStorageDirectory()
                 .getAbsolutePath();
@@ -53,13 +49,13 @@ public class StaticEnvironment {
                 }
             }
             if (szExternalStoragePathName.endsWith("/")) {
-                m_szExternalStoragePath = szExternalStoragePathName;
+                sExternalStoragePath = szExternalStoragePathName;
             } else {
-                m_szExternalStoragePath = szExternalStoragePathName + "/";
+                sExternalStoragePath = szExternalStoragePathName + "/";
             }
-            m_szV4AESRoot = m_szExternalStoragePath + "ViPER4Android/";
-            m_szV4AESKernel = m_szV4AESRoot + "Kernel/";
-            m_szV4AESProfile = m_szV4AESRoot + "Profile/";
+            sV4aRoot = sExternalStoragePath + "ViPER4Android/";
+            sV4aKernelPath = sV4aRoot + "Kernel/";
+            sV4aProfilePath = sV4aRoot + "Profile/";
         } else {
             boolean bPathFromSDKIsWorking = false;
             boolean bPathFromLegacyIsWorking = false;
@@ -73,7 +69,7 @@ public class StaticEnvironment {
                 szExtPath = szExtPath + "v4a_test_file";
                 Log.i("ViPER4Android", "Now checking for external storage writable, file = "
                         + szExtPath);
-                if (CheckWritable(szExtPath)) {
+                if (checkWritable(szExtPath)) {
                     bPathFromSDKIsWorking = true;
                 }
             }
@@ -87,7 +83,7 @@ public class StaticEnvironment {
                     szExtPath = szExtPath.replace("/emulated/0/", "/emulated/legacy/");
                     szExtPath = szExtPath + "v4a_test_file";
                     Log.i("ViPER4Android", "Now checking for external storage writable, file = " + szExtPath);
-                    if (CheckWritable(szExtPath)) {
+                    if (checkWritable(szExtPath)) {
                         bPathFromLegacyIsWorking = true;
                     }
                 }
@@ -97,54 +93,54 @@ public class StaticEnvironment {
                 szExternalStoragePathName = szExternalStoragePathName.replace("/emulated/0",
                         "/emulated/legacy");
                 if (szExternalStoragePathName.endsWith("/")) {
-                    m_szExternalStoragePath = szExternalStoragePathName;
+                    sExternalStoragePath = szExternalStoragePathName;
                 } else {
-                    m_szExternalStoragePath = szExternalStoragePathName + "/";
+                    sExternalStoragePath = szExternalStoragePathName + "/";
                 }
-                m_szV4AESRoot = m_szExternalStoragePath + "ViPER4Android/";
-                m_szV4AESKernel = m_szV4AESRoot + "Kernel/";
-                m_szV4AESProfile = m_szV4AESRoot + "Profile/";
-                Log.i("ViPER4Android", "External storage path = " + m_szExternalStoragePath);
-                Log.i("ViPER4Android", "ViPER4Android root path = " + m_szV4AESRoot);
-                Log.i("ViPER4Android", "ViPER4Android kernel path = " + m_szV4AESKernel);
-                Log.i("ViPER4Android", "ViPER4Android profile path = " + m_szV4AESProfile);
+                sV4aRoot = sExternalStoragePath + "ViPER4Android/";
+                sV4aKernelPath = sV4aRoot + "Kernel/";
+                sV4aProfilePath = sEnvironmentInitialized + "Profile/";
+                Log.i("ViPER4Android", "External storage path = " + sExternalStoragePath);
+                Log.i("ViPER4Android", "ViPER4Android root path = " + sV4aRoot);
+                Log.i("ViPER4Android", "ViPER4Android kernel path = " + sV4aKernelPath);
+                Log.i("ViPER4Android", "ViPER4Android profile path = " + sV4aProfilePath);
                 return;
             }
             if (bPathFromSDKIsWorking) {
                 if (szExternalStoragePathName.endsWith("/")) {
-                    m_szExternalStoragePath = szExternalStoragePathName;
+                    sExternalStoragePath = szExternalStoragePathName;
                 } else {
-                    m_szExternalStoragePath = szExternalStoragePathName + "/";
+                    sExternalStoragePath = szExternalStoragePathName + "/";
                 }
-                m_szV4AESRoot = m_szExternalStoragePath + "ViPER4Android/";
-                m_szV4AESKernel = m_szV4AESRoot + "Kernel/";
-                m_szV4AESProfile = m_szV4AESRoot + "Profile/";
-                Log.i("ViPER4Android", "External storage path = " + m_szExternalStoragePath);
-                Log.i("ViPER4Android", "ViPER4Android root path = " + m_szV4AESRoot);
-                Log.i("ViPER4Android", "ViPER4Android kernel path = " + m_szV4AESKernel);
-                Log.i("ViPER4Android", "ViPER4Android profile path = " + m_szV4AESProfile);
+                sV4aRoot = sExternalStoragePath + "ViPER4Android/";
+                sV4aKernelPath = sV4aRoot + "Kernel/";
+                sV4aProfilePath = sV4aRoot + "Profile/";
+                Log.i("ViPER4Android", "External storage path = " + sExternalStoragePath);
+                Log.i("ViPER4Android", "ViPER4Android root path = " + sV4aRoot);
+                Log.i("ViPER4Android", "ViPER4Android kernel path = " + sV4aKernelPath);
+                Log.i("ViPER4Android", "ViPER4Android profile path = " + sV4aProfilePath);
                 return;
             }
 
             Log.i("ViPER4Android", "Really terrible thing, external storage detection failed. V4A may malfunction");
             if (szExternalStoragePathName.endsWith("/")) {
-                m_szExternalStoragePath = szExternalStoragePathName;
+                sExternalStoragePath = szExternalStoragePathName;
             } else {
-                m_szExternalStoragePath = szExternalStoragePathName + "/";
+                sExternalStoragePath = szExternalStoragePathName + "/";
             }
-            m_szV4AESRoot = m_szExternalStoragePath + "ViPER4Android/";
-            m_szV4AESKernel = m_szV4AESRoot + "Kernel/";
-            m_szV4AESProfile = m_szV4AESRoot + "Profile/";
+            sV4aRoot = sExternalStoragePath + "ViPER4Android/";
+            sV4aKernelPath = sV4aRoot + "Kernel/";
+            sV4aProfilePath = sV4aRoot + "Profile/";
         }
     }
 
-    public static boolean IsEnvironmentInited() {
-        return m_bEnvironmentInited;
+    public static boolean isEnvironmentInitialized() {
+        return sEnvironmentInitialized;
     }
 
-    public static void InitEnvironment() {
+    public static void initEnvironment() {
         try {
-            ProceedExternalStoragePath();
+            proceedExternalStoragePath();
         } catch (Exception e) {
             String szExternalStoragePathName = Environment.getExternalStorageDirectory().getAbsolutePath();
             if (Build.VERSION.SDK_INT >= 18) {
@@ -155,30 +151,30 @@ public class StaticEnvironment {
                 }
             }
             if (szExternalStoragePathName.endsWith("/")) {
-                m_szExternalStoragePath = szExternalStoragePathName;
+                sExternalStoragePath = szExternalStoragePathName;
             } else {
-                m_szExternalStoragePath = szExternalStoragePathName + "/";
+                sExternalStoragePath = szExternalStoragePathName + "/";
             }
-            m_szV4AESRoot = m_szExternalStoragePath + "ViPER4Android/";
-            m_szV4AESKernel = m_szV4AESRoot + "Kernel/";
-            m_szV4AESProfile = m_szV4AESRoot + "Profile/";
+            sV4aRoot = sExternalStoragePath + "ViPER4Android/";
+            sV4aKernelPath = sV4aRoot + "Kernel/";
+            sV4aProfilePath = sV4aRoot + "Profile/";
         }
-        m_bEnvironmentInited = true;
+        sEnvironmentInitialized = true;
     }
 
-    public static String GetESPath() {
-        return m_szExternalStoragePath;
+    public static String getExternalStoragePath() {
+        return sExternalStoragePath;
     }
 
-    public static String GetV4ARootPath() {
-        return m_szV4AESRoot;
+    public static String getV4aRootPath() {
+        return sV4aRoot;
     }
 
-    public static String GetV4AKernelPath() {
-        return m_szV4AESKernel;
+    public static String getV4aKernelPath() {
+        return sV4aKernelPath;
     }
 
-    public static String GetV4AProfilePath() {
-        return m_szV4AESProfile;
+    public static String getV4aProfilePath() {
+        return sV4aProfilePath;
     }
 }

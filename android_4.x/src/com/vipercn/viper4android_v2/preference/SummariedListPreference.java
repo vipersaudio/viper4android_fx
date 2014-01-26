@@ -1,4 +1,3 @@
-
 package com.vipercn.viper4android_v2.preference;
 
 import android.content.Context;

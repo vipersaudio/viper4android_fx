@@ -1,9 +1,6 @@
 
 package com.vipercn.viper4android_v2.preference;
 
-import com.vipercn.viper4android_v2.preference.Biquad;
-import com.vipercn.viper4android_v2.preference.Complex;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -204,7 +201,7 @@ public class EqualizerSurface extends SurfaceView {
         for (int i = 0; i < biquads.length; i++) {
             double freq = FreqTable[i];
             int SAMPLING_RATE = 44100;
-            biquads[i].setHighShelf(freq * 2, SAMPLING_RATE, mLevels[i + 1] - mLevels[i], 1);
+            biquads[i].setHighShelf(freq * 2, SAMPLING_RATE, mLevels[i + 1] - mLevels[i]);
         }
 
         Path freqResponse = new Path();

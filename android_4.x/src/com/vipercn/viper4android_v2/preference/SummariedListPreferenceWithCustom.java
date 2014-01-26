@@ -31,13 +31,13 @@ public class SummariedListPreferenceWithCustom extends ListPreference {
                 setEntries(new String[0]);
                 setEntryValues(new String[0]);
                 String szTip = getContext().getResources().getString(R.string.text_ir_dir_isempty);
-                szTip = String.format(szTip, StaticEnvironment.GetV4AKernelPath());
+                szTip = String.format(szTip, StaticEnvironment.getV4aKernelPath());
                 Toast.makeText(getContext(), szTip, Toast.LENGTH_LONG).show();
                 super.onPrepareDialogBuilder(builder);
                 return;
             }
 
-            final String szKernelPath = StaticEnvironment.GetV4AKernelPath();
+            final String szKernelPath = StaticEnvironment.getV4aKernelPath();
             File mKnlFile = new File(szKernelPath);
 
             if (!mKnlFile.exists()) {
@@ -49,12 +49,12 @@ public class SummariedListPreferenceWithCustom extends ListPreference {
             }
 
             ArrayList<String> szKnlList = new ArrayList<String>();
-            Utils.GetFileNameList(mKnlFile, ".irs", szKnlList);
-            Utils.GetFileNameList(mKnlFile, ".wav", szKnlList);
+            Utils.getFileNameList(mKnlFile, ".irs", szKnlList);
+            Utils.getFileNameList(mKnlFile, ".wav", szKnlList);
 
             if (szKnlList.isEmpty()) {
                 String szTip = getContext().getResources().getString(R.string.text_ir_dir_isempty);
-                szTip = String.format(szTip, StaticEnvironment.GetV4AKernelPath());
+                szTip = String.format(szTip, StaticEnvironment.getV4aKernelPath());
                 Toast.makeText(getContext(), szTip, Toast.LENGTH_LONG).show();
             } else {
                 Collections.sort(szKnlList);
@@ -75,7 +75,7 @@ public class SummariedListPreferenceWithCustom extends ListPreference {
             setEntries(new String[0]);
             setEntryValues(new String[0]);
             String szTip = getContext().getResources().getString(R.string.text_ir_dir_isempty);
-            szTip = String.format(szTip, StaticEnvironment.GetV4AKernelPath());
+            szTip = String.format(szTip, StaticEnvironment.getV4aKernelPath());
             Toast.makeText(getContext(), szTip, Toast.LENGTH_LONG).show();
             super.onPrepareDialogBuilder(builder);
         }
