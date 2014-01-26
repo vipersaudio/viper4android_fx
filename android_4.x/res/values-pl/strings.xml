@@ -16,7 +16,8 @@
     <string name="pref_force_enable_text">Wymuś aktywację</string>
     <string name="pref_force_enable_warn">Włączenie opcji powinno rozwiązać problem z brakiem efektów.
 \nJednak w kilku ROMach może to doprowadzić do utraty dźwięku lub wysokiego zużycia energii.
-\nPostępuj z rozwagą. W przypadku problemów wyłącz tę opcję.</string>
+\nPostępuj z rozwagą. W przypadku problemów wyłącz tę opcję.
+</string>
     <string name="pref_fx_master_title">ViPER4Android FX</string>
     <string name="pref_fx_master_summary_on">Włączony</string>
     <string name="pref_fx_master_summary_off">Wyłączony</string>
@@ -32,18 +33,15 @@
     <string name="pref_playback_title">Wzmocnienie</string>
     <string name="pref_playback_summary_on">Aktywny</string>
     <string name="pref_playback_summary_off">Nieaktywny</string>
-    <string name="pref_playback_enable">PlaybackAGC</string>
     <string name="pref_playback_output_threshold">Moc wyjściowa</string>
     <string name="pref_playback_maxgain">Mnożnik wzmocnienia</string>
     <string name="pref_xloud_title">Wysoka głośność</string>
     <string name="pref_xloud_summary_on">Aktywny</string>
     <string name="pref_xloud_summary_off">Nieaktywny</string>
-    <string name="pref_xloud_enable">eXtra-Loud</string>
     <string name="pref_xloud_output_amplifer">Wyjściowe wzmocnienie</string>
     <string name="pref_xloud_spk_lowfreq">Niska częstotliwość</string>
     <string name="pref_xloud_spk_highfreq">Wysoka częstotliwość</string>
     <string name="pref_spk_opt_title">Optymalizacja</string>
-    <string name="pref_spk_opt_summary_on">Aktywna</string>
     <string name="pref_spk_opt_summary_off">Nieaktywna</string>
     <string name="pref_spk_opt_enable">Optymalizacja</string>
     <string name="pref_equalizer_title">Equalizer</string>
@@ -152,23 +150,24 @@
     <string name="text_loadfxprofile">Wczytaj profil</string>
     <string name="text_savefxprofile">Zapisz profil</string>
     <string name="text_pleaseinputname">Podaj nazwę profilu
-\nUnikaj \'=\'</string>
+\nUnikaj \'=\'
+</string>
     <string name="text_profilesaved_ok">Zapisano profil.</string>
     <string name="text_profilesaved_err">Nie można zapisać, profil o podanej nazwie już istnieje.</string>
     <string name="text_profilesaved_overwrite">Profil o takiej nazwie już istnieje, zastąpić?</string>
     <string name="text_profileload_ok">Wczytano profil.</string>
     <string name="text_profileload_err">Nie można wczytać profilu.</string>
     <string name="text_rwsd_error">Nie można odczytać karty SD.</string>
-    <string name="text_su_missing">Brak dostępu do uprawnień roota.</string>
-    <string name="text_busybox_missing">Brak busyboxa.
-\nViPER4Android do poprawnego działania wymaga zainstalowanego busyboxa.</string>
+
     <string name="text_ok">Ok</string>
     <string name="text_cancel">Anuluj</string>
     <string name="text_drvinst_prefer">Wybierz silnik efektów</string>
     <string name="text_drvinst_sqdrv">B. wysoka jakość wymaga co najmniej dwurdzeniowego procesora i może zwiększyć zużycie baterii.
-\nKontynuować?</string>
+\nKontynuować?
+</string>
     <string name="text_drvvernotmatch">Do korzystania z ViPER4Android konieczna jest instalacja/aktualizacja dodatkowych bibliotek.
-\nZainstalować/Zaktualizować je teraz?</string>
+\nZainstalować/Zaktualizować je teraz?
+</string>
     <string name="text_drvuninst_confim">Czy na pewno chcesz usunąć dodatkowe biblioteki?</string>
     <string name="text_uiprefer">Interfejs</string>
     <string name="text_uiprefer_dialog">Wybierz interfejs</string>
@@ -189,7 +188,8 @@
 \nStrona główna: %6$s
 \nCzęstotliwość próbkowania: %7$d
 \nKanały: %8$d
-\n</string>
+\n
+</string>
     <string name="text_service_error">Nie można uzyskać połączenia z usługą ViPER4Android.</string>
     <string name="about_title">Informacje i pomoc</string>
     <string name="about_text">***O ViPER4Android***
@@ -201,7 +201,8 @@
 \n
 \nNiewielkie części kodu zostały oparte o DSPManager grupy CyanogenMod.
 \n
-\nWersja %1$s (FX), Codename Beautiful.</string>
+\nWersja %1$s (FX), Codename Beautiful.
+</string>
     <string name="text_help_content">***Mini FAQ***
 \n
 \n\'Zainstaluj biblioteki\' - Instaluje\/Aktualizuje biblioteki efektów.

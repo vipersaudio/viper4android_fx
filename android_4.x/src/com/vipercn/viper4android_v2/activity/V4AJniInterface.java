@@ -28,9 +28,9 @@ public class V4AJniInterface {
     private native static int CheckCPUHasVFP();
 
     /* Impulse Response Utils */
-    private native static int[] GetImpulseResponseInfo(byte[] szIRFileName);
+    private native static int[] GetImpulseResponseInfo(byte[] mIRFileName);
 
-    private native static byte[] ReadImpulseResponse(byte[] szIRFileName);
+    private native static byte[] ReadImpulseResponse(byte[] mIRFileName);
 
     private native static int[] HashImpulseResponse(byte[] baBuffer, int nBufferSize);
 
@@ -52,7 +52,7 @@ public class V4AJniInterface {
             return false;
         }
         int nResult = CheckCPUHasNEON();
-        Log.i("ViPER4Android_Utils", "CPUInfo[jni] = NEON:" + nResult);
+        Log.i("ViPER4Android_Utils", "CpuInfo[jni] = NEON:" + nResult);
         return nResult != 0;
     }
 
@@ -61,16 +61,16 @@ public class V4AJniInterface {
             return false;
         }
         int nResult = CheckCPUHasVFP();
-        Log.i("ViPER4Android_Utils", "CPUInfo[jni] = VFP:" + nResult);
+        Log.i("ViPER4Android_Utils", "CpuInfo[jni] = VFP:" + nResult);
         return nResult != 0;
     }
 
-    public static int[] GetImpulseResponseInfoArray(String szIRFileName) {
+    public static int[] GetImpulseResponseInfoArray(String mIRFileName) {
         if (!m_JniLoadOK) {
             return null;
         }
         // Convert unicode string to multi-byte string
-        byte[] stringBytes = szIRFileName.getBytes(Charset.forName("US-ASCII"));
+        byte[] stringBytes = mIRFileName.getBytes(Charset.forName("US-ASCII"));
         if (stringBytes == null) {
             return null;
         }
@@ -78,12 +78,12 @@ public class V4AJniInterface {
         return GetImpulseResponseInfo(stringBytes);
     }
 
-    public static byte[] ReadImpulseResponseToArray(String szIRFileName) {
+    public static byte[] ReadImpulseResponseToArray(String mIRFileName) {
         if (!m_JniLoadOK) {
             return null;
         }
         // Convert unicode string to multi-byte string
-        byte[] stringBytes = szIRFileName.getBytes(Charset.forName("US-ASCII"));
+        byte[] stringBytes = mIRFileName.getBytes(Charset.forName("US-ASCII"));
         if (stringBytes == null) {
             return null;
         }
