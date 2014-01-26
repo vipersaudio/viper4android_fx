@@ -1,62 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-	<PreferenceCategory android:title="@string/pref_spkfx_master_title">
-		<CheckBoxPreference android:key="viper4android.speakerfx.enable"
-			android:summaryOn="@string/pref_spkfx_master_summary_on" android:summaryOff="@string/pref_spkfx_master_summary_off"
-			android:disableDependentsState="false" android:title="@string/pref_dsp_enable"></CheckBoxPreference>
-		<CheckBoxPreference android:key="viper4android.global.forceenable.enable"
-			android:disableDependentsState="false" android:title="@string/pref_force_enable_text"></CheckBoxPreference>
-	</PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/pref_spkfx_master_title" >
 
-	<PreferenceCategory android:title="@string/pref_equalizer_title">
-		<CheckBoxPreference android:disableDependentsState="false"
-			android:key="viper4android.headphonefx.fireq.enable" android:summaryOn="@string/pref_equalizer_summary_on"
-			android:summaryOff="@string/pref_equalizer_summary_off" android:title="@string/pref_equalizer_enable"></CheckBoxPreference>
-		<com.vipercn.viper4android_v2.preference.SummariedListPreference
-			android:entries="@array/equalizer_preset_modes"
-			android:dialogTitle="@string/pref_equalizer_preset_title"
-			android:key="viper4android.headphonefx.fireq"
-			android:defaultValue="0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;"
-			android:title="@string/pref_equalizer_preset_title"
-			android:entryValues="@array/equalizer_preset_values"/>
-		<com.vipercn.viper4android_v2.preference.EqualizerPreference android:key="viper4android.headphonefx.fireq.custom"/>
-	</PreferenceCategory>
+        <CheckBoxPreference
+            android:disableDependentsState="false"
+            android:key="viper4android.speakerfx.enable"
+            android:summaryOff="@string/pref_spkfx_master_summary_off"
+            android:summaryOn="@string/pref_spkfx_master_summary_on"
+            android:title="@string/pref_dsp_enable" />
 
-	<PreferenceCategory android:title="@string/pref_reverb_title">
-		<CheckBoxPreference android:key="viper4android.headphonefx.reverb.enable"
-			android:disableDependentsState="false" android:summaryOn="@string/pref_reverb_summary_on"
-			android:summaryOff="@string/pref_reverb_summary_off" android:title="@string/pref_reverb_enable"></CheckBoxPreference>
-		<com.vipercn.viper4android_v2.preference.SummariedListPreference
-			android:defaultValue="0" android:dialogTitle="@string/pref_effect_title" android:entries="@array/reverb_roomsize" android:entryValues="@array/reverb_roomsize_values" android:title="@string/pref_reverb_roomsize" android:key="viper4android.headphonefx.reverb.roomsize"/>
-		<com.vipercn.viper4android_v2.preference.SummariedListPreference
-			android:defaultValue="0" android:dialogTitle="@string/pref_effect_title" android:entries="@array/reverb_roomwidth" android:entryValues="@array/reverb_roomwidth_values" android:title="@string/pref_reverb_width" android:key="viper4android.headphonefx.reverb.roomwidth"/>
-		<com.vipercn.viper4android_v2.preference.SummariedListPreference
-			android:defaultValue="0" android:dialogTitle="@string/pref_effect_title" android:entries="@array/reverb_percent" android:entryValues="@array/reverb_percent_values" android:title="@string/pref_reverb_damp" android:key="viper4android.headphonefx.reverb.damp"/>
-		<com.vipercn.viper4android_v2.preference.SummariedListPreference
-			android:defaultValue="0" android:dialogTitle="@string/pref_effect_title" android:entries="@array/reverb_percent" android:entryValues="@array/reverb_percent_values" android:title="@string/pref_reverb_wet" android:key="viper4android.headphonefx.reverb.wet"/>
-		<com.vipercn.viper4android_v2.preference.SummariedListPreference
-			android:defaultValue="50" android:dialogTitle="@string/pref_effect_title" android:entries="@array/reverb_percent" android:entryValues="@array/reverb_percent_values" android:title="@string/pref_reverb_dry" android:key="viper4android.headphonefx.reverb.dry"/>
-	</PreferenceCategory>
+        <CheckBoxPreference
+            android:disableDependentsState="false"
+            android:key="viper4android.global.forceenable.enable"
+            android:title="@string/pref_force_enable_text" />
 
-	<PreferenceCategory android:title="@string/pref_spk_opt_title">
-		<CheckBoxPreference android:key="viper4android.speakerfx.spkopt.enable"
-			android:summaryOn="@string/pref_spk_opt_summary_on" android:summaryOff="@string/pref_spk_opt_summary_off"
-			android:disableDependentsState="false" android:title="@string/pref_dsp_enable"></CheckBoxPreference>
-	</PreferenceCategory>
+    </PreferenceCategory>
 
-	<PreferenceCategory android:title="@string/pref_xloud_title">
-		<CheckBoxPreference android:key="viper4android.headphonefx.playbackgain.enable"
-			android:summaryOn="@string/pref_xloud_summary_on" android:summaryOff="@string/pref_xloud_summary_off"
-			android:disableDependentsState="false" android:title="@string/pref_dsp_enable"></CheckBoxPreference>
-		<com.vipercn.viper4android_v2.preference.SummariedListPreference
-			android:entries="@array/playbackgain_ratio" android:dialogTitle="@string/dialog_effect" android:key="viper4android.headphonefx.playbackgain.ratio" android:defaultValue="50" android:title="@string/pref_effect_title" android:entryValues="@array/playbackgain_ratio_values"/>
-	</PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/pref_equalizer_title" >
 
-	<PreferenceCategory android:title="@string/pref_spkfx_limiter_title">
-		<com.vipercn.viper4android_v2.preference.SummariedListPreference
-			android:entries="@array/output_volume" android:dialogTitle="@string/pref_effect_title" android:key="viper4android.headphonefx.outvol" android:defaultValue="100" android:title="@string/pref_output_gain" android:entryValues="@array/output_volume_values"/>
-	</PreferenceCategory>
+        <CheckBoxPreference
+            android:disableDependentsState="false"
+            android:key="viper4android.headphonefx.fireq.enable"
+            android:summaryOff="@string/pref_equalizer_summary_off"
+            android:summaryOn="@string/pref_equalizer_summary_on"
+            android:title="@string/pref_equalizer_enable"  >
+
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference
+            android:defaultValue="0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;"
+            android:dialogTitle="@string/pref_equalizer_preset_title"
+            android:entries="@array/equalizer_preset_modes"
+            android:entryValues="@array/equalizer_preset_values"
+            android:key="viper4android.headphonefx.fireq"
+            android:title="@string/pref_equalizer_preset_title" />
+
+        <com.vipercn.viper4android_v2.preference.EqualizerPreference
+            android:key="viper4android.headphonefx.fireq.custom" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_reverb_title" >
+
+        <CheckBoxPreference
+            android:disableDependentsState="false"
+            android:key="viper4android.headphonefx.reverb.enable"
+            android:summaryOff="@string/pref_reverb_summary_off"
+            android:summaryOn="@string/pref_reverb_summary_on"
+            android:title="@string/pref_reverb_enable"  >
+
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference
+            android:defaultValue="0"
+            android:dialogTitle="@string/pref_effect_title"
+            android:entries="@array/reverb_roomsize"
+            android:entryValues="@array/reverb_roomsize_values"
+            android:key="viper4android.headphonefx.reverb.roomsize"
+            android:title="@string/pref_reverb_roomsize" />
+
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference
+            android:defaultValue="0"
+            android:dialogTitle="@string/pref_effect_title"
+            android:entries="@array/reverb_roomwidth"
+            android:entryValues="@array/reverb_roomwidth_values"
+            android:key="viper4android.headphonefx.reverb.roomwidth"
+            android:title="@string/pref_reverb_width" />
+
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference
+            android:defaultValue="0"
+            android:dialogTitle="@string/pref_effect_title"
+            android:entries="@array/reverb_percent"
+            android:entryValues="@array/reverb_percent_values"
+            android:key="viper4android.headphonefx.reverb.damp"
+            android:title="@string/pref_reverb_damp" />
+
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference
+            android:defaultValue="0"
+            android:dialogTitle="@string/pref_effect_title"
+            android:entries="@array/reverb_percent"
+            android:entryValues="@array/reverb_percent_values"
+            android:key="viper4android.headphonefx.reverb.wet"
+            android:title="@string/pref_reverb_wet" />
+
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference
+            android:defaultValue="50"
+            android:dialogTitle="@string/pref_effect_title"
+            android:entries="@array/reverb_percent"
+            android:entryValues="@array/reverb_percent_values"
+            android:key="viper4android.headphonefx.reverb.dry"
+            android:title="@string/pref_reverb_dry" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_spk_opt_title" >
+
+        <CheckBoxPreference
+            android:disableDependentsState="false"
+            android:key="viper4android.speakerfx.spkopt.enable"
+            android:summaryOff="@string/pref_spk_opt_summary_off"
+            android:summaryOn="@string/pref_spk_opt_summary_on"
+            android:title="@string/pref_dsp_enable" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_xloud_title" >
+
+        <CheckBoxPreference
+            android:disableDependentsState="false"
+            android:key="viper4android.headphonefx.playbackgain.enable"
+            android:summaryOff="@string/pref_xloud_summary_off"
+            android:summaryOn="@string/pref_xloud_summary_on"
+            android:title="@string/pref_dsp_enable" />
+
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference
+            android:defaultValue="50"
+            android:dialogTitle="@string/dialog_effect"
+            android:entries="@array/playbackgain_ratio"
+            android:entryValues="@array/playbackgain_ratio_values"
+            android:key="viper4android.headphonefx.playbackgain.ratio"
+            android:title="@string/pref_effect_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_spkfx_limiter_title" >
+
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference
+            android:defaultValue="100"
+            android:dialogTitle="@string/pref_effect_title"
+            android:entries="@array/output_volume"
+            android:entryValues="@array/output_volume_values"
+            android:key="viper4android.headphonefx.outvol"
+            android:title="@string/pref_output_gain" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
