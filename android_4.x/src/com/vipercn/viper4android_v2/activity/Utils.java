@@ -435,10 +435,12 @@ public class Utils
             ArrayList<String> szProfileFileList = new ArrayList<String>();
             GetFileNameList(fProfileDirHandle, ".prf", szProfileFileList);
             String szProfileFileName = "";
-            for (String aSzProfileFileList : szProfileFileList) {
-                String szFileName = szProfileDir + aSzProfileFileList;
+            for (int idx = 0; idx < szProfileFileList.size(); idx++)
+            {
+                String szFileName = szProfileDir + szProfileFileList.get(idx);
                 String szName = GetProfileName(szFileName);
-                if (szProfileName.trim().equalsIgnoreCase(szName.trim())) {
+                if (szProfileName.trim().equalsIgnoreCase(szName.trim()))
+                {
                     szProfileFileName = szFileName;
                     break;
                 }
