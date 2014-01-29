@@ -14,9 +14,8 @@ public class IRSUtils
 {
 	public static long HashIRS(byte[] baArray, int nLength)
 	{
-		if (baArray == null) return 0;
-		if (baArray.length < nLength) return 0;
-		if (nLength <= 0) return 0;
+		if (baArray == null || baArray.length < nLength || nLength <= 0)
+            return 0;
 
 		// Generate CRC table
 		long[] crcTable = new long[256];
@@ -25,8 +24,10 @@ public class IRSUtils
 			long crcTblVal = i;
 			for (int j = 8; j > 0; j--)
 			{
-				if ((crcTblVal & 0x01) != 0) crcTblVal = (crcTblVal >> 1) ^ 0xEDB88320L;
-				else crcTblVal >>= 1;
+				if ((crcTblVal & 0x01) != 0)
+                    crcTblVal = (crcTblVal >> 1) ^ 0xEDB88320L;
+				else
+                    crcTblVal >>= 1;
 			}
 			crcTable[i] = crcTblVal;
 		}
@@ -35,7 +36,7 @@ public class IRSUtils
 		long crcResult = 0xFFFFFFFF;
 		for (int i = 0; i < nLength; i++)
 		{
-			long bData = (long)((byte)baArray[i] & 0xFF);
+			long bData = (long)(baArray[i] & 0xFF);
 			int nTblIndex = (int)(crcResult ^ bData) & 0xFF;
 			crcResult = ((crcResult >> 8) & 0x00FFFFFF) ^ crcTable[nTblIndex];
 		}
@@ -50,8 +51,7 @@ public class IRSUtils
 	private FileInputStream m_fsiIRSStream = null;
 	private BufferedInputStream m_bisInputStream = null;
 
-	private long m_nFileLength = 0;
-	private long m_nSamplesCount = 0;
+    private long m_nSamplesCount = 0;
 	private long m_nBytesCount = 0;
 	private int m_nChannels = 0;
 	// 0: Unknow, 1: s16le, 2: s24le, 3: s32le, 4: f32
@@ -67,28 +67,33 @@ public class IRSUtils
 	protected void finalize()
 	{
 		Release();
-	}
+    }
 
 	public void Release()
 	{
 		if (m_bisInputStream != null)
 		{
 			try { m_bisInputStream.close(); }
-			catch (IOException e) {}
+			catch (IOException e)
+            {
+                Log.i("ViPER4Android", "Release, msg = " + e.getMessage());
+            }
 			m_bisInputStream = null;
 		}
 		if (m_fsiIRSStream != null)
 		{
 			try { m_fsiIRSStream.close(); }
-			catch (IOException e) {}
+			catch (IOException e)
+            {
+                Log.i("ViPER4Android", "Release, msg = " + e.getMessage());
+            }
 			m_fsiIRSStream = null;
 		}
 	}
 
 	public boolean LoadIRS(String szIRSPathName)
 	{
-		if (szIRSPathName == null) return false;
-		if (szIRSPathName.equals("")) return false;
+		if (szIRSPathName == null || szIRSPathName.equals("")) return false;
 		if (!(new File(szIRSPathName).exists())) return false;
 		Release();
 
@@ -98,10 +103,10 @@ public class IRSUtils
 		{
 			m_fsiIRSStream = null;
 			m_bisInputStream = null;
-			Log.i("ViPER4Android", "LoadIRS, FileNotFoundException, msg = " + e.getMessage());
+			Log.i("ViPER4Android", "LoadIRS, FileNotFoundException, msg = " + e.getMessage() + "szIRSPathName = " + szIRSPathName);
 			return false;
 		}
-		m_nFileLength = new File(szIRSPathName).length();
+        long m_nFileLength = new File(szIRSPathName).length();
 		if (m_nFileLength <= 16)
 		{
 			Release();
@@ -255,7 +260,10 @@ public class IRSUtils
 				baData = baNewData;
 			}
 			catch (IOException e)
-			{ break; }
+			{
+                Log.i("ViPER4Android", "ReadEntireData, msg = " + e.getMessage());
+                break;
+            }
 		}
 
 		// Arrange byte array
@@ -343,7 +351,7 @@ public class IRSUtils
 			byte s24_b1 = baS24LEData[idx];
 			byte s24_b2 = baS24LEData[idx + 1];
 			byte s24_b3 = baS24LEData[idx + 2];
-			int s24 = (int)(s24_b1 & 0xFF | ((s24_b2 & 0xFF) << 8) | ((s24_b3 & 0xFF) << 16));
+			int s24 = s24_b1 & 0xFF | ((s24_b2 & 0xFF) << 8) | ((s24_b3 & 0xFF) << 16);
 			if (s24 > 0x7FFFFF)
 			{
 				s24 &= 0x7FFFFF;
