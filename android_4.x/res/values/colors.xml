@@ -14,6 +14,7 @@
     limitations under the License.
 -->
 <resources>
+
     <color name="white">#ffffffff</color>
     <color name="off_white">#ffdedede</color>
     <color name="black">#ff000000</color>
@@ -29,4 +30,5 @@
     <color name="cb_shader">#ffccffff</color>
     <color name="cb_shader_alpha">#44ccffff</color>
     <color name="action_bar_color">#ff0d0d0d</color>
-</resources> 
+
+</resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string-array name="drvinst_prefer">
         <item>Super Audio Quality</item>
         <item>High Audio Quality</item>
@@ -646,4 +647,5 @@
         <item>7000</item>
         <item>8000</item>
     </string-array>
+
 </resources>

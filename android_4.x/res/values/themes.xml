@@ -18,5 +18,5 @@
     <style name="AppTheme" parent="android:Theme.Holo">
         <item name="android:actionBarStyle">@style/action_bar_style</item>
     </style>
-</resources>
 
+</resources>
