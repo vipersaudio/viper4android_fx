@@ -2,10 +2,10 @@
 <resources>
 <!--  Thanks to all 4pda.ru contributors (alphabetically):
       
-      -Sotik-, Argisht, ihor2284, Lerik-Co, lexus2118, malserg, man'yak,
-      Notarikon, PRO TREK, tranceman111, vladykodi…
-      and many other wonderful people!
+      -Sotik-, Argisht, BlasterKey, gavsgovenko, ihor2284, Izelop, jack_ketch, Lerik-Co,
+      lexus2118, malserg, man'yak, Notarikon, PRO TREK, tranceman111, vladykodi…
       
+      …and many other simply wonderful people, enthusiasts and testers!
       http://4pda.ru/forum/index.php?showtopic=405989
       
       2014
@@ -39,12 +39,12 @@
     <string name="pref_spkfx_master_summary_on">ViPER SpeakerFX включён</string>
     <string name="pref_spkfx_master_summary_off">ViPER SpeakerFX отключён</string>
 
-    <string name="pref_fx_limiter_title">Лимитер</string>
-    <string name="pref_fx_limiter_threshold">Порог</string>
-    <string name="pref_spkfx_limiter_title">Лимитер</string>
-    <string name="pref_spkfx_limiter_threshold">Порог</string>
-    <string name="pref_output_gain">Выходное усиление</string>
-    <string name="pref_output_pan">Баланс стерео</string>
+    <string name="pref_fx_limiter_title">Выходной сигнал</string>
+    <string name="pref_fx_limiter_threshold">Лимитер</string>
+    <string name="pref_spkfx_limiter_title">Выходной сигнал</string>
+    <string name="pref_spkfx_limiter_threshold">Лимитер</string>
+    <string name="pref_output_gain">Усиление</string>
+    <string name="pref_output_pan">Баланс</string>
 
     <string name="pref_playback_title">Авторегулировка усиления</string>
     <string name="pref_playback_summary_on">АРУ включена</string>
@@ -55,7 +55,7 @@
     <string name="pref_xloud_title">Супергромкость</string>
     <string name="pref_xloud_summary_on">Супергромкость включена</string>
     <string name="pref_xloud_summary_off">Супергромкость отключена</string>
-    <string name="pref_xloud_output_amplifer">Выходное усиление</string>
+    <string name="pref_xloud_output_amplifer">Усиление</string>
     <string name="pref_xloud_spk_lowfreq">НЧ</string>
     <string name="pref_xloud_spk_highfreq">ВЧ</string>
 
@@ -69,10 +69,10 @@
     <string name="pref_equalizer_enable">Эквалайзер</string>
     <string name="pref_equalizer_preset_title">Предустановки</string>
 
-    <string name="pref_dynamicsystem_title">Динамическая компенсация</string>
-    <string name="pref_dynamicsystem_summary_on">Компенсация включена</string>
-    <string name="pref_dynamicsystem_summary_off">Компенсация отключена</string>
-    <string name="pref_dynamicsystem_enable">Компенсация</string>
+    <string name="pref_dynamicsystem_title">Динамическая обработка</string>
+    <string name="pref_dynamicsystem_summary_on">Динамическая обработка включена</string>
+    <string name="pref_dynamicsystem_summary_off">Динамическая обработка отключена</string>
+    <string name="pref_dynamicsystem_enable">Динамическая обработка</string>
     <string name="pref_dynamicsystem_output">Наушники</string>
     <string name="pref_dynamicsystem_output_title">Наушники</string>
     <string name="pref_dynamicsystem_bass">Динамический бас</string>
@@ -80,19 +80,19 @@
     <string name="pref_dynamicsystem_tube_summary_on">Ламповый звук включён</string>
     <string name="pref_dynamicsystem_tube_summary_off">Ламповый звук отключён</string>
 
-    <string name="pref_fidelity_title">Восстановление звука</string>
-    <string name="pref_fidelity_vb_summary_on">Усиление баса включено</string>
-    <string name="pref_fidelity_vb_summary_off">Усиление баса отключено</string>
-    <string name="pref_fidelity_vb_enable">Усиление баса</string>
+    <string name="pref_fidelity_title">Реконструкция звука</string>
+    <string name="pref_fidelity_vb_summary_on">Реконструкция баса включена</string>
+    <string name="pref_fidelity_vb_summary_off">Реконструкция баса отключена</string>
+    <string name="pref_fidelity_vb_enable">Реконструкция баса</string>
     <string name="pref_fidelity_vb_mode">Алгоритм</string>
     <string name="pref_fidelity_vb_mode_title">Алгоритм</string>
     <string name="pref_fidelity_vb_bassfreq">Частота</string>
     <string name="pref_fidelity_vb_bassfreq_title">Частота</string>
     <string name="pref_fidelity_vb_bassgain">Усиление</string>
     <string name="pref_fidelity_vb_bassgain_title">Усиление</string>
-    <string name="pref_fidelity_vc_summary_on">Чёткость включена</string>
-    <string name="pref_fidelity_vc_summary_off">Чёткость отключена</string>
-    <string name="pref_fidelity_vc_enable">Чёткость</string>
+    <string name="pref_fidelity_vc_summary_on">Очистка звука включена</string>
+    <string name="pref_fidelity_vc_summary_off">Очистка звука отключена</string>
+    <string name="pref_fidelity_vc_enable">Очистка звука</string>
     <string name="pref_fidelity_vc_mode">Алгоритм</string>
     <string name="pref_fidelity_vc_mode_title">Алгоритм</string>
     <string name="pref_fidelity_vc_bassgain">Уровень</string>
@@ -114,10 +114,10 @@
     <string name="pref_convolver_crosschannel">Смешение каналов</string>
     <string name="pref_convolver_crosschannel_title">Смешение каналов</string>
 
-    <string name="pref_vhs_title">Имитация акустических систем</string>
-    <string name="pref_vhs_summary_on">Имитация АС включена</string>
-    <string name="pref_vhs_summary_off">Имитация АС отключена</string>
-    <string name="pref_vhs_enable">Имитация АС</string>
+    <string name="pref_vhs_title">Виртуалайзер</string>
+    <string name="pref_vhs_summary_on">Виртуалайзер включён</string>
+    <string name="pref_vhs_summary_off">Виртуалайзер отключён</string>
+    <string name="pref_vhs_enable">Виртуалайзер</string>
     <string name="pref_select_vhs_qual_title">Уровень</string>
     <string name="dialog_vhs_qual">Уровень</string>
 
@@ -128,13 +128,13 @@
 
     <string name="pref_select_colorfulmusic_title">Уровень</string>
     <string name="dialog_colorfulmusic">Уровень</string>
-    <string name="pref_select_colorfulmusic_mi_title">Глубина</string>
-    <string name="dialog_colorfulmusic_mi">Глубина</string>
+    <string name="pref_select_colorfulmusic_mi_title">Яркость вокала</string>
+    <string name="dialog_colorfulmusic_mi">Яркость вокала</string>
 
-    <string name="pref_diffsurr_title">Расширение стерео</string>
-    <string name="pref_diffsurr_summary_on">Расширение стерео включено</string>
-    <string name="pref_diffsurr_summary_off">Расширение стерео отключено</string>
-    <string name="pref_diffsurr_enable">Расширение стерео</string>
+    <string name="pref_diffsurr_title">Хаас-эффект</string>
+    <string name="pref_diffsurr_summary_on">Хаас-эффект включён</string>
+    <string name="pref_diffsurr_summary_off">Хаас-эффект отключён</string>
+    <string name="pref_diffsurr_enable">Хаас-эффект</string>
 
     <string name="pref_select_diffsurr_ms_title">Задержка</string>
     <string name="dialog_diffsurr_ms">Задержка</string>
@@ -146,8 +146,8 @@
     <string name="pref_reverb_roomsize">Площадь зала</string>
     <string name="pref_reverb_width">Ширина сцены</string>
     <string name="pref_reverb_damp">Затухание</string>
-    <string name="pref_reverb_wet">Обработанный сигнал</string>
-    <string name="pref_reverb_dry">Исходный сигнал</string>
+    <string name="pref_reverb_wet">Мокрый сигнал</string>
+    <string name="pref_reverb_dry">Сухой сигнал</string>
 
     <string name="eq_preset_acoustic">Акустика</string>
     <string name="eq_preset_bass_booster">Усилить НЧ</string>
