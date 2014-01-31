@@ -16,7 +16,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.bluetooth.BluetoothA2dp;
+import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -45,7 +45,7 @@ public class ViPER4AndroidService extends Service
 {
 	private class ResourceMutex
 	{
-		private Semaphore mSignal = new Semaphore(1);
+		private final Semaphore mSignal = new Semaphore(1);
 
 		public boolean acquire()
 		{
@@ -78,65 +78,65 @@ public class ViPER4AndroidService extends Service
 				Log.i("ViPER4Android", "Creating viper4android module, " + uModuleID.toString());
 				mInstance = AudioEffect.class.getConstructor(UUID.class, UUID.class, Integer.TYPE, Integer.TYPE)
 							.newInstance(EFFECT_TYPE_NULL, uModuleID, 0, nAudioSession);
+            }
+            catch (Exception e)
+            {
+                Log.e("ViPER4Android", "Can not create audio effect instance, V4A driver not installed or not supported by this rom");
+                mInstance = null;
+            }
 
-				if (mInstance != null)
-				{
-					AudioEffect.Descriptor adModuleDescriptor = mInstance.getDescriptor();
-					Log.i("ViPER4Android", "Effect name : " + adModuleDescriptor.name);
-					Log.i("ViPER4Android", "Type id : " + adModuleDescriptor.type.toString());
-					Log.i("ViPER4Android", "Unique id : " + adModuleDescriptor.uuid.toString());
-					Log.i("ViPER4Android", "Implementor : " + adModuleDescriptor.implementor);
-					Log.i("ViPER4Android", "Connect mode : " + adModuleDescriptor.connectMode);
+			if (mInstance != null)
+            {
+                AudioEffect.Descriptor adModuleDescriptor = mInstance.getDescriptor();
+			    Log.i("ViPER4Android", "Effect name : " + adModuleDescriptor.name);
+			    Log.i("ViPER4Android", "Type id : " + adModuleDescriptor.type.toString());
+			    Log.i("ViPER4Android", "Unique id : " + adModuleDescriptor.uuid.toString());
+			    Log.i("ViPER4Android", "Implementor : " + adModuleDescriptor.implementor);
+			    Log.i("ViPER4Android", "Connect mode : " + adModuleDescriptor.connectMode);
 
-					mInstance.setControlStatusListener(new AudioEffect.OnControlStatusChangeListener()
-					{
-						@Override
-						public void onControlStatusChange(AudioEffect effect, boolean controlGranted)
-						{
-							if (!controlGranted)
-							{
-								Log.i("ViPER4Android", "We lost effect control token");
-								Toast.makeText(ViPER4AndroidService.this,
-									getString(getResources().getIdentifier("text_token_lost", "string", getApplicationInfo().packageName)),
-									Toast.LENGTH_LONG).show();
-							}
-							else
-							{
-								Log.i("ViPER4Android", "We got effect control token");
-								updateSystem(true);
-							}
-						}
-					});
+                mInstance.setControlStatusListener(new AudioEffect.OnControlStatusChangeListener()
+                {
+                    @Override
+                    public void onControlStatusChange(AudioEffect effect, boolean controlGranted)
+                    {
+                        if (!controlGranted)
+                        {
+                            Log.i("ViPER4Android", "We lost effect control token");
+                            Toast.makeText(ViPER4AndroidService.this,
+                              getString(getResources().getIdentifier("text_token_lost", "string", getApplicationInfo().packageName)),
+                              Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+                            Log.i("ViPER4Android", "We got effect control token");
+                            updateSystem(true);
+                        }
+                    }
+                });
 
-					mInstance.setEnableStatusListener(new AudioEffect.OnEnableStatusChangeListener()
-					{
-						@Override
-						public void onEnableStatusChange(AudioEffect effect, boolean enabled)
-						{
-							String mode = getAudioOutputRouting(getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", MODE_PRIVATE));
-							SharedPreferences preferences = getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + "." + mode, 0);
-							String szEnableKey = "viper4android.headphonefx.enable";
-							if (mode.equalsIgnoreCase("speaker")) szEnableKey = "viper4android.speakerfx.enable";
-							boolean bShouldEnabled = preferences.getBoolean(szEnableKey, false);
-							if (bShouldEnabled != enabled)
-							{
-								Log.i("ViPER4Android", "Engine status is " + enabled + ", but we expected " + bShouldEnabled);
-								Log.i("ViPER4Android", "Im sure you are experiencing no effect, because the effect is controlling by system now");
-								Log.i("ViPER4Android", "I really have no idea to solve this problem, the fucking android, Im sorry bro");
-								Toast.makeText(ViPER4AndroidService.this,
-										getString(getResources().getIdentifier("text_token_lost", "string", getApplicationInfo().packageName)),
-										Toast.LENGTH_LONG).show();
-							}
-							else Log.i("ViPER4Android", "Everything is under control for now");
-						}
-					});
-				}
-			}
-			catch (Exception e)
-			{
-				Log.e("ViPER4Android", "Can not create audio effect instance, V4A driver not installed or not supported by this rom");
-				mInstance = null;
-			}
+                mInstance.setEnableStatusListener(new AudioEffect.OnEnableStatusChangeListener()
+                {
+                    @Override
+                    public void onEnableStatusChange(AudioEffect effect, boolean enabled)
+                    {
+                        String mode = getAudioOutputRouting(getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", MODE_PRIVATE));
+                        SharedPreferences preferences = getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + "." + mode, 0);
+                        String szEnableKey = "viper4android.headphonefx.enable";
+                        if (mode.equalsIgnoreCase("speaker")) szEnableKey = "viper4android.speakerfx.enable";
+                        boolean bShouldEnabled = preferences.getBoolean(szEnableKey, false);
+                        if (bShouldEnabled != enabled)
+                        {
+                            Log.i("ViPER4Android", "Engine status is " + enabled + ", but we expected " + bShouldEnabled);
+                            Log.i("ViPER4Android", "Im sure you are experiencing no effect, because the effect is controlling by system now");
+                            Log.i("ViPER4Android", "I really have no idea to solve this problem, the fucking android, Im sorry bro");
+                            Toast.makeText(ViPER4AndroidService.this,
+                              getString(getResources().getIdentifier("text_token_lost", "string", getApplicationInfo().packageName)),
+                              Toast.LENGTH_LONG).show();
+                        }
+                        else Log.i("ViPER4Android", "Everything is under control for now");
+                    }
+                });
+            }
 		}
 
 		public void release()
@@ -145,7 +145,10 @@ public class ViPER4AndroidService extends Service
 			if (mInstance != null)
 			{
 				try { mInstance.release(); }
-				catch (Exception e) {}
+				catch (Exception e)
+                {
+                    Log.i("ViPER4Android", "release: " + e.getMessage());
+                }
 			}
 			mInstance = null;
 		}
@@ -305,7 +308,7 @@ public class ViPER4AndroidService extends Service
 			try
 			{
 				Method setParameter = AudioEffect.class.getMethod("setParameter", byte[].class, byte[].class);
-				setParameter.invoke(mInstance, parameter, value);
+                setParameter.invoke(mInstance, parameter, value);
 			}
 			catch (Exception e)
 			{
@@ -352,37 +355,22 @@ public class ViPER4AndroidService extends Service
 
 			// 2. Read entire ir data and get hash code
 			byte[] baKernelData = V4AJniInterface.ReadImpulseResponseToArray(szConvIRFile);
-			if (baKernelData == null)
+			if (baKernelData == null // Read failed
+                || baKernelData.length <= 0) // Empty ir file
 			{
-				// Read failed
 				setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_SPKFX_CONV_PREPAREBUFFER, 0, 0, 1);
 				return;
 			}
-			if (baKernelData.length <= 0)
-			{
-				// Empty ir file
-				setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_SPKFX_CONV_PREPAREBUFFER, 0, 0, 1);
-				return;
-			}
+
 			int[] baHashCode = V4AJniInterface.GetHashImpulseResponseArray(baKernelData);
-			if (baHashCode == null)
+			if (baHashCode == null // Wrong with hash
+                || baHashCode.length != 2 // Wrong with hash
+                || baHashCode[0] == 0) // Wrong with hash
 			{
-				// Wrong with hash
 				setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_SPKFX_CONV_PREPAREBUFFER, 0, 0, 1);
 				return;
 			}
-			if (baHashCode.length != 2)
-			{
-				// Wrong with hash
-				setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_SPKFX_CONV_PREPAREBUFFER, 0, 0, 1);
-				return;
-			}
-			if (baHashCode[0] == 0)
-			{
-				// Wrong with hash
-				setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_SPKFX_CONV_PREPAREBUFFER, 0, 0, 1);
-				return;
-			}
+
 			int nHashCode = baHashCode[1];
 
 			Log.i("ViPER4Android", "[Kernel] Channels = " + nChannels + ", Frames = " + nFrames + ", Bytes = " + baKernelData.length + ", Hash = " + nHashCode);
@@ -418,32 +406,17 @@ public class ViPER4AndroidService extends Service
 
 			// 2. Read entire ir data and get hash code
 			byte[] baKernelData = V4AJniInterface.ReadImpulseResponseToArray(szConvIRFile);
-			if (baKernelData == null)
+			if (baKernelData == null // Read failed
+                || baKernelData.length <= 0) // Empty ir file
 			{
 				// Read failed
 				setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_HPFX_CONV_PREPAREBUFFER, 0, 0, 1);
 				return;
 			}
-			if (baKernelData.length <= 0)
-			{
-				// Empty ir file
-				setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_HPFX_CONV_PREPAREBUFFER, 0, 0, 1);
-				return;
-			}
 			int[] baHashCode = V4AJniInterface.GetHashImpulseResponseArray(baKernelData);
-			if (baHashCode == null)
-			{
-				// Wrong with hash
-				setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_HPFX_CONV_PREPAREBUFFER, 0, 0, 1);
-				return;
-			}
-			if (baHashCode.length != 2)
-			{
-				// Wrong with hash
-				setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_HPFX_CONV_PREPAREBUFFER, 0, 0, 1);
-				return;
-			}
-			if (baHashCode[0] == 0)
+            if (baHashCode == null // Wrong with hash
+              || baHashCode.length != 2 // Wrong with hash
+              || baHashCode[0] == 0) // Wrong with hash
 			{
 				// Wrong with hash
 				setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_HPFX_CONV_PREPAREBUFFER, 0, 0, 1);
@@ -487,15 +460,9 @@ public class ViPER4AndroidService extends Service
 
 			// 2. Read entire ir data and get hash code
 			byte[] baKernelData = irs.ReadEntireData();
-			if (baKernelData == null)
+            if (baKernelData == null // Read failed
+              || baKernelData.length <= 0) // Empty ir file
 			{
-				// Read failed
-				setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_SPKFX_CONV_PREPAREBUFFER, 0, 0, 1);
-				return;
-			}
-			if (baKernelData.length <= 0)
-			{
-				// Empty ir file
 				setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_SPKFX_CONV_PREPAREBUFFER, 0, 0, 1);
 				return;
 			}
@@ -535,15 +502,9 @@ public class ViPER4AndroidService extends Service
 
 			// 2. Read entire ir data and get hash code
 			byte[] baKernelData = irs.ReadEntireData();
-			if (baKernelData == null)
+            if (baKernelData == null // Read failed
+              || baKernelData.length <= 0) // Empty ir file
 			{
-				// Read failed
-				setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_HPFX_CONV_PREPAREBUFFER, 0, 0, 1);
-				return;
-			}
-			if (baKernelData.length <= 0)
-			{
-				// Empty ir file
 				setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_HPFX_CONV_PREPAREBUFFER, 0, 0, 1);
 				return;
 			}
@@ -671,116 +632,116 @@ public class ViPER4AndroidService extends Service
 	}
 
 	public static final UUID ID_V4A_GENERAL_FX = UUID.fromString("41d3c987-e6cf-11e3-a88a-11aba5d5c51b");
-	public static final int DEVICE_GLOBAL_OUTPUT_MIXER = 0;
+	private static final int DEVICE_GLOBAL_OUTPUT_MIXER = 0;
 
 	/* ViPER4Android Driver Status */
 	public static final int PARAM_GET_DRIVER_VERSION = 32769;
-	public static final int PARAM_GET_NEONENABLED = 32770;
-	public static final int PARAM_GET_ENABLED = 32771;
-	public static final int PARAM_GET_CONFIGURE = 32772;
-	public static final int PARAM_GET_STREAMING = 32773;
-	public static final int PARAM_GET_EFFECT_TYPE = 32774;
-	public static final int PARAM_GET_SAMPLINGRATE = 32775;
-	public static final int PARAM_GET_CHANNELS = 32776;
-	public static final int PARAM_GET_CONVUSABLE = 32777;
-	public static final int PARAM_GET_CONVKNLID = 32778;
+	private static final int PARAM_GET_NEONENABLED = 32770;
+	private static final int PARAM_GET_ENABLED = 32771;
+	private static final int PARAM_GET_CONFIGURE = 32772;
+	private static final int PARAM_GET_STREAMING = 32773;
+	private static final int PARAM_GET_EFFECT_TYPE = 32774;
+	private static final int PARAM_GET_SAMPLINGRATE = 32775;
+	private static final int PARAM_GET_CHANNELS = 32776;
+	private static final int PARAM_GET_CONVUSABLE = 32777;
+	private static final int PARAM_GET_CONVKNLID = 32778;
 	/*******************************/
 
 	/* ViPER4Android Driver Status Control */
 	public static final int PARAM_SET_COMM_STATUS = 36865;
-	public static final int PARAM_SET_UPDATE_STATUS = 36866;
-	public static final int PARAM_SET_RESET_STATUS = 36867;
-	public static final int PARAM_SET_DOPROCESS_STATUS = 36868;
-	public static final int PARAM_SET_FORCEENABLE_STATUS = 36869;
+	private static final int PARAM_SET_UPDATE_STATUS = 36866;
+	private static final int PARAM_SET_RESET_STATUS = 36867;
+	private static final int PARAM_SET_DOPROCESS_STATUS = 36868;
+	private static final int PARAM_SET_FORCEENABLE_STATUS = 36869;
 	/***************************************/
 
 	/* ViPER4Android FX Types */
-	public static final int V4A_FX_TYPE_NONE = 0;
+	private static final int V4A_FX_TYPE_NONE = 0;
 	public static final int V4A_FX_TYPE_HEADPHONE = 1;
 	public static final int V4A_FX_TYPE_SPEAKER = 2;
 	/**************************/
 
 	/* ViPER4Android General FX Parameters */
-	public static final int PARAM_FX_TYPE_SWITCH = 65537;
-	public static final int PARAM_HPFX_CONV_PROCESS_ENABLED = 65538;
+	private static final int PARAM_FX_TYPE_SWITCH = 65537;
+	private static final int PARAM_HPFX_CONV_PROCESS_ENABLED = 65538;
 	public static final int PARAM_HPFX_CONV_UPDATEKERNEL_DEPRECATED = 65539;  /* DEPRECATED in 4.x system, use buffer instead */
-	public static final int PARAM_HPFX_CONV_PREPAREBUFFER = 65540;
-	public static final int PARAM_HPFX_CONV_SETBUFFER = 65541;
-	public static final int PARAM_HPFX_CONV_COMMITBUFFER = 65542;
-	public static final int PARAM_HPFX_CONV_CROSSCHANNEL = 65543;
-	public static final int PARAM_HPFX_VHE_PROCESS_ENABLED = 65544;
-	public static final int PARAM_HPFX_VHE_EFFECT_LEVEL = 65545;
-	public static final int PARAM_HPFX_FIREQ_PROCESS_ENABLED = 65546;
-	public static final int PARAM_HPFX_FIREQ_BANDLEVEL = 65547;
-	public static final int PARAM_HPFX_COLM_PROCESS_ENABLED = 65548;
-	public static final int PARAM_HPFX_COLM_WIDENING = 65549;
-	public static final int PARAM_HPFX_COLM_MIDIMAGE = 65550;
-	public static final int PARAM_HPFX_COLM_DEPTH = 65551;
-	public static final int PARAM_HPFX_DIFFSURR_PROCESS_ENABLED = 65552;
-	public static final int PARAM_HPFX_DIFFSURR_DELAYTIME = 65553;
-	public static final int PARAM_HPFX_REVB_PROCESS_ENABLED = 65554;
-	public static final int PARAM_HPFX_REVB_ROOMSIZE = 65555;
-	public static final int PARAM_HPFX_REVB_WIDTH = 65556;
-	public static final int PARAM_HPFX_REVB_DAMP = 65557;
-	public static final int PARAM_HPFX_REVB_WET = 65558;
-	public static final int PARAM_HPFX_REVB_DRY = 65559;
-	public static final int PARAM_HPFX_AGC_PROCESS_ENABLED = 65560;
-	public static final int PARAM_HPFX_AGC_RATIO = 65561;
-	public static final int PARAM_HPFX_AGC_VOLUME = 65562;
-	public static final int PARAM_HPFX_AGC_MAXSCALER = 65563;
-	public static final int PARAM_HPFX_DYNSYS_PROCESS_ENABLED = 65564;
-	public static final int PARAM_HPFX_DYNSYS_XCOEFFS = 65565;
-	public static final int PARAM_HPFX_DYNSYS_YCOEFFS = 65566;
-	public static final int PARAM_HPFX_DYNSYS_SIDEGAIN = 65567;
-	public static final int PARAM_HPFX_DYNSYS_BASSGAIN = 65568;
-	public static final int PARAM_HPFX_VIPERBASS_PROCESS_ENABLED = 65569;
-	public static final int PARAM_HPFX_VIPERBASS_MODE = 65570;
-	public static final int PARAM_HPFX_VIPERBASS_SPEAKER = 65571;
-	public static final int PARAM_HPFX_VIPERBASS_BASSGAIN = 65572;
-	public static final int PARAM_HPFX_VIPERCLARITY_PROCESS_ENABLED = 65573;
-	public static final int PARAM_HPFX_VIPERCLARITY_MODE = 65574;
-	public static final int PARAM_HPFX_VIPERCLARITY_CLARITY = 65575;
-	public static final int PARAM_HPFX_CURE_PROCESS_ENABLED = 65576;
-	public static final int PARAM_HPFX_CURE_CROSSFEED = 65577;
-	public static final int PARAM_HPFX_TUBE_PROCESS_ENABLED = 65578;
-	public static final int PARAM_HPFX_OUTPUT_VOLUME = 65579;
-	public static final int PARAM_HPFX_OUTPUT_PAN = 65580;
-	public static final int PARAM_HPFX_LIMITER_THRESHOLD = 65581;
-	public static final int PARAM_SPKFX_CONV_PROCESS_ENABLED = 65582;
+	private static final int PARAM_HPFX_CONV_PREPAREBUFFER = 65540;
+	private static final int PARAM_HPFX_CONV_SETBUFFER = 65541;
+	private static final int PARAM_HPFX_CONV_COMMITBUFFER = 65542;
+	private static final int PARAM_HPFX_CONV_CROSSCHANNEL = 65543;
+	private static final int PARAM_HPFX_VHE_PROCESS_ENABLED = 65544;
+	private static final int PARAM_HPFX_VHE_EFFECT_LEVEL = 65545;
+	private static final int PARAM_HPFX_FIREQ_PROCESS_ENABLED = 65546;
+	private static final int PARAM_HPFX_FIREQ_BANDLEVEL = 65547;
+	private static final int PARAM_HPFX_COLM_PROCESS_ENABLED = 65548;
+	private static final int PARAM_HPFX_COLM_WIDENING = 65549;
+	private static final int PARAM_HPFX_COLM_MIDIMAGE = 65550;
+	private static final int PARAM_HPFX_COLM_DEPTH = 65551;
+	private static final int PARAM_HPFX_DIFFSURR_PROCESS_ENABLED = 65552;
+	private static final int PARAM_HPFX_DIFFSURR_DELAYTIME = 65553;
+	private static final int PARAM_HPFX_REVB_PROCESS_ENABLED = 65554;
+	private static final int PARAM_HPFX_REVB_ROOMSIZE = 65555;
+	private static final int PARAM_HPFX_REVB_WIDTH = 65556;
+	private static final int PARAM_HPFX_REVB_DAMP = 65557;
+	private static final int PARAM_HPFX_REVB_WET = 65558;
+	private static final int PARAM_HPFX_REVB_DRY = 65559;
+	private static final int PARAM_HPFX_AGC_PROCESS_ENABLED = 65560;
+	private static final int PARAM_HPFX_AGC_RATIO = 65561;
+	private static final int PARAM_HPFX_AGC_VOLUME = 65562;
+	private static final int PARAM_HPFX_AGC_MAXSCALER = 65563;
+	private static final int PARAM_HPFX_DYNSYS_PROCESS_ENABLED = 65564;
+	private static final int PARAM_HPFX_DYNSYS_XCOEFFS = 65565;
+	private static final int PARAM_HPFX_DYNSYS_YCOEFFS = 65566;
+	private static final int PARAM_HPFX_DYNSYS_SIDEGAIN = 65567;
+	private static final int PARAM_HPFX_DYNSYS_BASSGAIN = 65568;
+	private static final int PARAM_HPFX_VIPERBASS_PROCESS_ENABLED = 65569;
+	private static final int PARAM_HPFX_VIPERBASS_MODE = 65570;
+	private static final int PARAM_HPFX_VIPERBASS_SPEAKER = 65571;
+	private static final int PARAM_HPFX_VIPERBASS_BASSGAIN = 65572;
+	private static final int PARAM_HPFX_VIPERCLARITY_PROCESS_ENABLED = 65573;
+	private static final int PARAM_HPFX_VIPERCLARITY_MODE = 65574;
+	private static final int PARAM_HPFX_VIPERCLARITY_CLARITY = 65575;
+	private static final int PARAM_HPFX_CURE_PROCESS_ENABLED = 65576;
+	private static final int PARAM_HPFX_CURE_CROSSFEED = 65577;
+	private static final int PARAM_HPFX_TUBE_PROCESS_ENABLED = 65578;
+	private static final int PARAM_HPFX_OUTPUT_VOLUME = 65579;
+	private static final int PARAM_HPFX_OUTPUT_PAN = 65580;
+	private static final int PARAM_HPFX_LIMITER_THRESHOLD = 65581;
+	private static final int PARAM_SPKFX_CONV_PROCESS_ENABLED = 65582;
 	public static final int PARAM_SPKFX_CONV_UPDATEKERNEL_DEPRECATED = 65583;  /* DEPRECATED in 4.x system, use buffer instead */
-	public static final int PARAM_SPKFX_CONV_PREPAREBUFFER = 65584;
-	public static final int PARAM_SPKFX_CONV_SETBUFFER = 65585;
-	public static final int PARAM_SPKFX_CONV_COMMITBUFFER = 65586;
-	public static final int PARAM_SPKFX_CONV_CROSSCHANNEL = 65587;
-	public static final int PARAM_SPKFX_FIREQ_PROCESS_ENABLED = 65588;
-	public static final int PARAM_SPKFX_FIREQ_BANDLEVEL = 65589;
-	public static final int PARAM_SPKFX_REVB_PROCESS_ENABLED = 65590;
-	public static final int PARAM_SPKFX_REVB_ROOMSIZE = 65591;
-	public static final int PARAM_SPKFX_REVB_WIDTH = 65592;
-	public static final int PARAM_SPKFX_REVB_DAMP = 65593;
-	public static final int PARAM_SPKFX_REVB_WET = 65594;
-	public static final int PARAM_SPKFX_REVB_DRY = 65595;
-	public static final int PARAM_SPKFX_CORR_PROCESS_ENABLED = 65596;
-	public static final int PARAM_SPKFX_AGC_PROCESS_ENABLED = 65597;
-	public static final int PARAM_SPKFX_AGC_RATIO = 65598;
-	public static final int PARAM_SPKFX_AGC_VOLUME = 65599;
-	public static final int PARAM_SPKFX_AGC_MAXSCALER = 65600;
-	public static final int PARAM_SPKFX_OUTPUT_VOLUME = 65601;
-	public static final int PARAM_SPKFX_LIMITER_THRESHOLD = 65602;
+	private static final int PARAM_SPKFX_CONV_PREPAREBUFFER = 65584;
+	private static final int PARAM_SPKFX_CONV_SETBUFFER = 65585;
+	private static final int PARAM_SPKFX_CONV_COMMITBUFFER = 65586;
+	private static final int PARAM_SPKFX_CONV_CROSSCHANNEL = 65587;
+	private static final int PARAM_SPKFX_FIREQ_PROCESS_ENABLED = 65588;
+	private static final int PARAM_SPKFX_FIREQ_BANDLEVEL = 65589;
+	private static final int PARAM_SPKFX_REVB_PROCESS_ENABLED = 65590;
+	private static final int PARAM_SPKFX_REVB_ROOMSIZE = 65591;
+	private static final int PARAM_SPKFX_REVB_WIDTH = 65592;
+	private static final int PARAM_SPKFX_REVB_DAMP = 65593;
+	private static final int PARAM_SPKFX_REVB_WET = 65594;
+	private static final int PARAM_SPKFX_REVB_DRY = 65595;
+	private static final int PARAM_SPKFX_CORR_PROCESS_ENABLED = 65596;
+	private static final int PARAM_SPKFX_AGC_PROCESS_ENABLED = 65597;
+	private static final int PARAM_SPKFX_AGC_RATIO = 65598;
+	private static final int PARAM_SPKFX_AGC_VOLUME = 65599;
+	private static final int PARAM_SPKFX_AGC_MAXSCALER = 65600;
+	private static final int PARAM_SPKFX_OUTPUT_VOLUME = 65601;
+	private static final int PARAM_SPKFX_LIMITER_THRESHOLD = 65602;
 	/***************************************/
 
 	private final LocalBinder mBinder = new LocalBinder();
 
-	protected static boolean mUseHeadset = false;
-	protected static boolean mUseBluetooth = false;
-	protected static boolean mUseUSBSoundCard = false;
-	protected static String mPreviousMode = "none";
+	private static boolean mUseHeadset = false;
+	private static boolean mUseBluetooth = false;
+	private static boolean mUseUSBSoundCard = false;
+	private static String mPreviousMode = "none";
 
 	private float[] mOverriddenEqualizerLevels = null;
 	private boolean mDriverIsReady = false;
 	private V4ADSPModule mGeneralFX = null;
-	private SparseArray<V4ADSPModule> mGeneralFXList = new SparseArray<V4ADSPModule>();
-	private ResourceMutex mV4AMutex = new ResourceMutex();
+	private final SparseArray<V4ADSPModule> mGeneralFXList = new SparseArray<V4ADSPModule>();
+	private final ResourceMutex mV4AMutex = new ResourceMutex();
 
 	private static final String ACTION_QUERY_DRIVERSTATUS = "com.vipercn.viper4android_v2.QUERY_DRIVERSTATUS";
 	private static final String ACTION_QUERY_DRIVERSTATUS_RESULT = "com.vipercn.viper4android_v2.QUERY_DRIVERSTATUS_RESULT";
@@ -798,7 +759,7 @@ public class ViPER4AndroidService extends Service
 
 	private boolean bMediaMounted = false;
 	private final Timer tmMediaStatusTimer = new Timer();
-	private TimerTask ttMediaStatusTimer = new TimerTask()
+	private final TimerTask ttMediaStatusTimer = new TimerTask()
 	{
 	    @Override
 	    public void run()
@@ -987,8 +948,7 @@ public class ViPER4AndroidService extends Service
 
 			SharedPreferences prefSettings = getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", MODE_PRIVATE);
 			String szCompatibleMode = prefSettings.getString("viper4android.settings.compatiblemode", "global");
-			boolean mFXInLocalMode;
-            mFXInLocalMode = !szCompatibleMode.equals("global");
+			boolean mFXInLocalMode = !szCompatibleMode.equals("global");
 
 			String action = intent.getAction();
 			int sessionId = intent.getIntExtra(AudioEffect.EXTRA_AUDIO_SESSION, 0);
@@ -1102,24 +1062,18 @@ public class ViPER4AndroidService extends Service
             final boolean prevUseHeadset = mUseHeadset;
             final boolean prevUseBluetooth = mUseBluetooth;
             final boolean prevUseUSB = mUseUSBSoundCard;
-
+            final AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
             if (action.equals(Intent.ACTION_HEADSET_PLUG))
             {
                 mUseHeadset = intent.getIntExtra("state", 0) == 1;
-            }
-            else if (action.equals(BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED))
+            } else if (action.equals(BluetoothDevice.ACTION_ACL_CONNECTED)
+              || action.equals(BluetoothDevice.ACTION_ACL_DISCONNECTED))
             {
-                int state = intent.getIntExtra(BluetoothA2dp.EXTRA_STATE, BluetoothA2dp.STATE_DISCONNECTED);
-                mUseBluetooth = state == BluetoothA2dp.STATE_CONNECTED;
+                mUseBluetooth = audioManager.isBluetoothA2dpOn();
             }
-            else
+            else if ((Build.VERSION.SDK_INT >= 16) && (action.equals("android.intent.action.ANALOG_AUDIO_DOCK_PLUG")))
             {
-            	if (Build.VERSION.SDK_INT >= 16)
-            	{
-            		// Equals Intent.ACTION_ANALOG_AUDIO_DOCK_PLUG
-            		if (action.equals("android.intent.action.ANALOG_AUDIO_DOCK_PLUG"))
-            			mUseUSBSoundCard = intent.getIntExtra("state", 0) == 1;
-            	}
+            	mUseUSBSoundCard = intent.getIntExtra("state", 0) == 1;
             }
 
             Log.i("ViPER4Android", "Headset=" + mUseHeadset + ", Bluetooth=" + mUseBluetooth + ", USB=" + mUseUSBSoundCard);
@@ -1159,7 +1113,7 @@ public class ViPER4AndroidService extends Service
 				.setContentTitle(contentTitle)
 				.setContentText(nFXType)
 				.setContentIntent(contentItent)
-				.getNotification();
+				.build();
 	
 	        NotificationManager notificationManager = (NotificationManager)getSystemService(android.content.Context.NOTIFICATION_SERVICE);
 	        if (notificationManager != null)
@@ -1208,7 +1162,7 @@ public class ViPER4AndroidService extends Service
 			}
 			catch (NameNotFoundException e)
 			{
-				Log.i("ViPER4Android", "Cannot found ViPER4Android's apk [weird]");
+				Log.i("ViPER4Android", "Cannot find ViPER4Android's apk [weird]");
 				mDriverIsReady = false;
 				return;
 			}
@@ -1294,7 +1248,8 @@ public class ViPER4AndroidService extends Service
 			// Equals Intent.ACTION_ANALOG_AUDIO_DOCK_PLUG
 			audioFilter.addAction("android.intent.action.ANALOG_AUDIO_DOCK_PLUG");
 		}
-		audioFilter.addAction(BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED);
+		audioFilter.addAction(BluetoothDevice.ACTION_ACL_CONNECTED);
+        audioFilter.addAction(BluetoothDevice.ACTION_ACL_DISCONNECTED);
 		audioFilter.addAction(AudioManager.ACTION_AUDIO_BECOMING_NOISY);
 		registerReceiver(mRoutingReceiver, audioFilter);
 
@@ -1427,7 +1382,7 @@ public class ViPER4AndroidService extends Service
 				// If we reach here, it means android refuse to load v4a driver.
 				// There are only two cases:
 				//   1. The android system not totally booted or media server crashed.
-				//   2. The v4a driver installed not compitable with this android.
+				//   2. The v4a driver installed not compatible with this android.
 				Log.e("ViPER4Android", "Service::onStartCommand [Found v4a driver, but failed to load]");
 				mGeneralFX.release();
 				mGeneralFX = null;
@@ -1500,10 +1455,7 @@ public class ViPER4AndroidService extends Service
 
 	public boolean GetDriverLoaded()
 	{
-		if (!mDriverIsReady) return false;
-		if (mGeneralFX == null) return false;
-		if (mGeneralFX.mInstance == null) return false;
-		return true;
+		return !(!mDriverIsReady || mGeneralFX == null || mGeneralFX.mInstance == null);
 	}
 
 	public void StartStatusUpdating()
@@ -1597,14 +1549,14 @@ public class ViPER4AndroidService extends Service
 		return bResult;
 	}
 
-	protected void SetV4AEqualizerBandLevel(int idx, int level, boolean hpfx, V4ADSPModule dsp)
+	void SetV4AEqualizerBandLevel(int idx, int level, boolean hpfx, V4ADSPModule dsp)
 	{
 		if (dsp == null || !mDriverIsReady) return;
 		if (hpfx) dsp.setParameter_px4_vx4x2(PARAM_HPFX_FIREQ_BANDLEVEL, idx, level);
 		else dsp.setParameter_px4_vx4x2(PARAM_SPKFX_FIREQ_BANDLEVEL, idx, level);
 	}
 
-	protected void updateSystem(boolean bRequireReset)
+	void updateSystem(boolean bRequireReset)
 	{
 		String mode = getAudioOutputRouting(getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", MODE_PRIVATE));
 		SharedPreferences preferences = getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + "." + mode, 0);
@@ -1638,7 +1590,7 @@ public class ViPER4AndroidService extends Service
 		Log.i("ViPER4Android", "<+++++++++++++++++++++++++++++++++++++++++++++++++++>");
 	}
 
-	protected void updateSystem_Global(SharedPreferences preferences, int nFXType, boolean bRequireReset, boolean mLocalFX)
+	void updateSystem_Global(SharedPreferences preferences, int nFXType, boolean bRequireReset, boolean mLocalFX)
 	{
 		if ((mGeneralFX == null) || (mGeneralFX.mInstance == null) || (!mDriverIsReady))
 		{
@@ -1664,7 +1616,7 @@ public class ViPER4AndroidService extends Service
 		else updateSystem_Module(preferences, nFXType, mGeneralFX, bRequireReset, false);
 	}
 
-	protected void updateSystem_Local(SharedPreferences preferences, int nFXType, boolean bRequireReset, boolean mLocalFX)
+	void updateSystem_Local(SharedPreferences preferences, int nFXType, boolean bRequireReset, boolean mLocalFX)
 	{
 		if (mV4AMutex.acquire())
 		{
@@ -1692,7 +1644,7 @@ public class ViPER4AndroidService extends Service
 		else Log.i("ViPER4Android", "Semaphore accquire failed.");
 	}
 
-	protected void updateSystem_Module(SharedPreferences preferences, int nFXType, V4ADSPModule v4aModule, boolean bRequireReset, boolean mMasterSwitchOff)
+	void updateSystem_Module(SharedPreferences preferences, int nFXType, V4ADSPModule v4aModule, boolean bRequireReset, boolean mMasterSwitchOff)
 	{
 		Log.i("ViPER4Android", "updateSystem(): Commiting effects type");
 		v4aModule.setParameter_px4_vx4x1(PARAM_FX_TYPE_SWITCH, nFXType);

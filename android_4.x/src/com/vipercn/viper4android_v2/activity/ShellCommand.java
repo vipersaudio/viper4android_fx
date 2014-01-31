@@ -11,7 +11,7 @@ import java.util.List;
 import android.os.SystemClock;
 import android.util.Log;
 
-public class ShellCommand
+class ShellCommand
 {
 	private static Process m_psShellProcess = null;
 	private static DataOutputStream m_doShellStdIn = null;
@@ -40,7 +40,7 @@ public class ShellCommand
 		if (nDataLength <= 0) return null;
 		if (nDataLength > baByteArray.length) return null;
 
-		// Replace all unvisiable chars to '.'
+		// Replace all unvisible chars to '.'
 		for (int i = 0; i < nDataLength; i++)
 		{
 			if ((baByteArray[i] == 0x0D) || (baByteArray[i] == 0x0A))
@@ -177,203 +177,6 @@ public class ShellCommand
 		}
 	}
 
-	public static boolean OpenSysShell(boolean bReopen)
-	{
-		Log.i("ViPER4Android_ShellCommand", "Open shell, reopen = " + bReopen);
-
-		if (m_bShellOpened && !bReopen)
-		{
-			Log.i("ViPER4Android_ShellCommand", "Shell already opened");
-			return true;
-		}
-		else if (m_bShellOpened)
-		{
-			Log.i("ViPER4Android_ShellCommand", "Close current shell");
-			CloseShell();
-		}
-
-		try
-		{
-			Log.i("ViPER4Android_ShellCommand", "Starting system shell");
-			m_psShellProcess = Runtime.getRuntime().exec("sh");  /* Maybe we should parse init.rc to find out the $PATH */
-		}
-		catch (IOException ioe)
-		{
-			Log.i("ViPER4Android_ShellCommand", "Start system shell failed, msg = " + ioe.getMessage());
-			m_psShellProcess = null;
-			m_doShellStdIn = null;
-			m_diShellStdOut = null;
-			m_diShellStdErr = null;
-			m_bShellOpened = false;
-			return false;
-		}
-
-		Log.i("ViPER4Android_ShellCommand", "Fetching shell stdin, stdout and stderr");
-		m_doShellStdIn = new DataOutputStream(m_psShellProcess.getOutputStream());
-		m_diShellStdOut = new DataInputStream(m_psShellProcess.getInputStream());
-		m_diShellStdErr = new DataInputStream(m_psShellProcess.getErrorStream());
-		try
-		{
-			Log.i("ViPER4Android_ShellCommand", "Performing shell banner and query id, timeout = 20 secs");
-			m_doShellStdIn.writeBytes("echo \"Enter ViPER's System Shell\"\n");
-			m_doShellStdIn.writeBytes("id\n");
-			m_doShellStdIn.flush();
-
-			boolean bGotResult = false;
-			for (int nWaitCount = 0; nWaitCount < 200; nWaitCount++)
-			{
-				String[] szStdOut = GetStdOut();
-				if (szStdOut != null) bGotResult = true;
-				String[] szStdErr = GetStdErr();
-				if (szStdErr != null) bGotResult = true;
-				if (bGotResult)
-				{
-					if (szStdOut != null)
-                        for (String aSzStdOut : szStdOut) Log.i("ViPER4Android_ShellCommand", "stdout: " + aSzStdOut);
-					if (szStdErr != null)
-                        for (String aSzStdErr : szStdErr) Log.i("ViPER4Android_ShellCommand", "stderr: " + aSzStdErr);
-					break;
-				}
-
-				SystemClock.sleep(100);
-				Log.i("ViPER4Android_ShellCommand", ((nWaitCount + 1) * 100) + " ms waited, still no result");
-			}
-
-			if (!bGotResult)
-			{
-				Log.i("ViPER4Android_ShellCommand", "Wait system shell timeout");
-				CloseShell();
-				return false;
-			}
-		}
-		catch (IOException ioe)
-		{
-			Log.i("ViPER4Android_ShellCommand", "IOException, msg = " + ioe.getMessage());
-			CloseShell();
-			return false;
-		}
-
-		ClearStdOutAndErr();
-		m_bShellOpened = true;
-
-		return true;
-	}
-
-	public static boolean OpenRootShell(boolean bReopen)
-	{
-		Log.i("ViPER4Android_ShellCommand", "Open shell, reopen = " + bReopen);
-
-		if (m_bShellOpened && !bReopen)
-		{
-			Log.i("ViPER4Android_ShellCommand", "Shell already opened");
-			return true;
-		}
-		else if (m_bShellOpened)
-		{
-			Log.i("ViPER4Android_ShellCommand", "Close current shell");
-			CloseShell();
-		}
-
-		try
-		{
-			Log.i("ViPER4Android_ShellCommand", "Starting su shell");
-			m_psShellProcess = Runtime.getRuntime().exec("su");  /* Maybe we should parse init.rc to find out the $PATH */
-		}
-		catch (IOException ioe)
-		{
-			Log.i("ViPER4Android_ShellCommand", "Start su shell failed, msg = " + ioe.getMessage());
-			m_psShellProcess = null;
-			m_doShellStdIn = null;
-			m_diShellStdOut = null;
-			m_diShellStdErr = null;
-			m_bShellOpened = false;
-			return false;
-		}
-
-		Log.i("ViPER4Android_ShellCommand", "Fetching shell stdin, stdout and stderr");
-		m_doShellStdIn = new DataOutputStream(m_psShellProcess.getOutputStream());
-		m_diShellStdOut = new DataInputStream(m_psShellProcess.getInputStream());
-		m_diShellStdErr = new DataInputStream(m_psShellProcess.getErrorStream());
-		try
-		{
-			Log.i("ViPER4Android_ShellCommand", "Performing shell banner and query id, timeout = 20 secs");
-			m_doShellStdIn.writeBytes("echo \"Enter ViPER's Root Shell\"\n");
-			m_doShellStdIn.writeBytes("id\n");
-			m_doShellStdIn.flush();
-
-			boolean bGotResult = false, bAccessGiven = false;
-			for (int nWaitCount = 0; nWaitCount < 200; nWaitCount++)
-			{
-				String[] szStdOut = GetStdOut();
-				if (szStdOut != null)
-				{
-                    for (String aSzStdOut : szStdOut) {
-                        Log.i("ViPER4Android_ShellCommand", "stdout: " + aSzStdOut);
-                        if (aSzStdOut.contains("uid")) {
-                            Log.i("ViPER4Android_ShellCommand", "Got result");
-                            if (aSzStdOut.contains("uid=0")) {
-                                bGotResult = true;
-                                bAccessGiven = true;
-                                break;
-                            } else {
-                                bGotResult = true;
-                                bAccessGiven = false;
-                                break;
-                            }
-                        }
-                    }
-				}
-				String[] szStdErr = GetStdErr();
-				if (szStdErr != null)
-				{
-                    for (String aSzStdErr : szStdErr) {
-                        Log.i("ViPER4Android_ShellCommand", "stderr: " + aSzStdErr);
-                        if (aSzStdErr.contains("uid")) {
-                            Log.i("ViPER4Android_ShellCommand", "Got result");
-                            if (aSzStdErr.contains("uid=0")) {
-                                bGotResult = true;
-                                bAccessGiven = true;
-                                break;
-                            } else {
-                                bGotResult = true;
-                                bAccessGiven = false;
-                                break;
-                            }
-                        }
-                    }
-				}
-				if (bGotResult) break;
-
-				SystemClock.sleep(100);
-				Log.i("ViPER4Android_ShellCommand", ((nWaitCount + 1) * 100) + " ms waited, still no result");
-			}
-
-			if (bGotResult && !bAccessGiven)
-			{
-				Log.i("ViPER4Android_ShellCommand", "Acquire root permission failed");
-				CloseShell();
-				return false;
-			}
-			if (!bGotResult)
-			{
-				Log.i("ViPER4Android_ShellCommand", "Acquire root permission timeout");
-				CloseShell();
-				return false;
-			}
-		}
-		catch (IOException ioe)
-		{
-			Log.i("ViPER4Android_ShellCommand", "IOException, msg = " + ioe.getMessage());
-			CloseShell();
-			return false;
-		}
-
-		ClearStdOutAndErr();
-		m_bShellOpened = true;
-
-		return true;
-	}
-
 	public static void CloseShell()
 	{
 		if (m_doShellStdIn != null)
@@ -421,58 +224,7 @@ public class ShellCommand
 		Log.i("ViPER4Android_ShellCommand", "Shell closed");
 	}
 
-	public static boolean SendShellCommand(String szCommand, float nMaxWaitSeconds)
-	{
-		Log.i("ViPER4Android_ShellCommand", "Sending shell \"" + szCommand + "\", wait " + nMaxWaitSeconds + " seconds");
-
-		if (!m_bShellOpened) return false;
-		if (m_doShellStdIn == null) return false;
-		if (m_diShellStdOut == null) return false;
-		if (m_diShellStdErr == null) return false;
-
-		ClearStdOutAndErr();
-		try
-		{
-			int nOldCount;
-			try { nOldCount = m_diShellStdOut.available() + m_diShellStdErr.available(); }
-			catch (IOException ioe) { nOldCount = 0; }
-			m_doShellStdIn.writeBytes(szCommand + "\n");
-			m_doShellStdIn.flush();
-			for (int nWaitCount = 0; nWaitCount <= Math.round(nMaxWaitSeconds * 10); nWaitCount++)
-			{
-				int nCurrCount;
-				try { nCurrCount = m_diShellStdOut.available() + m_diShellStdErr.available(); }
-				catch (IOException ioe) { nCurrCount = 0; }
-				Log.i("ViPER4Android_ShellCommand", "Waiting for command return, idx = " + nWaitCount + ", old = " + nOldCount + ", curr = " + nCurrCount);
-				if (nCurrCount != nOldCount)
-				{
-					Log.i("ViPER4Android_ShellCommand", "Command returned");
-					break;
-				}
-				SystemClock.sleep(100);
-			}
-		}
-		catch (IOException ioe)
-		{
-			Log.i("ViPER4Android_ShellCommand", "Send shell failed, msg = " + ioe.getMessage());
-			return false;
-		}
-
-		String[] szStdOut = GetStdOut();
-		if (szStdOut != null)
-		{
-            for (String aSzStdOut : szStdOut) Log.i("ViPER4Android_ShellCommand(stdout)", aSzStdOut);
-		}
-		String[] szStdErr = GetStdErr();
-		if (szStdErr != null)
-		{
-            for (String aSzStdErr : szStdErr) Log.i("ViPER4Android_ShellCommand(stderr)", aSzStdErr);
-		}
-
-		return true;
-	}
-
-	public static boolean SendShellCommandPreserveOut(String szCommand, float nMaxWaitSeconds)
+	private static boolean SendShellCommandPreserveOut(String szCommand, float nMaxWaitSeconds)
 	{
 		Log.i("ViPER4Android_ShellCommand", "Sending shell \"" + szCommand + "\", wait " + nMaxWaitSeconds + " seconds");
 
@@ -510,62 +262,11 @@ public class ShellCommand
 		}
 
 		return true;
-	}
-
-	public static int GetLastReturnValue()
-	{
-		ClearStdOutAndErr();
-		/* Lets print the last command's exit value to stdout */
-		if (!SendShellCommandPreserveOut("echo $?", 1.0f)) return -65536;
-		String[] szStdOut = GetStdOut();
-		if (szStdOut != null)
-		{
-			int nRetValue = -65536;
-            for (String aSzStdOut : szStdOut) {
-                try {
-                    nRetValue = Integer.parseInt(aSzStdOut.trim());
-                } catch (NumberFormatException nfe) {
-                    continue;
-                }
-            }
-			return nRetValue;
-		}
-		else return -65536;
-	}
-
-	public static int ExecuteWithoutShell(String szExecutable, File fDirectory)
-	{
-		if (szExecutable == null) return -65536;
-		if (szExecutable.equals("")) return -65536;
-
-		Log.i("ViPER4Android_ShellCommand", "Executing " + szExecutable + " ...");
-		int nExitValue = -65536;
-		try
-		{
-			Process psProg = Runtime.getRuntime().exec(szExecutable, null, fDirectory);
-			psProg.waitFor();
-			nExitValue = psProg.exitValue();
-			psProg.destroy();
-		}
-		catch (IOException e)
-		{
-			Log.i("ViPER4Android_ShellCommand", "IOException, msg = " + e.getMessage());
-			return nExitValue;
-		}
-		catch (InterruptedException e)
-		{
-			Log.i("ViPER4Android_ShellCommand", "InterruptedException, msg = " + e.getMessage());
-			return nExitValue;
-		}
-		Log.i("ViPER4Android_ShellCommand", "Program " + szExecutable + " returned " + nExitValue);
-
-		return nExitValue;
 	}
 
     public static int RootExecuteWithoutShell(String szExecutable)
     {
-        if (szExecutable == null) return -65536;
-        if (szExecutable.equals("")) return -65536;
+        if (szExecutable == null || szExecutable.equals("")) return -65536;
 
         Log.i("ViPER4Android_ShellCommand", "Root executing " + szExecutable + " ...");
         int nExitValue = -65536;
@@ -591,32 +292,4 @@ public class ShellCommand
         return nExitValue;
     }
 
-	public static int RootExecuteWithoutShell(String szExecutable, File fDirectory)
-	{
-		if (szExecutable == null) return -65536;
-		if (szExecutable.equals("")) return -65536;
-
-		Log.i("ViPER4Android_ShellCommand", "Root executing " + szExecutable + " ...");
-		int nExitValue = -65536;
-		try
-		{
-			Process psProg = Runtime.getRuntime().exec(new String[] {"su", "-c", szExecutable}, null, fDirectory);
-			psProg.waitFor();
-			nExitValue = psProg.exitValue();
-			psProg.destroy();
-		}
-		catch (IOException e)
-		{
-			Log.i("ViPER4Android_ShellCommand", "IOException, msg = " + e.getMessage());
-			return nExitValue;
-		}
-		catch (InterruptedException e)
-		{
-			Log.i("ViPER4Android_ShellCommand", "InterruptedException, msg = " + e.getMessage());
-			return nExitValue;
-		}
-		Log.i("ViPER4Android_ShellCommand", "Program " + szExecutable + " returned " + nExitValue);
-
-		return nExitValue;
-	}
 }
