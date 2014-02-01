@@ -1,6 +1,6 @@
 #!/sbin/sh
 # 
-# /system/addon.d/91_v4a.sh
+# /system/addon.d/91-v4a.sh
 # This script backs up /system/lib/soundfx/libv4a_fx_ics.so, etc/audio_effects.conf, and vendor/etc/audio_effects.conf
 # /system is formatted and reinstalled, then the file is restored.
 #

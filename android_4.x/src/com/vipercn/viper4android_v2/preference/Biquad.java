@@ -1,28 +1,30 @@
 package com.vipercn.viper4android_v2.preference;
 
-class Biquad
-{
-	private Complex b0, b1, b2, a0, a1, a2;
+/**
+ * Evaluate transfer functions of biquad filters in direct form 1.
+ *
+ * @author alankila
+ */
+class Biquad {
+    private Complex mB0, mB1, mB2, mA0, mA1, mA2;
 
-	protected void setHighShelf(double centerFrequency, double samplingFrequency, double dbGain, double slope)
-	{
+    protected void setHighShelf(double centerFrequency, double samplingFrequency, double dbGain) {
         double w0 = 2 * Math.PI * centerFrequency / samplingFrequency;
-        double A = Math.pow(10, dbGain/40);
-        double alpha = Math.sin(w0)/2 * Math.sqrt( (A + 1/A)*(1/slope - 1) + 2);
+        double a = Math.pow(10, dbGain/40);
+        double alpha = Math.sin(w0) / 2 * Math.sqrt((a + 1 / a) * (1 / (double) 1 - 1) + 2);
 
-        b0 = new Complex(A*((A+1) + (A-1)   * Math.cos(w0) + 2* Math.sqrt(A)*alpha), 0);
-        b1 = new Complex(-2*A*((A-1) + (A+1)* Math.cos(w0)), 0);
-        b2 = new Complex(A*((A+1) + (A-1)   * Math.cos(w0) - 2* Math.sqrt(A)*alpha), 0);
-        a0 = new Complex((A+1) - (A-1)      * Math.cos(w0) + 2* Math.sqrt(A)*alpha, 0);
-        a1 = new Complex(2*((A-1) - (A+1)   * Math.cos(w0)), 0);
-        a2 = new Complex((A+1) - (A-1)      * Math.cos(w0) - 2* Math.sqrt(A)*alpha, 0);
-	}
+        mB0 = new Complex(a*(a+1 + (a-1)   *Math.cos(w0) + 2*Math.sqrt(a)*alpha), 0);
+        mB1 = new Complex(-2*a*(a-1 + (a+1)*Math.cos(w0)), 0);
+        mB2 = new Complex(a*(a+1 + (a-1)   *Math.cos(w0) - 2*Math.sqrt(a)*alpha), 0);
+        mA0 = new Complex(a+1 - (a-1)      *Math.cos(w0) + 2*Math.sqrt(a)*alpha, 0);
+        mA1 = new Complex(2*(a-1 - (a+1)   *Math.cos(w0)), 0);
+        mA2 = new Complex(a+1 - (a-1)      *Math.cos(w0) - 2*Math.sqrt(a)*alpha, 0);
+    }
 
-	protected Complex evaluateTransfer(Complex z)
-	{
-		Complex zSquared = z.mul(z);
-		Complex nom = b0.add(b1.div(z)).add(b2.div(zSquared));
-		Complex den = a0.add(a1.div(z)).add(a2.div(zSquared));
-		return nom.div(den);
-	}
+    protected Complex evaluateTransfer(Complex z) {
+        Complex zSquared = z.mul(z);
+        Complex nom = mB0.add(mB1.div(z)).add(mB2.div(zSquared));
+        Complex den = mA0.add(mA1.div(z)).add(mA2.div(zSquared));
+        return nom.div(den);
+    }
 }
