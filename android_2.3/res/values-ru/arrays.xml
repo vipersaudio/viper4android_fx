@@ -112,7 +112,7 @@
         <item>8x</item>
         <item>9x</item>
         <item>10x</item>
-        <item>Бесконечно</item>
+        <item>∞</item>
     </string-array>
   
     <string-array name="amplification_db">
@@ -235,9 +235,9 @@
     </string-array>
 
     <string-array name="vbass_mode">
-		<item>Natural Bass</item>
-		<item>Pure Bass+</item>
-		<item>Subwoofer</item>
+		<item>Естественный</item>
+		<item>Очищенный</item>
+		<item>Сабвуферный</item>
     </string-array>	
 
     <string-array name="vbass_freq">
@@ -266,7 +266,7 @@
     </string-array>	
 
     <string-array name="vclarity_mode">
-		<item>Natural</item>
+		<item>Естественный</item>
 		<item>OZone+</item>
 		<item>XHiFi</item>
     </string-array>
