@@ -6,15 +6,15 @@ import java.nio.charset.Charset;
 
 public class V4AJniInterface {
 
-    private static boolean m_JniLoadOK;
+    private static boolean mJniLoadOK;
 
     static {
         try {
             System.loadLibrary("V4AJniUtils");
-            m_JniLoadOK = true;
+            mJniLoadOK = true;
             Log.i("ViPER4Android_Utils", "libV4AJniUtils.so loaded");
         } catch (UnsatisfiedLinkError e) {
-            m_JniLoadOK = false;
+            mJniLoadOK = false;
             Log.e("ViPER4Android_Utils", "[Fatal] Can't load libV4AJniUtils.so");
         }
     }
@@ -32,41 +32,41 @@ public class V4AJniInterface {
 
     private native static byte[] ReadImpulseResponse(byte[] mIRFileName);
 
-    private native static int[] HashImpulseResponse(byte[] baBuffer, int nBufferSize);
+    private native static int[] HashImpulseResponse(byte[] mBuffer, int mBufferSize);
 
     /* This method is just making sure jni has been loaded */
     public static boolean CheckLibrary() {
-        if (!m_JniLoadOK) {
+        if (!mJniLoadOK) {
             return false;
         }
-        int nUsable = CheckLibraryUsable();
-        return nUsable == 1;
+        int mUsable = CheckLibraryUsable();
+        return mUsable == 1;
     }
 
     public static boolean IsLibraryUsable() {
-        return m_JniLoadOK;
+        return mJniLoadOK;
     }
 
     public static boolean IsCPUSupportNEON() {
-        if (!m_JniLoadOK) {
+        if (!mJniLoadOK) {
             return false;
         }
-        int nResult = CheckCPUHasNEON();
-        Log.i("ViPER4Android_Utils", "CpuInfo[jni] = NEON:" + nResult);
-        return nResult != 0;
+        int mResult = CheckCPUHasNEON();
+        Log.i("ViPER4Android_Utils", "CpuInfo[jni] = NEON:" + mResult);
+        return mResult != 0;
     }
 
     public static boolean IsCPUSupportVFP() {
-        if (!m_JniLoadOK) {
+        if (!mJniLoadOK) {
             return false;
         }
-        int nResult = CheckCPUHasVFP();
-        Log.i("ViPER4Android_Utils", "CpuInfo[jni] = VFP:" + nResult);
-        return nResult != 0;
+        int mResult = CheckCPUHasVFP();
+        Log.i("ViPER4Android_Utils", "CpuInfo[jni] = VFP:" + mResult);
+        return mResult != 0;
     }
 
     public static int[] GetImpulseResponseInfoArray(String mIRFileName) {
-        if (!m_JniLoadOK) {
+        if (!mJniLoadOK) {
             return null;
         }
         // Convert unicode string to multi-byte string
@@ -79,7 +79,7 @@ public class V4AJniInterface {
     }
 
     public static byte[] ReadImpulseResponseToArray(String mIRFileName) {
-        if (!m_JniLoadOK) {
+        if (!mJniLoadOK) {
             return null;
         }
         // Convert unicode string to multi-byte string
@@ -91,14 +91,14 @@ public class V4AJniInterface {
         return ReadImpulseResponse(stringBytes);
     }
 
-    public static int[] GetHashImpulseResponseArray(byte[] baBuffer) {
-        if (!m_JniLoadOK) {
+    public static int[] GetHashImpulseResponseArray(byte[] mBuffer) {
+        if (!mJniLoadOK) {
             return null;
         }
-        if (baBuffer == null) {
+        if (mBuffer == null) {
             return null;
         }
         // Call native
-        return HashImpulseResponse(baBuffer, baBuffer.length);
+        return HashImpulseResponse(mBuffer, mBuffer.length);
     }
 }

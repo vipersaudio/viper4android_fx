@@ -1,7 +1,4 @@
-
 package com.vipercn.viper4android_v2.preference;
-
-import java.util.Locale;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -16,12 +13,11 @@ import android.view.View.OnTouchListener;
 
 import com.vipercn.viper4android_v2.R;
 import com.vipercn.viper4android_v2.service.ViPER4AndroidService;
-import com.vipercn.viper4android_v2.preference.EqualizerSurface;
+
+import java.util.Locale;
 
 public class EqualizerPreference extends DialogPreference {
-
     protected EqualizerSurface mListEqualizer, mDialogEqualizer;
-
     private ViPER4AndroidService mAudioService;
 
     private final ServiceConnection connectionForDialog = new ServiceConnection() {
@@ -77,12 +73,11 @@ public class EqualizerPreference extends DialogPreference {
                 int band = mDialogEqualizer.findClosest(x);
 
                 int wy = v.getHeight();
-                float level = (y / wy) * (EqualizerSurface.MIN_DB - EqualizerSurface.MAX_DB)
+                float level = y / wy * (EqualizerSurface.MIN_DB - EqualizerSurface.MAX_DB)
                         - EqualizerSurface.MIN_DB;
                 if (level < EqualizerSurface.MIN_DB) {
                     level = EqualizerSurface.MIN_DB;
-                }
-                if (level > EqualizerSurface.MAX_DB) {
+                } else if (level > EqualizerSurface.MAX_DB) {
                     level = EqualizerSurface.MAX_DB;
                 }
 
@@ -98,19 +93,19 @@ public class EqualizerPreference extends DialogPreference {
             }
         }
 
-        getContext().bindService(new Intent(getContext(), ViPER4AndroidService.class),
-                connectionForDialog, 0);
+        Intent serviceIntent = new Intent(getContext(), ViPER4AndroidService.class);
+        getContext().bindService(serviceIntent, connectionForDialog, 0);
     }
 
     @Override
     protected void onDialogClosed(boolean positiveResult) {
         if (positiveResult) {
-            String value = "";
-            for (int i = 0; i < 10; i++) {
-                value += String.format(Locale.ROOT, "%.1f",
-                        Math.round(mDialogEqualizer.getBand(i) * 10.f) / 10.f) + ";";
+            StringBuilder value = new StringBuilder();
+            for (int i = 0; i < 10; i ++) {
+                value.append(String.format(Locale.ROOT, "%.1f", mDialogEqualizer.getBand(i)));
+                value.append(';');
             }
-            persistString(value);
+            persistString(value.toString());
             updateListEqualizerFromValue();
         }
 

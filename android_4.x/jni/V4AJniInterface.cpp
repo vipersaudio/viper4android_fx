@@ -52,11 +52,11 @@ JNIEXPORT jintArray JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniIn
     if (nIRFileNameLength > 4095) return NULL;
     jbyte *pIRFileNameBuffer = env->GetByteArrayElements(jbaIRFileName, 0);
     if (pIRFileNameBuffer == NULL) return NULL;
-    char szIRFileName[4096];
-    memset(szIRFileName, 0, sizeof(szIRFileName));
-    memcpy(szIRFileName, pIRFileNameBuffer, nIRFileNameLength);
+    char mIRFileName[4096];
+    memset(mIRFileName, 0, sizeof(mIRFileName));
+    memcpy(mIRFileName, pIRFileNameBuffer, nIRFileNameLength);
     env->ReleaseByteArrayElements(jbaIRFileName, pIRFileNameBuffer, 0);
-    if (strlen(szIRFileName) <= 0)
+    if (strlen(mIRFileName) <= 0)
         return NULL;
 
     // Prepare return array
@@ -68,7 +68,7 @@ JNIEXPORT jintArray JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniIn
     // Lets deal with szIRFileName, use libsndfile
     SF_INFO sfiIRInfo;
     memset(&sfiIRInfo, 0, sizeof(SF_INFO));
-    SNDFILE *sfIRFile = sf_open(szIRFileName, SFM_READ, &sfiIRInfo);
+    SNDFILE *sfIRFile = sf_open(mIRFileName, SFM_READ, &sfiIRInfo);
     if (sfIRFile == NULL) {
         // Open failed or invalid wave file
         return jiaIRInfo;
@@ -99,20 +99,20 @@ JNIEXPORT jintArray JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniIn
 JNIEXPORT jbyteArray JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniInterface_ReadImpulseResponse(
             JNIEnv *env, jclass cls, jbyteArray jbaIRFileName) {
     // Get multi-bytes string
-    jsize nIRFileNameLength = env->GetArrayLength(jbaIRFileName);
-    if (nIRFileNameLength > 4095) return NULL;
+    jsize mIRFileNameLength = env->GetArrayLength(jbaIRFileName);
+    if (mIRFileNameLength > 4095) return NULL;
     jbyte *pIRFileNameBuffer = env->GetByteArrayElements(jbaIRFileName, 0);
     if (pIRFileNameBuffer == NULL) return NULL;
-    char szIRFileName[4096];
-    memset(szIRFileName, 0, sizeof(szIRFileName));
-    memcpy(szIRFileName, pIRFileNameBuffer, nIRFileNameLength);
+    char mIRFileName[4096];
+    memset(mIRFileName, 0, sizeof(mIRFileName));
+    memcpy(mIRFileName, pIRFileNameBuffer, mIRFileNameLength);
     env->ReleaseByteArrayElements(jbaIRFileName, pIRFileNameBuffer, 0);
-    if (strlen(szIRFileName) <= 0) return NULL;
+    if (strlen(mIRFileName) <= 0) return NULL;
 
     // Lets deal with szIRFileName, use libsndfile
     SF_INFO sfiIRInfo;
     memset(&sfiIRInfo, 0, sizeof(SF_INFO));
-    SNDFILE *sfIRFile = sf_open(szIRFileName, SFM_READ, &sfiIRInfo);
+    SNDFILE *sfIRFile = sf_open(mIRFileName, SFM_READ, &sfiIRInfo);
     if (sfIRFile == NULL) {
         // Open failed or invalid wave file
         return NULL;
@@ -137,11 +137,11 @@ JNIEXPORT jbyteArray JNICALL Java_com_vipercn_viper4android_1v2_activity_V4AJniI
         sf_close(sfIRFile);
         return NULL;
     }
-    sf_count_t nReadFrames = sf_readf_float(sfIRFile, pFrameBuffer, sfiIRInfo.frames);
+    sf_count_t mReadFrames = sf_readf_float(sfIRFile, pFrameBuffer, sfiIRInfo.frames);
     sf_close(sfIRFile);
 
     // Sanity check
-    if (nReadFrames != sfiIRInfo.frames) {
+    if (mReadFrames != sfiIRInfo.frames) {
         delete[] pFrameBuffer;
         return NULL;
     }

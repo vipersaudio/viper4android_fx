@@ -1,45 +1,44 @@
-
 package com.vipercn.viper4android_v2.preference;
 
 class Complex {
+    private final double mReal, mIm;
 
-    private final double re, im;
-
-    protected Complex(double re, double im) {
-        this.re = re;
-        this.im = im;
+    protected Complex(double real, double im) {
+        mReal = real;
+        mIm = im;
     }
 
     protected double rho() {
-        return Math.sqrt(re * re + im * im);
+        return Math.sqrt(mReal * mReal + mIm * mIm);
     }
 
     protected double theta() {
-        return Math.atan2(im, re);
+        return Math.atan2(mIm, mReal);
     }
 
     protected Complex con() {
-        return new Complex(re, -im);
+        return new Complex(mReal, -mIm);
     }
 
     protected Complex add(Complex other) {
-        return new Complex(re + other.re, im + other.im);
+        return new Complex(mReal + other.mReal, mIm + other.mIm);
     }
 
     protected Complex mul(Complex other) {
-        return new Complex(re * other.re - im * other.im, re * other.im + im * other.re);
+        return new Complex(mReal * other.mReal - mIm * other.mIm,
+                mReal * other.mIm + mIm * other.mReal);
     }
 
     protected Complex mul(double a) {
-        return new Complex(re * a, im * a);
+        return new Complex(mReal * a, mIm * a);
     }
 
     protected Complex div(Complex other) {
-        double lengthSquared = other.re * other.re + other.im * other.im;
+        double lengthSquared = other.mReal * other.mReal + other.mIm * other.mIm;
         return mul(other.con()).div(lengthSquared);
     }
 
     protected Complex div(double a) {
-        return new Complex(re / a, im / a);
+        return new Complex(mReal / a, mIm / a);
     }
 }

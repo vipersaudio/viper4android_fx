@@ -1,5 +1,6 @@
 package com.vipercn.viper4android_v2.activity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,9 +15,9 @@ import android.util.Log;
 import com.vipercn.viper4android_v2.R;
 import com.vipercn.viper4android_v2.service.ViPER4AndroidService;
 
-import com.stericson.RootTools.*;
+import com.stericson.RootTools.RootTools;
 import com.stericson.RootTools.execution.CommandCapture;
-import com.tezlastorme.buildprop.*;
+import com.tezlastorme.buildprop.BuildProp;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -32,15 +33,17 @@ import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Locale;
+import java.util.StringTokenizer;
 
 public class Utils {
 
     public class AudioEffectUtils {
 
-        private AudioEffect.Descriptor[] mAudioEffectList = null;
+        private AudioEffect.Descriptor[] mAudioEffectList;
 
-        private boolean mHasViPER4AndroidEngine = false;
+        private boolean mHasViPER4AndroidEngine;
 
         private final int[] mV4AEngineVersion = new int[4];
 
@@ -70,9 +73,7 @@ public class Utils {
             AudioEffect.Descriptor mViper4AndroidEngine = null;
             Log.i("ViPER4Android_Utils", "Found " + mAudioEffectList.length + " effects");
             for (int i = 0; i < mAudioEffectList.length; i++) {
-                if (mAudioEffectList[i] == null) {
-                    continue;
-                }
+                if (mAudioEffectList[i] == null) continue;
                 try {
                     AudioEffect.Descriptor aeEffect = mAudioEffectList[i];
                     Log.i("ViPER4Android_Utils", "[" + (i + 1) + "], " + aeEffect.name + ", "
@@ -105,10 +106,8 @@ public class Utils {
                     if (v4aVersionLine.length() >= 23) {
                         // v4aVersionLine should be "ViPER4Android [A.B.C.D]"
                         v4aVersionLine = v4aVersionLine.substring(15);
-                        while (v4aVersionLine.endsWith("]")) {
-                            v4aVersionLine = v4aVersionLine.substring(0,
-                                    v4aVersionLine.length() - 1);
-                        }
+                        while (v4aVersionLine.endsWith("]"))
+                            v4aVersionLine = v4aVersionLine.substring(0, v4aVersionLine.length() - 1);
                         // v4aVersionLine should be "A.B.C.D"
                         String[] mVerBlocks = v4aVersionLine.split("\\.");
                         if (mVerBlocks.length == 4) {
@@ -139,7 +138,7 @@ public class Utils {
             mV4AEngineVersion[3] = 0;
         }
 
-        public AudioEffect.Descriptor[] GetAudioEffectList() {
+        public AudioEffect.Descriptor[] getAudioEffectList() {
             return mAudioEffectList;
         }
 
@@ -152,7 +151,7 @@ public class Utils {
         }
     }
 
-    public static class cpuInfo {
+    public static class CpuInfo {
 
         private boolean mCpuHasNEON;
 
@@ -162,7 +161,7 @@ public class Utils {
         private boolean readCpuInfo() {
             String mCPUInfoFile = "/proc/cpuinfo";
             FileReader cpuInfoReader = null;
-            BufferedReader brReader = null;
+            BufferedReader bufferReader = null;
 
             mCpuHasNEON = false;
             mCpuHasVFP = false;
@@ -170,15 +169,15 @@ public class Utils {
             // Find "Features" line, extract neon and vfp
             try {
                 cpuInfoReader = new FileReader(mCPUInfoFile);
-                brReader = new BufferedReader(cpuInfoReader);
+                bufferReader = new BufferedReader(cpuInfoReader);
                 while (true) {
-                    String mLine = brReader.readLine();
+                    String mLine = bufferReader.readLine();
                     if (mLine == null) {
                         break;
                     }
                     mLine = mLine.trim();
                     if (mLine.startsWith("Features")) {
-                        Log.i("ViPER4Android_Utils", "cpuInfo[java] = <" + mLine + ">");
+                        Log.i("ViPER4Android_Utils", "CpuInfo[java] = <" + mLine + ">");
                         StringTokenizer stBlock = new StringTokenizer(mLine);
                         while (stBlock.hasMoreElements()) {
                             String mFeature = stBlock.nextToken();
@@ -192,7 +191,7 @@ public class Utils {
                         }
                     }
                 }
-                brReader.close();
+                bufferReader.close();
                 cpuInfoReader.close();
 
                 Log.i("ViPER4Android_Utils", "cpuInfo[java] = NEON:" + mCpuHasNEON + ", VFP:"
@@ -200,8 +199,8 @@ public class Utils {
                 return !(!mCpuHasNEON && !mCpuHasVFP);
             } catch (IOException e) {
                 try {
-                    if (brReader != null) {
-                        brReader.close();
+                    if (bufferReader != null) {
+                        bufferReader.close();
                     }
                     if (cpuInfoReader != null) {
                         cpuInfoReader.close();
@@ -220,7 +219,7 @@ public class Utils {
         }
 
         // Buffered result
-        public cpuInfo() {
+        public CpuInfo() {
             mCpuHasNEON = false;
             mCpuHasVFP = false;
             if (!readCpuInfo()) {
@@ -239,8 +238,8 @@ public class Utils {
 
     // Check if Busybox is installed & offer installation if not found
     public static boolean isBusyBoxInstalled(Context ctx) {
-        boolean bBusyBox = RootTools.isBusyboxAvailable();
-        if (!bBusyBox) {
+        boolean isBusyBoxAvailable = RootTools.isBusyboxAvailable();
+        if (!isBusyBoxAvailable) {
             final Context ctxInstance = ctx;
             AlertDialog.Builder mBusyBox = new AlertDialog.Builder(ctxInstance);
             mBusyBox.setTitle("ViPER4Android");
@@ -304,14 +303,14 @@ public class Utils {
         }
 
         if (!mBuildProp.isEmpty()) {
-            final Context ctxInstance = ctx;
+            Context ctxInstance = ctx;
             AlertDialog.Builder mBusyBox = new AlertDialog.Builder(ctxInstance);
             mBusyBox.setTitle("ViPER4Android");
             String mBuildPropMessage;
             mBuildPropMessage
                     = "Build.prop entries detected. Do you wish to change the following properties: \n";
-            for (String aSzBuildProps : mBuildProp) {
-                mBuildPropMessage = mBuildPropMessage + aSzBuildProps + "=false \n";
+            for (String buildProp : mBuildProp) {
+                mBuildPropMessage = mBuildPropMessage + buildProp + "=false \n";
             }
 
             mBuildPropMessage = mBuildPropMessage
@@ -342,9 +341,8 @@ public class Utils {
             mBusyBox.show();
 
             boolean buildPropModified = true;
-            for (String aSzBuildProps : mBuildProp) {
-                buildPropModified &= BuildProp.getProp(aSzBuildProps).equalsIgnoreCase(
-                        "false");
+            for (String buildProp : mBuildProp) {
+                buildPropModified &= BuildProp.getProp(buildProp).equalsIgnoreCase("false");
             }
 
             return buildPropModified;
@@ -355,13 +353,13 @@ public class Utils {
 
     // Check if the specified file exists.
     private static boolean fileExists(String mFileName) {
-        boolean bExist = new File(mFileName).exists();
-        if (!bExist) {
+        boolean exists = new File(mFileName).exists();
+        if (!exists) {
             if (ShellCommand.rootExecuteWithoutShell("exists " + mFileName) == 0) {
-                bExist = true;
+                exists = true;
             }
         }
-        return bExist;
+        return exists;
     }
 
     // Get a file length
@@ -373,27 +371,22 @@ public class Utils {
         }
     }
 
-    // Download a file from internet
+    // Download a file from Internet
     public static boolean downloadFile(String mURL, String mFileName, String mStorePath) {
         try {
             URL url = new URL(mURL);
             URLConnection connection = url.openConnection();
             connection.connect();
             InputStream stream = connection.getInputStream();
-            if (connection.getContentLength() <= 0) {
-                return false;
-            }
-            if (stream == null) {
-                return false;
-            }
+            if (connection.getContentLength() <= 0) return false;
+            if (stream == null) return false;
             FileOutputStream fos = new FileOutputStream(mStorePath + mFileName);
 
-            byte buf[] = new byte[1024];
+            byte[] buf = new byte[1024];
             do {
                 int numRead = stream.read(buf);
-                if (numRead == -1) {
+                if (numRead == -1)
                     break;
-                }
                 fos.write(buf, 0, numRead);
             } while (true);
             stream.close();
@@ -405,24 +398,22 @@ public class Utils {
     }
 
     // Check a file with checksum
-    public static boolean fileChecksum(String mFilePathName, String mChecksum) {
+    public static boolean fileChecksum(String mFilePathName, String mCheckSum) {
         long checkSum = 0;
 
         try {
             FileInputStream fis = new FileInputStream(mFilePathName);
-            byte buf[] = new byte[1024];
+            byte[] buf = new byte[1024];
             do {
                 int numRead = fis.read(buf);
-                if (numRead == -1) {
+                if (numRead == -1)
                     break;
-                }
-                for (int idx = 0; idx < numRead; idx++) {
-                    checkSum = checkSum + (long) (buf[idx]);
-                }
+                for (int idx = 0; idx < numRead; idx++)
+                    checkSum = checkSum + (long) buf[idx];
             } while (true);
             fis.close();
-            String mNewChecksum = Long.toString(checkSum);
-            return mChecksum.equals(mNewChecksum);
+            String mNewCheckSum = Long.toString(checkSum);
+            return mCheckSum.equals(mNewCheckSum);
         } catch (Exception e) {
             return false;
         }
@@ -432,18 +423,13 @@ public class Utils {
     public static void getFileNameList(File path, String fileExt, ArrayList<String> fileList) {
         if (path.isDirectory()) {
             File[] files = path.listFiles();
-            if (null == files) {
-                return;
-            }
-            for (File file : files) {
-                getFileNameList(file, fileExt, fileList);
-            }
+            if (null == files) return;
+            for (File file : files) getFileNameList(file, fileExt, fileList);
         } else {
             String filePath = path.getAbsolutePath();
             String fileName = filePath.substring(filePath.lastIndexOf("/") + 1);
-            if (fileName.toLowerCase(Locale.US).endsWith(fileExt)) {
+            if (fileName.toLowerCase(Locale.US).endsWith(fileExt))
                 fileList.add(fileName);
-            }
         }
     }
 
@@ -456,17 +442,11 @@ public class Utils {
             String mProfileName = "";
             while (true) {
                 String mLine = bufferInput.readLine();
-                if (mLine == null) {
-                    break;
-                }
-                if (mLine.startsWith("#")) {
-                    continue;
-                }
+                if (mLine == null) break;
+                if (mLine.startsWith("#")) continue;
 
-                String mChunks[] = mLine.split("=");
-                if (mChunks.length != 2) {
-                    continue;
-                }
+                String[] mChunks = mLine.split("=");
+                if (mChunks.length != 2) continue;
                 if (mChunks[0].trim().equalsIgnoreCase("profile_name")) {
                     mProfileName = mChunks[1];
                     break;
@@ -490,8 +470,8 @@ public class Utils {
             getFileNameList(fProfileDirHandle, ".prf", profileList);
 
             ArrayList<String> mProfileNameList = new ArrayList<String>();
-            for (String aSzProfileList : profileList) {
-                String mFileName = mProfileDir + aSzProfileList;
+            for (String mProfileList : profileList) {
+                String mFileName = mProfileDir + mProfileList;
                 String mName = getProfileName(mFileName);
                 mProfileNameList.add(mName.trim());
             }
@@ -521,7 +501,7 @@ public class Utils {
 
             return foundProfile;
         } catch (Exception e) {
-            Log.i("ViPER4Android_Utils", "CheckProfileExists Error: " + e.getMessage());
+            Log.i("ViPER4Android_Utils", "checkProfileExists Error: " + e.getMessage());
             return false;
         }
     }
@@ -542,34 +522,26 @@ public class Utils {
                     break;
                 }
             }
-            if (mProfileFileName.equals("")) {
-                return false;
-            }
+            if (mProfileFileName.equals("")) return false;
 
             SharedPreferences preferences = ctx.getSharedPreferences(mPreferenceName,
                     Context.MODE_PRIVATE);
             if (preferences != null) {
                 FileInputStream fisInput = new FileInputStream(mProfileFileName);
                 InputStreamReader isrInput = new InputStreamReader(fisInput, "UTF-8");
-                BufferedReader brInput = new BufferedReader(isrInput);
+                BufferedReader bufferInput = new BufferedReader(isrInput);
                 Editor e = preferences.edit();
                 while (true) {
-                    String mLine = brInput.readLine();
-                    if (mLine == null) {
-                        break;
-                    }
-                    if (mLine.startsWith("#")) {
-                        continue;
-                    }
+                    String mLine = bufferInput.readLine();
+                    if (mLine == null) break;
+                    if (mLine.startsWith("#")) continue;
 
-                    String mChunks[] = mLine.split("=");
-                    if (mChunks.length != 3) {
-                        continue;
-                    }
+                    String[] mChunks = mLine.split("=");
+                    if (mChunks.length != 3) continue;
                     if (mChunks[1].trim().equalsIgnoreCase("boolean")) {
-                        String szParameter = mChunks[0];
-                        boolean bValue = Boolean.valueOf(mChunks[2]);
-                        e.putBoolean(szParameter, bValue);
+                        String mParameter = mChunks[0];
+                        boolean mValue = Boolean.valueOf(mChunks[2]);
+                        e.putBoolean(mParameter, mValue);
                     } else if (mChunks[1].trim().equalsIgnoreCase("string")) {
                         String mParameter = mChunks[0];
                         String mValue = mChunks[2];
@@ -578,16 +550,15 @@ public class Utils {
                     }
                 }
                 e.commit();
-                brInput.close();
+                bufferInput.close();
                 isrInput.close();
                 fisInput.close();
 
                 return true;
-            } else {
+            } else
                 return false;
-            }
         } catch (Exception e) {
-            Log.i("ViPER4Android_Utils", "LoadProfile Error: " + e.getMessage());
+            Log.i("ViPER4Android_Utils", "loadProfile Error: " + e.getMessage());
             return false;
         }
     }
@@ -600,174 +571,121 @@ public class Utils {
                     Context.MODE_PRIVATE);
             if (preferences != null) {
                 String mOutFileName = mProfileDir + mProfileName + ".prf";
-                if (fileExists(mOutFileName)) {
-                    new File(mOutFileName).delete();
-                }
+                if (fileExists(mOutFileName)) new File(mOutFileName).delete();
 
                 FileOutputStream fosOutput = new FileOutputStream(mOutFileName);
                 OutputStreamWriter oswOutput = new OutputStreamWriter(fosOutput, "UTF-8");
-                BufferedWriter bwOutput = new BufferedWriter(oswOutput);
+                BufferedWriter mOutput = new BufferedWriter(oswOutput);
 
-                SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd   hh:mm:ss",
-                        Locale.US);
-                String szDate = sDateFormat.format(new java.util.Date());
+                SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd   hh:mm:ss", Locale.US);
+                String mDate = sDateFormat.format(new java.util.Date());
 
-                bwOutput.write("# ViPER4Android audio effect profile !\n");
-                bwOutput.write("# Created " + szDate + "\n\n");
-                bwOutput.write("profile_name=" + mProfileName + "\n\n");
+                mOutput.write("# ViPER4Android audio effect profile !\n");
+                mOutput.write("# Created " + mDate + "\n\n");
+                mOutput.write("profile_name=" + mProfileName + "\n\n");
 
-                String szValue;
+                String mValue;
 
                 // boolean values
-                szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.enable",
-                        false));
-                bwOutput.write("viper4android.headphonefx.enable=boolean=" + szValue + "\n");
-                szValue = String.valueOf(preferences.getBoolean("viper4android.speakerfx.enable",
-                        false));
-                bwOutput.write("viper4android.speakerfx.enable=boolean=" + szValue + "\n");
-                szValue = String.valueOf(preferences.getBoolean(
-                        "viper4android.speakerfx.spkopt.enable", false));
-                bwOutput.write("viper4android.speakerfx.spkopt.enable=boolean=" + szValue + "\n");
-                szValue = String.valueOf(preferences.getBoolean(
-                        "viper4android.headphonefx.playbackgain.enable", false));
-                bwOutput.write("viper4android.headphonefx.playbackgain.enable=boolean=" + szValue
-                        + "\n");
-                szValue = String.valueOf(preferences.getBoolean(
-                        "viper4android.headphonefx.fireq.enable", false));
-                bwOutput.write("viper4android.headphonefx.fireq.enable=boolean=" + szValue + "\n");
-                szValue = String.valueOf(preferences.getBoolean(
-                        "viper4android.headphonefx.convolver.enable", false));
-                bwOutput.write("viper4android.headphonefx.convolver.enable=boolean=" + szValue
-                        + "\n");
-                szValue = String.valueOf(preferences.getBoolean(
-                        "viper4android.headphonefx.colorfulmusic.enable", false));
-                bwOutput.write("viper4android.headphonefx.colorfulmusic.enable=boolean=" + szValue
-                        + "\n");
-                szValue = String.valueOf(preferences.getBoolean(
-                        "viper4android.headphonefx.diffsurr.enable", false));
-                bwOutput.write("viper4android.headphonefx.diffsurr.enable=boolean=" + szValue
-                        + "\n");
-                szValue = String.valueOf(preferences.getBoolean(
-                        "viper4android.headphonefx.vhs.enable", false));
-                bwOutput.write("viper4android.headphonefx.vhs.enable=boolean=" + szValue + "\n");
-                szValue = String.valueOf(preferences.getBoolean(
-                        "viper4android.headphonefx.reverb.enable", false));
-                bwOutput.write("viper4android.headphonefx.reverb.enable=boolean=" + szValue + "\n");
-                szValue = String.valueOf(preferences.getBoolean(
-                        "viper4android.headphonefx.dynamicsystem.enable", false));
-                bwOutput.write("viper4android.headphonefx.dynamicsystem.enable=boolean=" + szValue
-                        + "\n");
-                szValue = String.valueOf(preferences.getBoolean(
-                        "viper4android.headphonefx.fidelity.bass.enable", false));
-                bwOutput.write("viper4android.headphonefx.fidelity.bass.enable=boolean=" + szValue
-                        + "\n");
-                szValue = String.valueOf(preferences.getBoolean(
-                        "viper4android.headphonefx.fidelity.clarity.enable", false));
-                bwOutput.write("viper4android.headphonefx.fidelity.clarity.enable=boolean="
-                        + szValue + "\n");
-                szValue = String.valueOf(preferences.getBoolean(
-                        "viper4android.headphonefx.cure.enable", false));
-                bwOutput.write("viper4android.headphonefx.cure.enable=boolean=" + szValue + "\n");
-                szValue = String.valueOf(preferences.getBoolean(
-                        "viper4android.headphonefx.tube.enable", false));
-                bwOutput.write("viper4android.headphonefx.tube.enable=boolean=" + szValue + "\n");
+                mValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.enable", false));
+                mOutput.write("viper4android.headphonefx.enable=boolean=" + mValue + "\n");
+                mValue = String.valueOf(preferences.getBoolean("viper4android.speakerfx.enable", false));
+                mOutput.write("viper4android.speakerfx.enable=boolean=" + mValue + "\n");
+                mValue = String.valueOf(preferences.getBoolean("viper4android.speakerfx.spkopt.enable", false));
+                mOutput.write("viper4android.speakerfx.spkopt.enable=boolean=" + mValue + "\n");
+                mValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.playbackgain.enable", false));
+                mOutput.write("viper4android.headphonefx.playbackgain.enable=boolean=" + mValue + "\n");
+                mValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.fireq.enable", false));
+                mOutput.write("viper4android.headphonefx.fireq.enable=boolean=" + mValue + "\n");
+                mValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.convolver.enable", false));
+                mOutput.write("viper4android.headphonefx.convolver.enable=boolean=" + mValue + "\n");
+                mValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.colorfulmusic.enable", false));
+                mOutput.write("viper4android.headphonefx.colorfulmusic.enable=boolean=" + mValue + "\n");
+                mValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.diffsurr.enable", false));
+                mOutput.write("viper4android.headphonefx.diffsurr.enable=boolean=" + mValue + "\n");
+                mValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.vhs.enable", false));
+                mOutput.write("viper4android.headphonefx.vhs.enable=boolean=" + mValue + "\n");
+                mValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.reverb.enable", false));
+                mOutput.write("viper4android.headphonefx.reverb.enable=boolean=" + mValue + "\n");
+                mValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.dynamicsystem.enable", false));
+                mOutput.write("viper4android.headphonefx.dynamicsystem.enable=boolean=" + mValue + "\n");
+                mValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.fidelity.bass.enable", false));
+                mOutput.write("viper4android.headphonefx.fidelity.bass.enable=boolean=" + mValue + "\n");
+                mValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.fidelity.clarity.enable", false));
+                mOutput.write("viper4android.headphonefx.fidelity.clarity.enable=boolean=" + mValue + "\n");
+                mValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.cure.enable", false));
+                mOutput.write("viper4android.headphonefx.cure.enable=boolean=" + mValue + "\n");
+                mValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.tube.enable", false));
+                mOutput.write("viper4android.headphonefx.tube.enable=boolean=" + mValue + "\n");
 
                 // string values
-                szValue = preferences.getString("viper4android.headphonefx.playbackgain.ratio",
-                        "50");
-                bwOutput.write("viper4android.headphonefx.playbackgain.ratio=string=" + szValue
-                        + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.playbackgain.maxscaler",
-                        "400");
-                bwOutput.write("viper4android.headphonefx.playbackgain.maxscaler=string=" + szValue
-                        + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.playbackgain.volume",
-                        "80");
-                bwOutput.write("viper4android.headphonefx.playbackgain.volume=string=" + szValue
-                        + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.fireq",
+                mValue = preferences.getString("viper4android.headphonefx.playbackgain.ratio", "50");
+                mOutput.write("viper4android.headphonefx.playbackgain.ratio=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.playbackgain.maxscaler", "400");
+                mOutput.write("viper4android.headphonefx.playbackgain.maxscaler=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.playbackgain.volume", "80");
+                mOutput.write("viper4android.headphonefx.playbackgain.volume=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.fireq",
                         "0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;");
-                bwOutput.write("viper4android.headphonefx.fireq=string=" + szValue + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.fireq.custom",
+                mOutput.write("viper4android.headphonefx.fireq=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.fireq.custom",
                         "0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;");
-                bwOutput.write("viper4android.headphonefx.fireq.custom=string=" + szValue + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.convolver.kernel", "");
-                bwOutput.write("viper4android.headphonefx.convolver.kernel=string=" + szValue
-                        + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.convolver.crosschannel",
-                        "0");
-                bwOutput.write("viper4android.headphonefx.convolver.crosschannel=string=" + szValue
-                        + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.colorfulmusic.coeffs",
-                        "120;200");
-                bwOutput.write("viper4android.headphonefx.colorfulmusic.coeffs=string=" + szValue
-                        + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.colorfulmusic.midimage",
-                        "150");
-                bwOutput.write("viper4android.headphonefx.colorfulmusic.midimage=string=" + szValue
-                        + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.diffsurr.delay", "500");
-                bwOutput.write("viper4android.headphonefx.diffsurr.delay=string=" + szValue + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.vhs.qual", "0");
-                bwOutput.write("viper4android.headphonefx.vhs.qual=string=" + szValue + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.reverb.roomsize", "0");
-                bwOutput.write(
-                        "viper4android.headphonefx.reverb.roomsize=string=" + szValue + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.reverb.roomwidth", "0");
-                bwOutput.write("viper4android.headphonefx.reverb.roomwidth=string=" + szValue
-                        + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.reverb.damp", "0");
-                bwOutput.write("viper4android.headphonefx.reverb.damp=string=" + szValue + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.reverb.wet", "0");
-                bwOutput.write("viper4android.headphonefx.reverb.wet=string=" + szValue + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.reverb.dry", "50");
-                bwOutput.write("viper4android.headphonefx.reverb.dry=string=" + szValue + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.dynamicsystem.coeffs",
+                mOutput.write("viper4android.headphonefx.fireq.custom=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.convolver.kernel", "");
+                mOutput.write("viper4android.headphonefx.convolver.kernel=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.convolver.crosschannel", "0");
+                mOutput.write("viper4android.headphonefx.convolver.crosschannel=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.colorfulmusic.coeffs", "120;200");
+                mOutput.write("viper4android.headphonefx.colorfulmusic.coeffs=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.colorfulmusic.midimage", "150");
+                mOutput.write("viper4android.headphonefx.colorfulmusic.midimage=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.diffsurr.delay", "500");
+                mOutput.write("viper4android.headphonefx.diffsurr.delay=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.vhs.qual", "0");
+                mOutput.write("viper4android.headphonefx.vhs.qual=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.reverb.roomsize", "0");
+                mOutput.write("viper4android.headphonefx.reverb.roomsize=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.reverb.roomwidth", "0");
+                mOutput.write("viper4android.headphonefx.reverb.roomwidth=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.reverb.damp", "0");
+                mOutput.write("viper4android.headphonefx.reverb.damp=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.reverb.wet", "0");
+                mOutput.write("viper4android.headphonefx.reverb.wet=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.reverb.dry", "50");
+                mOutput.write("viper4android.headphonefx.reverb.dry=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.dynamicsystem.coeffs",
                         "100;5600;40;80;50;50");
-                bwOutput.write("viper4android.headphonefx.dynamicsystem.coeffs=string=" + szValue
-                        + "\n");
-                szValue = preferences
-                        .getString("viper4android.headphonefx.dynamicsystem.bass", "0");
-                bwOutput.write("viper4android.headphonefx.dynamicsystem.bass=string=" + szValue
-                        + "\n");
-                szValue = preferences
-                        .getString("viper4android.headphonefx.fidelity.bass.mode", "0");
-                bwOutput.write("viper4android.headphonefx.fidelity.bass.mode=string=" + szValue
-                        + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.fidelity.bass.freq",
-                        "40");
-                bwOutput.write("viper4android.headphonefx.fidelity.bass.freq=string=" + szValue
-                        + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.fidelity.bass.gain",
-                        "50");
-                bwOutput.write("viper4android.headphonefx.fidelity.bass.gain=string=" + szValue
-                        + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.fidelity.clarity.mode",
-                        "0");
-                bwOutput.write("viper4android.headphonefx.fidelity.clarity.mode=string=" + szValue
-                        + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.fidelity.clarity.gain",
-                        "50");
-                bwOutput.write("viper4android.headphonefx.fidelity.clarity.gain=string=" + szValue
-                        + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.cure.crossfeed", "0");
-                bwOutput.write("viper4android.headphonefx.cure.crossfeed=string=" + szValue + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.outvol", "100");
-                bwOutput.write("viper4android.headphonefx.outvol=string=" + szValue + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.channelpan", "0");
-                bwOutput.write("viper4android.headphonefx.channelpan=string=" + szValue + "\n");
-                szValue = preferences.getString("viper4android.headphonefx.limiter", "100");
-                bwOutput.write("viper4android.headphonefx.limiter=string=" + szValue + "\n");
-                szValue = preferences.getString("viper4android.speakerfx.limiter", "100");
-                bwOutput.write("viper4android.speakerfx.limiter=string=" + szValue + "\n");
+                mOutput.write("viper4android.headphonefx.dynamicsystem.coeffs=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.dynamicsystem.bass", "0");
+                mOutput.write("viper4android.headphonefx.dynamicsystem.bass=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.fidelity.bass.mode", "0");
+                mOutput.write("viper4android.headphonefx.fidelity.bass.mode=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.fidelity.bass.freq", "40");
+                mOutput.write("viper4android.headphonefx.fidelity.bass.freq=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.fidelity.bass.gain", "50");
+                mOutput.write("viper4android.headphonefx.fidelity.bass.gain=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.fidelity.clarity.mode", "0");
+                mOutput.write("viper4android.headphonefx.fidelity.clarity.mode=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.fidelity.clarity.gain", "50");
+                mOutput.write("viper4android.headphonefx.fidelity.clarity.gain=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.cure.crossfeed", "0");
+                mOutput.write("viper4android.headphonefx.cure.crossfeed=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.outvol", "100");
+                mOutput.write("viper4android.headphonefx.outvol=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.channelpan", "0");
+                mOutput.write("viper4android.headphonefx.channelpan=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.headphonefx.limiter", "100");
+                mOutput.write("viper4android.headphonefx.limiter=string=" + mValue + "\n");
+                mValue = preferences.getString("viper4android.speakerfx.limiter", "100");
+                mOutput.write("viper4android.speakerfx.limiter=string=" + mValue + "\n");
 
-                bwOutput.flush();
-                bwOutput.close();
+                mOutput.flush();
+                mOutput.close();
                 oswOutput.close();
                 fosOutput.close();
             }
         } catch (Exception e) {
-            Log.i("ViPER4Android_Utils", "SaveProfile Error: " + e.getMessage());
+            Log.i("ViPER4Android_Utils", "saveProfile Error: " + e.getMessage());
         }
     }
 
@@ -776,27 +694,23 @@ public class Utils {
         Log.i("ViPER4Android_Utils", "Editing audio configuration, input = " + mInputFile
                 + ", output = " + mOutputFile);
         try {
-            long lInputFileLength = getFileLength(mInputFile);
+            long inputFileLength = getFileLength(mInputFile);
 
             // Create reading and writing stuff
             FileInputStream fisInput = new FileInputStream(mInputFile);
             FileOutputStream fosOutput = new FileOutputStream(mOutputFile);
             InputStreamReader isrInput = new InputStreamReader(fisInput, "ASCII");
             OutputStreamWriter oswOutput = new OutputStreamWriter(fosOutput, "ASCII");
-            BufferedReader brInput = new BufferedReader(isrInput);
-            BufferedWriter bwOutput = new BufferedWriter(oswOutput);
+            BufferedReader bufferInput = new BufferedReader(isrInput);
+            BufferedWriter bufferOutput = new BufferedWriter(oswOutput);
 
             // Check whether the file has already modified
             boolean configModified = false;
-            brInput.mark((int) lInputFileLength);
+            bufferInput.mark((int) inputFileLength);
             do {
-                String mLine = brInput.readLine();
-                if (mLine == null) {
-                    break;
-                }
-                if (mLine.trim().startsWith("#")) {
-                    continue;
-                }
+                String mLine = bufferInput.readLine();
+                if (mLine == null) break;
+                if (mLine.trim().startsWith("#")) continue;
                 /* This is v4a effect uuid */
                 if (mLine.toLowerCase(Locale.US)
                         .contains("41d3c987-e6cf-11e3-a88a-11aba5d5c51b")) {
@@ -810,57 +724,54 @@ public class Utils {
             boolean effectAppend = false;
             if (configModified) {
                 // Already modified, just copy
-                brInput.reset();
+                bufferInput.reset();
                 do {
-                    String mLine = brInput.readLine();
-                    if (mLine == null) {
+                    String mLine = bufferInput.readLine();
+                    if (mLine == null)
                         break;
-                    }
-                    bwOutput.write(mLine + "\n");
+                    bufferOutput.write(mLine + "\n");
                 } while (true);
-                bwOutput.flush();
+                bufferOutput.flush();
 
-                brInput.close();
+                bufferInput.close();
                 isrInput.close();
                 fisInput.close();
-                bwOutput.close();
+                bufferOutput.close();
                 oswOutput.close();
                 fosOutput.close();
 
                 return true;
             } else {
                 // Lets append v4a library and effect to configuration
-                brInput.reset();
+                bufferInput.reset();
                 do {
-                    String mLine = brInput.readLine();
-                    if (mLine == null) {
+                    String mLine = bufferInput.readLine();
+                    if (mLine == null)
                         break;
-                    }
                     if (mLine.trim().equalsIgnoreCase("libraries {") && !libraryAppend) {
                         // Append library
-                        bwOutput.write(mLine + "\n");
-                        bwOutput.write("  v4a_fx {\n");
-                        bwOutput.write("    path /system/lib/soundfx/libv4a_fx_ics.so\n");
-                        bwOutput.write("  }\n");
+                        bufferOutput.write(mLine + "\n");
+                        bufferOutput.write("  v4a_fx {\n");
+                        bufferOutput.write("    path /system/lib/soundfx/libv4a_fx_ics.so\n");
+                        bufferOutput.write("  }\n");
                         libraryAppend = true;
                     } else if (mLine.trim().equalsIgnoreCase("effects {") && !effectAppend) {
                         // Append effect
-                        bwOutput.write(mLine + "\n");
-                        bwOutput.write("  v4a_standard_fx {\n");
-                        bwOutput.write("    library v4a_fx\n");
-                        bwOutput.write("    uuid 41d3c987-e6cf-11e3-a88a-11aba5d5c51b\n");
-                        bwOutput.write("  }\n");
+                        bufferOutput.write(mLine + "\n");
+                        bufferOutput.write("  v4a_standard_fx {\n");
+                        bufferOutput.write("    library v4a_fx\n");
+                        bufferOutput.write("    uuid 41d3c987-e6cf-11e3-a88a-11aba5d5c51b\n");
+                        bufferOutput.write("  }\n");
                         effectAppend = true;
-                    } else {
-                        bwOutput.write(mLine + "\n");
-                    }
+                    } else
+                        bufferOutput.write(mLine + "\n");
                 } while (true);
-                bwOutput.flush();
+                bufferOutput.flush();
 
-                brInput.close();
+                bufferInput.close();
                 isrInput.close();
                 fisInput.close();
-                bwOutput.close();
+                bufferOutput.close();
                 oswOutput.close();
                 fosOutput.close();
 
@@ -875,54 +786,46 @@ public class Utils {
 
     // Get application data path
     private static String getBasePath(Context ctx) {
-        Context cont = ctx.getApplicationContext();
+        Context mContext = ctx.getApplicationContext();
         String mBasePath = "";
-        if (cont != null) {
-            // No try catch the cont != null will prevent a possible NPE here
-            if (cont.getFilesDir().exists()) {
-                mBasePath = cont.getFilesDir().getAbsolutePath();
-            } else if (!cont.getFilesDir().mkdirs()) {
+        if (mContext != null) {
+            // No try catch the mContext != null will prevent a possible NPE here
+            if (mContext.getFilesDir().exists()) {
+                mBasePath = mContext.getFilesDir().getAbsolutePath();
+            } else if (!mContext.getFilesDir().mkdirs()) {
                 mBasePath = "";
             }
         } else {
             mBasePath = "";
         }
-
         return mBasePath;
     }
 
-    // Check if addon.d folder exists for script installation (Device kernel
-    // dependant)
+    // Check if addon.d folder exists for script installation (Device kernel dependant)
     private static boolean addondExists() {
         File file = new File("/system/addon.d/");
-
-        return (file.exists() && file.isDirectory());
+        return file.exists() && file.isDirectory();
     }
 
     // Copy assets to local
-    private static boolean copyAssetsToLocal(Context ctx, String mSourceName, String mDstName) {
+    private static boolean copyAssetsToLocal(Context ctx, String mSourceName, String mDestinationName) {
         String mBasePath = getBasePath(ctx);
-        if (mBasePath.equals("")) {
-            return false;
-        }
-        mDstName = mBasePath + "/" + mDstName;
+        if (mBasePath.equals("")) return false;
+        mDestinationName = mBasePath + "/" + mDestinationName;
 
         InputStream myInput;
         OutputStream myOutput;
-        String outFileName = mDstName;
+        String outFileName = mDestinationName;
         try {
-            File hfOutput = new File(mDstName);
-            if (hfOutput.exists()) {
-                hfOutput.delete();
-            }
+            File hfOutput = new File(mDestinationName);
+            if (hfOutput.exists()) hfOutput.delete();
 
             myOutput = new FileOutputStream(outFileName);
             myInput = ctx.getAssets().open(mSourceName);
-            byte[] tBuffer = new byte[4096]; /* 4K page size */
-            int nLength;
-            while ((nLength = myInput.read(tBuffer)) > 0) {
-                myOutput.write(tBuffer, 0, nLength);
-            }
+            byte[] buffer = new byte[4096]; /* 4K page size */
+            int length;
+            while ((length = myInput.read(buffer)) > 0)
+                myOutput.write(buffer, 0, length);
             myOutput.flush();
             myInput.close();
             myOutput.close();
@@ -969,14 +872,12 @@ public class Utils {
         boolean isAddondSupported = false;
 
         // Make sure we can use external storage for temp directory
-        if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+        if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
             return false;
-        }
 
         // Copy driver assets to local
-        if (!copyAssetsToLocal(ctx, mDriverName, "libv4a_fx_ics.so")) {
+        if (!copyAssetsToLocal(ctx, mDriverName, "libv4a_fx_ics.so"))
             return false;
-        }
 
         // Check if addon.d directory exists and copy script if supported
         if (addondExists()) {
@@ -985,23 +886,20 @@ public class Utils {
         }
 
         // Lets acquire root first :)
-        if (!RootTools.isAccessGiven()) {
-            return false;
-        }
+        if (!RootTools.isAccessGiven()) return false;
 
         // Check chmod utils
         String mChmod;
-        if (RootTools.checkUtil("chmod")) {
+        if (RootTools.checkUtil("chmod"))
             mChmod = "chmod";
-        } else {
-            if (RootTools.checkUtil("busybox") && RootTools.hasUtil("chmod", "busybox")) {
+        else {
+            if (RootTools.checkUtil("busybox") && RootTools.hasUtil("chmod", "busybox"))
                 mChmod = "busybox chmod";
-            } else if (RootTools.checkUtil("toolbox") && RootTools.hasUtil("chmod", "toolbox")) {
+            else if (RootTools.checkUtil("toolbox") && RootTools.hasUtil("chmod", "toolbox"))
                 mChmod = "toolbox chmod";
-            } else {
+            else
                 return false;
             }
-        }
 
         // Generate temp config file path, thanks to 'ste71m'
         String mSystemConf = StaticEnvironment.getExternalStoragePath() + "v4a_audio_system.conf";
@@ -1029,25 +927,19 @@ public class Utils {
             /* Modify the configuration failed, lets cleanup temp file(s) */
             try {
                 if (ifVendorExists) {
-                    if (!RootTools.deleteFileOrDirectory(mSystemConf, false)) {
+                    if (!RootTools.deleteFileOrDirectory(mSystemConf, false))
                         new File(mSystemConf).delete();
-                    }
-                    if (!RootTools.deleteFileOrDirectory(mVendorConf, false)) {
+                    if (!RootTools.deleteFileOrDirectory(mVendorConf, false))
                         new File(mVendorConf).delete();
-                    }
-                    if (!RootTools.deleteFileOrDirectory(mSystemConf + ".out", false)) {
+                    if (!RootTools.deleteFileOrDirectory(mSystemConf + ".out", false))
                         new File(mSystemConf + ".out").delete();
-                    }
-                    if (!RootTools.deleteFileOrDirectory(mVendorConf + ".out", false)) {
+                    if (!RootTools.deleteFileOrDirectory(mVendorConf + ".out", false))
                         new File(mVendorConf + ".out").delete();
-                    }
                 } else {
-                    if (!RootTools.deleteFileOrDirectory(mSystemConf, false)) {
+                    if (!RootTools.deleteFileOrDirectory(mSystemConf, false))
                         new File(mSystemConf).delete();
-                    }
-                    if (!RootTools.deleteFileOrDirectory(mSystemConf + ".out", false)) {
+                    if (!RootTools.deleteFileOrDirectory(mSystemConf + ".out", false))
                         new File(mSystemConf + ".out").delete();
-                    }
                 }
                 // Close all shells
                 RootTools.closeAllShells();
@@ -1069,9 +961,8 @@ public class Utils {
             }
         } else {
             mBaseDrvPathName = mBaseDrvPathName + "/libv4a_fx_ics.so";
-            if (isAddondSupported) {
+            if (isAddondSupported)
                 mAddondScriptPathName = mAddondScriptPathName + "/91-v4a.sh";
-            }
         }
         try {
             if (ifVendorExists) {
@@ -1178,7 +1069,7 @@ public class Utils {
     }
 
     // Install ViPER4Android FX driver using without shell command method
-    private static boolean installDrv_FX_WithoutShell(Context ctx, String szDriverName) {
+    private static boolean installDrv_FX_WithoutShell(Context ctx, String mDriverName) {
         boolean isAddondSupported = false;
         int mShellCmdReturn;
 
@@ -1188,7 +1079,7 @@ public class Utils {
         }
 
         // Copy driver assets to local
-        if (!copyAssetsToLocal(ctx, szDriverName, "libv4a_fx_ics.so")) {
+        if (!copyAssetsToLocal(ctx, mDriverName, "libv4a_fx_ics.so")) {
             return false;
         }
 
@@ -1475,9 +1366,9 @@ public class Utils {
     }
 
     // Install ViPER4Android FX driver
-    public static boolean InstallDrv_FX(Context ctx, String szDriverName) {
-        return installDrv_FX_RootTools(ctx, szDriverName)
-                || installDrv_FX_WithoutShell(ctx, szDriverName);
+    public static boolean installDrv_FX(Context ctx, String mDriverName) {
+        return installDrv_FX_RootTools(ctx, mDriverName)
+                || installDrv_FX_WithoutShell(ctx, mDriverName);
     }
 
 }

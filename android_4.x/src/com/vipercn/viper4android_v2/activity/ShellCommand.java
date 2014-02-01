@@ -6,163 +6,13 @@ import android.util.Log;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
 
 class ShellCommand {
 
-    private static Process sShellProcess = null;
-    private static DataOutputStream sShellStdIn = null;
-    private static DataInputStream sShellStdOut = null;
-    private static DataInputStream sShellStdErr = null;
-    private static boolean sShellOpened = false;
-
-    private static String byteToString(byte[] baByteArray) {
-        if (baByteArray == null)
-            return null;
-        try {
-            String szResult = new String(baByteArray, "ASCII");
-            szResult = String.copyValueOf(szResult.toCharArray(), 0, baByteArray.length);
-            return szResult;
-        } catch (UnsupportedEncodingException e) {
-            return null;
-        }
-    }
-
-    private static String[] byteArrayToStringArray(byte[] baByteArray, int nDataLength) {
-        if (baByteArray == null)
-            return null;
-        if (nDataLength <= 0)
-            return null;
-        if (nDataLength > baByteArray.length)
-            return null;
-
-        // Replace all invisible chars to '.'
-        for (int i = 0; i < nDataLength; i++) {
-            if ((baByteArray[i] == 0x0D) || (baByteArray[i] == 0x0A)) {
-                baByteArray[i] = 0;
-                continue;
-            }
-            if (baByteArray[i] < 0x20) {
-                baByteArray[i] = 0x2E;
-            }
-            if (baByteArray[i] > 0x7E) {
-                baByteArray[i] = 0x2E;
-            }
-        }
-
-        // Split and convert to string
-        List<String> lstString = new ArrayList<String>();
-        for (int i = 0; i < nDataLength; i++) {
-            if (baByteArray[i] == 0) {
-                continue;
-            }
-            int nBlockLength = -1;
-            for (int j = i + 1; j < nDataLength; j++) {
-                if (baByteArray[j] == 0) {
-                    nBlockLength = j - i;
-                    break;
-                }
-            }
-            if (nBlockLength == -1) {
-                nBlockLength = nDataLength - i;
-            }
-            byte[] baBlockData = new byte[nBlockLength];
-            System.arraycopy(baByteArray, i, baBlockData, 0, nBlockLength);
-            lstString.add(byteToString(baBlockData));
-            i += nBlockLength;
-        }
-
-        if (lstString.size() <= 0) {
-            return null;
-        }
-        String[] szResult = new String[lstString.size()];
-        lstString.toArray(szResult);
-        return szResult;
-    }
-
-    private static String[] getStdOut() {
-        if (sShellStdOut == null)
-            return null;
-        try {
-            if (sShellStdOut.available() <= 0)
-                return null;
-        } catch (IOException ioe) {
-            return null;
-        }
-
-        byte[] baDataOut = null;
-        int nDataLength = 0;
-        try {
-            while (sShellStdOut.available() > 0) {
-                byte[] baData = new byte[1024];
-                int nReadCount = sShellStdOut.read(baData);
-                if (nReadCount == -1)
-                    break;
-                // Realloc
-                {
-                    int nCurrentSize = 0;
-                    if (baDataOut != null) {
-                        nCurrentSize = baDataOut.length;
-                    }
-                    byte[] baNewDataOut = new byte[nCurrentSize + nReadCount];
-                    if (baDataOut != null) {
-                        System.arraycopy(baDataOut, 0, baNewDataOut, 0, nCurrentSize);
-                    }
-                    System.arraycopy(baData, 0, baNewDataOut, nCurrentSize, nReadCount);
-                    baDataOut = baNewDataOut;
-                    nDataLength += nReadCount;
-                }
-            }
-        } catch (IOException ioe) {
-            Log.i("ViPER4Android_ShellCommand", "IOException, msg = " + ioe.getMessage());
-        }
-        Log.i("ViPER4Android_ShellCommand", "Standard output read " + nDataLength + " bytes");
-
-        return byteArrayToStringArray(baDataOut, nDataLength);
-    }
-
-    private static String[] getStdErr() {
-        if (sShellStdErr == null)
-            return null;
-        try {
-            if (sShellStdErr.available() <= 0)
-                return null;
-        } catch (IOException ioe) {
-            return null;
-        }
-
-        byte[] baDataOut = null;
-        int nDataLength = 0;
-        try {
-            while (sShellStdErr.available() > 0) {
-                byte[] baData = new byte[1024];
-                int nReadCount = sShellStdErr.read(baData);
-                if (nReadCount == -1)
-                    break;
-                // Realloc
-                {
-                    int nCurrentSize = 0;
-                    if (baDataOut != null) {
-                        nCurrentSize = baDataOut.length;
-                    }
-                    byte[] baNewDataOut = new byte[nCurrentSize + nReadCount];
-                    if (baDataOut != null) {
-                        System.arraycopy(baDataOut, 0, baNewDataOut, 0, nCurrentSize);
-                    }
-                    System.arraycopy(baData, 0, baNewDataOut, nCurrentSize, nReadCount);
-                    baDataOut = baNewDataOut;
-                    nDataLength += nReadCount;
-                }
-            }
-        } catch (IOException ioe) {
-            Log.i("ViPER4Android_ShellCommand", "IOException, msg = " + ioe.getMessage());
-        }
-        Log.i("ViPER4Android_ShellCommand", "Standard error read " + nDataLength + " bytes");
-
-        return byteArrayToStringArray(baDataOut, nDataLength);
-    }
+    private static Process sShellProcess;
+    private static DataOutputStream sShellStdIn;
+    private static DataInputStream sShellStdOut;
+    private static DataInputStream sShellStdErr;
 
     private static void clearStdOutAndErr() {
         if (sShellStdOut != null) {
@@ -233,35 +83,34 @@ class ShellCommand {
             sShellProcess = null;
         }
 
-        sShellOpened = false;
         Log.i("ViPER4Android_ShellCommand", "Shell closed");
     }
 
 
-    public static int rootExecuteWithoutShell(String szExecutable) {
-        if (szExecutable == null || szExecutable.equals("")) {
+    public static int rootExecuteWithoutShell(String mExecutable) {
+        if (mExecutable == null || mExecutable.equals("")) {
             return -65536;
         }
 
-        Log.i("ViPER4Android_ShellCommand", "Root executing " + szExecutable + " ...");
-        int nExitValue = -65536;
+        Log.i("ViPER4Android_ShellCommand", "Root executing " + mExecutable + " ...");
+        int exitValue = -65536;
         try {
-            Process psProg = Runtime.getRuntime().exec(new String[]{
-                    "su", "-c", szExecutable
+            Process mProcess = Runtime.getRuntime().exec(new String[]{
+                    "su", "-c", mExecutable
             });
-            psProg.waitFor();
-            nExitValue = psProg.exitValue();
-            psProg.destroy();
+            mProcess.waitFor();
+            exitValue = mProcess.exitValue();
+            mProcess.destroy();
         } catch (IOException e) {
             Log.i("ViPER4Android_ShellCommand", "IOException, msg = " + e.getMessage());
-            return nExitValue;
+            return exitValue;
         } catch (InterruptedException e) {
             Log.i("ViPER4Android_ShellCommand", "InterruptedException, msg = " + e.getMessage());
-            return nExitValue;
+            return exitValue;
         }
-        Log.i("ViPER4Android_ShellCommand", "Program " + szExecutable + " returned " + nExitValue);
+        Log.i("ViPER4Android_ShellCommand", "Program " + mExecutable + " returned " + exitValue);
 
-        return nExitValue;
+        return exitValue;
     }
 
 }

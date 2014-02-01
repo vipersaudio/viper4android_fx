@@ -18,31 +18,19 @@ import android.view.SurfaceView;
 import com.vipercn.viper4android_v2.R;
 
 public class EqualizerSurface extends SurfaceView {
-
-    private static final double[] FreqTable = {
-            27.34375f, 54.6875f, 109.375f, 218.75f, 437.5f, 875f, 1750f, 3500f, 7000f, 14000f
-    };
-
     private static final int MIN_FREQ = 10;
-
     private static final int MAX_FREQ = 21000;
-
     public static final int MIN_DB = -12;
-
     public static final int MAX_DB = 12;
-
-    public static final float CURVE_RESOLUTION = 1.25f;
+    private static final int SAMPLING_RATE = 44100;
 
     private int mWidth;
-
     private int mHeight;
 
     private float[] mLevels = new float[10];
-
     private final Paint mWhite, mGridLines, mControlBarText, mControlBar, mControlBarKnob;
-
-    private final Paint mFrequencyResponseBg, mFrequencyResponseHighlight,
-            mFrequencyResponseHighlight2;
+    private final Paint mFrequencyResponseBg;
+    private final Paint mFrequencyResponseHighlight, mFrequencyResponseHighlight2;
 
     public EqualizerSurface(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -113,56 +101,49 @@ public class EqualizerSurface extends SurfaceView {
         buildLayer();
     }
 
-    /**
-     * Returns a color that is assumed to be blended against black background, assuming close to
-     * sRGB behavior of screen (gamma 2.2 approximation).
-     *
-     * @param intensity desired physical intensity of color component
-     * @param alpha     alpha value of color component
-     */
-    private static int gamma(float intensity, float alpha) {
-        return (int) Math.min(255,
-                Math.max(0, Math.round(255 * Math.pow(intensity, 1 / 2.2) / alpha)));
-    }
-
-    /**
-     * Compose ARGB color from linear-light intensity and alpha assuming black background.
-     *
-     * @return ARGB int32
-     */
-    private static int color(float r, float g, float b, float a) {
-        int color = Math.round(a * 255) << 24;
-        color |= gamma(r, a) << 16;
-        color |= gamma(g, a) << 8;
-        color |= gamma(b, a);
-        return color;
-    }
-
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
 
         final Resources res = getResources();
-
         mWidth = right - left;
         mHeight = bottom - top;
+
         float barWidth = res.getDimension(R.dimen.bar_width);
         mControlBar.setStrokeWidth(barWidth);
         mControlBarKnob.setShadowLayer(barWidth * 0.5f, 0, 0, res.getColor(R.color.off_white));
-        /* red > +7, yellow > +3, holo_blue_bright > 0, holo_blue < 0,  holo_blue_dark < 3 */
-        mFrequencyResponseBg.setShader(new LinearGradient(0, 0, 0, mHeight, new int[] {
+
+        /**
+         * red > +7
+         * yellow > +3
+         * holo_blue_bright > 0
+         * holo_blue < 0
+         * holo_blue_dark < 3
+         */
+        int[] responseColors = {
             res.getColor(R.color.eq_red),
             res.getColor(R.color.eq_yellow),
             res.getColor(R.color.eq_holo_bright),
             res.getColor(R.color.eq_holo_blue),
             res.getColor(R.color.eq_holo_dark)
-        },
-                new float[]{0, 0.2f, 0.45f, 0.6f, 1f}, Shader.TileMode.CLAMP));
-        mControlBar.setShader(new LinearGradient(0, 0, 0, mHeight, new int[] {
+        };
+        float[] responsePositions = {
+            0, 0.2f, 0.45f, 0.6f, 1f
+        };
+
+        mFrequencyResponseBg.setShader(new LinearGradient(0, 0, 0, mHeight,
+                responseColors, responsePositions, Shader.TileMode.CLAMP));
+
+        int[] barColors = {
             res.getColor(R.color.cb_shader),
             res.getColor(R.color.cb_shader_alpha)
-        },
-                new float[]{0, 1}, Shader.TileMode.CLAMP));
+        };
+        float[] barPositions = {
+            0, 1
+        };
+
+        mControlBar.setShader(new LinearGradient(0, 0, 0, mHeight,
+                barColors, barPositions, Shader.TileMode.CLAMP));
     }
 
     public void setBand(int i, float value) {
@@ -179,7 +160,7 @@ public class EqualizerSurface extends SurfaceView {
         /* clear canvas */
         canvas.drawRGB(0, 0, 0);
 
-        Biquad[] biquads = new Biquad[] {
+        Biquad[] biquads = {
             new Biquad(),
             new Biquad(),
             new Biquad(),
@@ -199,19 +180,19 @@ public class EqualizerSurface extends SurfaceView {
          */
         double gain = Math.pow(10, mLevels[0] / 20);
         for (int i = 0; i < biquads.length; i++) {
-            double freq = FreqTable[i];
-            int SAMPLING_RATE = 44100;
+            double freq = 15.625 * Math.pow(2, i+1);
             biquads[i].setHighShelf(freq * 2, SAMPLING_RATE, mLevels[i + 1] - mLevels[i]);
         }
 
         Path freqResponse = new Path();
-        for (int i = 0; i < 71; i++) {
+        for (int i = 0; i < 71; i ++) {
             double freq = reverseProjectX(i / 70f);
-            int SAMPLING_RATE = 44100;
             double omega = freq / SAMPLING_RATE * Math.PI * 2;
             Complex z = new Complex(Math.cos(omega), Math.sin(omega));
 
             /* Evaluate the response at frequency z */
+
+            /* Complex z1 = z.mul(gain); */
             Complex z2 = biquads[0].evaluateTransfer(z);
             Complex z3 = biquads[1].evaluateTransfer(z);
             Complex z4 = biquads[2].evaluateTransfer(z);
@@ -251,17 +232,15 @@ public class EqualizerSurface extends SurfaceView {
         canvas.drawRect(0, 0, mWidth - 1, mHeight - 1, mWhite);
 
         /* draw vertical lines */
-        for (int freq = MIN_FREQ; freq < MAX_FREQ; ) {
+        for (int freq = MIN_FREQ; freq < MAX_FREQ;) {
             float x = projectX(freq) * mWidth;
             canvas.drawLine(x, 0, x, mHeight - 1, mGridLines);
             if (freq < 100) {
                 freq += 10;
             } else if (freq < 1000) {
                 freq += 100;
-            } else if (freq < 10000) {
-                freq += 1000;
             } else {
-                freq += 10000;
+                freq += freq < 10000 ? 1000 : 10000;
             }
         }
 
@@ -269,18 +248,20 @@ public class EqualizerSurface extends SurfaceView {
         for (int dB = MIN_DB + 3; dB <= MAX_DB - 3; dB += 3) {
             float y = projectY(dB) * mHeight;
             canvas.drawLine(0, y, mWidth - 1, y, mGridLines);
-            canvas.drawText(String.format("%+d", dB), 1, (y - 1), mWhite);
+            canvas.drawText(String.format("%+d", dB), 1, y - 1, mWhite);
         }
 
-        for (int i = 0; i < mLevels.length; i++) {
-            double freq = FreqTable[i];
+        for (int i = 0; i < mLevels.length; i ++) {
+            double freq = 15.625 * Math.pow(2, i+1);
             float x = projectX(freq) * mWidth;
             float y = projectY(mLevels[i]) * mHeight;
+            String frequencyText = String.format(freq < 1000 ? "%.0f" : "%.0fk",
+                    freq < 1000 ? freq : freq / 1000);
+
             canvas.drawLine(x, mHeight, x, y, mControlBar);
             canvas.drawCircle(x, y, mControlBar.getStrokeWidth() * 0.66f, mControlBarKnob);
             canvas.drawText(String.format("%+1.1f", mLevels[i]), x, mHeight - 2, mControlBarText);
-            canvas.drawText(String.format(freq < 1000 ? "%.0f" : "%.0fk", freq < 1000 ? freq
-                    : freq / 1000), x, mWhite.getTextSize(), mControlBarText);
+            canvas.drawText(frequencyText, x, mWhite.getTextSize(), mControlBarText);
         }
     }
 
@@ -309,13 +290,14 @@ public class EqualizerSurface extends SurfaceView {
     /**
      * Find the closest control to given horizontal pixel for adjustment
      *
+     * @param px
      * @return index of best match
      */
     public int findClosest(float px) {
         int idx = 0;
         float best = 1e9f;
-        for (int i = 0; i < mLevels.length; i++) {
-            double freq = FreqTable[i];
+        for (int i = 0; i < mLevels.length; i ++) {
+            double freq = 15.625 * Math.pow(2, i+1);
             float cx = projectX(freq) * mWidth;
             float distance = Math.abs(cx - px);
 

@@ -1,14 +1,6 @@
 
 package com.vipercn.viper4android_v2.preference;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-
-import com.vipercn.viper4android_v2.R;
-import com.vipercn.viper4android_v2.activity.StaticEnvironment;
-import com.vipercn.viper4android_v2.activity.Utils;
-
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.os.Environment;
@@ -16,6 +8,14 @@ import android.preference.ListPreference;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.vipercn.viper4android_v2.R;
+import com.vipercn.viper4android_v2.activity.StaticEnvironment;
+import com.vipercn.viper4android_v2.activity.Utils;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class SummariedListPreferenceWithCustom extends ListPreference {
 
@@ -37,8 +37,8 @@ public class SummariedListPreferenceWithCustom extends ListPreference {
                 return;
             }
 
-            final String szKernelPath = StaticEnvironment.getV4aKernelPath();
-            File mKnlFile = new File(szKernelPath);
+            final String mKernelPath = StaticEnvironment.getV4aKernelPath();
+            File mKnlFile = new File(mKernelPath);
 
             if (!mKnlFile.exists()) {
                 Log.i("ViPER4Android", "Kernel directory does not exists");
@@ -64,7 +64,7 @@ public class SummariedListPreferenceWithCustom extends ListPreference {
             final String[] szKnlArrayVal = new String[szKnlList.size()];
             for (int i = 0; i < szKnlList.size(); i++) {
                 szKnlArray[i] = szKnlList.get(i);
-                szKnlArrayVal[i] = szKernelPath + szKnlList.get(i);
+                szKnlArrayVal[i] = mKernelPath + szKnlList.get(i);
             }
 
             setEntries(szKnlArray);
