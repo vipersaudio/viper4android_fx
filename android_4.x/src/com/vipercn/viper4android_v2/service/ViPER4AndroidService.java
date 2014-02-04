@@ -112,10 +112,10 @@ public class ViPER4AndroidService extends Service {
                         if (mode.equalsIgnoreCase("speaker")) {
                             mEnableKey = "viper4android.speakerfx.enable";
                         }
-                        boolean bShouldEnabled = preferences.getBoolean(mEnableKey, false);
-                        if (bShouldEnabled != enabled) {
+                        boolean shouldEnabled = preferences.getBoolean(mEnableKey, false);
+                        if (shouldEnabled != enabled) {
                             Log.i("ViPER4Android", "Engine status is " + enabled
-                                    + ", but we expected " + bShouldEnabled);
+                                    + ", but we expected " + shouldEnabled);
                             Log.i("ViPER4Android", "Im sure you are experiencing no effect,"
                                     + "because the effect is controlled by the system now");
                             Log.i("ViPER4Android","I really have no idea how to solve this problem."
@@ -298,7 +298,7 @@ public class ViPER4AndroidService extends Service {
 
         private void proceedIRBuffer_Speaker(String mConvIRFile, int mChannels, int mFrames) {
             // 1. Tell driver to prepare kernel buffer
-            Random rndMachine = new Random(System.currentTimeMillis());
+            Random rndMachine = new Random();
             int mKernelBufferID = rndMachine.nextInt();
             setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_SPKFX_CONV_PREPAREBUFFER,
                     mKernelBufferID, mChannels, 0);
@@ -779,8 +779,7 @@ public class ViPER4AndroidService extends Service {
             itResult.putExtra("equalizer_enabled", mEqEnabled);
             itResult.putExtra("equalizer_bandcount", 10);
             float[] mEqBands = {
-                    31.0f, 62.0f, 125.0f, 250.0f, 500.0f, 1000.0f, 2000.0f,
-                    4000.0f, 8000.0f, 16000.0f
+                31.0f, 62.0f, 125.0f, 250.0f, 500.0f, 1000.0f, 2000.0f, 4000.0f, 8000.0f, 16000.0f
             };
             itResult.putExtra("equalizer_bandfreq", mEqBands);
             sendBroadcast(itResult);
@@ -923,8 +922,7 @@ public class ViPER4AndroidService extends Service {
                 if (mV4AMutex.acquire()) {
                     if (mGeneralFXList.indexOfKey(sessionId) < 0) {
                         Log.i("ViPER4Android", "Creating local V4ADSPModule ...");
-                        V4ADSPModule v4aNewDSPModule = new V4ADSPModule(
-                                sessionId);
+                        V4ADSPModule v4aNewDSPModule = new V4ADSPModule(sessionId);
                         if (v4aNewDSPModule.mInstance == null) {
                             Log.e("ViPER4Android", "Failed to load v4a driver.");
                             v4aNewDSPModule.release();
@@ -974,6 +972,9 @@ public class ViPER4AndroidService extends Service {
             } else if (mode.equalsIgnoreCase("bluetooth")) {
                 showNotification(getString(getResources().getIdentifier("text_bluetooth", "string",
                         getApplicationInfo().packageName)));
+            } else if (mode.equalsIgnoreCase("usb")) {
+                showNotification(getString(getResources().getIdentifier("text_usb", "string",
+                        getApplicationInfo().packageName)));
             } else {
                 showNotification(getString(getResources().getIdentifier("text_speaker", "string",
                         getApplicationInfo().packageName)));
@@ -1006,6 +1007,7 @@ public class ViPER4AndroidService extends Service {
             final boolean prevUseHeadset = mUseHeadset;
             final boolean prevUseBluetooth = mUseBluetooth;
             final boolean prevUseUSB = mUseUSB;
+
             if (action.equals(Intent.ACTION_HEADSET_PLUG)) {
                 mUseHeadset = intent.getIntExtra("state", 0) == 1;
             } else if (action.equals(BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED)) {
@@ -1030,19 +1032,19 @@ public class ViPER4AndroidService extends Service {
         }
     };
 
-    private void showNotification(String nFXType) {
+    private void showNotification(String mFXType) {
         SharedPreferences preferences = getSharedPreferences(
                 ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", MODE_PRIVATE);
-        boolean bEnableNotify = preferences.getBoolean(
+        boolean enableNotify = preferences.getBoolean(
                 "viper4android.settings.show_notify_icon", false);
-        if (!bEnableNotify) {
+        if (!enableNotify) {
             Log.i("ViPER4Android", "showNotification(): show_notify = false");
             return;
         }
 
-        int nIconID = getResources().getIdentifier(
-                "icon", "drawable", getApplicationInfo().packageName);
-        String mNotifyText = "ViPER4Android FX " + nFXType;
+        int mIconID = getResources().getIdentifier("icon", "drawable",
+                getApplicationInfo().packageName);
+        String mNotifyText = "ViPER4Android FX " + mFXType;
         CharSequence contentTitle = "ViPER4Android FX";
         Intent notificationIntent = new Intent(this, ViPER4Android.class);
         PendingIntent contentItent = PendingIntent.getActivity(
@@ -1054,10 +1056,10 @@ public class ViPER4AndroidService extends Service {
                     .setOngoing(true)
                     .setDefaults(0)
                     .setWhen(System.currentTimeMillis())
-                    .setSmallIcon(nIconID)
+                    .setSmallIcon(mIconID)
                     .setTicker(mNotifyText)
                     .setContentTitle(contentTitle)
-                    .setContentText(nFXType)
+                    .setContentText(mFXType)
                     .setContentIntent(contentItent)
                     .build();
 
@@ -1091,14 +1093,14 @@ public class ViPER4AndroidService extends Service {
         } else {
             PackageManager packageMgr = getPackageManager();
             PackageInfo packageInfo;
-            String mApkVer;
+            String apkVersion;
             try {
                 int[] iaDrvVer = aeuUtils.getViper4AndroidEngineVersion();
                 String mDriverVersion = iaDrvVer[0] + "." + iaDrvVer[1] + "." + iaDrvVer[2] + "."
                         + iaDrvVer[3];
                 packageInfo = packageMgr.getPackageInfo(getPackageName(), 0);
-                mApkVer = packageInfo.versionName;
-                if (!mApkVer.equalsIgnoreCase(mDriverVersion)) {
+                apkVersion = packageInfo.versionName;
+                if (!apkVersion.equalsIgnoreCase(mDriverVersion)) {
                     Log.i("ViPER4Android", "ViPER4Android engine is not compatible with service");
                     mDriverIsReady = false;
                     return;
@@ -1142,13 +1144,13 @@ public class ViPER4AndroidService extends Service {
 
         SharedPreferences prefSettings = getSharedPreferences(
                 ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", 0);
-        boolean bDriverConfigured = prefSettings.getBoolean(
+        boolean mDriverConfigured = prefSettings.getBoolean(
                 "viper4android.settings.driverconfigured", false);
-        if (!bDriverConfigured) {
-            Editor edPrefSettings = prefSettings.edit();
-            if (edPrefSettings != null) {
-                edPrefSettings.putBoolean("viper4android.settings.driverconfigured", true);
-                edPrefSettings.commit();
+        if (!mDriverConfigured) {
+            Editor editPrefs = prefSettings.edit();
+            if (editPrefs != null) {
+                editPrefs.putBoolean("viper4android.settings.driverconfigured", true);
+                editPrefs.commit();
             }
         }
         String mCompatibleMode = prefSettings.getString(
@@ -1375,7 +1377,7 @@ public class ViPER4AndroidService extends Service {
             if (mUseHeadset)
                 return "headset";
             if (mUseUSB)
-                return "headset"; /* We treat usb as headphone for now */
+                return "usb";
             return "speaker";
         }
         return mLockedEffect;
@@ -1400,39 +1402,39 @@ public class ViPER4AndroidService extends Service {
     }
 
     public boolean getDriverNEON() {
-        boolean bResult = false;
+        boolean mResult = false;
         if (mGeneralFX != null && mDriverIsReady) {
             if (mGeneralFX.getParameter_px4_vx4x1(PARAM_GET_NEONENABLED) == 1)
-                bResult = true;
+                mResult = true;
         }
-        return bResult;
+        return mResult;
     }
 
     public boolean getDriverEnabled() {
-        boolean bResult = false;
+        boolean mResult = false;
         if (mGeneralFX != null && mDriverIsReady) {
             if (mGeneralFX.getParameter_px4_vx4x1(PARAM_GET_ENABLED) == 1)
-                bResult = true;
+                mResult = true;
         }
-        return bResult;
+        return mResult;
     }
 
     public boolean getDriverUsable() {
-        boolean bResult = false;
+        boolean mResult = false;
         if (mGeneralFX != null && mDriverIsReady) {
             if (mGeneralFX.getParameter_px4_vx4x1(PARAM_GET_CONFIGURE) == 1)
-                bResult = true;
+                mResult = true;
         }
-        return bResult;
+        return mResult;
     }
 
     public boolean getDriverProcess() {
-        boolean bResult = false;
+        boolean mResult = false;
         if (mGeneralFX != null && mDriverIsReady) {
             if (mGeneralFX.getParameter_px4_vx4x1(PARAM_GET_STREAMING) == 1)
-                bResult = true;
+                mResult = true;
         }
-        return bResult;
+        return mResult;
     }
 
     public int getDriverEffectType() {
@@ -1482,7 +1484,9 @@ public class ViPER4AndroidService extends Service {
         Log.i("ViPER4Android", "Begin system update(" + mode + ")");
 
         int mFXType = V4A_FX_TYPE_NONE;
-        if (mode.equalsIgnoreCase("headset") || mode.equalsIgnoreCase("bluetooth"))
+        if (mode.equalsIgnoreCase("headset")
+                || mode.equalsIgnoreCase("bluetooth")
+                || mode.equalsIgnoreCase("usb"))
             mFXType = V4A_FX_TYPE_HEADPHONE;
         else if (mode.equalsIgnoreCase("speaker"))
             mFXType = V4A_FX_TYPE_SPEAKER;
@@ -1494,6 +1498,9 @@ public class ViPER4AndroidService extends Service {
                         getApplicationInfo().packageName)));
             else if (mode.equalsIgnoreCase("bluetooth"))
                 showNotification(getString(getResources().getIdentifier("text_bluetooth", "string",
+                        getApplicationInfo().packageName)));
+            else if (mode.equalsIgnoreCase("usb"))
+                showNotification(getString(getResources().getIdentifier("text_usb", "string",
                         getApplicationInfo().packageName)));
             else
                 showNotification(getString(getResources().getIdentifier("text_speaker", "string",

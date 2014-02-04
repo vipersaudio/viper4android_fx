@@ -387,7 +387,7 @@ public final class ViPER4Android extends Activity {
                                             mSQWarn.setNegativeButton(ctxInstance.getResources().getString(R.string.text_cancel),
                                                     new DialogInterface.OnClickListener() {
                                                 @Override
-                                                public void onClick(DialogInterface dialog,int which) {
+                                                public void onClick(DialogInterface dialog, int which) {
                                                     dialog.dismiss();
                                                 }
                                             });
@@ -533,7 +533,7 @@ public final class ViPER4Android extends Activity {
             } else {
                 mChangelog_AssetsName = mLocale.equalsIgnoreCase("zh_TW") ? mChangelog_AssetsName
                         + "zh_TW" : mChangelog_AssetsName + "en_US";
-            mChangelog_AssetsName = mChangelog_AssetsName + ".txt";
+                mChangelog_AssetsName = mChangelog_AssetsName + ".txt";
             }
 
             String mChangeLog = "";
@@ -768,12 +768,14 @@ public final class ViPER4Android extends Activity {
                 mHelp.show();
                 return true;
             }
-            case R.id.checkupdate:{
+
+            case R.id.checkupdate: {
                 Uri uri = Uri.parse(getResources().getString(R.string.text_updatelink));
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
                 return true;
             }
+
             case R.id.drvstatus: {
                 DialogFragment df = new DialogFragment() {
                     @Override
@@ -851,7 +853,7 @@ public final class ViPER4Android extends Activity {
                 } else {
                     mChangelog_AssetsName = mLocale.equalsIgnoreCase("zh_TW") ?
                             mChangelog_AssetsName + "zh_TW" : mChangelog_AssetsName + "en_US";
-                mChangelog_AssetsName = mChangelog_AssetsName + ".txt";
+                    mChangelog_AssetsName = mChangelog_AssetsName + ".txt";
                 }
                 String mChangeLog = "";
                 InputStream isHandle;
@@ -982,7 +984,9 @@ public final class ViPER4Android extends Activity {
                                 new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                             }
-                        }).create().show();
+                        })
+                        .create().show();
+
                     } else {
                         String mDriverFileName = determineCPUWithDriver("");
                         if (Utils.installDrv_FX(mActivityContext, mDriverFileName)) {
@@ -1058,20 +1062,20 @@ public final class ViPER4Android extends Activity {
                         SharedPreferences prefSettings = getSharedPreferences(
                                 SHARED_PREFERENCES_BASENAME + ".settings",
                                 MODE_PRIVATE);
-                        Editor e = prefSettings.edit();
+                        Editor edit = prefSettings.edit();
                         switch (which) {
                             case 0:
-                                e.putString(
+                                edit.putString(
                                         "viper4android.settings.compatiblemode",
                                         "global");
                                 break;
                             case 1:
-                                e.putString(
+                                edit.putString(
                                         "viper4android.settings.compatiblemode",
                                         "local");
                                 break;
                         }
-                        e.commit();
+                        edit.commit();
                         dialog.dismiss();
                     }
                 }).setCancelable(false).create();
@@ -1088,9 +1092,9 @@ public final class ViPER4Android extends Activity {
                 } else {
                     item.setTitle(getResources().getString(R.string.text_showtrayicon));
                 }
-                Editor e = prefSettings.edit();
-                e.putBoolean("viper4android.settings.show_notify_icon", enableNotify);
-                e.commit();
+                Editor edit = prefSettings.edit();
+                edit.putBoolean("viper4android.settings.show_notify_icon", enableNotify);
+                edit.commit();
                 // Tell background service to deal with the notification icon
                 if (enableNotify) {
                     sendBroadcast(new Intent(ACTION_SHOW_NOTIFY));
@@ -1112,15 +1116,18 @@ public final class ViPER4Android extends Activity {
                     mLockIndex = 2;
                 } else if (mLockedEffect.equalsIgnoreCase("bluetooth")) {
                     mLockIndex = 3;
-                } else {
+                } else if (mLockedEffect.equalsIgnoreCase("usb")) {
                     mLockIndex = 4;
+                } else {
+                    mLockIndex = 5;
                 }
 
                 String[] modeList = {
                     getResources().getString(R.string.text_disabled),
                     getResources().getString(R.string.text_headset),
                     getResources().getString(R.string.text_speaker),
-                    getResources().getString(R.string.text_bluetooth)
+                    getResources().getString(R.string.text_bluetooth),
+                    getResources().getString(R.string.text_usb)
                 };
 
                 Dialog selectDialog = new AlertDialog.Builder(this)
@@ -1132,28 +1139,30 @@ public final class ViPER4Android extends Activity {
                         SharedPreferences prefSettings = getSharedPreferences(
                                 SHARED_PREFERENCES_BASENAME + ".settings",
                                 MODE_PRIVATE);
-                        Editor e = prefSettings.edit();
+                        Editor edit = prefSettings.edit();
                         switch (which) {
                             case 0:
-                                e.putString("viper4android.settings.lock_effect",
+                                edit.putString("viper4android.settings.lock_effect",
                                         "none");
                                 break;
                             case 1:
-                                e.putString("viper4android.settings.lock_effect",
+                                edit.putString("viper4android.settings.lock_effect",
                                         "headset");
                                 break;
                             case 2:
-                                e.putString("viper4android.settings.lock_effect",
+                                edit.putString("viper4android.settings.lock_effect",
                                         "speaker");
                                 break;
                             case 3:
-                                e.putString("viper4android.settings.lock_effect",
+                                edit.putString("viper4android.settings.lock_effect",
                                         "bluetooth");
                                 break;
+                            case 4:
+                                edit.putString("viper4android.settings.lock_effect", "usb");
+                                break;
                         }
-                        e.commit();
-                        // Tell background service to change the
-                        // mode
+                        edit.commit();
+                        // Tell background service to change the mode
                         sendBroadcast(new Intent(ACTION_UPDATE_PREFERENCES));
                         dialog.dismiss();
                     }
@@ -1321,6 +1330,8 @@ public final class ViPER4Android extends Activity {
                     new File(profileDir, packageName + "headset.xml"));
             copy(new File(spDir + packageName + "speaker.xml"),
                     new File(profileDir, packageName + "speaker.xml"));
+            copy(new File(spDir + packageName + "usb.xml"),
+                    new File(profileDir, packageName + "usb.xml"));
         } catch (IOException e) {
             Log.e("ViPER4Android", "Cannot save preset", e);
         }
@@ -1341,6 +1352,8 @@ public final class ViPER4Android extends Activity {
                     new File(spDir + packageName + "headset.xml"));
             copy(new File(profileDir, packageName + "speaker.xml"),
                     new File(spDir + packageName + "speaker.xml"));
+            copy(new File(profileDir, packageName + "usb.xml"),
+                    new File(spDir + packageName + "usb.xml"));
         } catch (IOException e) {
             Log.e("ViPER4Android", "Cannot load preset", e);
         }
@@ -1461,6 +1474,11 @@ public final class ViPER4Android extends Activity {
         mTitleMap = new HashMap<String, String>();
         mTitleMap.put("ICON", R.drawable.empty_icon + "");
         mTitleMap.put("TITLE", getString(R.string.bluetooth_title));
+        tmpList.add(mTitleMap);
+        // Usb
+        mTitleMap = new HashMap<String, String>();
+        mTitleMap.put("ICON", R.drawable.empty_icon + "");
+        mTitleMap.put("TITLE", getString(R.string.usb_title));
         tmpList.add(mTitleMap);
 
         return tmpList;

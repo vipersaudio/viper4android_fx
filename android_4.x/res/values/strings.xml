@@ -6,10 +6,12 @@
     <string name="headset_title">Headset</string>
     <string name="speaker_title">Phone Speaker</string>
     <string name="bluetooth_title">Bluetooth Device</string>
+    <string name="usb_title">USB/Dock</string>
     <string name="audio_effects">Audio Effects</string>
     <string name="dsp_settings_headset">Effect Settings - Headset</string>
     <string name="dsp_settings_speaker">Effect Settings - Phone Speaker</string>
     <string name="dsp_settings_bluetooth">Effect Settings - Bluetooth Device</string>
+    <string name="dsp_settings_usb">Effect Settings - USB Device</string>
     <string name="pref_dsp_enable">Enable</string>
     <string name="pref_effect_title">Select Effect Strength</string>
     <string name="dialog_effect">Effect Strength</string>
@@ -138,6 +140,7 @@
     <string name="text_headset">Headset</string>
     <string name="text_bluetooth">Bluetooth</string>
     <string name="text_speaker">Speaker</string>
+    <string name="text_usb">USB/Dock</string>
     <string name="text_showtrayicon">Show Notification</string>
     <string name="text_hidetrayicon">Hide Notification</string>
     <string name="text_lockeffect">Lock Effect Mode</string>

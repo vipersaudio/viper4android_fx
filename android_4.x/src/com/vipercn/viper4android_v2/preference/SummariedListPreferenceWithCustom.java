@@ -1,4 +1,3 @@
-
 package com.vipercn.viper4android_v2.preference;
 
 import android.app.AlertDialog.Builder;
@@ -18,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class SummariedListPreferenceWithCustom extends ListPreference {
-
     public SummariedListPreferenceWithCustom(Context context, AttributeSet set) {
         super(context, set);
     }
@@ -30,53 +28,49 @@ public class SummariedListPreferenceWithCustom extends ListPreference {
                 Log.i("ViPER4Android", "External storage not mounted");
                 setEntries(new String[0]);
                 setEntryValues(new String[0]);
-                String szTip = getContext().getResources().getString(R.string.text_ir_dir_isempty);
-                szTip = String.format(szTip, StaticEnvironment.getV4aKernelPath());
-                Toast.makeText(getContext(), szTip, Toast.LENGTH_LONG).show();
+                String tip = getContext().getResources().getString(R.string.text_ir_dir_isempty);
+                tip = String.format(tip, StaticEnvironment.getV4aKernelPath());
+                Toast.makeText(getContext(), tip, Toast.LENGTH_LONG).show();
                 super.onPrepareDialogBuilder(builder);
                 return;
             }
 
-            final String mKernelPath = StaticEnvironment.getV4aKernelPath();
-            File mKnlFile = new File(mKernelPath);
+            final String kernelPath = StaticEnvironment.getV4aKernelPath();
+            File kernelFile = new File(kernelPath);
 
-            if (!mKnlFile.exists()) {
+            if (!kernelFile.exists()) {
                 Log.i("ViPER4Android", "Kernel directory does not exists");
-                mKnlFile.mkdirs();
-                mKnlFile.mkdir();
-            } else {
-                Log.i("ViPER4Android", "Kernel directory exists");
+                kernelFile.mkdirs();
+                kernelFile.mkdir();
+            } else Log.i("ViPER4Android", "Kernel directory exists");
+
+            ArrayList<String> kernelList = new ArrayList<String>();
+            Utils.getFileNameList(kernelFile, ".irs", kernelList);
+            Utils.getFileNameList(kernelFile, ".wav", kernelList);
+
+            if (kernelList.isEmpty()) {
+                String tip = getContext().getResources().getString(R.string.text_ir_dir_isempty);
+                tip = String.format(tip, StaticEnvironment.getV4aKernelPath());
+                Toast.makeText(getContext(), tip, Toast.LENGTH_LONG).show();
+            } else Collections.sort(kernelList);
+
+            final String[] kernelArray = new String[kernelList.size()];
+            final String[] arrayValue = new String[kernelList.size()];
+            for (int i = 0; i < kernelList.size(); i++) {
+                kernelArray[i] = kernelList.get(i);
+                arrayValue[i] = kernelPath + kernelList.get(i);
             }
 
-            ArrayList<String> szKnlList = new ArrayList<String>();
-            Utils.getFileNameList(mKnlFile, ".irs", szKnlList);
-            Utils.getFileNameList(mKnlFile, ".wav", szKnlList);
-
-            if (szKnlList.isEmpty()) {
-                String szTip = getContext().getResources().getString(R.string.text_ir_dir_isempty);
-                szTip = String.format(szTip, StaticEnvironment.getV4aKernelPath());
-                Toast.makeText(getContext(), szTip, Toast.LENGTH_LONG).show();
-            } else {
-                Collections.sort(szKnlList);
-            }
-
-            final String[] szKnlArray = new String[szKnlList.size()];
-            final String[] szKnlArrayVal = new String[szKnlList.size()];
-            for (int i = 0; i < szKnlList.size(); i++) {
-                szKnlArray[i] = szKnlList.get(i);
-                szKnlArrayVal[i] = mKernelPath + szKnlList.get(i);
-            }
-
-            setEntries(szKnlArray);
-            setEntryValues(szKnlArrayVal);
+            setEntries(kernelArray);
+            setEntryValues(arrayValue);
 
             super.onPrepareDialogBuilder(builder);
         } catch (Exception e) {
             setEntries(new String[0]);
             setEntryValues(new String[0]);
-            String szTip = getContext().getResources().getString(R.string.text_ir_dir_isempty);
-            szTip = String.format(szTip, StaticEnvironment.getV4aKernelPath());
-            Toast.makeText(getContext(), szTip, Toast.LENGTH_LONG).show();
+            String tip = getContext().getResources().getString(R.string.text_ir_dir_isempty);
+            tip = String.format(tip, StaticEnvironment.getV4aKernelPath());
+            Toast.makeText(getContext(), tip, Toast.LENGTH_LONG).show();
             super.onPrepareDialogBuilder(builder);
         }
     }
