@@ -43,7 +43,7 @@
     <string name="pref_xloud_spk_highfreq">Wysoka częstotliwość</string>
     <string name="pref_spk_opt_title">Optymalizacja</string>
     <string name="pref_spk_opt_summary_off">Nieaktywna</string>
-    <string name="pref_spk_opt_summary_on">Optymalizacja</string>
+    <string name="pref_spk_opt_summary_on">Optymalizacja jest włączona</string>
     <string name="pref_equalizer_title">Equalizer</string>
     <string name="pref_equalizer_summary_on">Aktywny</string>
     <string name="pref_equalizer_summary_off">Nieaktywny</string>
@@ -148,6 +148,7 @@
     <string name="text_abnormal">Nieprawidłowy</string>
     <string name="text_effectprofile">Profile</string>
     <string name="text_loadfxprofile">Wczytaj profil</string>
+    <string name="text_newfxprofile">Nowy profil efekt&#8230;</string>
     <string name="text_savefxprofile">Zapisz profil</string>
     <string name="text_pleaseinputname">Podaj nazwę profilu
 \nUnikaj \'=\'
@@ -218,4 +219,10 @@
 \n<b>Forum: http://forum.xda-developers.com/showthread.php?t=2191223</b></string>
     <string name="text_checkupdate">Sprawdź aktualizacje</string>
 
+    <!-- TODO: translate this -->
+    <!-- Drawer -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_toggle_drawer">Switch to Drawer view</string>
+    <string name="navigation_toggle_tabbed">Switch to Tab view</string>
 </resources>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <!--
       Thanks to all 4pda.ru contributors (alphabetically):
       
@@ -10,7 +9,7 @@
       
       http://4pda.ru/forum/index.php?showtopic=405989
       
-      2014
+      2014
     -->
     <string name="app_name">ViPER FX</string>
     <string name="select_configuration_title">ViPER4Android</string>
@@ -158,6 +157,7 @@
     <string name="text_abnormal">Конфликт</string>
     <string name="text_effectprofile">Профиль</string>
     <string name="text_loadfxprofile">Импорт</string>
+    <string name="text_newfxprofile">Новый эффект профиля&#8230;</string>
     <string name="text_savefxprofile">Экспорт</string>
     <string name="text_pleaseinputname">Введите имя профиля 
 \nИсключите знак \'=\'</string>
@@ -208,7 +208,7 @@
 \n\'ViPER4Android.apk\' — панель управления ViPER4Android. 
 \nСодержит код DSPManager для CyanogenMod.
 \n
-\nВерсия %1$s (FX) \"Beautiful\".
+\nВерсия %1$s (FX) &#8820;Beautiful&#8821;.
 \n</string>
     <string name="text_help_content">***Краткая справка***
 \n
@@ -230,4 +230,10 @@
     <string name="text_checkupdate">Обновления</string>
     <string name="text_updatelink">http://vipersaudio.com/swupdate/viper4android/download.html</string>
 
+    <!-- TODO: translate this -->
+    <!-- Drawer -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_toggle_drawer">Switch to Drawer view</string>
+    <string name="navigation_toggle_tabbed">Switch to Tab view</string>
 </resources>

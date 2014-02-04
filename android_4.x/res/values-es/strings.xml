@@ -135,9 +135,10 @@
     <string name="text_no">No</string>
     <string name="text_normal">Normal</string>
     <string name="text_abnormal">Anormal</string>
-    <string name="text_effectprofile">Perfiles de Efectos</string>
-    <string name="text_loadfxprofile">Cargar Perfiles de Efectos</string>
-    <string name="text_savefxprofile">Guardar Perfiles de Efectos</string>
+    <string name="text_effectprofile">Perfil de Efecto</string>
+    <string name="text_loadfxprofile">Cargar Perfil de Efecto</string>
+    <string name="text_newfxprofile">Nuevo perfil de Efecto&#8230;</string>
+    <string name="text_savefxprofile">Guardar Perfil de Efecto</string>
     <string name="text_pleaseinputname">Por favor, introduzca el nombre del perfil
 \nNo incluya \'=\'
 </string>
@@ -187,7 +188,7 @@
 \n\'ViPER4Android.apk\' es el panel de control de ViPER4Android.
 \nEn base a un código de Cyanogenmod\'s DSPManager.
 \n
-\nVersion %1$s (FX), Codename "Beautiful".
+\nVersion %1$s (FX), Codename &#8220;Beautiful&#8221;.
 \n
 </string>
     <string name="text_help_content">***Ayuda General***
@@ -204,4 +205,9 @@
     <string name="text_forum_link">http://forum.xda-developers.com/showthread.php?t=2191223</string>
     <string name="text_view_forum">Foro</string>
 
+    <!-- Drawer -->
+    <string name="navigation_drawer_open">Abra el cajón navegación</string>
+    <string name="navigation_drawer_close">Cierre el cajón navegación</string>
+    <string name="navigation_toggle_drawer">Cambiar a la vista del Cajón</string>
+    <string name="navigation_toggle_tabbed">Cambiar a la vista de la pestaña</string>
 </resources>

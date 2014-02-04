@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/v4a_action_tabbed"
-        android:title="@string/navigation_toggle_tabbed"
+        android:title="@string/navigation_toggle_drawer"
         android:showAsAction="never" />
     <item
         android:id="@+id/lockeffect"

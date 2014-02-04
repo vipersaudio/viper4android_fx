@@ -147,6 +147,7 @@
     <string name="text_abnormal">Abnormal</string>
     <string name="text_effectprofile">Effect Profile</string>
     <string name="text_loadfxprofile">Load Effect Profile</string>
+    <string name="text_newfxprofile">New Effect Profile&#8230;</string>
     <string name="text_savefxprofile">Save Effect Profile</string>
     <string name="text_pleaseinputname">Please input the name of profile
 \nDo not include \'=\'</string>
@@ -200,7 +201,7 @@
 \n\'ViPER4Android.apk\' is the control panel of ViPER4Android.
 \nBased on some code of Cyanogenmod\'s DSPManager.
 \n
-\nVersion %1$s (FX), Codename "Beautiful".
+\nVersion %1$s (FX), Codename &#8220;Beautiful&#8221;.
 \n</string>
     <string name="text_help_content">***General help***
 \n
@@ -222,4 +223,9 @@
     <string name="text_checkupdate">Check Update</string>
     <string name="text_updatelink">http://vipersaudio.com/swupdate/viper4android/download.html</string>
 
+    <!-- Drawer -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_toggle_drawer">Switch to Drawer view</string>
+    <string name="navigation_toggle_tabbed">Switch to Tab view</string>
 </resources>
