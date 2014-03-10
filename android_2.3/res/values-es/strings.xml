@@ -115,8 +115,8 @@
     <string name="text_effectprofile">Perfiles de Efectos</string>
     <string name="text_loadfxprofile">Cargar Perfiles de Efectos</string>
     <string name="text_savefxprofile">Guardar Perfiles de Efectos</string>
-    <string name="text_pleaseinputname">"Por favor, introduzca el nombre del perfil 
-No incluya '='"</string>
+    <string name="text_pleaseinputname">"Por favor, introduzca el nombre del perfil
+\nNo incluya '='"</string>
     <string name="text_profilesaved_ok">Perfil Guardado.</string>
     <string name="text_profilesaved_err">No se puede guardar el perfil, el nombre ya existe.</string>
     <string name="text_profilesaved_overwrite">El nombre del perfil ya existe, ¿desea sobrescribir?</string>
@@ -126,10 +126,9 @@ No incluya '='"</string>
     <string name="text_ok">Aceptar</string>
     <string name="text_cancel">Cancelar</string>
     <string name="text_drvvernotmatch">"Para utilizar ViPER4Android, necesita instalar / actualizar el controlador V4A. 
-El proceso de instalación se realizará automáticamente. 
-Instalar/actualizar ahora?"</string>
+\nEl proceso de instalación se realizará automáticamente. 
+\nInstalar/actualizar ahora?"</string>
     <string name="text_drvuninst_confim">¿Realmente desea desinstalar el controlador v4a?</string>
-    <string name="text_user_statistics">v4a. activado</string>
     <string name="text_drv_blank" />
     <string name="text_uninstall">Desinstalar Driver</string>
     <string name="text_install">Instalar Driver</string>
@@ -138,17 +137,17 @@ Instalar/actualizar ahora?"</string>
     <string name="text_drvinst_failed">Driver no instalado, por favor confirme que su teléfono es Root y tiene busybox instalado.</string>
     <string name="text_changelog">Changelog</string>
     <string name="text_drv_status">Estado del driver</string>
-    <string name="text_drv_status_view">"
- 
-Version Driver: %1$s 
-NEON Activado: %2$s 
-Activado: %3$s 
-Estado: %4$s 
-Procesamiento: %5$s 
-Tipo: %6$s 
-Frecuencia de muestreo: %7$d 
-Canales: %8$d
-"</string>
+    <string name="text_drv_status_view">
+\n
+\nVersion Driver: %1$s 
+\nNEON Activado: %2$s 
+\nActivado: %3$s 
+\nEstado: %4$s 
+\nProcesamiento: %5$s 
+\nTipo: %6$s 
+\nFrecuencia de muestreo: %7$d
+\n
+</string>
     <string name="text_service_error">Error al comunicarse con el servicio ViPER4Android.</string>
     <string name="str_about">Thanks to alankila for EQ UI.</string>
     <string name="str_copyright">Copyright© 2006–2016, vipercn.com.</string>

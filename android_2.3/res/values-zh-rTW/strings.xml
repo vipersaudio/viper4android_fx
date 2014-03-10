@@ -200,7 +200,6 @@
 \n正在處理: %5$s
 \n效果類型: %6$s
 \n取樣率: %7$d
-\n聲道數量: %8$d
 \n
     </string>
     <string name="text_service_error">無法和ViPER4Android背景服務建立連接，可能是無法加載驅動或背景服務程序已被殺死。</string>

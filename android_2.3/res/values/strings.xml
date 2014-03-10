@@ -184,7 +184,7 @@
     </string>
 
     <string name="text_drvvernotmatch">In order to use ViPER4Android, you need to install/update the V4A driver.
-\nThe installation process will be done automatically.
+\nThe installation procedure will be done automatically.
 \nInstall/update now?
     </string>
 
@@ -195,7 +195,7 @@
     <string name="text_install">Install Driver</string>
     <string name="text_drvinst_ok">Driver installed, please reboot your phone.</string>
     <string name="text_drvuninst_ok">Driver uninstalled, please reboot your phone.</string>
-    <string name="text_drvinst_failed">Driver install failed, please comfirm your phone has been rooted and busybox installed.</string>
+    <string name="text_drvinst_failed">Driver install failed, please confirm your phone has been rooted and busybox installed.</string>
 
     <string name="text_changelog">Changelog</string>
     <string name="text_drv_status">Driver Status</string>
@@ -208,7 +208,6 @@
 \nProcessing: %5$s
 \nType: %6$s
 \nSampling Rate: %7$d
-\nChannels: %8$d
 \n
     </string>
     <string name="text_service_error">Failed to communicate with ViPER4Android service.</string>

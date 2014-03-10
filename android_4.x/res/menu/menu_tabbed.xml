@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/v4a_action_tabbed"
+        android:title="@string/navigation_toggle_drawer"
+        android:showAsAction="never" />
+    <item
+        android:id="@+id/lockeffect"
+        android:title="@string/text_lockeffect"/>
+    <item
+        android:id="@+id/notify"
+        android:title="@string/text_drv_blank"/>
+    <item
+        android:id="@+id/loadprofile"
+        android:title="@string/text_loadfxprofile"/>
+    <item
+        android:id="@+id/saveprofile"
+        android:title="@string/text_savefxprofile"/>
+    <item
+        android:id="@+id/uiprefer"
+        android:title="@string/text_uiprefer"/>
+    <item
+        android:id="@+id/compatible"
+        android:title="@string/text_commode"/>
+    <item
+        android:id="@+id/drvinst"
+        android:title="@string/text_drv_blank"/>
+    <item
+        android:id="@+id/drvstatus"
+        android:title="@string/text_drv_status"/>
+    <item
+        android:id="@+id/changelog" android:title="@string/text_changelog"/>
+    <item
+        android:id="@+id/checkupdate"
+        android:title="@string/text_checkupdate"/>
+    <item
+        android:id="@+id/about"
+        android:title="@string/about_title"/>
+</menu>

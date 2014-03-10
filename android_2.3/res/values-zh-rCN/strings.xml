@@ -207,7 +207,6 @@
 \n正在处理: %5$s
 \n效果类型: %6$s
 \n采样率: %7$d
-\n声道数量: %8$d
 \n
     </string>
     <string name="text_service_error">无法和ViPER4Android后台服务建立连接，可能是无法加载驱动或后台服务进程已被杀死。</string>

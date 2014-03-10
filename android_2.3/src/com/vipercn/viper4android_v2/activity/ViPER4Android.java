@@ -687,8 +687,7 @@ public final class ViPER4Android extends PreferenceActivity
 						mHeadsetServiceInstance.GetDriverVersion(), szDrvNEONEnabled,
 						szDrvEnabled, szDrvUsable, szDrvProcess,
 						szDrvEffType,
-						mHeadsetServiceInstance.GetDriverSamplingRate(),
-						mHeadsetServiceInstance.GetDriverChannels());
+						mHeadsetServiceInstance.GetDriverSamplingRate());
 				szMessages = szDrvStatus;
 			}
 

@@ -187,9 +187,6 @@
     <item>80％</item>
     <item>90％</item>
     <item>100％</item>
-    <item>120％</item>
-    <item>150％</item>
-    <item>200％</item>
   </string-array>
 
   <string-array name="dynamicsystem_outputs">
@@ -220,6 +217,7 @@
     <item>低音炮</item>
   </string-array>
   <string-array name="vbass_freq">
+    <item>30 赫茲</item>
     <item>40 赫茲</item>
     <item>50 赫茲</item>
     <item>60 赫茲</item>

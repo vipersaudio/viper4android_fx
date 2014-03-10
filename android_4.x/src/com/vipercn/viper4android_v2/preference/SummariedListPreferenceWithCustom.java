@@ -1,13 +1,5 @@
 package com.vipercn.viper4android_v2.preference;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-
-import com.vipercn.viper4android_v2.R;
-import com.vipercn.viper4android_v2.activity.StaticEnvironment;
-import com.vipercn.viper4android_v2.activity.Utils;
-
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.os.Environment;
@@ -16,124 +8,109 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.Toast;
 
-public class SummariedListPreferenceWithCustom extends ListPreference
-{
-	public SummariedListPreferenceWithCustom(Context context, AttributeSet set)
-	{
-		super(context, set);
-	}
+import com.vipercn.viper4android_v2.R;
+import com.vipercn.viper4android_v2.activity.StaticEnvironment;
+import com.vipercn.viper4android_v2.activity.Utils;
 
-	@Override  
-	protected void onPrepareDialogBuilder(Builder builder)
-	{
-		try
-		{
-			if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
-			{
-				Log.i("ViPER4Android", "External storage not mounted");
-				setEntries(new String[0]);
-				setEntryValues(new String[0]);
-				String szTip = getContext().getResources().getString(R.string.text_ir_dir_isempty);
-				szTip = String.format(szTip, StaticEnvironment.GetV4AKernelPath());
-				Toast.makeText(getContext(), szTip, Toast.LENGTH_LONG).show();
-				super.onPrepareDialogBuilder(builder);
-				return;
-			}
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
 
-			final String szKernelPath = StaticEnvironment.GetV4AKernelPath();
-			File mKnlFile = new File(szKernelPath);
+public class SummariedListPreferenceWithCustom extends ListPreference {
+    public SummariedListPreferenceWithCustom(Context context, AttributeSet set) {
+        super(context, set);
+    }
 
-			if (!mKnlFile.exists())
-			{
-				Log.i("ViPER4Android", "Kernel directory does not exists");
-				mKnlFile.mkdirs();
-				mKnlFile.mkdir();
-			}
-			else Log.i("ViPER4Android", "Kernel directory exists");
+    @Override
+    protected void onPrepareDialogBuilder(Builder builder) {
+        try {
+            if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+                Log.i("ViPER4Android", "External storage not mounted");
+                setEntries(new String[0]);
+                setEntryValues(new String[0]);
+                String tip = getContext().getResources().getString(R.string.text_ir_dir_isempty);
+                tip = String.format(tip, StaticEnvironment.getV4aKernelPath());
+                Toast.makeText(getContext(), tip, Toast.LENGTH_LONG).show();
+                super.onPrepareDialogBuilder(builder);
+                return;
+            }
 
-			ArrayList<String> szKnlList = new ArrayList<String>();
-			Utils.GetFileNameList(mKnlFile, ".irs", szKnlList);
-			Utils.GetFileNameList(mKnlFile, ".wav", szKnlList);
+            final String kernelPath = StaticEnvironment.getV4aKernelPath();
+            File kernelFile = new File(kernelPath);
 
-			if (szKnlList.isEmpty())
-			{
-				String szTip = getContext().getResources().getString(R.string.text_ir_dir_isempty);
-				szTip = String.format(szTip, StaticEnvironment.GetV4AKernelPath());
-				Toast.makeText(getContext(), szTip, Toast.LENGTH_LONG).show();
-			}
-			else Collections.sort(szKnlList);
+            if (!kernelFile.exists()) {
+                Log.i("ViPER4Android", "Kernel directory does not exists");
+                kernelFile.mkdirs();
+                kernelFile.mkdir();
+            } else Log.i("ViPER4Android", "Kernel directory exists");
 
-			final String[] szKnlArray = new String[szKnlList.size()];
-			final String[] szKnlArrayVal = new String[szKnlList.size()];
-			for(int i = 0; i < szKnlList.size(); i++)
-			{
-				szKnlArray[i] = szKnlList.get(i);
-				szKnlArrayVal[i] = szKernelPath + szKnlList.get(i);
-			}
+            ArrayList<String> kernelList = new ArrayList<String>();
+            Utils.getFileNameList(kernelFile, ".irs", kernelList);
+            Utils.getFileNameList(kernelFile, ".wav", kernelList);
 
-			setEntries(szKnlArray);
-			setEntryValues(szKnlArrayVal);
+            if (kernelList.isEmpty()) {
+                String tip = getContext().getResources().getString(R.string.text_ir_dir_isempty);
+                tip = String.format(tip, StaticEnvironment.getV4aKernelPath());
+                Toast.makeText(getContext(), tip, Toast.LENGTH_LONG).show();
+            } else Collections.sort(kernelList);
 
-			super.onPrepareDialogBuilder(builder);
-		}
-		catch (Exception e)
-		{
-			setEntries(new String[0]);
-			setEntryValues(new String[0]);
-			String szTip = getContext().getResources().getString(R.string.text_ir_dir_isempty);
-			szTip = String.format(szTip, StaticEnvironment.GetV4AKernelPath());
-			Toast.makeText(getContext(), szTip, Toast.LENGTH_LONG).show();
-			super.onPrepareDialogBuilder(builder);
-		}
-	}
+            final String[] kernelArray = new String[kernelList.size()];
+            final String[] arrayValue = new String[kernelList.size()];
+            for (int i = 0; i < kernelList.size(); i++) {
+                kernelArray[i] = kernelList.get(i);
+                arrayValue[i] = kernelPath + kernelList.get(i);
+            }
 
-	@Override
-	public void setValue(String value)
-	{
-		super.setValue(value);
+            setEntries(kernelArray);
+            setEntryValues(arrayValue);
 
-		try
-		{
-			CharSequence[] entries = getEntries();
-			CharSequence[] entryValues = getEntryValues();
-			if (entries == null || entryValues == null)
-			{
-				if (value == null)
-				{
-					setSummary("");
-					return;
-				}
-				if (value.isEmpty())
-				{
-					setSummary("");
-					return;
-				}
-				if (value.contains("/"))
-				{
-					String fileName = value.substring(value.lastIndexOf("/") + 1);
-					setSummary(fileName);
-					return;
-				}
-				setSummary(value);
-				return;
-			}
-			for (int i = 0; i < entryValues.length; i ++)
-			{
-				if (entryValues[i].equals(value))
-				{
-					setSummary(entries[i]);
-					break;
-				}
-			}
-		}
-		catch (Exception e)
-		{
-			setSummary("");
-		}
-	}
+            super.onPrepareDialogBuilder(builder);
+        } catch (Exception e) {
+            setEntries(new String[0]);
+            setEntryValues(new String[0]);
+            String tip = getContext().getResources().getString(R.string.text_ir_dir_isempty);
+            tip = String.format(tip, StaticEnvironment.getV4aKernelPath());
+            Toast.makeText(getContext(), tip, Toast.LENGTH_LONG).show();
+            super.onPrepareDialogBuilder(builder);
+        }
+    }
 
-	public void refreshFromPreference()
-	{
-		onSetInitialValue(true, null);
-	}
+    @Override
+    public void setValue(String value) {
+        super.setValue(value);
+
+        try {
+            CharSequence[] entries = getEntries();
+            CharSequence[] entryValues = getEntryValues();
+            if (entries == null || entryValues == null) {
+                if (value == null) {
+                    setSummary("");
+                    return;
+                }
+                if (value.isEmpty()) {
+                    setSummary("");
+                    return;
+                }
+                if (value.contains("/")) {
+                    String fileName = value.substring(value.lastIndexOf("/") + 1);
+                    setSummary(fileName);
+                    return;
+                }
+                setSummary(value);
+                return;
+            }
+            for (int i = 0; i < entryValues.length; i++) {
+                if (entryValues[i].equals(value)) {
+                    setSummary(entries[i]);
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            setSummary("");
+        }
+    }
+
+    public void refreshFromPreference() {
+        onSetInitialValue(true, null);
+    }
 }

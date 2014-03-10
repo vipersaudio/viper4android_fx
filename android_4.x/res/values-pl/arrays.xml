@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string-array name="drvinst_prefer">
         <item>B. wysoka jakość dźwięku</item>
         <item>Wysoka jakość dźwięku</item>
@@ -199,9 +200,6 @@
         <item>80 procent</item>
         <item>90 procent</item>
         <item>100 procent</item>
-        <item>120 procent</item>
-        <item>150 procent</item>
-        <item>200 procent</item>
     </string-array>
     <string-array name="dynamicsystem_outputs">
         <item>Nauszne z mocnym basem (v2)</item>
@@ -230,6 +228,7 @@
         <item>Subwoofer</item>
     </string-array>
     <string-array name="vbass_freq">
+        <item>30 Hz</item>
         <item>40 Hz</item>
         <item>50 Hz</item>
         <item>60 Hz</item>
@@ -284,4 +283,5 @@
         <item>7000 Hz</item>
         <item>8000 Hz</item>
     </string-array>
+
 </resources>

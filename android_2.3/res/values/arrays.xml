@@ -424,9 +424,6 @@
     <item>80 Percent</item>
     <item>90 Percent</item>
     <item>100 Percent</item>
-    <item>120 Percent</item>
-    <item>150 Percent</item>
-    <item>200 Percent</item>
   </string-array>
 
   <string-array name="dynamicsystem_bass_values" translatable="false">
@@ -462,9 +459,6 @@
     <item>80</item>
     <item>90</item>
     <item>100</item>
-    <item>120</item>
-    <item>150</item>
-    <item>200</item>
   </string-array>
 
   <string-array name="dynamicsystem_outputs">
@@ -522,6 +516,7 @@
     <item>2</item>
   </string-array>
   <string-array name="vbass_freq">
+    <item>30 Hz</item>
     <item>40 Hz</item>
     <item>50 Hz</item>
     <item>60 Hz</item>
@@ -531,6 +526,7 @@
     <item>100 Hz</item>
   </string-array>
   <string-array name="vbass_freq_values"  translatable="false">
+    <item>30</item>
     <item>40</item>
     <item>50</item>
     <item>60</item>

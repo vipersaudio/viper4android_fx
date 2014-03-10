@@ -1,67 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">ViPER FX</string>
     <string name="select_configuration_title">ViPER FX</string>
     <string name="headset_title">Słuchawki</string>
     <string name="speaker_title">Głośnik</string>
     <string name="bluetooth_title">Bluetooth</string>
+    <string name="usb_title">USB/Dock</string>
     <string name="audio_effects">Efekty dźwiękowe</string>
-
     <string name="dsp_settings_headset">Ustawienia - Słuchawki</string>
     <string name="dsp_settings_speaker">Ustawienia - Głośnik</string>
     <string name="dsp_settings_bluetooth">Ustawienia - Bluetooth</string>
-
+    <string name="dsp_settings_usb">Ustawienia - USB Device</string>
     <string name="pref_dsp_enable">Główny przełącznik</string>
     <string name="pref_effect_title">Siła efektu</string>
     <string name="dialog_effect">Wybierz siłę efektu</string>
-
     <string name="pref_force_enable_text">Wymuś aktywację</string>
     <string name="pref_force_enable_warn">Włączenie opcji powinno rozwiązać problem z brakiem efektów.
 \nJednak w kilku ROMach może to doprowadzić do utraty dźwięku lub wysokiego zużycia energii.
-\nPostępuj z rozwagą. W przypadku problemów wyłącz tę opcję.
-    </string>
-
+\nPostępuj z rozwagą. W przypadku problemów wyłącz tę opcję.</string>
     <string name="pref_fx_master_title">ViPER4Android FX</string>
     <string name="pref_fx_master_summary_on">Włączony</string>
     <string name="pref_fx_master_summary_off">Wyłączony</string>
-
     <string name="pref_spkfx_master_title">ViPER4Android FX</string>
     <string name="pref_spkfx_master_summary_on">Włączony</string>
     <string name="pref_spkfx_master_summary_off">Wyłączony</string>
-
     <string name="pref_fx_limiter_title">Bariera (Limiter)</string>
     <string name="pref_fx_limiter_threshold">Próg limitu</string>
     <string name="pref_spkfx_limiter_title">Bariera (Limiter)</string>
     <string name="pref_spkfx_limiter_threshold">Próg limitu</string>
     <string name="pref_output_gain">Wzmocnienie wyjściowe</string>
     <string name="pref_output_pan">Wyrównanie (balans)</string>
-
     <string name="pref_playback_title">Wzmocnienie</string>
     <string name="pref_playback_summary_on">Aktywny</string>
     <string name="pref_playback_summary_off">Nieaktywny</string>
-    <string name="pref_playback_enable">PlaybackAGC</string>
     <string name="pref_playback_output_threshold">Moc wyjściowa</string>
     <string name="pref_playback_maxgain">Mnożnik wzmocnienia</string>
-
     <string name="pref_xloud_title">Wysoka głośność</string>
     <string name="pref_xloud_summary_on">Aktywny</string>
     <string name="pref_xloud_summary_off">Nieaktywny</string>
-    <string name="pref_xloud_enable">eXtra-Loud</string>
     <string name="pref_xloud_output_amplifer">Wyjściowe wzmocnienie</string>
     <string name="pref_xloud_spk_lowfreq">Niska częstotliwość</string>
     <string name="pref_xloud_spk_highfreq">Wysoka częstotliwość</string>
-
     <string name="pref_spk_opt_title">Optymalizacja</string>
-    <string name="pref_spk_opt_summary_on">Aktywna</string>
     <string name="pref_spk_opt_summary_off">Nieaktywna</string>
-    <string name="pref_spk_opt_enable">Optymalizacja</string>
-
+    <string name="pref_spk_opt_summary_on">Optymalizacja jest włączona</string>
     <string name="pref_equalizer_title">Equalizer</string>
     <string name="pref_equalizer_summary_on">Aktywny</string>
     <string name="pref_equalizer_summary_off">Nieaktywny</string>
     <string name="pref_equalizer_enable">FIREqualizer</string>
     <string name="pref_equalizer_preset_title">Wybierz profil</string>
-
     <string name="pref_dynamicsystem_title">Dynamika</string>
     <string name="pref_dynamicsystem_summary_on">Aktywna</string>
     <string name="pref_dynamicsystem_summary_off">Nieaktywna</string>
@@ -72,7 +60,6 @@
     <string name="pref_dynamicsystem_tube_title">Symulator tuby (6N1J)</string>
     <string name="pref_dynamicsystem_tube_summary_on">Aktywny</string>
     <string name="pref_dynamicsystem_tube_summary_off">Nieaktywny</string>
-
     <string name="pref_fidelity_title">Wierność dźwięku</string>
     <string name="pref_fidelity_vb_summary_on">Aktywny</string>
     <string name="pref_fidelity_vb_summary_off">Nieaktywny</string>
@@ -90,14 +77,12 @@
     <string name="pref_fidelity_vc_mode_title">Tryb czystości dźwięku</string>
     <string name="pref_fidelity_vc_bassgain">Czystość</string>
     <string name="pref_fidelity_vc_bassgain_title">Czystość</string>
-
     <string name="pref_curesystem_title">Ochrona słuchu</string>
     <string name="pref_curesystem_summary_on">Aktywny</string>
     <string name="pref_curesystem_summary_off">Nieaktywny</string>
     <string name="pref_curesystem_enable">Cure Tech +</string>
     <string name="pref_select_cure_cf_title">Obustronny efekt</string>
     <string name="dialog_cure_crossfeed">Obustronny efekt</string>
-
     <string name="pref_convolver_title">Convolver</string>
     <string name="pref_convolver_summary_on">Aktywny</string>
     <string name="pref_convolver_summary_off">Nieaktywny</string>
@@ -106,32 +91,26 @@
     <string name="pref_convolver_knl_title">Wybierz impulsy</string>
     <string name="pref_convolver_crosschannel">Nakładanie kanałów</string>
     <string name="pref_convolver_crosschannel_title">Wybierz nałożenie kanałów</string>
-
     <string name="pref_vhs_title">Wirtualny dźwięk przestrzenny+</string>
     <string name="pref_vhs_summary_on">Aktywny</string>
     <string name="pref_vhs_summary_off">Nieaktywny</string>
     <string name="pref_vhs_enable">VHS+</string>
     <string name="pref_select_vhs_qual_title">Poziom efektu</string>
     <string name="dialog_vhs_qual">Wybierz poziom efektu</string>
-
     <string name="pref_colorfulmusic_title">Dźwięk przestrzenny</string>
     <string name="pref_colorfulmusic_summary_on">Aktywny</string>
     <string name="pref_colorfulmusic_summary_off">Nieaktywny</string>
     <string name="pref_colorfulmusic_enable">Dźwięk przestrzenny</string>
-
     <string name="pref_select_colorfulmusic_title">Siła efektu</string>
     <string name="dialog_colorfulmusic">Wybierz siłę efektu</string>
     <string name="pref_select_colorfulmusic_mi_title">Głębia efektu</string>
     <string name="dialog_colorfulmusic_mi">Wybierz głębię efektu</string>
-
     <string name="pref_diffsurr_title">Psychoakustyka</string>
     <string name="pref_diffsurr_summary_on">Aktywny</string>
     <string name="pref_diffsurr_summary_off">Nieaktywny</string>
     <string name="pref_diffsurr_enable">Efekt Haasa</string>
-
     <string name="pref_select_diffsurr_ms_title">Opóźnienie</string>
     <string name="dialog_diffsurr_ms">Wybierz opóźnienie</string>
-
     <string name="pref_reverb_title">Echo</string>
     <string name="pref_reverb_summary_on">Aktywny</string>
     <string name="pref_reverb_summary_off">Nieaktywny</string>
@@ -141,7 +120,6 @@
     <string name="pref_reverb_damp">Współczynnik tłumienia</string>
     <string name="pref_reverb_wet">Przetworzony sygnał</string>
     <string name="pref_reverb_dry">Oryginalny sygnał</string>
-
     <string name="eq_preset_acoustic">Akustyczny</string>
     <string name="eq_preset_bass_booster">Wzmocnienie basu</string>
     <string name="eq_preset_bass_reducer">Redukcja basu</string>
@@ -155,7 +133,6 @@
     <string name="eq_preset_treble_reducer">Redukcja sopranu</string>
     <string name="eq_preset_vocal_booster">Wzmocnienie wokalu</string>
     <string name="eq_preset_custom">Własny</string>
-
     <string name="text_ir_dir_isempty">Brak przykładowych impulsów w %1$s.</string>
     <string name="text_token_lost">Niektóre programy wymagają wyłączenia swoich efektów. Do tego czasu V4A nie będzie aktywny.</string>
     <string name="text_enabled">Włączone</string>
@@ -163,6 +140,7 @@
     <string name="text_headset">Słuchawki</string>
     <string name="text_bluetooth">Bluetooth</string>
     <string name="text_speaker">Głośnik</string>
+    <string name="text_usb">USB/Dock</string>
     <string name="text_showtrayicon">Pokaż powiadomienia</string>
     <string name="text_hidetrayicon">Ukryj powiadomienia</string>
     <string name="text_lockeffect">Stosuj do wsz. urządzeń</string>
@@ -170,67 +148,52 @@
     <string name="text_no">Nie</string>
     <string name="text_normal">Prawidłowy</string>
     <string name="text_abnormal">Nieprawidłowy</string>
-
-    <string name="text_effectprofile">Profile</string>
+    <string name="text_supported">Supported</string>
+    <string name="text_unsupported">Unsupported</string>
     <string name="text_loadfxprofile">Wczytaj profil</string>
+    <string name="text_newfxprofile">Nowy profil efekt&#8230;</string>
     <string name="text_savefxprofile">Zapisz profil</string>
-    <string name="text_pleaseinputname">Podaj nazwę profilu
-\nUnikaj \'=\'
-    </string>
-    <string name="text_profilesaved_ok">Zapisano profil.</string>
-    <string name="text_profilesaved_err">Nie można zapisać, profil o podanej nazwie już istnieje.</string>
     <string name="text_profilesaved_overwrite">Profil o takiej nazwie już istnieje, zastąpić?</string>
-    <string name="text_profileload_ok">Wczytano profil.</string>
-    <string name="text_profileload_err">Nie można wczytać profilu.</string>
-    <string name="text_rwsd_error">Nie można odczytać karty SD.</string>
-
-    <string name="text_su_missing">Brak dostępu do uprawnień roota.</string>
-
-    <string name="text_busybox_missing">Brak busyboxa.
-\nViPER4Android do poprawnego działania wymaga zainstalowanego busyboxa.
-    </string>
-
+    <string name="text_profileload_tip">Apply profile</string>
     <string name="text_ok">Ok</string>
     <string name="text_cancel">Anuluj</string>
-
     <string name="text_drvinst_prefer">Wybierz silnik efektów</string>
     <string name="text_drvinst_sqdrv">B. wysoka jakość wymaga co najmniej dwurdzeniowego procesora i może zwiększyć zużycie baterii.
-\nKontynuować?
-    </string>
-
+\nKontynuować?</string>
     <string name="text_drvvernotmatch">Do korzystania z ViPER4Android konieczna jest instalacja/aktualizacja dodatkowych bibliotek.
-\nZainstalować/Zaktualizować je teraz?
-    </string>
-
+\nZainstalować/Zaktualizować je teraz?</string>
     <string name="text_drvuninst_confim">Czy na pewno chcesz usunąć dodatkowe biblioteki?</string>
-
     <string name="text_uiprefer">Interfejs</string>
     <string name="text_uiprefer_dialog">Wybierz interfejs</string>
-
     <string name="text_commode">Tryb kompatybilności</string>
-
     <string name="text_uninstall">Usuń biblioteki</string>
     <string name="text_install">Zainstaluj biblioteki</string>
     <string name="text_drvinst_ok">Biblioteki zostały zainstalowane, zrestartuj telefon.</string>
     <string name="text_drvuninst_ok">Biblioteki zostały usunięte, zrestartuj telefon.</string>
+    <string name="text_no_busybox">Busybox was not detected on your device, would you like to install it now?</string>
+    <string name="text_drvinst_acquireroot">Driver install failed, can not acquire root permission, please confirm your device has been rooted.</string>
+    <string name="text_drvinst_busybox_not_installed">Driver install failed, because of no proper busybox found on this device.</string>
+    <string name="text_drvinst_sdnotmounted">Driver install failed, external storage not mounted.</string>
+    <string name="text_drvinst_dataioerr">Driver install failed, I/O error, please reboot and try again.</string>
+    <string name="text_drvinst_cfg_unsup">Driver install failed, unsupported android system or ROM.</string>
     <string name="text_drvinst_failed">Błąd przy instalacji bibliotek, brak roota.</string>
-
+    <string name="text_modifybuildprop">ATTENTION:
+\nLPA feature enabled on your device, this may cause V4A malfunction.
+\nLPA means \'Low Power Audio\', we can disable it through modifying build.prop, the procedure will be done automatically.
+\nWe strongly recommend you to make a NANDROID BACKUP or DATA BACKUP before proceeding!
+\nDo you wish to disable LPA now?</string>
     <string name="text_changelog">Lista zmian</string>
     <string name="text_drv_status">Pokaż stan</string>
-    <string name="text_drv_status_view">
-\n
+    <string name="text_drv_status_view">\n
 \nWersja bibliotek: %1$s
 \nTechnologia NEON: %2$s
 \nTechnologia V4A: %3$s
 \nStan: %4$s
-\nPrzetwarzanie: %5$s
-\nStrona główna: %6$s
+\nAudio Format: %5$s
+\nPrzetwarzanie: %6$s
 \nCzęstotliwość próbkowania: %7$d
-\nKanały: %8$d
-\n
-    </string>
+\n</string>
     <string name="text_service_error">Nie można uzyskać połączenia z usługą ViPER4Android.</string>
-
     <string name="about_title">Informacje i pomoc</string>
     <string name="about_text">***O ViPER4Android***
 \n
@@ -240,10 +203,10 @@
 \nOficjalne forum: forum.vipersaudio.com
 \n
 \nNiewielkie części kodu zostały oparte o DSPManager grupy CyanogenMod.
+\nGreat thanks to M4570D0N@github, xLaMbChOpSx@github, bboa@github
 \n
-\nWersja %1$s (FX), Codename Beautiful.
-    </string>
-
+\nWersja %1$s (FX), Codename &#8220;Beautiful&#8221;.
+\n</string>
     <string name="text_help_content">***Mini FAQ***
 \n
 \n\'Zainstaluj biblioteki\' - Instaluje\/Aktualizuje biblioteki efektów.
@@ -252,14 +215,18 @@
 \n \'Normalny\' - Efekty działają globalnie.
 \n \'Kompatybilny\' - Efekty działają lokalnie.
 \n
-\n<b>Efekty V4A nie działają w Twoich odtwarzaczach?</b>
-\n    Przełącz się w tryb kompatybilności i spróbuj ponownie.
+\n<b>Efekty V4A nie działają w Twoich odtwarzaczach?</b>\n    Przełącz się w tryb kompatybilności i spróbuj ponownie.
 \n
-\n<b>Jak zmienić jakość dźwięku?</b>
-\n    Odinstaluj biblioteki w menu, zrestartuj telefon i wybierz nowy silnik efektów przy uruchamianiu aplikacji.
+\n<b>Jak zmienić jakość dźwięku?</b>\n    Odinstaluj biblioteki w menu, zrestartuj telefon i wybierz nowy silnik efektów przy uruchamianiu aplikacji.
 \n
-\n<b>Forum: http://forum.xda-developers.com/showthread.php?t=2191223</b>
-    </string>
-
+\n<b>Forum: http://forum.xda-developers.com/showthread.php?t=2191223</b></string>
+    <string name="text_view_forum">Forum</string>
     <string name="text_checkupdate">Sprawdź aktualizacje</string>
+
+    <!-- TODO: translate this -->
+    <!-- Drawer -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_toggle_drawer">Switch to Drawer view</string>
+    <string name="navigation_toggle_tabbed">Switch to Tab view</string>
 </resources>

@@ -207,9 +207,6 @@
     <item>80 Por ciento</item>
     <item>90 Por ciento</item>
     <item>100 Por ciento</item>
-    <item>120 Por ciento</item>
-    <item>150 Por ciento</item>
-    <item>200 Por ciento</item>
   </string-array>
 
   <string-array name="dynamicsystem_outputs">
@@ -241,6 +238,7 @@
   </string-array>
 
   <string-array name="vbass_freq">
+    <item>30 Hz</item>
     <item>40 Hz</item>
     <item>50 Hz</item>
     <item>60 Hz</item>

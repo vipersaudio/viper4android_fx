@@ -202,38 +202,9 @@
 \nPrzetwarzanie: %5$s
 \nStrona główna: %6$s
 \nCzęstotliwość próbkowania: %7$d
-\nKanały: %8$d
 \n
     </string>
     <string name="text_service_error">Nie można uzyskać połączenia z usługą ViPER4Android</string>
-    <string name="about_text">***O ViPER4Android***
-\n
-\n\'libv4a_xx_xx.so\' jest jądrem\/silnikiem aplikacji.
-\nCopyright © 2006-2016, vipercn.com. Wszelkie prawa zastrzeżone.
-\nKomercyjne rozpowszechnianie bez zgody twórcy jest zabronione.
-\nOficjalne forum: forum.vipersaudio.com
-\n
-\nNiewielkie części kodu zostały oparte o DSPManager grupy CyanogenMod.
-\n
-\nWersja %1$s (FX), Codename Beautiful.
-    </string>
-
-    <string name="text_help_content">***Mini FAQ***
-\n
-\n\'Zainstaluj biblioteki\' - Instaluje\/Aktualizuje biblioteki efektów.
-\n\'Usuń biblioteki\' - Odinstalowuje biblioteki efektów.
-\n\'Tryb kompatybilności\' - Wybierz tryb kompatybilności efektów.
-\n \'Normalny\' - Efekty działają globalnie.
-\n \'Kompatybilny\' - Efekty działają lokalnie.
-\n
-\n<b>Efekty V4A nie działają w Twoich odtwarzaczach?</b>
-\n    Przełącz się w tryb kompatybilności i spróbuj ponownie.
-\n
-\n<b>Jak zmienić jakość dźwięku?</b>
-\n    Odinstaluj biblioteki w menu, zrestartuj telefon i wybierz nowy silnik efektów przy uruchamianiu aplikacji.
-\n
-\n<b>Forum: http://forum.xda-developers.com/showthread.php?t=2191223</b>
-    </string>
     <string name="text_checkupdate">Sprawdź wersję</string>
     <string name="str_about">Podziękowanie dla alankila za EQ UI.</string>
     <string name="str_copyright">Prawa autorskie© 2006–2016, vipercn.com.</string>

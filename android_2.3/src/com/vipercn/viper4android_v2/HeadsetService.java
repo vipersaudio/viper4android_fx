@@ -23,9 +23,7 @@ import android.media.AudioManager;
 import android.media.audiofx.AudioEffect;
 import android.os.Binder;
 import android.os.Environment;
-import android.os.Handler;
 import android.os.IBinder;
-import android.os.Message;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -246,100 +244,98 @@ public class HeadsetService extends Service
 	public static final String NAME = "com.vipercn.viper4android_v2.HEADSET_SERVICE";
 	public static final UUID ID_V4A_GENERAL_FX = UUID.fromString("41d3c987-e6cf-11e3-a88a-11aba5d5c51b");
 
-	/* ViPER4Android Driver Status */
+    /* ViPER4Android Driver Status */
 	public static final int PARAM_GET_DRIVER_VERSION = 32769;
-	public static final int PARAM_GET_NEONENABLED = 32770;
-	public static final int PARAM_GET_ENABLED = 32771;
-	public static final int PARAM_GET_CONFIGURE = 32772;
-	public static final int PARAM_GET_STREAMING = 32773;
-	public static final int PARAM_GET_EFFECT_TYPE = 32774;
-	public static final int PARAM_GET_SAMPLINGRATE = 32775;
-	public static final int PARAM_GET_CHANNELS = 32776;
-	public static final int PARAM_GET_CONVUSABLE = 32777;
+    public static final int PARAM_GET_NEONENABLED = 32770;
+    public static final int PARAM_GET_ENABLED = 32771;
+    public static final int PARAM_GET_CONFIGURE = 32772;
+	public static final int PARAM_GET_DRVCANWORK = 32773;
+    public static final int PARAM_GET_STREAMING = 32774;
+	public static final int PARAM_GET_EFFECT_TYPE = 32775;
+    public static final int PARAM_GET_SAMPLINGRATE = 32776;
+    public static final int PARAM_GET_CONVUSABLE = 32777;
 	public static final int PARAM_GET_CONVKNLID = 32778;
-	/*******************************/
 
-	/* ViPER4Android Driver Status Control */
+    /* ViPER4Android Driver Status Control */
 	public static final int PARAM_SET_COMM_STATUS = 36865;
-	public static final int PARAM_SET_UPDATE_STATUS = 36866;
+    public static final int PARAM_SET_UPDATE_STATUS = 36866;
 	public static final int PARAM_SET_RESET_STATUS = 36867;
-	public static final int PARAM_SET_DOPROCESS_STATUS = 36868;
+    public static final int PARAM_SET_DOPROCESS_STATUS = 36868;
 	public static final int PARAM_SET_FORCEENABLE_STATUS = 36869;
-	/***************************************/
+	public static final int PARAM_SET_SELFDIAGNOSE_STATUS = 36870;
 
-	/* ViPER4Android FX Types */
+    /* ViPER4Android FX Types */
 	public static final int V4A_FX_TYPE_NONE = 0;
-	public static final int V4A_FX_TYPE_HEADPHONE = 1;
-	public static final int V4A_FX_TYPE_SPEAKER = 2;
-	/**************************/
+    public static final int V4A_FX_TYPE_HEADPHONE = 1;
+    public static final int V4A_FX_TYPE_SPEAKER = 2;
 
-	/* ViPER4Android General FX Parameters */
-	public static final int PARAM_FX_TYPE_SWITCH = 65537;
-	public static final int PARAM_HPFX_CONV_PROCESS_ENABLED = 65538;
-	public static final int PARAM_HPFX_CONV_UPDATEKERNEL_DEPRECATED = 65539;  /* DEPRECATED in 4.x system, use buffer instead */
+    /* ViPER4Android General FX Parameters */
+    public static final int PARAM_FX_TYPE_SWITCH = 65537;
+    public static final int PARAM_HPFX_CONV_PROCESS_ENABLED = 65538;
+    public static final int PARAM_HPFX_CONV_UPDATEKERNEL = 65539;
 	public static final int PARAM_HPFX_CONV_PREPAREBUFFER = 65540;
 	public static final int PARAM_HPFX_CONV_SETBUFFER = 65541;
 	public static final int PARAM_HPFX_CONV_COMMITBUFFER = 65542;
 	public static final int PARAM_HPFX_CONV_CROSSCHANNEL = 65543;
-	public static final int PARAM_HPFX_VHE_PROCESS_ENABLED = 65544;
-	public static final int PARAM_HPFX_VHE_EFFECT_LEVEL = 65545;
-	public static final int PARAM_HPFX_FIREQ_PROCESS_ENABLED = 65546;
-	public static final int PARAM_HPFX_FIREQ_BANDLEVEL = 65547;
-	public static final int PARAM_HPFX_COLM_PROCESS_ENABLED = 65548;
-	public static final int PARAM_HPFX_COLM_WIDENING = 65549;
-	public static final int PARAM_HPFX_COLM_MIDIMAGE = 65550;
-	public static final int PARAM_HPFX_COLM_DEPTH = 65551;
-	public static final int PARAM_HPFX_DIFFSURR_PROCESS_ENABLED = 65552;
-	public static final int PARAM_HPFX_DIFFSURR_DELAYTIME = 65553;
-	public static final int PARAM_HPFX_REVB_PROCESS_ENABLED = 65554;
-	public static final int PARAM_HPFX_REVB_ROOMSIZE = 65555;
-	public static final int PARAM_HPFX_REVB_WIDTH = 65556;
-	public static final int PARAM_HPFX_REVB_DAMP = 65557;
-	public static final int PARAM_HPFX_REVB_WET = 65558;
-	public static final int PARAM_HPFX_REVB_DRY = 65559;
-	public static final int PARAM_HPFX_AGC_PROCESS_ENABLED = 65560;
-	public static final int PARAM_HPFX_AGC_RATIO = 65561;
-	public static final int PARAM_HPFX_AGC_VOLUME = 65562;
-	public static final int PARAM_HPFX_AGC_MAXSCALER = 65563;
-	public static final int PARAM_HPFX_DYNSYS_PROCESS_ENABLED = 65564;
-	public static final int PARAM_HPFX_DYNSYS_XCOEFFS = 65565;
-	public static final int PARAM_HPFX_DYNSYS_YCOEFFS = 65566;
-	public static final int PARAM_HPFX_DYNSYS_SIDEGAIN = 65567;
-	public static final int PARAM_HPFX_DYNSYS_BASSGAIN = 65568;
-	public static final int PARAM_HPFX_VIPERBASS_PROCESS_ENABLED = 65569;
-	public static final int PARAM_HPFX_VIPERBASS_MODE = 65570;
-	public static final int PARAM_HPFX_VIPERBASS_SPEAKER = 65571;
-	public static final int PARAM_HPFX_VIPERBASS_BASSGAIN = 65572;
-	public static final int PARAM_HPFX_VIPERCLARITY_PROCESS_ENABLED = 65573;
-	public static final int PARAM_HPFX_VIPERCLARITY_MODE = 65574;
-	public static final int PARAM_HPFX_VIPERCLARITY_CLARITY = 65575;
-	public static final int PARAM_HPFX_CURE_PROCESS_ENABLED = 65576;
-	public static final int PARAM_HPFX_CURE_CROSSFEED = 65577;
-	public static final int PARAM_HPFX_TUBE_PROCESS_ENABLED = 65578;
-	public static final int PARAM_HPFX_OUTPUT_VOLUME = 65579;
-	public static final int PARAM_HPFX_OUTPUT_PAN = 65580;
-	public static final int PARAM_HPFX_LIMITER_THRESHOLD = 65581;
-	public static final int PARAM_SPKFX_CONV_PROCESS_ENABLED = 65582;
-	public static final int PARAM_SPKFX_CONV_UPDATEKERNEL_DEPRECATED = 65583;  /* DEPRECATED in 4.x system, use buffer instead */
+    public static final int PARAM_HPFX_VHE_PROCESS_ENABLED = 65544;
+    public static final int PARAM_HPFX_VHE_EFFECT_LEVEL = 65545;
+    public static final int PARAM_HPFX_FIREQ_PROCESS_ENABLED = 65546;
+    public static final int PARAM_HPFX_FIREQ_BANDLEVEL = 65547;
+    public static final int PARAM_HPFX_COLM_PROCESS_ENABLED = 65548;
+    public static final int PARAM_HPFX_COLM_WIDENING = 65549;
+    public static final int PARAM_HPFX_COLM_MIDIMAGE = 65550;
+    public static final int PARAM_HPFX_COLM_DEPTH = 65551;
+    public static final int PARAM_HPFX_DIFFSURR_PROCESS_ENABLED = 65552;
+    public static final int PARAM_HPFX_DIFFSURR_DELAYTIME = 65553;
+    public static final int PARAM_HPFX_REVB_PROCESS_ENABLED = 65554;
+    public static final int PARAM_HPFX_REVB_ROOMSIZE = 65555;
+    public static final int PARAM_HPFX_REVB_WIDTH = 65556;
+    public static final int PARAM_HPFX_REVB_DAMP = 65557;
+    public static final int PARAM_HPFX_REVB_WET = 65558;
+    public static final int PARAM_HPFX_REVB_DRY = 65559;
+    public static final int PARAM_HPFX_AGC_PROCESS_ENABLED = 65560;
+    public static final int PARAM_HPFX_AGC_RATIO = 65561;
+    public static final int PARAM_HPFX_AGC_VOLUME = 65562;
+    public static final int PARAM_HPFX_AGC_MAXSCALER = 65563;
+    public static final int PARAM_HPFX_DYNSYS_PROCESS_ENABLED = 65564;
+    public static final int PARAM_HPFX_DYNSYS_XCOEFFS = 65565;
+    public static final int PARAM_HPFX_DYNSYS_YCOEFFS = 65566;
+    public static final int PARAM_HPFX_DYNSYS_SIDEGAIN = 65567;
+    public static final int PARAM_HPFX_DYNSYS_BASSGAIN = 65568;
+    public static final int PARAM_HPFX_VIPERBASS_PROCESS_ENABLED = 65569;
+    public static final int PARAM_HPFX_VIPERBASS_MODE = 65570;
+    public static final int PARAM_HPFX_VIPERBASS_SPEAKER = 65571;
+    public static final int PARAM_HPFX_VIPERBASS_BASSGAIN = 65572;
+    public static final int PARAM_HPFX_VIPERCLARITY_PROCESS_ENABLED = 65573;
+    public static final int PARAM_HPFX_VIPERCLARITY_MODE = 65574;
+    public static final int PARAM_HPFX_VIPERCLARITY_CLARITY = 65575;
+    public static final int PARAM_HPFX_CURE_PROCESS_ENABLED = 65576;
+    public static final int PARAM_HPFX_CURE_CROSSFEED = 65577;
+    public static final int PARAM_HPFX_TUBE_PROCESS_ENABLED = 65578;
+    public static final int PARAM_HPFX_OUTPUT_VOLUME = 65579;
+    public static final int PARAM_HPFX_OUTPUT_PAN = 65580;
+    public static final int PARAM_HPFX_LIMITER_THRESHOLD = 65581;
+    public static final int PARAM_SPKFX_CONV_PROCESS_ENABLED = 65582;
+    public static final int PARAM_SPKFX_CONV_UPDATEKERNEL = 65583;
 	public static final int PARAM_SPKFX_CONV_PREPAREBUFFER = 65584;
 	public static final int PARAM_SPKFX_CONV_SETBUFFER = 65585;
 	public static final int PARAM_SPKFX_CONV_COMMITBUFFER = 65586;
 	public static final int PARAM_SPKFX_CONV_CROSSCHANNEL = 65587;
-	public static final int PARAM_SPKFX_FIREQ_PROCESS_ENABLED = 65588;
-	public static final int PARAM_SPKFX_FIREQ_BANDLEVEL = 65589;
-	public static final int PARAM_SPKFX_REVB_PROCESS_ENABLED = 65590;
-	public static final int PARAM_SPKFX_REVB_ROOMSIZE = 65591;
-	public static final int PARAM_SPKFX_REVB_WIDTH = 65592;
-	public static final int PARAM_SPKFX_REVB_DAMP = 65593;
-	public static final int PARAM_SPKFX_REVB_WET = 65594;
-	public static final int PARAM_SPKFX_REVB_DRY = 65595;
-	public static final int PARAM_SPKFX_CORR_PROCESS_ENABLED = 65596;
-	public static final int PARAM_SPKFX_AGC_PROCESS_ENABLED = 65597;
-	public static final int PARAM_SPKFX_AGC_RATIO = 65598;
-	public static final int PARAM_SPKFX_AGC_VOLUME = 65599;
-	public static final int PARAM_SPKFX_AGC_MAXSCALER = 65600;
-	public static final int PARAM_SPKFX_OUTPUT_VOLUME = 65601;
-	public static final int PARAM_SPKFX_LIMITER_THRESHOLD = 65602;
+    public static final int PARAM_SPKFX_FIREQ_PROCESS_ENABLED = 65588;
+    public static final int PARAM_SPKFX_FIREQ_BANDLEVEL = 65589;
+    public static final int PARAM_SPKFX_REVB_PROCESS_ENABLED = 65590;
+    public static final int PARAM_SPKFX_REVB_ROOMSIZE = 65591;
+    public static final int PARAM_SPKFX_REVB_WIDTH = 65592;
+    public static final int PARAM_SPKFX_REVB_DAMP = 65593;
+    public static final int PARAM_SPKFX_REVB_WET = 65594;
+    public static final int PARAM_SPKFX_REVB_DRY = 65595;
+    public static final int PARAM_SPKFX_CORR_PROCESS_ENABLED = 65596;
+    public static final int PARAM_SPKFX_AGC_PROCESS_ENABLED = 65597;
+    public static final int PARAM_SPKFX_AGC_RATIO = 65598;
+    public static final int PARAM_SPKFX_AGC_VOLUME = 65599;
+    public static final int PARAM_SPKFX_AGC_MAXSCALER = 65600;
+    public static final int PARAM_SPKFX_OUTPUT_VOLUME = 65601;
+    public static final int PARAM_SPKFX_LIMITER_THRESHOLD = 65602;
 	/***************************************/
 
     private AudioManager mAudioManager = null;
@@ -351,51 +347,6 @@ public class HeadsetService extends Service
 	protected String mPreviousMode = "none";
 	private boolean mServicePrepared = false;
 	private boolean mDriverIsReady = false;
-
-	private final Timer tmDrvStatusCommTimer = new Timer();
-	private static Handler hDrvStatusCommTimerHandler = new Handler()
-	{
-	    @Override
-	    public void handleMessage(Message msg)
-	    {
-	    	if (msg == null)
-	    	{
-	    		super.handleMessage(msg);
-	    		return;
-	    	}
-
-	    	if (msg.what == 1)
-	    	{
-		    	try
-		    	{
-		    		if (msg.obj == null)
-		    		{
-		    			super.handleMessage(msg);
-		    			return;
-		    		}
-		    		V4ADSPModule v4a = (V4ADSPModule)(msg.obj);
-			    	if (v4a != null)
-			    	{
-			    		if (v4a.mInstance != null)
-			    			v4a.setParameter_px4_vx4x1(PARAM_SET_COMM_STATUS, 1);
-			    	}
-			    	super.handleMessage(msg);
-		    	}
-		    	catch (Exception e) { super.handleMessage(msg); }
-	    	}
-	    }
-	};
-	private TimerTask ttDrvStatusCommTimer = new TimerTask()
-	{
-	    @Override
-	    public void run()
-	    {
-	        Message message = new Message();
-	        message.what = 1;
-	        message.obj = (V4ADSPModule)mGeneralFX;
-	        hDrvStatusCommTimerHandler.sendMessage(message);
-	    }
-	};
 
 	private boolean bMediaMounted = false;
 	private final Timer tmMediaStatusTimer = new Timer();
@@ -657,7 +608,6 @@ public class HeadsetService extends Service
 			updateDspSystem();
 			mServicePrepared = true;
 
-			tmDrvStatusCommTimer.schedule(ttDrvStatusCommTimer, 60000, 60000);
 			tmMediaStatusTimer.schedule(ttMediaStatusTimer, 15000, 60000);  /* First is 15 secs, then 60 secs */
 		}
 		catch (Exception e)
@@ -676,7 +626,6 @@ public class HeadsetService extends Service
 		mServicePrepared = false;
 		try
 		{
-			tmDrvStatusCommTimer.cancel();
 			tmMediaStatusTimer.cancel();
 
 			stopForeground(true);
@@ -806,14 +755,6 @@ public class HeadsetService extends Service
 		return nResult;
 	}
 
-	public int GetDriverChannels()
-	{
-		int nResult = 0;
-		if (mGeneralFX != null && mDriverIsReady)
-			nResult = mGeneralFX.getParameter_px4_vx4x1(PARAM_GET_CHANNELS);
-		return nResult;
-	}
-
 	public boolean GetConvolverUsable()
 	{
 		boolean bResult = false;
@@ -940,7 +881,7 @@ public class HeadsetService extends Service
 
 			/* Convolver */
 			Log.i("ViPER4Android", "updateSystem(): Updating Convolver.");
-			mGeneralFX.setParameter_px4_vxString(PARAM_HPFX_CONV_UPDATEKERNEL_DEPRECATED, preferences.getString("viper4android.headphonefx.convolver.kernel", ""));
+			mGeneralFX.setParameter_px4_vxString(PARAM_HPFX_CONV_UPDATEKERNEL, preferences.getString("viper4android.headphonefx.convolver.kernel", ""));
 			if (preferences.getBoolean("viper4android.headphonefx.convolver.enable", false))
 				mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_CONV_PROCESS_ENABLED, 1);
 			else mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_CONV_PROCESS_ENABLED, 0);
@@ -1068,7 +1009,7 @@ public class HeadsetService extends Service
 
 			/* Convolver */
 			Log.i("ViPER4Android", "updateSystem(): Updating Convolver.");
-			mGeneralFX.setParameter_px4_vxString(PARAM_SPKFX_CONV_UPDATEKERNEL_DEPRECATED, preferences.getString("viper4android.headphonefx.convolver.kernel", ""));
+			mGeneralFX.setParameter_px4_vxString(PARAM_SPKFX_CONV_UPDATEKERNEL, preferences.getString("viper4android.headphonefx.convolver.kernel", ""));
 			if (preferences.getBoolean("viper4android.headphonefx.convolver.enable", false))
 				mGeneralFX.setParameter_px4_vx4x1(PARAM_SPKFX_CONV_PROCESS_ENABLED, 1);
 			else mGeneralFX.setParameter_px4_vx4x1(PARAM_SPKFX_CONV_PROCESS_ENABLED, 0);
@@ -1219,7 +1160,7 @@ public class HeadsetService extends Service
 
 			/* Convolver */
 			Log.i("ViPER4Android", "updateSystem(): Updating Convolver.");
-			mGeneralFX.setParameter_px4_vxString(PARAM_HPFX_CONV_UPDATEKERNEL_DEPRECATED, preferences.getString("viper4android.headphonefx.convolver.kernel", ""));
+			mGeneralFX.setParameter_px4_vxString(PARAM_HPFX_CONV_UPDATEKERNEL, preferences.getString("viper4android.headphonefx.convolver.kernel", ""));
 			if (preferences.getBoolean("viper4android.headphonefx.convolver.enable", false))
 				mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_CONV_PROCESS_ENABLED, 1);
 			else mGeneralFX.setParameter_px4_vx4x1(PARAM_HPFX_CONV_PROCESS_ENABLED, 0);
@@ -1347,7 +1288,7 @@ public class HeadsetService extends Service
 
 			/* Convolver */
 			Log.i("ViPER4Android", "updateSystem(): Updating Convolver.");
-			mGeneralFX.setParameter_px4_vxString(PARAM_SPKFX_CONV_UPDATEKERNEL_DEPRECATED, preferences.getString("viper4android.headphonefx.convolver.kernel", ""));
+			mGeneralFX.setParameter_px4_vxString(PARAM_SPKFX_CONV_UPDATEKERNEL, preferences.getString("viper4android.headphonefx.convolver.kernel", ""));
 			if (preferences.getBoolean("viper4android.headphonefx.convolver.enable", false))
 				mGeneralFX.setParameter_px4_vx4x1(PARAM_SPKFX_CONV_PROCESS_ENABLED, 1);
 			else mGeneralFX.setParameter_px4_vx4x1(PARAM_SPKFX_CONV_PROCESS_ENABLED, 0);

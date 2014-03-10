@@ -207,9 +207,6 @@
         <item>80 процентов</item>
         <item>90 процентов</item>
         <item>100 процентов</item>
-        <item>120 процентов</item>
-        <item>150 процентов</item>
-        <item>200 процентов</item>
     </string-array>
 	
     <string-array name="dynamicsystem_outputs">
@@ -241,6 +238,7 @@
     </string-array>	
 
     <string-array name="vbass_freq">
+        <item>30 Гц</item>
 		<item>40 Гц</item>
 		<item>50 Гц</item>
 		<item>60 Гц</item>

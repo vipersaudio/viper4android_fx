@@ -1,7 +1,5 @@
 package com.vipercn.viper4android_v2.preference;
 
-import java.util.Locale;
-
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -15,147 +13,124 @@ import android.view.View.OnTouchListener;
 
 import com.vipercn.viper4android_v2.R;
 import com.vipercn.viper4android_v2.service.ViPER4AndroidService;
-import com.vipercn.viper4android_v2.preference.EqualizerSurface;
 
-public class EqualizerPreference extends DialogPreference
-{
-	protected EqualizerSurface mListEqualizer, mDialogEqualizer;
-	private ViPER4AndroidService mAudioService;
+import java.util.Locale;
 
-	private final ServiceConnection connectionForDialog = new ServiceConnection()
-	{
-		@Override
-		public void onServiceConnected(ComponentName name, IBinder binder)
-		{
-			mAudioService = ((ViPER4AndroidService.LocalBinder)binder).getService();
-			updateDspFromDialogEqualizer();
-		}
+public class EqualizerPreference extends DialogPreference {
+    protected EqualizerSurface mListEqualizer, mDialogEqualizer;
+    private ViPER4AndroidService mAudioService;
 
-		@Override
-		public void onServiceDisconnected(ComponentName name)
-		{
-			mAudioService = null;
-		}
-	};
+    private final ServiceConnection connectionForDialog = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder binder) {
+            mAudioService = ((ViPER4AndroidService.LocalBinder) binder).getService();
+            updateDspFromDialogEqualizer();
+        }
 
-	public EqualizerPreference(Context context, AttributeSet attributeSet)
-	{
-		super(context, attributeSet);
-		setLayoutResource(R.layout.equalizer);
-		setDialogLayoutResource(R.layout.equalizer_popup);
-	}
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            mAudioService = null;
+        }
+    };
 
-	protected void updateDspFromDialogEqualizer()
-	{
-		if (mAudioService != null)
-		{
-			float[] levels = new float[10];
-			for (int i = 0; i < levels.length; i ++)
-			{
-				levels[i] = mDialogEqualizer.getBand(i);
-			}
-			mAudioService.setEqualizerLevels(levels);
-		}
-	}
+    public EqualizerPreference(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
+        setLayoutResource(R.layout.equalizer);
+        setDialogLayoutResource(R.layout.equalizer_popup);
+    }
 
-	private void updateListEqualizerFromValue()
-	{
-		String value = getPersistedString(null);
-		if (value != null && mListEqualizer != null)
-		{
-			String[] levelsStr = value.split(";");
-			for (int i = 0; i < 10; i ++)
-			{
-				mListEqualizer.setBand(i, Float.valueOf(levelsStr[i]));
-			}
-		}
-	}
+    protected void updateDspFromDialogEqualizer() {
+        if (mAudioService != null) {
+            float[] levels = new float[10];
+            for (int i = 0; i < levels.length; i++) {
+                levels[i] = mDialogEqualizer.getBand(i);
+            }
+            mAudioService.setEqualizerLevels(levels);
+        }
+    }
 
-	@Override
-	protected void onBindDialogView(View view)
-	{
-		super.onBindDialogView(view);
+    private void updateListEqualizerFromValue() {
+        String value = getPersistedString(null);
+        if (value != null && mListEqualizer != null) {
+            String[] levelsStr = value.split(";");
+            for (int i = 0; i < 10; i++) {
+                mListEqualizer.setBand(i, Float.valueOf(levelsStr[i]));
+            }
+        }
+    }
 
-		mDialogEqualizer = (EqualizerSurface)view.findViewById(R.id.FrequencyResponse);
-		mDialogEqualizer.setOnTouchListener(new OnTouchListener()
-		{
-			@Override
-			public boolean onTouch(View v, MotionEvent event)
-			{
-				float x = event.getX();
-				float y = event.getY();
+    @Override
+    protected void onBindDialogView(View view) {
+        super.onBindDialogView(view);
 
-				int band = mDialogEqualizer.findClosest(x);
+        mDialogEqualizer = (EqualizerSurface) view.findViewById(R.id.FrequencyResponse);
+        mDialogEqualizer.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                float x = event.getX();
+                float y = event.getY();
 
-				int wy = v.getHeight();
-				float level = (y / wy) * (EqualizerSurface.MIN_DB - EqualizerSurface.MAX_DB) - EqualizerSurface.MIN_DB;
-				if (level < EqualizerSurface.MIN_DB)
-				{
-					level = EqualizerSurface.MIN_DB;
-				}
-				if (level > EqualizerSurface.MAX_DB)
-				{
-					level = EqualizerSurface.MAX_DB;
-				}
+                int band = mDialogEqualizer.findClosest(x);
 
-				mDialogEqualizer.setBand(band, level);
-				updateDspFromDialogEqualizer();
-				return true;
-			}
-		});
+                int wy = v.getHeight();
+                float level = y / wy * (EqualizerSurface.MIN_DB - EqualizerSurface.MAX_DB)
+                        - EqualizerSurface.MIN_DB;
+                if (level < EqualizerSurface.MIN_DB) {
+                    level = EqualizerSurface.MIN_DB;
+                } else if (level > EqualizerSurface.MAX_DB) {
+                    level = EqualizerSurface.MAX_DB;
+                }
 
-		if (mListEqualizer != null)
-		{
-			for (int i = 0; i < 10; i ++)
-			{
-				mDialogEqualizer.setBand(i, mListEqualizer.getBand(i));
-			}
-		}
+                mDialogEqualizer.setBand(band, level);
+                updateDspFromDialogEqualizer();
+                return true;
+            }
+        });
 
-		getContext().bindService(new Intent(getContext(), ViPER4AndroidService.class), connectionForDialog, 0);
-	}
+        if (mListEqualizer != null) {
+            for (int i = 0; i < 10; i++) {
+                mDialogEqualizer.setBand(i, mListEqualizer.getBand(i));
+            }
+        }
 
-	@Override
-	protected void onDialogClosed(boolean positiveResult)
-	{
-		if (positiveResult)
-		{
-			String value = "";
-			for (int i = 0; i < 10; i ++)
-			{
-				value += String.format(Locale.ROOT, "%.1f", Math.round(mDialogEqualizer.getBand(i) * 10.f) / 10.f) + ";";
-			}
-			persistString(value);
-			updateListEqualizerFromValue();
-		}
+        Intent serviceIntent = new Intent(getContext(), ViPER4AndroidService.class);
+        getContext().bindService(serviceIntent, connectionForDialog, 0);
+    }
 
-		if (mAudioService != null)
-		{
-			mAudioService.setEqualizerLevels(null);
-		}
-		getContext().unbindService(connectionForDialog);
-	}
+    @Override
+    protected void onDialogClosed(boolean positiveResult) {
+        if (positiveResult) {
+            StringBuilder value = new StringBuilder();
+            for (int i = 0; i < 10; i ++) {
+                value.append(String.format(Locale.ROOT, "%.1f", mDialogEqualizer.getBand(i)));
+                value.append(';');
+            }
+            persistString(value.toString());
+            updateListEqualizerFromValue();
+        }
 
-	@Override
-	protected void onBindView(View view)
-	{
-		super.onBindView(view);
-		mListEqualizer = (EqualizerSurface)view.findViewById(R.id.FrequencyResponse);
-		updateListEqualizerFromValue();
-	}
+        if (mAudioService != null) {
+            mAudioService.setEqualizerLevels(null);
+        }
+        getContext().unbindService(connectionForDialog);
+    }
 
-	@Override
-	protected void onSetInitialValue(boolean restorePersistedValue, Object defaultValue)
-	{
-		String value = restorePersistedValue ? getPersistedString(null) : (String)defaultValue;
-		if (shouldPersist())
-		{
-			persistString(value);
-		}
-	}
+    @Override
+    protected void onBindView(View view) {
+        super.onBindView(view);
+        mListEqualizer = (EqualizerSurface) view.findViewById(R.id.FrequencyResponse);
+        updateListEqualizerFromValue();
+    }
 
-	public void refreshFromPreference()
-	{
-		onSetInitialValue(true, null);
-	}
+    @Override
+    protected void onSetInitialValue(boolean restorePersistedValue, Object defaultValue) {
+        String value = restorePersistedValue ? getPersistedString(null) : (String) defaultValue;
+        if (shouldPersist()) {
+            persistString(value);
+        }
+    }
+
+    public void refreshFromPreference() {
+        onSetInitialValue(true, null);
+    }
 }
