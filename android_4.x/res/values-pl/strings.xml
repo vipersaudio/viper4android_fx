@@ -11,7 +11,7 @@
     <string name="dsp_settings_headset">Ustawienia - Słuchawki</string>
     <string name="dsp_settings_speaker">Ustawienia - Głośnik</string>
     <string name="dsp_settings_bluetooth">Ustawienia - Bluetooth</string>
-    <string name="dsp_settings_usb">Ustawienia - USB Device</string>
+    <string name="dsp_settings_usb">Ustawienia - Urządzenie USB</string>
     <string name="pref_dsp_enable">Główny przełącznik</string>
     <string name="pref_effect_title">Siła efektu</string>
     <string name="dialog_effect">Wybierz siłę efektu</string>
@@ -148,13 +148,13 @@
     <string name="text_no">Nie</string>
     <string name="text_normal">Prawidłowy</string>
     <string name="text_abnormal">Nieprawidłowy</string>
-    <string name="text_supported">Supported</string>
-    <string name="text_unsupported">Unsupported</string>
+    <string name="text_supported">Wspierany</string>
+    <string name="text_unsupported">Niewspierany</string>
     <string name="text_loadfxprofile">Wczytaj profil</string>
-    <string name="text_newfxprofile">Nowy profil efekt&#8230;</string>
+    <string name="text_newfxprofile">Nowy profil&#8230;</string>
     <string name="text_savefxprofile">Zapisz profil</string>
     <string name="text_profilesaved_overwrite">Profil o takiej nazwie już istnieje, zastąpić?</string>
-    <string name="text_profileload_tip">Apply profile</string>
+    <string name="text_profileload_tip">Ustaw profil</string>
     <string name="text_ok">Ok</string>
     <string name="text_cancel">Anuluj</string>
     <string name="text_drvinst_prefer">Wybierz silnik efektów</string>
@@ -170,18 +170,18 @@
     <string name="text_install">Zainstaluj biblioteki</string>
     <string name="text_drvinst_ok">Biblioteki zostały zainstalowane, zrestartuj telefon.</string>
     <string name="text_drvuninst_ok">Biblioteki zostały usunięte, zrestartuj telefon.</string>
-    <string name="text_no_busybox">Busybox was not detected on your device, would you like to install it now?</string>
-    <string name="text_drvinst_acquireroot">Driver install failed, can not acquire root permission, please confirm your device has been rooted.</string>
-    <string name="text_drvinst_busybox_not_installed">Driver install failed, because of no proper busybox found on this device.</string>
-    <string name="text_drvinst_sdnotmounted">Driver install failed, external storage not mounted.</string>
-    <string name="text_drvinst_dataioerr">Driver install failed, I/O error, please reboot and try again.</string>
-    <string name="text_drvinst_cfg_unsup">Driver install failed, unsupported android system or ROM.</string>
-    <string name="text_drvinst_failed">Błąd przy instalacji bibliotek, brak roota.</string>
-    <string name="text_modifybuildprop">ATTENTION:
-\nLPA feature enabled on your device, this may cause V4A malfunction.
-\nLPA means \'Low Power Audio\', we can disable it through modifying build.prop, the procedure will be done automatically.
-\nWe strongly recommend you to make a NANDROID BACKUP or DATA BACKUP before proceeding!
-\nDo you wish to disable LPA now?</string>
+    <string name="text_no_busybox">Brak Busybox, zainstalować teraz?</string>
+    <string name="text_drvinst_acquireroot">Błąd podczas instalacji bibliotek, brak uprawnień roota.</string>
+    <string name="text_drvinst_busybox_not_installed">Błąd podczas instalacji bibliotek, zła wersja Busybox.</string>
+    <string name="text_drvinst_sdnotmounted">Błąd podczas instalacji bibliotek, karta pamięci odmontowana.</string>
+    <string name="text_drvinst_dataioerr">Błąd podczas instalacji bibliotek, uruchom ponownie telefon.</string>
+    <string name="text_drvinst_cfg_unsup">Błąd podczas instalacji bibliotek, niewspierany rom lub wersja androida.</string>
+    <string name="text_drvinst_failed">Błąd przy instalacji bibliotek.</string>
+    <string name="text_modifybuildprop">UWAGA:
+\nWykryto aktywną funkcję LPA, która może powodować zniekształcenia w ViPERZE.
+\nSkrót LPA oznacza \'Low Power Audio\', możemy wyłączyć LPA za Ciebie modyfikując build.prop.
+\nZaleca się najpierw zrobić nandroid backup całego romu!
+\nWyłączyć LPA?</string>
     <string name="text_changelog">Lista zmian</string>
     <string name="text_drv_status">Pokaż stan</string>
     <string name="text_drv_status_view">\n
