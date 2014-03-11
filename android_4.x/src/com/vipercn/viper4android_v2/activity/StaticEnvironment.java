@@ -83,7 +83,7 @@ public class StaticEnvironment {
                         ? mExternalStoragePathName : mExternalStoragePathName + "/";
                 sV4aRoot = sExternalStoragePath + "ViPER4Android/";
                 sV4aKernelPath = sV4aRoot + "Kernel/";
-                sV4aProfilePath = sEnvironmentInitialized + "Profile/";
+                sV4aProfilePath = sV4aRoot + "Profile/";
                 Log.i("ViPER4Android", "External storage path = " + sExternalStoragePath);
                 Log.i("ViPER4Android", "ViPER4Android root path = " + sV4aRoot);
                 Log.i("ViPER4Android", "ViPER4Android kernel path = " + sV4aKernelPath);
