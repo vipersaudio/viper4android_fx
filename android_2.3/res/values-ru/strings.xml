@@ -12,9 +12,9 @@
 -->
     <string name="app_name">ViPER FX</string>
     <string name="select_configuration_title">ViPER4Android</string>
-    <string name="headset_title">Наушники</string>
-    <string name="speaker_title">Динамик</string>
-    <string name="bluetooth_title">Bluetooth</string>
+    <string name="headset_title">НАУШНИКИ</string>
+    <string name="speaker_title">ДИНАМИК</string>
+    <string name="bluetooth_title">BLUETOOTH</string>
     <string name="audio_effects">Аудиоэффекты</string>
 
     <string name="dsp_settings_headset">Настройка эффектов — Наушники</string>
@@ -66,38 +66,38 @@
     <string name="pref_dynamicsystem_title">Динамическая обработка</string>
     <string name="pref_dynamicsystem_summary_on">Динамическая обработка включена</string>
     <string name="pref_dynamicsystem_summary_off">Динамическая обработка отключена</string>
-    <string name="pref_dynamicsystem_enable">Динамическая обработка</string>
+    <string name="pref_dynamicsystem_enable">Включить</string>
     <string name="pref_dynamicsystem_output">Наушники</string>
     <string name="pref_dynamicsystem_output_title">Наушники</string>
-    <string name="pref_dynamicsystem_bass">Динамический бас</string>
+    <string name="pref_dynamicsystem_bass">Уровень НЧ</string>
     <string name="pref_dynamicsystem_tube_title">Ламповый звук (6N1J)</string>
     <string name="pref_dynamicsystem_tube_summary_on">Ламповый звук включён</string>
     <string name="pref_dynamicsystem_tube_summary_off">Ламповый звук отключён</string>
 
-    <string name="pref_fidelity_title">Реконструкция звука</string>
-    <string name="pref_fidelity_vb_summary_on">Реконструкция баса включена</string>
-    <string name="pref_fidelity_vb_summary_off">Реконструкция баса отключена</string>
-    <string name="pref_fidelity_vb_enable">Реконструкция баса</string>
+    <string name="pref_fidelity_title">Реставрация звука</string>
+    <string name="pref_fidelity_vb_summary_on">Реставрация НЧ включена</string>
+    <string name="pref_fidelity_vb_summary_off">Реставрация НЧ отключена</string>
+    <string name="pref_fidelity_vb_enable">Реставрация НЧ</string>
     <string name="pref_fidelity_vb_mode">Алгоритм</string>
     <string name="pref_fidelity_vb_mode_title">Алгоритм</string>
     <string name="pref_fidelity_vb_bassfreq">Частота</string>
     <string name="pref_fidelity_vb_bassfreq_title">Частота</string>
     <string name="pref_fidelity_vb_bassgain">Усиление</string>
     <string name="pref_fidelity_vb_bassgain_title">Усиление</string>
-    <string name="pref_fidelity_vc_summary_on">Отчётливость включена</string>
-    <string name="pref_fidelity_vc_summary_off">Отчётливость отключена</string>
-    <string name="pref_fidelity_vc_enable">Отчётливость</string>
+    <string name="pref_fidelity_vc_summary_on">Реставрация ВЧ включена</string>
+    <string name="pref_fidelity_vc_summary_off">Реставрация ВЧ отключена</string>
+    <string name="pref_fidelity_vc_enable">Реставрация ВЧ</string>
     <string name="pref_fidelity_vc_mode">Алгоритм</string>
     <string name="pref_fidelity_vc_mode_title">Алгоритм</string>
-    <string name="pref_fidelity_vc_bassgain">Уровень</string>
-    <string name="pref_fidelity_vc_bassgain_title">Уровень</string>
+    <string name="pref_fidelity_vc_bassgain">Усиление</string>
+    <string name="pref_fidelity_vc_bassgain_title">Усиление</string>
 
-    <string name="pref_curesystem_title">Защита слуха</string>
-    <string name="pref_curesystem_summary_on">Защита слуха включена</string>
-    <string name="pref_curesystem_summary_off">Защита слуха отключена</string>
+    <string name="pref_curesystem_title">Бинауральная стимуляция</string>
+    <string name="pref_curesystem_summary_on">Бинауральная стимуляция включена</string>
+    <string name="pref_curesystem_summary_off">Бинауральная стимуляция отключена</string>
     <string name="pref_curesystem_enable">Включить</string>
     <string name="pref_select_cure_cf_title">Бинауральный уровень</string>
-    <string name="dialog_cure_crossfeed">Бинауральный уровень</string>
+    <string name="dialog_cure_crossfeed">Уровень</string>
 
     <string name="pref_convolver_title">Конвольвер</string>
     <string name="pref_convolver_summary_on">Конвольвер включён</string>
@@ -106,30 +106,30 @@
     <string name="pref_convolver_knl">Импульс</string>
     <string name="pref_convolver_knl_title">Импульс</string>
 
-    <string name="pref_vhs_title">Виртуалайзер</string>
-    <string name="pref_vhs_summary_on">Виртуалайзер включён</string>
-    <string name="pref_vhs_summary_off">Виртуалайзер отключён</string>
-    <string name="pref_vhs_enable">Виртуалайзер</string>
+    <string name="pref_vhs_title">Объёмный звук</string>
+    <string name="pref_vhs_summary_on">Объёмный звук включён</string>
+    <string name="pref_vhs_summary_off">Объёмный звук отключён</string>
+    <string name="pref_vhs_enable">Объёмный звук</string>
     <string name="pref_select_vhs_qual_title">Уровень</string>
     <string name="dialog_vhs_qual">Уровень</string>
 
-    <string name="pref_colorfulmusic_title">Объёмный звук</string>
-    <string name="pref_colorfulmusic_summary_on">Объёмный звук включён</string>
-    <string name="pref_colorfulmusic_summary_off">Объёмный звук отключён</string>
-    <string name="pref_colorfulmusic_enable">Объёмный звук</string>
+    <string name="pref_colorfulmusic_title">Расширение стереобазы</string>
+    <string name="pref_colorfulmusic_summary_on">Расширение стереобазы включено</string>
+    <string name="pref_colorfulmusic_summary_off">Расширение стереобазы отключено</string>
+    <string name="pref_colorfulmusic_enable">Расширение стереобазы</string>
 
     <string name="pref_select_colorfulmusic_title">Уровень</string>
     <string name="dialog_colorfulmusic">Уровень</string>
-    <string name="pref_select_colorfulmusic_mi_title">Яркость вокала</string>
-    <string name="dialog_colorfulmusic_mi">Яркость вокала</string>
+    <string name="pref_select_colorfulmusic_mi_title">Плотность центра</string>
+    <string name="dialog_colorfulmusic_mi">Уровень</string>
 
     <string name="pref_diffsurr_title">Хаас-эффект</string>
     <string name="pref_diffsurr_summary_on">Хаас-эффект включён</string>
     <string name="pref_diffsurr_summary_off">Хаас-эффект отключён</string>
     <string name="pref_diffsurr_enable">Хаас-эффект</string>
 
-    <string name="pref_select_diffsurr_ms_title">Задержка</string>
-    <string name="dialog_diffsurr_ms">Задержка</string>
+    <string name="pref_select_diffsurr_ms_title">Задержка канала</string>
+    <string name="dialog_diffsurr_ms">Задержка канала</string>
 
     <string name="pref_reverb_title">Реверберация</string>
     <string name="pref_reverb_summary_on">Реверберация включена</string>
@@ -138,8 +138,8 @@
     <string name="pref_reverb_roomsize">Площадь зала</string>
     <string name="pref_reverb_width">Ширина сцены</string>	
     <string name="pref_reverb_damp">Затухание</string>
-    <string name="pref_reverb_wet">Мокрый сигнал</string>
-    <string name="pref_reverb_dry">Сухой сигнал</string>
+    <string name="pref_reverb_wet">Отражённый сигнал</string>
+    <string name="pref_reverb_dry">Прямой сигнал</string>
 
     <string name="eq_preset_acoustic">Акустика</string>
     <string name="eq_preset_bass_booster">Усилить НЧ</string>
@@ -157,16 +157,16 @@
 
     <string name="menu_reset">Сброс</string>
 
-    <string name="text_ir_dir_isempty">ViPER4Android: Папка импульсов %1$s пуста.</string>
-    <string name="text_token_lost">ViPER4Android: Невозможно включить эффекты, попробуйте обновить драйвер.</string>
+    <string name="text_ir_dir_isempty">ViPER4Android: папка импульсов %1$s пуста.</string>
+    <string name="text_token_lost">ViPER4Android: ошибка управления эффектами, попробуйте перезагрузить драйвер.</string>
     <string name="text_enabled">Включено</string>
     <string name="text_disabled">Отключено</string>
     <string name="text_headset">Наушники</string>
     <string name="text_bluetooth">Bluetooth</string>	
     <string name="text_speaker">Динамик</string>
-    <string name="text_showtrayicon">Значок в панели</string>
+    <string name="text_showtrayicon">Значок уведомления</string>
     <string name="text_hidetrayicon">Отключить значок</string>
-    <string name="text_lockeffect">Фиксация</string>
+    <string name="text_lockeffect">Фиксация эффектов</string>
     <string name="text_yes">Да</string>
     <string name="text_no">Нет</string>
     <string name="text_normal">Нормально</string>
@@ -204,7 +204,7 @@
     <string name="text_install">Установить драйвер</string>	
     <string name="text_drvinst_ok">Драйвер установлен. Перезагрузите устройство.</string>
     <string name="text_drvuninst_ok">Драйвер удалён. Перезагрузите устройство.</string>
-    <string name="text_drvinst_failed">Драйвер не установлен. Проверьте наличие root-прав и busybox.</string>
+    <string name="text_drvinst_failed">Драйвер не установлен. Проверьте наличие root-прав и Busybox.</string>
 
     <string name="text_changelog">Что нового</string>
     <string name="text_drv_status">Состояние драйвера</string>
