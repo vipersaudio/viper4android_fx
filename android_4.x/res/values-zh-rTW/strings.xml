@@ -6,12 +6,12 @@
     <string name="headset_title">耳機</string>
     <string name="speaker_title">喇叭</string>
     <string name="bluetooth_title">藍牙裝置</string>
-    <string name="usb_title">USB和音頻底座</string>
+    <string name="usb_title">USB和音訊底座</string>
     <string name="audio_effects">音訊效果</string>
     <string name="dsp_settings_headset">音效設定 - 耳機</string>
     <string name="dsp_settings_speaker">音效設定 - 喇叭</string>
     <string name="dsp_settings_bluetooth">音效設定 - 藍牙裝置</string>
-    <string name="dsp_settings_usb">音效設定 - USB和音頻底座</string>
+    <string name="dsp_settings_usb">音效設定 - USB和音訊底座</string>
     <string name="pref_dsp_enable">啓用</string>
     <string name="pref_effect_title">選擇效果強度</string>
     <string name="dialog_effect">效果強度</string>
@@ -171,26 +171,26 @@
     <string name="text_install">安裝驅動程式</string>
     <string name="text_drvinst_ok">驅動程式已安裝，請重啟手機以生效。</string>
     <string name="text_drvuninst_ok">驅動程式已解除安裝，請重啟手機以生效。</string>
-    <string name="text_no_busybox">您還未安裝正確的busybox，這可能會影響驅動的安裝。您是否需要安裝？</string>
-    <string name="text_drvinst_acquireroot">驅動安裝失敗，未能獲取正確的ROOT權限。請確定您已經完整ROOT。</string>
-    <string name="text_drvinst_busybox_not_installed">驅動安裝失敗，在您的手機上未找到正確的busybox。</string>
-    <string name="text_drvinst_sdnotmounted">驅動安裝失敗，未找到可讀寫的外置或內置存儲。</string>
-    <string name="text_drvinst_dataioerr">驅動安裝失敗，系統I/O錯誤，您可以重啟手機后再試。</string>
-    <string name="text_drvinst_cfg_unsup">驅動安裝失敗，V4A暫時不支援您的系統或ROM。</string>
-    <string name="text_drvinst_failed">驅動安裝失敗，請確認您的手機已經安裝正確的busybox。</string>
+    <string name="text_no_busybox">您還未安裝正確的busybox，這可能會影響驅動程式的安裝。您是否需要安裝？</string>
+    <string name="text_drvinst_acquireroot">驅動安裝失敗，未能取得正確的ROOT權限。請確定您已經完整ROOT。</string>
+    <string name="text_drvinst_busybox_not_installed">驅動程式安裝失敗，在您的手機上未找到正確的busybox。</string>
+    <string name="text_drvinst_sdnotmounted">驅動程式安裝失敗，未找到可讀寫的外部或內部儲存空間。</string>
+    <string name="text_drvinst_dataioerr">驅動程式安裝失敗，系統I/O錯誤，您可以重啟手機後再試。</string>
+    <string name="text_drvinst_cfg_unsup">驅動程式安裝失敗，V4A暫時不支援您的系統或ROM。</string>
+    <string name="text_drvinst_failed">驅動程式安裝失敗，請確認您的手機已經安裝正確的busybox。</string>
     <string name="text_modifybuildprop">注意：
-\n您機器上的LPA功能已經開啟，這可能會造成V4A沒有效果。
-\nLPA是指“低功耗音頻”，安裝程序可以通過自動修改build.prop來停用它。
-\n當build.prop檔案被修改后，您將無法再使用系統的OTA功能。
-\n我們強烈建議您在繼續之前先做一個NANDROID備份或數據備份。
-\n您希望繼續禁用LPA功能嗎？</string>
+\n您裝置上的LPA功能已經開啟，這可能會造成V4A沒有效果。
+\nLPA是指“低功耗音訊”，安裝程序可以透過自動修改build.prop來停用它。
+\n當build.prop檔案被修改後，您將無法再使用系統的OTA功能。
+\n我們強烈建議您在繼續之前先做一個NANDROID備份或資料備份。
+\n您希望繼續停用LPA功能嗎？</string>
     <string name="text_changelog">更新資訊</string>
     <string name="text_drv_status">驅動程式狀態</string>
     <string name="text_drv_status_view">\n
 \n驅動程式版本: %1$s
 \nNEON已啟用: %2$s
 \n已啟用: %3$s
-\n驅動狀態: %4$s
+\n驅動程式狀態: %4$s
 \n音訊規格: %5$s
 \n正在處理: %6$s
 \n取樣率: %7$d
@@ -209,6 +209,7 @@
 \n感謝\'艳阳飞雪\'為ViPER4Android精心打造的新圖標。
 \n感謝Zhuhang@XDA。
 \n感謝M4570D0N@github、xLaMbChOpSx@github和bboa@github等。
+\n感謝Eric850130@github修正繁體中文語言
 \n感謝V4A官方群管理員的大力協助，感謝內測組的測試、宣傳推廣組的宣傳。
 \n
 \n版本 %1$s (FX), 代碼 &#8220;Beautiful&#8221;。
@@ -221,11 +222,11 @@
 \n    \'正常模式\' - 將V4A用作全局音效。
 \n    \'兼容模式\' - 將V4A用作局部音效。
 \n
-\n<b>您是否遇到過在大多數播放器上V4A無效的問題？</b>\n    您可以將音效模式切換到兼容模式，然後再試。
+\n<b>您是否遇到過在大多數多媒體播放器上V4A無效的問題？</b>\n    您可以將音效模式切換到兼容模式，然後再試。
 \n
 \n<b>如何更改當前的音訊處理品質？</b>\n    在選單中解除安裝驅動程式，重啟手機後選擇您期望的品質模式。
 \n
-\n<b>當V4A運行在正常模式下，如何節電？</b>\n    當V4A運行在正常模式下時，最好關閉系統的觸控等提示音，可以有效延長1~4倍電池續航時間。
+\n<b>當V4A運行在正常模式下，如何省電？</b>\n    當V4A運行在正常模式下時，最好關閉系統的觸控等提示音，可以有效延長1~4倍電池續航時間。
 \n
 \n<b>論壇：http://forum.vipersaudio.com</b></string>
     <string name="text_forum_link">http://forum.vipersaudio.com</string>
