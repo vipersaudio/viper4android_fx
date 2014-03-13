@@ -114,7 +114,7 @@
     <string name="pref_select_colorfulmusic_title">Уровень</string>
     <string name="dialog_colorfulmusic">Уровень</string>
     <string name="pref_select_colorfulmusic_mi_title">Плотность центра</string>
-    <string name="dialog_colorfulmusic_mi">Уровень</string>
+    <string name="dialog_colorfulmusic_mi">Плотность центра</string>
     <string name="pref_diffsurr_title">Хаас-эффект</string>
     <string name="pref_diffsurr_summary_on">Хаас-эффект включён</string>
     <string name="pref_diffsurr_summary_off">Хаас-эффект отключён</string>
