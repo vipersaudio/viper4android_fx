@@ -154,7 +154,7 @@
     <string name="text_newfxprofile">Nowy profil&#8230;</string>
     <string name="text_savefxprofile">Zapisz profil</string>
     <string name="text_profilesaved_overwrite">Profil o takiej nazwie już istnieje, zastąpić?</string>
-    <string name="text_profileload_tip">Ustaw profil</string>
+    <string name="text_profileload_tip">Wczytaj do?</string>
     <string name="text_ok">Ok</string>
     <string name="text_cancel">Anuluj</string>
     <string name="text_drvinst_prefer">Wybierz silnik efektów</string>
@@ -189,7 +189,7 @@
 \nTechnologia NEON: %2$s
 \nTechnologia V4A: %3$s
 \nStan: %4$s
-\nAudio Format: %5$s
+\nFormat dźwięku: %5$s
 \nPrzetwarzanie: %6$s
 \nCzęstotliwość próbkowania: %7$d
 \n</string>
@@ -197,7 +197,7 @@
     <string name="about_title">Informacje i pomoc</string>
     <string name="about_text">***O ViPER4Android***
 \n
-\n\'libv4a_xx_xx.so\' jest jądrem\/silnikiem aplikacji.
+\n\'libv4a_xx_xx.so\' jest silnikiem aplikacji.
 \nCopyright © 2006-2016, vipercn.com. Wszelkie prawa zastrzeżone.
 \nKomercyjne rozpowszechnianie bez zgody twórcy jest zabronione.
 \nOficjalne forum: forum.vipersaudio.com
@@ -209,7 +209,7 @@
 \n</string>
     <string name="text_help_content">***Mini FAQ***
 \n
-\n\'Zainstaluj biblioteki\' - Instaluje\/Aktualizuje biblioteki efektów.
+\n\'Zainstaluj biblioteki\' - Instaluje lub aktualizuje biblioteki efektów.
 \n\'Usuń biblioteki\' - Odinstalowuje biblioteki efektów.
 \n\'Tryb kompatybilności\' - Wybierz tryb kompatybilności efektów.
 \n \'Normalny\' - Efekty działają globalnie.
@@ -225,8 +225,8 @@
 
     <!-- TODO: translate this -->
     <!-- Drawer -->
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="navigation_toggle_drawer">Switch to Drawer view</string>
-    <string name="navigation_toggle_tabbed">Switch to Tab view</string>
+    <string name="navigation_drawer_open">Otwórz panel boczny</string>
+    <string name="navigation_drawer_close">Zamknij panel boczny</string>
+    <string name="navigation_toggle_drawer">Panel boczny</string>
+    <string name="navigation_toggle_tabbed">Widok kolumn</string>
 </resources>
