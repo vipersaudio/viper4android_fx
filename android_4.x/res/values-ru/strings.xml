@@ -102,7 +102,7 @@
     <string name="pref_convolver_crosschannel">Пересечение каналов</string>
     <string name="pref_convolver_crosschannel_title">Пересечение каналов</string>
     <string name="pref_vhs_title">Объёмный звук в наушниках</string>
-    <string name="pref_vhs_summary_on">Объёмный звук в наушникахвключён</string>
+    <string name="pref_vhs_summary_on">Объёмный звук в наушниках включён</string>
     <string name="pref_vhs_summary_off">Объёмный звук в наушниках отключён</string>
     <string name="pref_vhs_enable">Объёмный звук в наушниках</string>
     <string name="pref_select_vhs_qual_title">Размер зала</string>
