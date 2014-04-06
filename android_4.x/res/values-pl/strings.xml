@@ -44,7 +44,28 @@
     <string name="pref_xloud_spk_highfreq">Wysoka częstotliwość</string>
     <string name="pref_spk_opt_title">Optymalizacja</string>
     <string name="pref_spk_opt_summary_off">Nieaktywna</string>
-    <string name="pref_spk_opt_summary_on">Optymalizacja jest włączona</string>
+    <string name="pref_spk_opt_summary_on">Aktywna</string>
+    <string name="pref_viperddc_title">ViPER-DDC</string>
+    <string name="pref_viperddc_summary_on">Aktywny</string>
+    <string name="pref_viperddc_summary_off">Nieaktywny</string>
+    <string name="pref_viperddc_enable">DDC</string>
+    <string name="pref_viperddc_device">Wybierz słuchawki</string>
+    <string name="pref_viperddc_device_manufacturer">Wybierz producenta</string>
+    <string name="pref_viperddc_device_model">Wybierz model</string>
+    <string name="pref_viperddc_tips">UWAGA:
+\nViPER-DDC to system przetwarzający dźwięk w realnej jakości HI-FI i jest używany do korekcji dźwięku na zestawach słuchawkowych.
+\nViPER-DDC wspiera obecnie około 500 różnych zestawów słuchawkowych, a ich liczba ciągle rośnie.
+\nJeżeli Twój zestaw słuchawkowy nie widnieje jeszcze na liście wyłącz ten efekt.</string>
+    <string name="pref_vse_title">Rozszerzenie Spectrum</string>
+    <string name="pref_vse_summary_on">Aktywne</string>
+    <string name="pref_vse_summary_off">Nieaktywne</string>
+    <string name="pref_vse_enable">Rozszerzenie</string>
+    <string name="pref_vse_strength">Siła efektu</string>
+    <string name="pref_vse_strength_title">Wybierz siłę efektu</string>
+    <string name="pref_vse_tips">UWAGA:
+\nRozszerzenie Spectrum to system przetwarzający dźwięk w realnej jakości Hi-Fi, funkcja jest używana w celu poszerzenia pasma przenoszenia strumienia audio o kompresji stratnej.
+\nJeżeli odtwarzasz formaty stratne (jak mp3, aac, ogg), funkcja pomoże uzyskać jakość dźwięku zbliżoną do formatu bezstratnego.
+\nJeżeli odtwarzasz muzykę skompresowaną bezstratnie (jak flac) wyłącz ten efekt.</string>
     <string name="pref_equalizer_title">Equalizer</string>
     <string name="pref_equalizer_summary_on">Aktywny</string>
     <string name="pref_equalizer_summary_off">Nieaktywny</string>
