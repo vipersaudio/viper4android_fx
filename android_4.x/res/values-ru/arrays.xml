@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string-array name="drvinst_prefer">
         <item>Высокое качество</item>
         <item>Стандартное качество</item>
@@ -252,11 +251,11 @@
         <item>2</item>
     </string-array>
     <string-array name="vhs_qual">
-        <item>Уровень 1</item>
-        <item>Уровень 2</item>
-        <item>Уровень 3</item>
-        <item>Уровень 4</item>
-        <item>Уровень 5</item>
+        <item>Маленький зал</item>
+        <item>Небольшой зал</item>
+        <item>Средний зал</item>
+        <item>Большой зал</item>
+        <item>Огромный зал</item>
     </string-array>
     <string-array name="vhs_qual_values">
         <item>0</item>
@@ -643,5 +642,4 @@
         <item>7000</item>
         <item>8000</item>
     </string-array>
-
 </resources>

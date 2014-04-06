@@ -96,20 +96,20 @@
     <string name="pref_convolver_knl">Импульс</string>
     <string name="pref_convolver_knl_title">Импульс</string>
 
-    <string name="pref_vhs_title">Объёмный звук</string>
-    <string name="pref_vhs_summary_on">Объёмный звук включён</string>
-    <string name="pref_vhs_summary_off">Объёмный звук отключён</string>
-    <string name="pref_vhs_enable">Объёмный звук</string>
-    <string name="pref_select_vhs_qual_title">Уровень</string>
-    <string name="dialog_vhs_qual">Уровень</string>
+    <string name="pref_vhs_title">Объёмный звук в наушниках</string>
+    <string name="pref_vhs_summary_on">Объёмный звук в наушниках включён</string>
+    <string name="pref_vhs_summary_off">Объёмный звук в наушниках отключён</string>
+    <string name="pref_vhs_enable">Объёмный звук в наушниках</string>
+    <string name="pref_select_vhs_qual_title">Размер зала</string>
+    <string name="dialog_vhs_qual">Размер зала</string>
 
-    <string name="pref_colorfulmusic_title">Расширение стереобазы</string>
-    <string name="pref_colorfulmusic_summary_on">Расширение стереобазы включено</string>
-    <string name="pref_colorfulmusic_summary_off">Расширение стереобазы отключено</string>
-    <string name="pref_colorfulmusic_enable">Расширение стереобазы</string>
+    <string name="pref_colorfulmusic_title">Пространственный звук</string>
+    <string name="pref_colorfulmusic_summary_on">Пространственный звук включён</string>
+    <string name="pref_colorfulmusic_summary_off">Пространственный звук отключён</string>
+    <string name="pref_colorfulmusic_enable">Пространственный звук</string>
 
-    <string name="pref_select_colorfulmusic_title">Уровень</string>
-    <string name="dialog_colorfulmusic">Уровень</string>
+    <string name="pref_select_colorfulmusic_title">Размер пространства</string>
+    <string name="dialog_colorfulmusic">Размер пространства</string>
     <string name="pref_select_colorfulmusic_mi_title">Плотность центра</string>
     <string name="dialog_colorfulmusic_mi">Плотность центра</string>
 
@@ -163,8 +163,8 @@
     <string name="text_abnormal">Конфликт</string>
 
     <string name="text_effectprofile">Профиль</string>
-    <string name="text_loadfxprofile">Импорт</string>
-    <string name="text_savefxprofile">Экспорт</string>	
+    <string name="text_loadfxprofile">Загрузка</string>
+    <string name="text_savefxprofile">Сохранение</string>	
     <string name="text_pleaseinputname">Введите имя профиля
 \nИсключите знак \'=\'
     </string>
@@ -194,7 +194,7 @@
     <string name="text_install">Установить драйвер</string>	
     <string name="text_drvinst_ok">Драйвер установлен. Перезагрузите устройство.</string>
     <string name="text_drvuninst_ok">Драйвер удалён. Перезагрузите устройство.</string>
-    <string name="text_drvinst_failed">Драйвер не установлен. Проверьте наличие root-прав и Busybox.</string>
+    <string name="text_drvinst_failed">Драйвер не установлен. Проверьте наличие root-прав и BusyBox.</string>
 
     <string name="text_changelog">Что нового</string>
     <string name="text_drv_status">Состояние драйвера</string>
