@@ -44,6 +44,27 @@
     <string name="pref_spk_opt_title">扬声器优化</string>
     <string name="pref_spk_opt_summary_on">扬声器优化已启用</string>
     <string name="pref_spk_opt_summary_off">扬声器优化已禁用</string>
+    <string name="pref_viperddc_title">ViPER-DDC</string>
+    <string name="pref_viperddc_summary_on">ViPER-DDC已启用</string>
+    <string name="pref_viperddc_summary_off">ViPER-DDC已禁用</string>
+    <string name="pref_viperddc_enable">启用</string>
+    <string name="pref_viperddc_device">监听设备</string>
+    <string name="pref_viperddc_device_manufacturer">选择耳机厂商</string>
+    <string name="pref_viperddc_device_model">选择耳机型号</string>
+    <string name="pref_viperddc_tips">注意：
+\nViPER-DDC是一个用于耳机校准的HiFi音效。
+\n目前ViPER-DDC已经支持近500款耳机的校准，而且也将继续支持更多的耳机。
+\n所以，如果您在列表中找不到您的耳机型号，请暂时关闭本功能。</string>
+    <string name="pref_vse_title">频谱扩展</string>
+    <string name="pref_vse_summary_on">频谱扩展已启用</string>
+    <string name="pref_vse_summary_off">频谱扩展已禁用</string>
+    <string name="pref_vse_enable">启用</string>
+    <string name="pref_vse_strength">强度</string>
+    <string name="pref_vse_strength_title">选择强度</string>
+    <string name="pref_vse_tips">注意：
+\n频谱扩展是一个用于扩展有损压缩的频谱的HiFi音效。
+\n如果您经常播放有损压缩的音乐(如mp3、aac和ogg等)，本功能可以给您一个接近无损的听感。
+\n但如果您播放无损音乐，我们则建议您关闭本功能。</string>
     <string name="pref_equalizer_title">FIR均衡器</string>
     <string name="pref_equalizer_summary_on">FIR均衡器已启用</string>
     <string name="pref_equalizer_summary_off">FIR均衡器已禁用</string>

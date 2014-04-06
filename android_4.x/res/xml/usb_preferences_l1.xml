@@ -39,6 +39,44 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:title="@string/pref_viperddc_title" >
+
+        <CheckBoxPreference
+            android:disableDependentsState="false"
+            android:key="viper4android.headphonefx.viperddc.enable"
+            android:summaryOff="@string/pref_viperddc_summary_off"
+            android:summaryOn="@string/pref_viperddc_summary_on"
+            android:title="@string/pref_viperddc_enable" />
+
+        <com.vipercn.viper4android_v2.preference.SummariedListPreferenceDDC
+            android:defaultValue=""
+            android:dialogTitle="@string/pref_viperddc_device"
+            android:key="viper4android.headphonefx.viperddc.device"
+            android:title="@string/pref_viperddc_device" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_vse_title" >
+
+        <CheckBoxPreference
+            android:disableDependentsState="false"
+            android:key="viper4android.headphonefx.vse.enable"
+            android:summaryOff="@string/pref_vse_summary_off"
+            android:summaryOn="@string/pref_vse_summary_on"
+            android:title="@string/pref_vse_enable" />
+
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference
+            android:defaultValue="0.1"
+            android:dialogTitle="@string/pref_vse_strength_title"
+            android:entries="@array/vse_strength_values"
+            android:entryValues="@array/vse_strength_values"
+            android:key="viper4android.headphonefx.vse.value"
+            android:title="@string/pref_vse_strength" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/pref_equalizer_title" >
 
         <CheckBoxPreference
