@@ -47,6 +47,28 @@
     <string name="pref_spk_opt_summary_on">Оптимизация включена</string>
     <string name="pref_spk_opt_summary_off">Оптимизация отключена</string>
 
+    <string name="pref_viperddc_title">Цифровая коррекция наушников</string>
+    <string name="pref_viperddc_summary_on">Цифровая коррекция включена</string>
+    <string name="pref_viperddc_summary_off">Цифровая коррекция отключена</string>
+    <string name="pref_viperddc_enable">Цифровая коррекция</string>
+    <string name="pref_viperddc_device">Устройство</string>
+    <string name="pref_viperddc_device_manufacturer">Производитель</string>
+    <string name="pref_viperddc_device_model">Модель</string>
+    <string name="pref_viperddc_tips">ВНИМАНИЕ:
+\nЦифровая коррекция — коррекция под определённую модель устройства.
+\nПоддерживается более 500 моделей, данные будут дополняться.
+\nЕсли Вы не смогли найти своё устройство в списке, отключите эту функцию.</string>
+    <string name="pref_vse_title">Расширение спектра</string>
+    <string name="pref_vse_summary_on">Расширение спектра включено</string>
+    <string name="pref_vse_summary_off">Расширение спектра отключено</string>
+    <string name="pref_vse_enable">Расширение спектра</string>
+    <string name="pref_vse_strength">Уровень</string>
+    <string name="pref_vse_strength_title">Уровень</string>
+    <string name="pref_vse_tips">ВНИМАНИЕ:
+\n\"Расширение спектра\" — расширение потеряного при сжатии спектра.
+\nПри воспроизведении форматов с потерями (MP3, AAC, OGG) звук может быть приближен к звуку форматов без потерь.
+\nПри воспроизведении несжатых форматов отключите эту функцию.</string>
+
     <string name="pref_equalizer_title">Эквалайзер</string>
     <string name="pref_equalizer_summary_on">Эквалайзер включён</string>
     <string name="pref_equalizer_summary_off">Эквалайзер отключён</string>

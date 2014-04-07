@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <string-array name="drvinst_prefer">
+        <item>Высокое качество</item>
+        <item>Стандартное качество</item>
+        <item>Энергосбережение</item>
+    </string-array>
+
     <string-array name="colorfulmusic_coeffs">
         <item>Минимум</item>
         <item>Уровень 1</item>
