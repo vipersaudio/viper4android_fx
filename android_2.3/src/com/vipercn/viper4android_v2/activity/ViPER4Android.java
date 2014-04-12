@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
@@ -67,6 +69,27 @@ public final class ViPER4Android extends PreferenceActivity
 		return true;
 	}
 
+    private boolean CheckDDCDBVer()
+    {
+        PackageManager packageMgr = getPackageManager();
+        PackageInfo packageInfo;
+        String mVersion;
+        try
+        {
+            packageInfo = packageMgr.getPackageInfo(getPackageName(), 0);
+            mVersion = packageInfo.versionName;
+        }
+        catch (NameNotFoundException e)
+        {
+            return false;
+        }
+
+        SharedPreferences prefSettings = getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", 0);
+        String mDBVersion = prefSettings.getString("viper4android.settings.ddc_db_compatible", "");
+        return mDBVersion == null || mDBVersion.equals("")
+                || !mDBVersion.equalsIgnoreCase(mVersion);
+    }
+
 	private void SetFirstRun()
 	{
 		PackageManager packageMgr = getPackageManager();
@@ -90,6 +113,30 @@ public final class ViPER4Android extends PreferenceActivity
 			edSettingsEditor.commit();
 		}
 	}
+
+    private void SetDDCDBVer()
+    {
+        PackageManager packageMgr = getPackageManager();
+        PackageInfo packageInfo;
+        String mVersion;
+        try
+        {
+            packageInfo = packageMgr.getPackageInfo(getPackageName(), 0);
+            mVersion = packageInfo.versionName;
+        }
+        catch (NameNotFoundException e)
+        {
+            return;
+        }
+
+        SharedPreferences prefSettings = getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", 0);
+        Editor editSettings = prefSettings.edit();
+        if (editSettings != null)
+        {
+            editSettings.putString("viper4android.settings.ddc_db_compatible", mVersion);
+            editSettings.commit();
+        }
+    }
 
 	private boolean CheckSoftwareActive()
 	{
@@ -179,17 +226,10 @@ public final class ViPER4Android extends PreferenceActivity
         	}
 
         	// Check driver version
-			PackageManager packageMgr = getPackageManager();
-			PackageInfo packageInfo = null;
-			String szApkVer = "";
 			try
 			{
-				packageInfo = packageMgr.getPackageInfo(getPackageName(), 0);
-				szApkVer = packageInfo.versionName;
-				String szDrvVer = mHeadsetServiceInstance.GetDriverVersion();
-
 				Log.i("ViPER4Android", "Proceeding drvier check");
-				if (!szApkVer.equals(szDrvVer))
+				if (!isDriverCompatible(mHeadsetServiceInstance.GetDriverVersion()))
 				{
 			        Message message = new Message();
 			        message.what = 0xA00A;
@@ -197,11 +237,6 @@ public final class ViPER4Android extends PreferenceActivity
 			        hProceedDriverHandler.sendMessage(message);
 				}
 				return true;
-			}
-			catch (NameNotFoundException e)
-			{
-				Log.i("ViPER4Android", "Can not get application version, error = " + e.getMessage());
-				return false;
 			}
             catch (Exception e)
             {
@@ -215,6 +250,26 @@ public final class ViPER4Android extends PreferenceActivity
         	return false;
         }
 	}
+
+    public static boolean isDriverCompatible(String szDrvVersion){
+    	List<String> lstCompatibleList = new ArrayList<String>();
+    	// TODO: <DO NOT REMOVE> add compatible driver version to lstCompatibleList
+
+    	if (lstCompatibleList.contains(szDrvVersion)) {
+    		lstCompatibleList.clear();
+    		lstCompatibleList = null;
+    		return true;
+    	} else {
+    		lstCompatibleList.clear();
+    		lstCompatibleList = null;
+    		// Since we cant use getPackageManager in static method, we need to type the current version here
+    		// TODO: <DO NOT REMOVE> please make sure this string equals to current apk's version
+    		if (szDrvVersion.equals("2.3.3.0")) {
+    			return true;
+    		}
+    		return false;
+    	}
+    }
 
 	public static boolean CPUHasQualitySelection()
 	{
@@ -420,7 +475,13 @@ public final class ViPER4Android extends PreferenceActivity
         if (CheckFirstRun())
         {
         	// TODO: Welcome window
-        	// Maybe leave this until v2.3.0.2
+        }
+
+        // Prepare ViPER-DDC database
+        if (CheckDDCDBVer())
+        {
+        	if (DDCDatabase.initializeDatabase(this))
+        		SetDDCDBVer();
         }
 
     	addPreferencesFromResource(R.xml.main_preferences);

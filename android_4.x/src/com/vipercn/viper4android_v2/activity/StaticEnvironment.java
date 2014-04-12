@@ -24,6 +24,8 @@ public class StaticEnvironment {
             fosOutput.write(mBlank);
             fosOutput.flush();
             fosOutput.close();
+            fosOutput = null;
+            mBlank = null;
             return new File(mFileName).delete();
         } catch (FileNotFoundException e) {
             Log.i("ViPER4Android", "FileNotFoundException, msg = " + e.getMessage());

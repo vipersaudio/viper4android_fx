@@ -400,6 +400,10 @@ public class Utils
         		bwOutput.write("viper4android.speakerfx.spkopt.enable=boolean=" + szValue + "\n");
         		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.playbackgain.enable", false));
         		bwOutput.write("viper4android.headphonefx.playbackgain.enable=boolean=" + szValue + "\n");
+        		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.viperddc.enable", false));
+        		bwOutput.write("viper4android.headphonefx.viperddc.enable=boolean=" + szValue + "\n");
+        		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.vse.enable", false));
+        		bwOutput.write("viper4android.headphonefx.vse.enable=boolean=" + szValue + "\n");
         		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.fireq.enable", false));
         		bwOutput.write("viper4android.headphonefx.fireq.enable=boolean=" + szValue + "\n");
         		szValue = String.valueOf(preferences.getBoolean("viper4android.headphonefx.convolver.enable", false));
@@ -430,6 +434,10 @@ public class Utils
         		bwOutput.write("viper4android.headphonefx.playbackgain.maxscaler=string=" + szValue + "\n");
         		szValue = preferences.getString("viper4android.headphonefx.playbackgain.volume", "80");
         		bwOutput.write("viper4android.headphonefx.playbackgain.volume=string=" + szValue + "\n");
+        		szValue = preferences.getString("viper4android.headphonefx.viperddc.device", "");
+        		bwOutput.write("viper4android.headphonefx.viperddc.device=string=" + szValue + "\n");
+        		szValue = preferences.getString("viper4android.headphonefx.vse.value", "0.1");
+        		bwOutput.write("viper4android.headphonefx.vse.value=string=" + szValue + "\n");
         		szValue = preferences.getString("viper4android.headphonefx.fireq", "0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;");
         		bwOutput.write("viper4android.headphonefx.fireq=string=" + szValue + "\n");
         		szValue = preferences.getString("viper4android.headphonefx.fireq.custom", "0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;");

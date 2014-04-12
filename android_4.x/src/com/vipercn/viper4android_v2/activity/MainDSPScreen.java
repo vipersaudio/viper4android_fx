@@ -20,6 +20,8 @@ public final class MainDSPScreen extends PreferenceFragment {
     public static final String PREF_KEY_CUSTOM_EQ = "viper4android.headphonefx.fireq.custom";
     public static final String EQ_VALUE_CUSTOM = "custom";
     public static final String PREF_KEY_FORCE = "viper4android.global.forceenable.enable";
+    public static final String PREF_KEY_DDC = "viper4android.headphonefx.viperddc.enable";
+    public static final String PREF_KEY_VSE = "viper4android.headphonefx.vse.enable";
 
     private final OnSharedPreferenceChangeListener listener
             = new OnSharedPreferenceChangeListener() {
@@ -36,6 +38,7 @@ public final class MainDSPScreen extends PreferenceFragment {
                     EqualizerPreference eq =
                             (EqualizerPreference) findPreference(PREF_KEY_CUSTOM_EQ);
                     eq.refreshFromPreference();
+                    eq = null;
                 }
             }
 
@@ -56,18 +59,56 @@ public final class MainDSPScreen extends PreferenceFragment {
                     prefs.edit().putString(PREF_KEY_EQ, desiredValue).commit();
                     preset.refreshFromPreference();
                 }
+                preset = null;
             }
 
             if (PREF_KEY_FORCE.equals(key)) {
                 if (prefs.getBoolean(key, false)) {
                     // If force-enable switched on, popup a warning
-                    AlertDialog.Builder mResult = new AlertDialog.Builder(getActivity());
-                    mResult.setTitle("ViPER4Android");
-                    mResult.setMessage(getActivity().getResources().getString(
+                    AlertDialog.Builder mDlgWarning = new AlertDialog.Builder(getActivity());
+                    mDlgWarning.setTitle("ViPER4Android");
+                    mDlgWarning.setMessage(getActivity().getResources().getString(
                             R.string.pref_force_enable_warn));
-                    mResult.setNegativeButton(
+                    mDlgWarning.setNegativeButton(
                             getActivity().getResources().getString(R.string.text_ok), null);
-                    mResult.show();
+                    mDlgWarning.show();
+                    mDlgWarning = null;
+                }
+            }
+
+            if (PREF_KEY_DDC.equals(key)) {
+                if (prefs.getBoolean(key, false)) {
+                    SharedPreferences prefSettings = getActivity().getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", 0);
+                    if (!prefSettings.getBoolean("viper4android.settings.viperddc.notice", false)) {
+                    	prefSettings.edit().putBoolean("viper4android.settings.viperddc.notice", true).commit();
+	                    AlertDialog.Builder mNotice = new AlertDialog.Builder(getActivity());
+	                    mNotice.setTitle("ViPER4Android");
+	                    mNotice.setMessage(getActivity().getResources().getString(
+	                            R.string.pref_viperddc_tips));
+	                    mNotice.setNegativeButton(
+	                            getActivity().getResources().getString(R.string.text_ok), null);
+	                    mNotice.show();
+	                    mNotice = null;
+                    }
+                    prefSettings = null;
+                }
+            }
+
+            if (PREF_KEY_VSE.equals(key)) {
+                if (prefs.getBoolean(key, false)) {
+                    SharedPreferences prefSettings = getActivity().getSharedPreferences(ViPER4Android.SHARED_PREFERENCES_BASENAME + ".settings", 0);
+                    if (!prefSettings.getBoolean("viper4android.settings.vse.notice", false)) {
+                    	prefSettings.edit().putBoolean("viper4android.settings.vse.notice", true).commit();
+	                    AlertDialog.Builder mNotice = new AlertDialog.Builder(getActivity());
+	                    mNotice.setTitle("ViPER4Android");
+	                    mNotice.setMessage(getActivity().getResources().getString(
+	                            R.string.pref_vse_tips));
+	                    mNotice.setNegativeButton(
+	                            getActivity().getResources().getString(R.string.text_ok), null);
+	                    mNotice.show();
+	                    mNotice = null;
+                    }
+                    prefSettings = null;
                 }
             }
 

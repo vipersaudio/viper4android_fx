@@ -30,6 +30,9 @@ import com.vipercn.viper4android_v2.preference.SummariedListPreference;
 
 public final class DSPScreen extends PreferenceActivity
 {
+    public static final String PREF_KEY_DDC = "viper4android.headphonefx.viperddc.enable";
+    public static final String PREF_KEY_VSE = "viper4android.headphonefx.vse.enable";
+
 	private Context mActivityContext = this;
     private ArrayList<String> mProfileList = new ArrayList<String>();
 
@@ -74,6 +77,40 @@ public final class DSPScreen extends PreferenceActivity
 					preset.refreshFromPreference();
 				}
 			}
+
+            if (PREF_KEY_DDC.equals(key))
+            {
+                if (sharedPreferences.getBoolean(key, false))
+                {
+                    if (!sharedPreferences.getBoolean("viper4android.settings.viperddc.notice", false))
+                    {
+                    	sharedPreferences.edit().putBoolean("viper4android.settings.viperddc.notice", true).commit();
+	                    AlertDialog.Builder mNotice = new AlertDialog.Builder(mActivityContext);
+	                    mNotice.setTitle("ViPER4Android");
+	                    mNotice.setMessage(mActivityContext.getResources().getString(R.string.pref_viperddc_tips));
+	                    mNotice.setNegativeButton(mActivityContext.getResources().getString(R.string.text_ok), null);
+	                    mNotice.show();
+	                    mNotice = null;
+                    }
+                }
+            }
+
+            if (PREF_KEY_VSE.equals(key))
+            {
+                if (sharedPreferences.getBoolean(key, false))
+                {
+                    if (!sharedPreferences.getBoolean("viper4android.settings.vse.notice", false))
+                    {
+                    	sharedPreferences.edit().putBoolean("viper4android.settings.vse.notice", true).commit();
+	                    AlertDialog.Builder mNotice = new AlertDialog.Builder(mActivityContext);
+	                    mNotice.setTitle("ViPER4Android");
+	                    mNotice.setMessage(mActivityContext.getResources().getString(R.string.pref_vse_tips));
+	                    mNotice.setNegativeButton(mActivityContext.getResources().getString(R.string.text_ok), null);
+	                    mNotice.show();
+	                    mNotice = null;
+                    }
+                }
+            }
 
 			sendBroadcast(new Intent(ViPER4Android.ACTION_UPDATE_PREFERENCES));
 		}

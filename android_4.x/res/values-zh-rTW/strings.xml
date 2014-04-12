@@ -54,7 +54,7 @@
     <string name="pref_viperddc_tips">注意：
 \nViPER-DDC是一個用於耳機校正的HiFi音效。
 \n目前ViPER-DDC已經支援近500款耳機的校正，而且也將繼續支援更多的耳機。
-\n所以，如果您在列表中找不到您的耳機型號，請暫時停用本功能。</string>
+\n我們強烈建議您在列表中選擇精確對應您耳機型號的選項，這樣可以給您帶來最佳的音頻體驗。</string>
     <string name="pref_vse_title">頻譜擴展</string>
     <string name="pref_vse_summary_on">頻譜擴展已啟用</string>
     <string name="pref_vse_summary_off">頻譜擴展已停用</string>
@@ -198,7 +198,9 @@
     <string name="text_drvinst_sdnotmounted">驅動程式安裝失敗，未找到可讀寫的外部或內部儲存空間。</string>
     <string name="text_drvinst_dataioerr">驅動程式安裝失敗，系統I/O錯誤，您可以重啟手機後再試。</string>
     <string name="text_drvinst_cfg_unsup">驅動程式安裝失敗，V4A暫時不支援您的系統或ROM。</string>
-    <string name="text_drvinst_failed">驅動程式安裝失敗，請確認您的手機已經安裝正確的busybox。</string>
+    <string name="text_drvinst_failed">驅動程式安裝失敗，在您的裝置上找到的busybox不工作。
+\n這通常意味著您安裝了錯誤的或損壞的busybox，V4A需要stericson.busybox來安裝驅動程式。
+\n如果您確定您已經安裝了正確的busybox，那麼請確認您的裝置已經完整ROOT(建議您使用RE管理器手動在/system內創建文件以驗證是否完整ROOT，一般的ROOT檢測程式無法正確檢測虛假的ROOT)。</string>
     <string name="text_modifybuildprop">注意：
 \n您裝置上的LPA功能已經開啟，這可能會造成V4A沒有效果。
 \nLPA是指“低功耗音訊”，安裝程序可以透過自動修改build.prop來停用它。

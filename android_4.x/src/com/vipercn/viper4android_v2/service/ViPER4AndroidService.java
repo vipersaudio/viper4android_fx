@@ -11,9 +11,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.media.AudioManager;
 import android.media.audiofx.AudioEffect;
 import android.os.Binder;
@@ -24,6 +21,7 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.widget.Toast;
 
+import com.vipercn.viper4android_v2.activity.DDCDatabase;
 import com.vipercn.viper4android_v2.activity.IRSUtils;
 import com.vipercn.viper4android_v2.activity.Utils;
 import com.vipercn.viper4android_v2.activity.V4AJniInterface;
@@ -188,6 +186,7 @@ public class ViPER4AndroidService extends Service {
                 byte[] vH = intToByteArray(valueH);
                 byte[] v = concatArrays(vL, vH);
                 setParameter_Native(p, v);
+                v = null;
             } catch (Exception e) {
                 Log.i("ViPER4Android", "setParameter_px4_vx4x2: " + e.getMessage());
             }
@@ -201,6 +200,7 @@ public class ViPER4AndroidService extends Service {
                 byte[] vE = intToByteArray(valueE);
                 byte[] v = concatArrays(vL, vH, vE);
                 setParameter_Native(p, v);
+                v = null;
             } catch (Exception e) {
                 Log.i("ViPER4Android", "setParameter_px4_vx4x3: " + e.getMessage());
             }
@@ -216,6 +216,7 @@ public class ViPER4AndroidService extends Service {
                 byte[] vR = intToByteArray(valueR);
                 byte[] v = concatArrays(vL, vH, vE, vR);
                 setParameter_Native(p, v);
+                v = null;
             } catch (Exception e) {
                 Log.i("ViPER4Android", "setParameter_px4_vx4x4: " + e.getMessage());
             }
@@ -230,10 +231,36 @@ public class ViPER4AndroidService extends Service {
                     int zeroPad = 256 - v.length;
                     byte[] zeroArray = new byte[zeroPad];
                     v = concatArrays(v, zeroArray);
+                    zeroArray = null;
                 }
                 setParameter_Native(p, v);
+                v = null;
             } catch (Exception e) {
                 Log.i("ViPER4Android", "setParameter_px4_vx1x256: " + e.getMessage());
+            }
+        }
+
+        public void setParameter_px4_vx1x1024(int param, float[] floatData) {
+            try {
+            	byte[] byteData = new byte[floatData.length * 4];
+            	ByteBuffer byteDataBuffer = ByteBuffer.wrap(byteData);
+            	byteDataBuffer.order(ByteOrder.nativeOrder());
+            	for (int i = 0; i < floatData.length; i++)
+            		byteDataBuffer.putFloat(floatData[i]);
+                byte[] p = intToByteArray(param);
+                byte[] vL = intToByteArray(floatData.length / 2);
+                byte[] v = concatArrays(vL, byteData);
+                if (v.length < 1024) {
+                    int zeroPad = 1024 - v.length;
+                    byte[] zeroArray = new byte[zeroPad];
+                    v = concatArrays(v, zeroArray);
+                    zeroArray = null;
+                }
+                setParameter_Native(p, v);
+                byteData = null; 
+                v = null;
+            } catch (Exception e) {
+                Log.i("ViPER4Android", "setParameter_px4_vx1x1024: " + e.getMessage());
             }
         }
 
@@ -247,8 +274,10 @@ public class ViPER4AndroidService extends Service {
                     int zeroPad = 8192 - v.length;
                     byte[] zeroArray = new byte[zeroPad];
                     v = concatArrays(v, zeroArray);
+                    zeroArray = null;
                 }
                 setParameter_Native(p, v);
+                v = null;
             } catch (Exception e) {
                 Log.i("ViPER4Android", "setParameter_px4_vx2x8192: " + e.getMessage());
             }
@@ -259,6 +288,7 @@ public class ViPER4AndroidService extends Service {
             int stringLen = mData.length();
             byte[] stringBytes = mData.getBytes(Charset.forName("US-ASCII"));
             setParameter_px4_vx1x256(param, stringLen, stringBytes);
+            stringBytes = null;
         }
 
         public void setParameter_Native(byte[] parameter, byte[] value) {
@@ -303,12 +333,14 @@ public class ViPER4AndroidService extends Service {
             int mKernelBufferID = rndMachine.nextInt();
             setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_SPKFX_CONV_PREPAREBUFFER,
                     mKernelBufferID, mChannels, 0);
+            rndMachine = null;
 
             // 2. Read entire ir data and get hash code
             byte[] mKernelData = V4AJniInterface.ReadImpulseResponseToArray(mConvIRFile);
             // Read failed or Empty ir file
             if (mKernelData == null || mKernelData.length <= 0) {
                 setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_SPKFX_CONV_PREPAREBUFFER, 0, 0, 1);
+                mKernelData = null;
                 return;
             }
 
@@ -316,10 +348,13 @@ public class ViPER4AndroidService extends Service {
             // No hash or wrong hash
             if (mHashCode == null || mHashCode.length != 2 || mHashCode[0] == 0) {
                 setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_SPKFX_CONV_PREPAREBUFFER, 0, 0, 1);
+                mKernelData = null;
+                mHashCode = null;
                 return;
             }
 
             int hashCode = mHashCode[1];
+            mHashCode = null;
 
             Log.i("ViPER4Android", "[Kernel] Channels = " + mChannels + ", Frames = " + mFrames
                     + ", Bytes = " + mKernelData.length + ", Hash = " + hashCode);
@@ -340,13 +375,16 @@ public class ViPER4AndroidService extends Service {
                 int mFramesCount = minBlockSize / 4; /* sizeof(float) = 4 */
                 setParameter_px4_vx2x8192(ViPER4AndroidService.PARAM_SPKFX_CONV_SETBUFFER,
                         mKernelBufferID, mFramesCount, mSendData);
+                mSendData = null;
             }
+            mKernelData = null;
 
             // 4. Tell driver to commit kernel buffer
             byte[] mIrsName = mConvIRFile.getBytes();
             int mIrsNameHashCode = 0;
             if (mIrsName != null) {
                 mIrsNameHashCode = (int) IRSUtils.hashIRS(mIrsName, mIrsName.length);
+                mIrsName = null;
             }
             setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_SPKFX_CONV_COMMITBUFFER,
                     mKernelBufferID, hashCode, mIrsNameHashCode);
@@ -357,21 +395,26 @@ public class ViPER4AndroidService extends Service {
             Random rndMachine = new Random();
             int mKernelBufferID = rndMachine.nextInt();
             setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_HPFX_CONV_PREPAREBUFFER, mKernelBufferID, mChannels, 0);
+            rndMachine = null;
 
             // 2. Read entire ir data and get hash code
             byte[] mKernelData = V4AJniInterface.ReadImpulseResponseToArray(mConvIRFile);
             // Read failed or Empty ir file
             if (mKernelData == null || mKernelData.length <= 0) {
                 setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_HPFX_CONV_PREPAREBUFFER, 0, 0, 1);
+                mKernelData = null;
                 return;
             }
             int[] mHashCode = V4AJniInterface.GetHashImpulseResponseArray(mKernelData);
             // No hash or wrong hash
             if (mHashCode == null || mHashCode.length != 2 || mHashCode[0] == 0) {
                 setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_HPFX_CONV_PREPAREBUFFER, 0, 0, 1);
+                mKernelData = null;
+                mHashCode = null;
                 return;
             }
             int hashCode = mHashCode[1];
+            mHashCode = null;
 
             Log.i("ViPER4Android", "[Kernel] Channels = " + mChannels + ", Frames = " + mFrames
                     + ", Bytes = " + mKernelData.length + ", Hash = " + hashCode);
@@ -395,13 +438,16 @@ public class ViPER4AndroidService extends Service {
                 int mFramesCount = minBlockSize / 4;  /* sizeof(float) = 4 */
                 setParameter_px4_vx2x8192(ViPER4AndroidService.PARAM_HPFX_CONV_SETBUFFER,
                         mKernelBufferID, mFramesCount, mSendData);
+                mSendData = null;
             }
+            mKernelData = null;
 
             // 4. Tell driver to commit kernel buffer
             byte[] mIrsName = mConvIRFile.getBytes();
             int mIrsNameHashCode = 0;
             if (mIrsName != null) {
                 mIrsNameHashCode = (int) IRSUtils.hashIRS(mIrsName, mIrsName.length);
+                mIrsName = null;
             }
             setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_HPFX_CONV_COMMITBUFFER,
                     mKernelBufferID, hashCode, mIrsNameHashCode);
@@ -413,12 +459,14 @@ public class ViPER4AndroidService extends Service {
             int mKernelBufferID = rndMachine.nextInt();
             setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_SPKFX_CONV_PREPAREBUFFER,
                     mKernelBufferID, irs.getChannels(), 0);
+            rndMachine = null;
 
             // 2. Read entire ir data and get hash code
             byte[] mKernelData = irs.readEntireData();
             // Read failed or Empty ir file
             if (mKernelData == null || mKernelData.length <= 0) {
                 setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_SPKFX_CONV_PREPAREBUFFER, 0, 0, 1);
+                mKernelData = null;
                 return;
             }
             long mHashCode = IRSUtils.hashIRS(mKernelData, mKernelData.length);
@@ -443,13 +491,16 @@ public class ViPER4AndroidService extends Service {
                 int mFramesCount = minBlockSize / 4;  /* sizeof(float) = 4 */
                 setParameter_px4_vx2x8192(ViPER4AndroidService.PARAM_SPKFX_CONV_SETBUFFER,
                         mKernelBufferID, mFramesCount, mSendData);
+                mSendData = null;
             }
+            mKernelData = null;
 
             // 4. Tell driver to commit kernel buffer
             byte[] mIrsName = mConvIRFile.getBytes();
             int mIrsNameHashCode = 0;
             if (mIrsName != null) {
                 mIrsNameHashCode = (int) IRSUtils.hashIRS(mIrsName, mIrsName.length);
+                mIrsName = null;
             }
             setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_SPKFX_CONV_COMMITBUFFER,
                     mKernelBufferID, hashCode, mIrsNameHashCode);
@@ -461,12 +512,14 @@ public class ViPER4AndroidService extends Service {
             int mKernelBufferID = rndMachine.nextInt();
             setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_HPFX_CONV_PREPAREBUFFER,
                     mKernelBufferID, irs.getChannels(), 0);
+            rndMachine = null;
 
             // 2. Read entire ir data and get hash code
             byte[] mKernelData = irs.readEntireData();
             // Read failed or Empty ir file
             if (mKernelData == null|| mKernelData.length <= 0) {
                 setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_HPFX_CONV_PREPAREBUFFER, 0, 0, 1);
+                mKernelData = null;
                 return;
             }
             long nlHashCode = IRSUtils.hashIRS(mKernelData, mKernelData.length);
@@ -494,13 +547,16 @@ public class ViPER4AndroidService extends Service {
                 int mFramesCount = minBlockSize / 4;  /* sizeof(float) = 4 */
                 setParameter_px4_vx2x8192(ViPER4AndroidService.PARAM_HPFX_CONV_SETBUFFER,
                         mKernelBufferID, mFramesCount, mSendData);
+                mSendData = null;
             }
+            mKernelData = null;
 
             // 4. Tell driver to commit kernel buffer
             byte[] mIrsName = mConvIRFile.getBytes();
             int mIrsNameHashCode = 0;
             if (mIrsName != null) {
                 mIrsNameHashCode = (int) IRSUtils.hashIRS(mIrsName, mIrsName.length);
+                mIrsName = null;
             }
             setParameter_px4_vx4x3(ViPER4AndroidService.PARAM_HPFX_CONV_COMMITBUFFER,
                     mKernelBufferID, hashCode, mIrsNameHashCode);
@@ -549,6 +605,7 @@ public class ViPER4AndroidService extends Service {
                     byte[] mIrsName = mConvIRFile.getBytes();
                     if (mIrsName != null) {
                         long mIrsNameHash = IRSUtils.hashIRS(mIrsName, mIrsName.length);
+                        mIrsName = null;
                         int irsNameHash = (int) mIrsNameHash;
                         int irsNameHashInDriver = getParameter_px4_vx4x1(PARAM_GET_CONVKNLID);
                         Log.i("ViPER4Android", "Kernel ID = [driver: " + irsNameHashInDriver
@@ -578,7 +635,9 @@ public class ViPER4AndroidService extends Service {
                             proceedIRBuffer_Headphone(irs, mConvIRFile);
                         }
                         irs.Release();
+                        irs = null;
                     } else {
+                    	irs = null;
                         if (V4AJniInterface.IsLibraryUsable()) {
                             Log.i("ViPER4Android", "We are going to load irs through jni");
                             // Get ir file info
@@ -588,9 +647,11 @@ public class ViPER4AndroidService extends Service {
                             } else {
                                 if (iaIRInfo.length != 4) {
                                     setParameter_px4_vx4x3(mCommand, 0, 0, 1);
+                                    iaIRInfo = null;
                                 } else {
                                     if (iaIRInfo[0] == 0) {
                                         setParameter_px4_vx4x3(mCommand, 0, 0, 1);
+                                        iaIRInfo = null;
                                     } else {
                                         /* Proceed buffer */
                                         if (bSpeakerParam) {
@@ -600,6 +661,7 @@ public class ViPER4AndroidService extends Service {
                                             proceedIRBuffer_Headphone(mConvIRFile, iaIRInfo[1],
                                                     iaIRInfo[2]);
                                         }
+                                        iaIRInfo = null;
                                     }
                                 }
                             }
@@ -652,68 +714,77 @@ public class ViPER4AndroidService extends Service {
     /* ViPER4Android General FX Parameters */
     private static final int PARAM_FX_TYPE_SWITCH = 65537;
     private static final int PARAM_HPFX_CONV_PROCESS_ENABLED = 65538;
+    @SuppressWarnings("unused")
+	private static final int PARAM_HPFX_CONV_UPDATEKERNEL = 65539;
     private static final int PARAM_HPFX_CONV_PREPAREBUFFER = 65540;
     private static final int PARAM_HPFX_CONV_SETBUFFER = 65541;
     private static final int PARAM_HPFX_CONV_COMMITBUFFER = 65542;
     private static final int PARAM_HPFX_CONV_CROSSCHANNEL = 65543;
     private static final int PARAM_HPFX_VHE_PROCESS_ENABLED = 65544;
     private static final int PARAM_HPFX_VHE_EFFECT_LEVEL = 65545;
-    private static final int PARAM_HPFX_FIREQ_PROCESS_ENABLED = 65546;
-    private static final int PARAM_HPFX_FIREQ_BANDLEVEL = 65547;
-    private static final int PARAM_HPFX_COLM_PROCESS_ENABLED = 65548;
-    private static final int PARAM_HPFX_COLM_WIDENING = 65549;
-    private static final int PARAM_HPFX_COLM_MIDIMAGE = 65550;
-    private static final int PARAM_HPFX_COLM_DEPTH = 65551;
-    private static final int PARAM_HPFX_DIFFSURR_PROCESS_ENABLED = 65552;
-    private static final int PARAM_HPFX_DIFFSURR_DELAYTIME = 65553;
-    private static final int PARAM_HPFX_REVB_PROCESS_ENABLED = 65554;
-    private static final int PARAM_HPFX_REVB_ROOMSIZE = 65555;
-    private static final int PARAM_HPFX_REVB_WIDTH = 65556;
-    private static final int PARAM_HPFX_REVB_DAMP = 65557;
-    private static final int PARAM_HPFX_REVB_WET = 65558;
-    private static final int PARAM_HPFX_REVB_DRY = 65559;
-    private static final int PARAM_HPFX_AGC_PROCESS_ENABLED = 65560;
-    private static final int PARAM_HPFX_AGC_RATIO = 65561;
-    private static final int PARAM_HPFX_AGC_VOLUME = 65562;
-    private static final int PARAM_HPFX_AGC_MAXSCALER = 65563;
-    private static final int PARAM_HPFX_DYNSYS_PROCESS_ENABLED = 65564;
-    private static final int PARAM_HPFX_DYNSYS_XCOEFFS = 65565;
-    private static final int PARAM_HPFX_DYNSYS_YCOEFFS = 65566;
-    private static final int PARAM_HPFX_DYNSYS_SIDEGAIN = 65567;
-    private static final int PARAM_HPFX_DYNSYS_BASSGAIN = 65568;
-    private static final int PARAM_HPFX_VIPERBASS_PROCESS_ENABLED = 65569;
-    private static final int PARAM_HPFX_VIPERBASS_MODE = 65570;
-    private static final int PARAM_HPFX_VIPERBASS_SPEAKER = 65571;
-    private static final int PARAM_HPFX_VIPERBASS_BASSGAIN = 65572;
-    private static final int PARAM_HPFX_VIPERCLARITY_PROCESS_ENABLED = 65573;
-    private static final int PARAM_HPFX_VIPERCLARITY_MODE = 65574;
-    private static final int PARAM_HPFX_VIPERCLARITY_CLARITY = 65575;
-    private static final int PARAM_HPFX_CURE_PROCESS_ENABLED = 65576;
-    private static final int PARAM_HPFX_CURE_CROSSFEED = 65577;
-    private static final int PARAM_HPFX_TUBE_PROCESS_ENABLED = 65578;
-    private static final int PARAM_HPFX_OUTPUT_VOLUME = 65579;
-    private static final int PARAM_HPFX_OUTPUT_PAN = 65580;
-    private static final int PARAM_HPFX_LIMITER_THRESHOLD = 65581;
-    private static final int PARAM_SPKFX_CONV_PROCESS_ENABLED = 65582;
-    private static final int PARAM_SPKFX_CONV_PREPAREBUFFER = 65584;
-    private static final int PARAM_SPKFX_CONV_SETBUFFER = 65585;
-    private static final int PARAM_SPKFX_CONV_COMMITBUFFER = 65586;
-    private static final int PARAM_SPKFX_CONV_CROSSCHANNEL = 65587;
-    private static final int PARAM_SPKFX_FIREQ_PROCESS_ENABLED = 65588;
-    private static final int PARAM_SPKFX_FIREQ_BANDLEVEL = 65589;
-    private static final int PARAM_SPKFX_REVB_PROCESS_ENABLED = 65590;
-    private static final int PARAM_SPKFX_REVB_ROOMSIZE = 65591;
-    private static final int PARAM_SPKFX_REVB_WIDTH = 65592;
-    private static final int PARAM_SPKFX_REVB_DAMP = 65593;
-    private static final int PARAM_SPKFX_REVB_WET = 65594;
-    private static final int PARAM_SPKFX_REVB_DRY = 65595;
-    private static final int PARAM_SPKFX_CORR_PROCESS_ENABLED = 65596;
-    private static final int PARAM_SPKFX_AGC_PROCESS_ENABLED = 65597;
-    private static final int PARAM_SPKFX_AGC_RATIO = 65598;
-    private static final int PARAM_SPKFX_AGC_VOLUME = 65599;
-    private static final int PARAM_SPKFX_AGC_MAXSCALER = 65600;
-    private static final int PARAM_SPKFX_OUTPUT_VOLUME = 65601;
-    private static final int PARAM_SPKFX_LIMITER_THRESHOLD = 65602;
+    private static final int PARAM_HPFX_VDDC_PROCESS_ENABLED = 65546;
+    private static final int PARAM_HPFX_VDDC_COEFFS = 65547;
+    private static final int PARAM_HPFX_VSE_PROCESS_ENABLED = 65548;
+	private static final int PARAM_HPFX_VSE_REFERENCE_BARK = 65549;
+    private static final int PARAM_HPFX_VSE_BARK_RECONSTRUCT = 65550;
+    private static final int PARAM_HPFX_FIREQ_PROCESS_ENABLED = 65551;
+    private static final int PARAM_HPFX_FIREQ_BANDLEVEL = 65552;
+    private static final int PARAM_HPFX_COLM_PROCESS_ENABLED = 65553;
+    private static final int PARAM_HPFX_COLM_WIDENING = 65554;
+    private static final int PARAM_HPFX_COLM_MIDIMAGE = 65555;
+    private static final int PARAM_HPFX_COLM_DEPTH = 65556;
+    private static final int PARAM_HPFX_DIFFSURR_PROCESS_ENABLED = 65557;
+    private static final int PARAM_HPFX_DIFFSURR_DELAYTIME = 65558;
+    private static final int PARAM_HPFX_REVB_PROCESS_ENABLED = 65559;
+    private static final int PARAM_HPFX_REVB_ROOMSIZE = 65560;
+    private static final int PARAM_HPFX_REVB_WIDTH = 65561;
+    private static final int PARAM_HPFX_REVB_DAMP = 65562;
+    private static final int PARAM_HPFX_REVB_WET = 65563;
+    private static final int PARAM_HPFX_REVB_DRY = 65564;
+    private static final int PARAM_HPFX_AGC_PROCESS_ENABLED = 65565;
+    private static final int PARAM_HPFX_AGC_RATIO = 65566;
+    private static final int PARAM_HPFX_AGC_VOLUME = 65567;
+    private static final int PARAM_HPFX_AGC_MAXSCALER = 65568;
+    private static final int PARAM_HPFX_DYNSYS_PROCESS_ENABLED = 65569;
+    private static final int PARAM_HPFX_DYNSYS_XCOEFFS = 65570;
+    private static final int PARAM_HPFX_DYNSYS_YCOEFFS = 65571;
+    private static final int PARAM_HPFX_DYNSYS_SIDEGAIN = 65572;
+    private static final int PARAM_HPFX_DYNSYS_BASSGAIN = 65573;
+    private static final int PARAM_HPFX_VIPERBASS_PROCESS_ENABLED = 65574;
+    private static final int PARAM_HPFX_VIPERBASS_MODE = 65575;
+    private static final int PARAM_HPFX_VIPERBASS_SPEAKER = 65576;
+    private static final int PARAM_HPFX_VIPERBASS_BASSGAIN = 65577;
+    private static final int PARAM_HPFX_VIPERCLARITY_PROCESS_ENABLED = 65578;
+    private static final int PARAM_HPFX_VIPERCLARITY_MODE = 65579;
+    private static final int PARAM_HPFX_VIPERCLARITY_CLARITY = 65580;
+    private static final int PARAM_HPFX_CURE_PROCESS_ENABLED = 65581;
+    private static final int PARAM_HPFX_CURE_CROSSFEED = 65582;
+    private static final int PARAM_HPFX_TUBE_PROCESS_ENABLED = 65583;
+    private static final int PARAM_HPFX_OUTPUT_VOLUME = 65584;
+    private static final int PARAM_HPFX_OUTPUT_PAN = 65585;
+    private static final int PARAM_HPFX_LIMITER_THRESHOLD = 65586;
+    private static final int PARAM_SPKFX_CONV_PROCESS_ENABLED = 65587;
+    @SuppressWarnings("unused")
+	private static final int PARAM_SPKFX_CONV_UPDATEKERNEL = 65588;
+    private static final int PARAM_SPKFX_CONV_PREPAREBUFFER = 65589;
+    private static final int PARAM_SPKFX_CONV_SETBUFFER = 65590;
+    private static final int PARAM_SPKFX_CONV_COMMITBUFFER = 65591;
+    private static final int PARAM_SPKFX_CONV_CROSSCHANNEL = 65592;
+    private static final int PARAM_SPKFX_FIREQ_PROCESS_ENABLED = 65593;
+    private static final int PARAM_SPKFX_FIREQ_BANDLEVEL = 65594;
+    private static final int PARAM_SPKFX_REVB_PROCESS_ENABLED = 65595;
+    private static final int PARAM_SPKFX_REVB_ROOMSIZE = 65596;
+    private static final int PARAM_SPKFX_REVB_WIDTH = 65597;
+    private static final int PARAM_SPKFX_REVB_DAMP = 65598;
+    private static final int PARAM_SPKFX_REVB_WET = 65599;
+    private static final int PARAM_SPKFX_REVB_DRY = 65600;
+    private static final int PARAM_SPKFX_CORR_PROCESS_ENABLED = 65601;
+    private static final int PARAM_SPKFX_AGC_PROCESS_ENABLED = 65602;
+    private static final int PARAM_SPKFX_AGC_RATIO = 65603;
+    private static final int PARAM_SPKFX_AGC_VOLUME = 65604;
+    private static final int PARAM_SPKFX_AGC_MAXSCALER = 65605;
+    private static final int PARAM_SPKFX_OUTPUT_VOLUME = 65606;
+    private static final int PARAM_SPKFX_LIMITER_THRESHOLD = 65607;
 
     private final LocalBinder mBinder = new LocalBinder();
     private static boolean mUseHeadset;
@@ -944,6 +1015,7 @@ public class ViPER4AndroidService extends Service {
                         if (v4aNewDSPModule.mInstance == null) {
                             Log.e("ViPER4Android", "Failed to load v4a driver.");
                             v4aNewDSPModule.release();
+                            v4aNewDSPModule = null;
                         } else mGeneralFXList.put(sessionId, v4aNewDSPModule);
                     } else {
                     	Log.i("ViPER4Android", "Effect module already exist [session = " + sessionId + "]");
@@ -963,6 +1035,7 @@ public class ViPER4AndroidService extends Service {
                         mGeneralFXList.remove(sessionId);
                         if (v4aRemove != null)
                             v4aRemove.release();
+                        v4aRemove = null;
                     }
                     mV4AMutex.release();
                 } else
@@ -1102,33 +1175,23 @@ public class ViPER4AndroidService extends Service {
         Utils.AudioEffectUtils aeuUtils = new Utils().new AudioEffectUtils();
         if (!aeuUtils.isViPER4AndroidEngineFound()) {
             Log.i("ViPER4Android", "ViPER4Android engine not found, create empty service");
+            aeuUtils = null;
             mDriverIsReady = false;
             return;
         } else {
-            PackageManager packageMgr = getPackageManager();
-            PackageInfo packageInfo;
-            String apkVersion;
-            try {
-                int[] iaDrvVer = aeuUtils.getViper4AndroidEngineVersion();
-                String mDriverVersion = iaDrvVer[0] + "." + iaDrvVer[1] + "." + iaDrvVer[2] + "."
-                        + iaDrvVer[3];
-                packageInfo = packageMgr.getPackageInfo(getPackageName(), 0);
-                apkVersion = packageInfo.versionName;
-                if (!apkVersion.equalsIgnoreCase(mDriverVersion)) {
-                    Log.i("ViPER4Android", "ViPER4Android engine is not compatible with service");
-                    mDriverIsReady = false;
-                    return;
-                }
-            } catch (NameNotFoundException e) {
-                Log.i("ViPER4Android", "Cannot find ViPER4Android's apk [weird]");
-                mDriverIsReady = false;
-                return;
+            int[] iaDrvVer = aeuUtils.getViper4AndroidEngineVersion();
+            String mDriverVersion = iaDrvVer[0] + "." + iaDrvVer[1] + "." + iaDrvVer[2] + "."
+                    + iaDrvVer[3];
+            aeuUtils = null;
+            if (!ViPER4Android.isDriverCompatible(mDriverVersion)) {
+            	Log.i("ViPER4Android", "ViPER4Android engine is not compatible with service");
+            	mDriverIsReady = false;
+            	return;
             }
         }
         mDriverIsReady = true;
 
-        Context context = getApplicationContext();
-        AudioManager mAudioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        AudioManager mAudioManager = (AudioManager) getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
         if (mAudioManager != null) {
             mUseBluetooth = mAudioManager.isBluetoothA2dpOn();
             if (mUseBluetooth) {
@@ -1179,6 +1242,7 @@ public class ViPER4AndroidService extends Service {
                 mGeneralFX = null;
             }
         }
+        prefSettings = null;
 
         if (Build.VERSION.SDK_INT < 18)
             startForeground(ViPER4Android.NOTIFY_FOREGROUND_ID, new Notification());
@@ -1294,8 +1358,10 @@ public class ViPER4AndroidService extends Service {
                 .getString("viper4android.settings.compatiblemode", "global");
         if (!mCompatibleMode.equalsIgnoreCase("global")) {
             Log.i("ViPER4Android", "Service::onStartCommand [V4A is local effect mode]");
+            prefSettings = null;
             return super.onStartCommand(intent, flags, startId);
         }
+        prefSettings = null;
 
         if (mGeneralFX == null) {
             // Create engine instance
@@ -1345,7 +1411,7 @@ public class ViPER4AndroidService extends Service {
 
         if (!getDriverCanWork()) {
             // V4A driver is malfunction, but what caused this?
-            //   1. Low ram available.
+            //   1. No ram available.
             //   2. Android audio hal bug.
             //   3. Media server crashed.
 
@@ -1486,6 +1552,35 @@ public class ViPER4AndroidService extends Service {
         return mResult;
     }
 
+    float[] extractDDCCoeffs(SharedPreferences preferences) {
+    	String szDeviceID = preferences.getString("viper4android.headphonefx.viperddc.device", "");
+    	if ((szDeviceID == null) || (szDeviceID.equals(""))) {
+    		Log.i("ViPER4Android", "extractDDCCoeffs(): DeviceID not found.");
+    		return null;
+    	}
+
+    	float[] ddcCoeffs = null;
+    	String szDeviceDDCCoeffs = preferences.getString("viper4android.ddcblock." + szDeviceID, "");
+    	if ((szDeviceDDCCoeffs == null) || (szDeviceDDCCoeffs.equals(""))) {
+    		szDeviceDDCCoeffs = DDCDatabase.queryDDCBlock(szDeviceID, getApplicationContext());
+    		if ((szDeviceDDCCoeffs == null) || (szDeviceDDCCoeffs.equals(""))) return null;
+    		ddcCoeffs = DDCDatabase.blockToFloatArray(szDeviceDDCCoeffs);
+    		if ((ddcCoeffs == null) || (ddcCoeffs.length < 2)) return null;
+    		Editor edit = preferences.edit();
+    		edit.putString("viper4android.ddcblock." + szDeviceID, szDeviceDDCCoeffs);
+    		edit.apply();	/* Use apply here */
+    		edit = null;
+    	} else ddcCoeffs = DDCDatabase.blockToFloatArray(szDeviceDDCCoeffs);
+
+    	if (ddcCoeffs == null) {
+    		Log.i("ViPER4Android", "extractDDCCoeffs(): DDC coeffs not found.");
+    	} else {
+    		Log.i("ViPER4Android", "extractDDCCoeffs(): DDC coeffs found, length = " + ddcCoeffs.length / 2);
+    	}
+
+    	return ddcCoeffs;
+    }
+
     void setV4AEqualizerBandLevel(int idx, int level, boolean hpfx, V4ADSPModule dsp) {
         if (dsp == null || !mDriverIsReady)
             return;
@@ -1598,6 +1693,25 @@ public class ViPER4AndroidService extends Service {
         /******************************************** Headphone FX ********************************************/
         if (mFXType == V4A_FX_TYPE_HEADPHONE) {
             Log.i("ViPER4Android", "updateSystem(): Commiting headphone-fx parameters");
+
+            /* ViPER-DDC */
+            Log.i("ViPER4Android", "updateSystem(): Updating ViPER-DDC.");
+            float[] ddcCoeffs = extractDDCCoeffs(preferences);
+            if (ddcCoeffs != null) v4aModule.setParameter_px4_vx1x1024(PARAM_HPFX_VDDC_COEFFS, ddcCoeffs);
+            if (preferences.getBoolean("viper4android.headphonefx.viperddc.enable", false))
+            	v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_VDDC_PROCESS_ENABLED, 1);
+            else
+            	v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_VDDC_PROCESS_ENABLED, 0);
+
+            /* Spectrum Extension */
+            Log.i("ViPER4Android", "updateSystem(): Updating Spectrum Extension.");
+            int nSEValue = (int)(Math.round(Float.valueOf(preferences.getString("viper4android.headphonefx.vse.value", "0.1")) * 5.6f * 100.0f));
+            v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_VSE_BARK_RECONSTRUCT, nSEValue);
+            v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_VSE_REFERENCE_BARK, 7600);
+            if (preferences.getBoolean("viper4android.headphonefx.vse.enable", false))
+            	v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_VSE_PROCESS_ENABLED, 1);
+            else
+            	v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_VSE_PROCESS_ENABLED, 0);
 
             /* FIR Equalizer */
             Log.i("ViPER4Android", "updateSystem(): Updating FIR Equalizer.");
@@ -1818,6 +1932,14 @@ public class ViPER4AndroidService extends Service {
         /********************************************* Speaker FX *********************************************/
         else if (mFXType == V4A_FX_TYPE_SPEAKER) {
             Log.i("ViPER4Android", "updateSystem(): Commiting speaker-fx parameters");
+
+            /* ViPER-DDC */
+            Log.i("ViPER4Android", "updateSystem(): Updating ViPER-DDC.");
+            v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_VDDC_PROCESS_ENABLED, 0);
+
+            /* Spectrum Extension */
+            Log.i("ViPER4Android", "updateSystem(): Updating Spectrum Extension.");
+            v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_VSE_PROCESS_ENABLED, 0);
 
             /* FIR Equalizer */
             Log.i("ViPER4Android", "updateSystem(): Updating FIR Equalizer.");

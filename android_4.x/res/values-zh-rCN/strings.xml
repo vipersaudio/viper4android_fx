@@ -54,7 +54,7 @@
     <string name="pref_viperddc_tips">注意：
 \nViPER-DDC是一个用于耳机校准的HiFi音效。
 \n目前ViPER-DDC已经支持近500款耳机的校准，而且也将继续支持更多的耳机。
-\n所以，如果您在列表中找不到您的耳机型号，请暂时关闭本功能。</string>
+\n我们强烈建议您在列表中选择精确对应您耳机型号的选项，这样可以给您带来最佳的音频体验。</string>
     <string name="pref_vse_title">频谱扩展</string>
     <string name="pref_vse_summary_on">频谱扩展已启用</string>
     <string name="pref_vse_summary_off">频谱扩展已禁用</string>
@@ -197,8 +197,10 @@
     <string name="text_drvinst_busybox_not_installed">驱动安装失败，在您的手机上未找到正确的busybox。</string>
     <string name="text_drvinst_sdnotmounted">驱动安装失败，未找到可读写的外置或内置存储。</string>
     <string name="text_drvinst_dataioerr">驱动安装失败，系统I/O错误，您可以重启手机后再试。</string>
-    <string name="text_drvinst_cfg_unsup">驱动安装失败，V4A暂时不支持您的系统或ROM。</string>
-    <string name="text_drvinst_failed">驱动安装失败，请确认您的手机已经安装了正确的busybox。</string>
+    <string name="text_drvinst_cfg_unsup">驱动安装失败，V4A暂时不支持您的系统或ROM(您是否打过音效的补丁？)。</string>
+    <string name="text_drvinst_failed">驱动安装失败，在您的设备上找到的busybox不工作。
+\n这通常意味着您安装了错误的或损坏的busybox，V4A需要stericson.busybox来安装驱动。
+\n如果您确定您已经安装了正确的busybox，那么请确认您的设备已经完整ROOT(建议您使用RE管理器手动在/system内创建文件以验证是否完整ROOT，一般的ROOT检测软件无法正确检测虚假的ROOT)。</string>
     <string name="text_modifybuildprop">注意：
 \n您机器上的LPA功能已经开启，这可能会造成V4A没有效果。
 \nLPA是指“低功耗音频”，安装程序可以通过自动修改build.prop来禁用它。

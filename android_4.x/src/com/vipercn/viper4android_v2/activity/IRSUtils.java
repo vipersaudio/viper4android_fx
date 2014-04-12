@@ -38,6 +38,8 @@ public class IRSUtils {
             int tableIndex = (int) (crcResult ^ mData) & 0xFF;
             crcResult = crcResult >> 8 & 0x00FFFFFF ^ crcTable[tableIndex];
         }
+        crcTable = null;
+
         return ~crcResult;
     }
 
@@ -244,6 +246,7 @@ public class IRSUtils {
                 byte[] newData = new byte[mReadLength + 4096];
                 System.arraycopy(mData, 0, newData, 0, mReadLength);
                 mData = newData;
+                newData = null;
             } catch (IOException e) {
                 Log.i("ViPER4Android", "readEntireData, msg = " + e.getMessage());
                 break;
@@ -254,6 +257,7 @@ public class IRSUtils {
         byte[] newData = new byte[mReadLength];
         System.arraycopy(mData, 0, newData, 0, mReadLength);
         mData = newData;
+        newData = null;
 
         // Update samples count according to read result
         if (mBytesCount > mData.length) {
@@ -261,6 +265,7 @@ public class IRSUtils {
             mBytesCount = mData.length;
             mSamplesCount = mBytesCount / mChannels / (mSampleBits / 8);
             if (mBytesCount % (mChannels * mSampleBits / 8) != 0) {
+            	mData = null;
                 Release();
                 return null;
             }
@@ -274,6 +279,7 @@ public class IRSUtils {
             byte[] baActualData = new byte[(int) mBytesCount];
             System.arraycopy(mData, 0, baActualData, 0, (int) mBytesCount);
             mData = baActualData;
+            baActualData = null;
         }
 
         // Convert format
@@ -297,7 +303,7 @@ public class IRSUtils {
         return (int) mSamplesCount;
     }
 
-    private static byte[] convert_S16LE_F32(byte[] baS16LEData) {
+    private byte[] convert_S16LE_F32(byte[] baS16LEData) {
         int nSamplesCount = baS16LEData.length / 2; // 2 means sizeof(short)
         byte[] baF32Data = new byte[nSamplesCount * 4]; // 4 means sizeof(float)
         double invscale = 0.000030517578125;
@@ -314,7 +320,7 @@ public class IRSUtils {
         return baF32Data;
     }
 
-    private static byte[] convert_S24LE_F32(byte[] baS24LEData) {
+    private byte[] convert_S24LE_F32(byte[] baS24LEData) {
         int mSamplesCount = baS24LEData.length / 3; // 3 means sizeof(int24)
         byte[] baF32Data = new byte[mSamplesCount * 4]; // 4 means sizeof(float)
         double invscale = 0.00000011920928955078125;
@@ -337,7 +343,7 @@ public class IRSUtils {
         return baF32Data;
     }
 
-    private static byte[] convert_S32LE_F32(byte[] baS32LEData) {
+    private byte[] convert_S32LE_F32(byte[] baS32LEData) {
         int mSamplesCount = baS32LEData.length / 4; // 4 means sizeof(int)
         byte[] baF32Data = new byte[mSamplesCount * 4]; // 4 means sizeof(float)
         double invscale = 0.0000000004656612873077392578125;
@@ -354,11 +360,11 @@ public class IRSUtils {
         return baF32Data;
     }
 
-    private static short byteToShortLE(byte b1, byte b2) {
+    private short byteToShortLE(byte b1, byte b2) {
         return (short) (b1 & 0xFF | (b2 & 0xFF) << 8);
     }
 
-    private static int readUnsignedInt(BufferedInputStream bisInput) {
+    private int readUnsignedInt(BufferedInputStream bisInput) {
         byte[] mBuffer = new byte[4];
         int dwReturn;
         try {
@@ -372,7 +378,7 @@ public class IRSUtils {
                 | mBuffer[3] & 0xFF;
     }
 
-    private static int readUnsignedIntLE(BufferedInputStream bisInput) {
+    private int readUnsignedIntLE(BufferedInputStream bisInput) {
         byte[] mBuffer = new byte[4];
         int dwReturn;
         try {
@@ -386,7 +392,7 @@ public class IRSUtils {
                 | (mBuffer[3] & 0xFF) << 24;
     }
 
-    private static short readUnsignedShortLE(BufferedInputStream bisInput) {
+    private short readUnsignedShortLE(BufferedInputStream bisInput) {
         byte[] mBuffer = new byte[2];
         int dwReturn;
         try {

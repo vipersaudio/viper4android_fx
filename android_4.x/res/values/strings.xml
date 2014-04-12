@@ -199,7 +199,9 @@
     <string name="text_drvinst_sdnotmounted">Driver install failed, external storage not mounted.</string>
     <string name="text_drvinst_dataioerr">Driver install failed, I/O error, please reboot and try again.</string>
     <string name="text_drvinst_cfg_unsup">Driver install failed, unsupported android system or ROM.</string>
-    <string name="text_drvinst_failed">Driver install failed, please confirm your phone has installed the proper busybox.</string>
+    <string name="text_drvinst_failed">Driver install failed, the busybox found on your device does not work.
+\nThis usually means you installed the wrong or broken busybox, V4A needs stericson busybox to work.
+\nIf you sure about having installed the proper busybox, then please confirm your device has been totally rooted.</string>
     <string name="text_modifybuildprop">ATTENTION:
 \nLPA feature enabled on your device, this may cause V4A malfunction.
 \nLPA means \'Low Power Audio\', we can disable it through modifying build.prop, the procedure will be done automatically.

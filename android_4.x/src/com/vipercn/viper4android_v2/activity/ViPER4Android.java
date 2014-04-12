@@ -132,6 +132,24 @@ public final class ViPER4Android extends Activity {
                 || !mLastVersion.equalsIgnoreCase(mVersion);
     }
 
+    private boolean checkDDCDBVer() {
+        PackageManager packageMgr = getPackageManager();
+        PackageInfo packageInfo;
+        String mVersion;
+        try {
+            packageInfo = packageMgr.getPackageInfo(getPackageName(), 0);
+            mVersion = packageInfo.versionName;
+        } catch (NameNotFoundException e) {
+            return false;
+        }
+
+        SharedPreferences prefSettings = getSharedPreferences(
+                SHARED_PREFERENCES_BASENAME + ".settings", 0);
+        String mDBVersion = prefSettings.getString("viper4android.settings.ddc_db_compatible", "");
+        return mDBVersion == null || mDBVersion.equals("")
+                || !mDBVersion.equalsIgnoreCase(mVersion);
+    }
+
     private void setFirstRun() {
         PackageManager packageMgr = getPackageManager();
         PackageInfo packageInfo;
@@ -148,6 +166,26 @@ public final class ViPER4Android extends Activity {
         Editor editSettings = prefSettings.edit();
         if (editSettings != null) {
             editSettings.putString("viper4android.settings.lastversion", mVersion);
+            editSettings.commit();
+        }
+    }
+
+    private void setDDCDBVer() {
+        PackageManager packageMgr = getPackageManager();
+        PackageInfo packageInfo;
+        String mVersion;
+        try {
+            packageInfo = packageMgr.getPackageInfo(getPackageName(), 0);
+            mVersion = packageInfo.versionName;
+        } catch (NameNotFoundException e) {
+            return;
+        }
+
+        SharedPreferences prefSettings = getSharedPreferences(
+                SHARED_PREFERENCES_BASENAME + ".settings", 0);
+        Editor editSettings = prefSettings.edit();
+        if (editSettings != null) {
+            editSettings.putString("viper4android.settings.ddc_db_compatible", mVersion);
             editSettings.commit();
         }
     }
@@ -193,8 +231,6 @@ public final class ViPER4Android extends Activity {
 
         String mURL = "http://vipersaudio.com/stat/v4a_stat.php?code=" + mCode
                 + "&ver=viper4android-fx";
-        Log.i("ViPER4Android", "Submit code = \"" + mURL + "\"");
-
         try {
             HttpGet httpRequest = new HttpGet(mURL);
             HttpClient httpClient = new DefaultHttpClient();
@@ -213,20 +249,10 @@ public final class ViPER4Android extends Activity {
         if (!aeuUtils.isViPER4AndroidEngineFound()) {
             isDriverUsable = false;
         } else {
-            PackageManager packageMgr = getPackageManager();
-            PackageInfo packageInfo;
-            String apkVersion;
-            try {
-                int[] iaDrvVer = aeuUtils.getViper4AndroidEngineVersion();
-                String mDriverVersion = iaDrvVer[0] + "." + iaDrvVer[1] + "." + iaDrvVer[2] + "."
-                        + iaDrvVer[3];
-                packageInfo = packageMgr.getPackageInfo(getPackageName(), 0);
-                apkVersion = packageInfo.versionName;
-                isDriverUsable = apkVersion.equalsIgnoreCase(mDriverVersion);
-            } catch (NameNotFoundException e) {
-                Log.i("ViPER4Android", "Cannot found ViPER4Android's apk [weird]");
-                isDriverUsable = true;
-            }
+        	int[] iaDrvVer = aeuUtils.getViper4AndroidEngineVersion();
+            String mDriverVersion = iaDrvVer[0] + "." + iaDrvVer[1] + "." + iaDrvVer[2] + "."
+                    + iaDrvVer[3];
+            isDriverUsable = isDriverCompatible(mDriverVersion);
         }
 
         if (!isDriverUsable) {
@@ -239,9 +265,31 @@ public final class ViPER4Android extends Activity {
         }
     }
 
+    public static boolean isDriverCompatible(String szDrvVersion){
+    	List<String> lstCompatibleList = new ArrayList<String>();
+    	// TODO: <DO NOT REMOVE> add compatible driver version to lstCompatibleList
+
+    	if (lstCompatibleList.contains(szDrvVersion)) {
+    		lstCompatibleList.clear();
+    		lstCompatibleList = null;
+    		return true;
+    	} else {
+    		lstCompatibleList.clear();
+    		lstCompatibleList = null;
+    		// Since we cant use getPackageManager in static method, we need to type the current version here
+    		// TODO: <DO NOT REMOVE> please make sure this string equals to current apk's version
+    		if (szDrvVersion.equals("2.3.3.0")) {
+    			return true;
+    		}
+    		return false;
+    	}
+    }
+
     private static boolean cpuHasQualitySelection() {
         Utils.CpuInfo mCPUInfo = new Utils.CpuInfo();
-        return mCPUInfo.hasNEON();
+        boolean bCPUHasNEON = mCPUInfo.hasNEON();
+        mCPUInfo = null;
+        return bCPUHasNEON;
     }
 
     private static String determineCPUWithDriver(String mQual) {
@@ -279,6 +327,7 @@ public final class ViPER4Android extends Activity {
         } else {
             mDriverFile = mDriverFile + "NOVFP";
         }
+        mCPUInfo = null;
 
         mDriverFile = mDriverFile + ".so";
         Log.i("ViPER4Android", "Driver selection = " + mDriverFile);
@@ -301,6 +350,10 @@ public final class ViPER4Android extends Activity {
                 build.append(line);
                 build.append("\n");
             }
+            reader.close();
+            inputStreamReader.close();
+            reader = null;
+            inputStreamReader = null;
         } catch (IOException e) {
             return "";
         }
@@ -535,6 +588,7 @@ public final class ViPER4Android extends Activity {
                         }
                     });
                     mUpdateDrv.show();
+                    mUpdateDrv = null;
                 }
                 super.handleMessage(msg);
             } catch (Exception e) {
@@ -554,6 +608,12 @@ public final class ViPER4Android extends Activity {
         // Welcome window
         if (checkFirstRun()) {
             // TODO: Welcome window
+        }
+
+        // Prepare ViPER-DDC database
+        if (checkDDCDBVer()) {
+        	if (DDCDatabase.initializeDatabase(this))
+        		setDDCDBVer();
         }
 
         // We should start the background service first
@@ -690,6 +750,14 @@ public final class ViPER4Android extends Activity {
                             break;
                         }
                     }
+                } else if (!mIsTabbed) {
+                    String[] entries = getEntries();
+                    for (int i = 0; i < entries.length; i++) {
+                        if (routing.equals(entries[i])) {
+                        	selectItem(i);
+                            break;
+                        }
+                    }
                 }
 
                 Log.i("ViPER4Android", "Unbinding service ...");
@@ -789,6 +857,9 @@ public final class ViPER4Android extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+    	/* item == null in Monkey test */
+    	if (item == null) return true;
+
         SharedPreferences prefSettings = getSharedPreferences(
                 SHARED_PREFERENCES_BASENAME + ".settings", MODE_PRIVATE);
         if (!mIsTabbed) {

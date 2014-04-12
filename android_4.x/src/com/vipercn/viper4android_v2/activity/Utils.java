@@ -22,6 +22,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -29,8 +30,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.net.URL;
-import java.net.URLConnection;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.StringTokenizer;
@@ -40,9 +40,7 @@ public class Utils {
     public class AudioEffectUtils {
 
         private AudioEffect.Descriptor[] mAudioEffectList;
-
         private boolean mHasViPER4AndroidEngine;
-
         private final int[] mV4AEngineVersion = new int[4];
 
         public AudioEffectUtils() {
@@ -152,7 +150,6 @@ public class Utils {
     public static class CpuInfo {
 
         private boolean mCpuHasNEON;
-
         private boolean mCpuHasVFP;
 
         // Lets read /proc/cpuinfo in java
@@ -191,6 +188,8 @@ public class Utils {
                 }
                 bufferReader.close();
                 cpuInfoReader.close();
+                bufferReader = null;
+                cpuInfoReader = null;
 
                 Log.i("ViPER4Android", "cpuInfo[java] = NEON:" + mCpuHasNEON + ", VFP:"
                         + mCpuHasVFP);
@@ -203,8 +202,12 @@ public class Utils {
                     if (cpuInfoReader != null) {
                         cpuInfoReader.close();
                     }
+                    bufferReader = null;
+                    cpuInfoReader = null;
                     return false;
                 } catch (Exception ex) {
+                    bufferReader = null;
+                    cpuInfoReader = null;
                     return false;
                 }
             }
@@ -265,9 +268,10 @@ public class Utils {
                 }
             });
             mBusyBox.show();
+            mBusyBox = null;
         }
 
-        return RootTools.isBusyboxAvailable();
+        return isBusyBoxAvailable;
     }
 
     // Check for build.prop entries which can cause issues and offer update
@@ -327,6 +331,7 @@ public class Utils {
                 }
             });
             mModifyWarn.show();
+            mModifyWarn = null;
         } else {
         	Log.i("ViPER4Android", "LPA feature not enabled");
         }
@@ -336,54 +341,6 @@ public class Utils {
     private static long getFileLength(String mFileName) {
         if (!(new File(mFileName).isFile())) return 0;
         return new File(mFileName).length();
-    }
-
-    // Download a file from Internet
-    public static boolean downloadFile(String mURL, String mFileName, String mStorePath) {
-        try {
-            URL url = new URL(mURL);
-            URLConnection connection = url.openConnection();
-            connection.connect();
-            InputStream stream = connection.getInputStream();
-            if (connection.getContentLength() <= 0) return false;
-            if (stream == null) return false;
-            FileOutputStream fos = new FileOutputStream(mStorePath + mFileName);
-
-            byte[] buf = new byte[1024];
-            do {
-                int numRead = stream.read(buf);
-                if (numRead == -1)
-                    break;
-                fos.write(buf, 0, numRead);
-            } while (true);
-            stream.close();
-            fos.close();
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    // Check a file with checksum
-    public static boolean fileChecksum(String mFilePathName, String mCheckSum) {
-        long checkSum = 0;
-
-        try {
-            FileInputStream fis = new FileInputStream(mFilePathName);
-            byte[] buf = new byte[1024];
-            do {
-                int numRead = fis.read(buf);
-                if (numRead == -1)
-                    break;
-                for (int idx = 0; idx < numRead; idx++)
-                    checkSum = checkSum + (long) buf[idx];
-            } while (true);
-            fis.close();
-            String mNewCheckSum = Long.toString(checkSum);
-            return mCheckSum.equals(mNewCheckSum);
-        } catch (Exception e) {
-            return false;
-        }
     }
 
     // Read file list from path
@@ -422,7 +379,9 @@ public class Utils {
             bufferInput.close();
             isrInput.close();
             fisInput.close();
-
+            bufferInput = null;
+            isrInput = null;
+            fisInput = null;
             return mProfileName;
         } catch (Exception e) {
             return "";
@@ -442,6 +401,7 @@ public class Utils {
                 String mName = getProfileName(mFileName);
                 mProfileNameList.add(mName.trim());
             }
+            profileList = null;
 
             return mProfileNameList;
         } catch (Exception e) {
@@ -496,7 +456,9 @@ public class Utils {
                 bufferInput.close();
                 isrInput.close();
                 fisInput.close();
-
+                bufferInput = null;
+                isrInput = null;
+                fisInput = null;
                 return true;
             } else
                 return false;
@@ -506,12 +468,72 @@ public class Utils {
         }
     }
 
+    // Check file
+    private static boolean checkFileContainsKeyLower(String szFilePathName, String szKey, String szEncoding)
+    {
+    	szKey = szKey.trim();
+
+		FileInputStream fisInput = null;
+		InputStreamReader isrInput = null;
+		BufferedReader bufferInput = null;
+		try {
+			boolean bFoundKey = false;
+			fisInput = new FileInputStream(szFilePathName);
+			isrInput = new InputStreamReader(fisInput, szEncoding);
+			bufferInput = new BufferedReader(isrInput);
+			while (true) {
+				String currLine = bufferInput.readLine();
+				if (currLine == null) break;
+				if (currLine.trim().startsWith("#")) continue;
+				if (currLine.toLowerCase(Locale.US).contains(szKey)) {
+					bFoundKey = true;
+					break;
+				}
+			}
+			bufferInput.close();
+			isrInput.close();
+			fisInput.close();
+			fisInput = null;
+			isrInput = null;
+			bufferInput = null;
+			return bFoundKey;
+		} catch (FileNotFoundException e) {
+			fisInput = null;
+			isrInput = null;
+			bufferInput = null;
+			return false;
+		} catch (UnsupportedEncodingException e) {
+			fisInput = null;
+			isrInput = null;
+			bufferInput = null;
+			return false;
+		} catch (IOException e) {
+			fisInput = null;
+			isrInput = null;
+			bufferInput = null;
+			return false;
+		}
+    }
+
+    /*
+     * Return value:
+     * 0: Success
+     * 5: Input File Error
+     * 3: I/O Error
+     * 4: Unsupported file format
+     */
+
     // Modify audio_effects.conf
-    private static boolean modifyFXConfig(String mInputFile, String mOutputFile) {
+    private static int modifyFXConfig(String mInputFile, String mOutputFile) {
         Log.i("ViPER4Android", "Editing audio configuration, input = " + mInputFile
                 + ", output = " + mOutputFile);
         try {
             long inputFileLength = getFileLength(mInputFile);
+            if (inputFileLength < 32) {
+            	// We need at least 32-bytes for basic structure
+            	return 5;
+            }
+            new File(mOutputFile).delete();
 
             // Create reading and writing stuff
             FileInputStream fisInput = new FileInputStream(mInputFile);
@@ -544,8 +566,7 @@ public class Utils {
                 bufferInput.reset();
                 do {
                     String mLine = bufferInput.readLine();
-                    if (mLine == null)
-                        break;
+                    if (mLine == null) break;
                     bufferOutput.write(mLine + "\n");
                 } while (true);
                 bufferOutput.flush();
@@ -557,14 +578,17 @@ public class Utils {
                 oswOutput.close();
                 fosOutput.close();
 
-                return true;
+                return 0;
             } else {
-                // Lets append v4a library and effect to configuration
+                // Append v4a library and effect to configuration
                 bufferInput.reset();
                 do {
                     String mLine = bufferInput.readLine();
-                    if (mLine == null)
-                        break;
+                    if (mLine == null) break;
+                    if (mLine.trim().startsWith("#")) {
+                    	bufferOutput.write(mLine + "\n");
+                    	continue;
+                    }
                     if (mLine.trim().equalsIgnoreCase("libraries {") && !libraryAppend) {
                         // Append library
                         bufferOutput.write(mLine + "\n");
@@ -580,8 +604,7 @@ public class Utils {
                         bufferOutput.write("    uuid 41d3c987-e6cf-11e3-a88a-11aba5d5c51b\n");
                         bufferOutput.write("  }\n");
                         effectAppend = true;
-                    } else
-                        bufferOutput.write(mLine + "\n");
+                    } else bufferOutput.write(mLine + "\n");
                 } while (true);
                 bufferOutput.flush();
 
@@ -592,17 +615,23 @@ public class Utils {
                 oswOutput.close();
                 fosOutput.close();
 
-                // Just in case, different config file format in future
-                return libraryAppend & effectAppend;
+                if (libraryAppend && effectAppend) return 0;
+                return 4;
             }
         } catch (Exception e) {
             Log.i("ViPER4Android", "Error: " + e.getMessage());
-            return false;
+            return 3;
         }
     }
 
+    // Check if addon.d folder exists for script installation (Device kernel dependant)
+    private static boolean addondExists() {
+        File file = new File("/system/addon.d/");
+        return file.exists() && file.isDirectory();
+    }
+
     // Get application data path
-    private static String getBasePath(Context ctx) {
+    public static String getBasePath(Context ctx) {
         Context mContext = ctx.getApplicationContext();
         String mBasePath = "";
         if (mContext != null) {
@@ -618,14 +647,8 @@ public class Utils {
         return mBasePath;
     }
 
-    // Check if addon.d folder exists for script installation (Device kernel dependant)
-    private static boolean addondExists() {
-        File file = new File("/system/addon.d/");
-        return file.exists() && file.isDirectory();
-    }
-
     // Copy assets to local
-    private static boolean copyAssetsToLocal(Context ctx, String mSourceName, String mDestinationName) {
+    public static boolean copyAssetsToLocal(Context ctx, String mSourceName, String mDestinationName) {
         String mBasePath = getBasePath(ctx);
         if (mBasePath.equals("")) return false;
         mDestinationName = mBasePath + "/" + mDestinationName;
@@ -645,6 +668,9 @@ public class Utils {
             myOutput.flush();
             myInput.close();
             myOutput.close();
+            buffer = null;
+            myInput = null;
+            myOutput = null;
         } catch (Exception e) {
             Log.i("ViPER4Android", "CopyAssetsToLocal() failed, msg = " + e.getMessage());
             return false;
@@ -662,7 +688,6 @@ public class Utils {
          */
 
         // Lets acquire root first :)
-        RootTools.debugMode = true;
         if (!RootTools.isAccessGiven()) {
             return;
         }
@@ -670,7 +695,6 @@ public class Utils {
         // Then delete the driver
         String mDriverPathName = "/system/lib/soundfx/libv4a_fx_ics.so";
         try {
-            RootTools.debugMode = true;
             if (RootTools.exists(mDriverPathName)) {
                 RootTools.deleteFileOrDirectory(mDriverPathName, true);
                 if (RootTools.exists("/system/addon.d/91-v4a.sh")) {
@@ -682,7 +706,6 @@ public class Utils {
             Log.i("ViPER4Android", "Driver uninstall failed, msg = " + e.getMessage());
         }
     }
-
 
     /*
      * Driver installation return value:
@@ -727,55 +750,61 @@ public class Utils {
                 mChmod = "toolbox chmod";
             else
                 return 5;
-            }
+        }
 
         // Generate temp config file path, thanks to 'ste71m'
         String mSystemConf = StaticEnvironment.getExternalStoragePath() + "v4a_audio_system.conf";
         String mVendorConf = StaticEnvironment.getExternalStoragePath() + "v4a_audio_vendor.conf";
 
-        // Check vendor directory
+        // Check configuration
+        boolean bConfigModified = true;
+        bConfigModified &= checkFileContainsKeyLower("/system/etc/audio_effects.conf", "41d3c987-e6cf-11e3-a88a-11aba5d5c51b", "ASCII");
         boolean ifVendorExists = RootTools.exists("/system/vendor/etc/audio_effects.conf");
-
-        // Copy configuration to temp directory
-        if (ifVendorExists) {
-            /* Copy to external storage, we dont need remount */
-            RootTools.copyFile("/system/etc/audio_effects.conf", mSystemConf, false, false);
-            RootTools.copyFile("/system/vendor/etc/audio_effects.conf", mVendorConf, false, false);
-        } else {
-            /* Copy to external storage, we dont need remount */
-            RootTools.copyFile("/system/etc/audio_effects.conf", mSystemConf, false, false);
-        }
-
-        // Modifing configuration
-        boolean modifyResult = modifyFXConfig(mSystemConf, mSystemConf + ".out");
-        if (ifVendorExists) {
-            modifyResult &= modifyFXConfig(mVendorConf, mVendorConf + ".out");
-        }
-        if (!modifyResult) {
-            /* Modify the configuration failed, lets cleanup temp file(s) */
-            try {
-                if (ifVendorExists) {
-                    if (!RootTools.deleteFileOrDirectory(mSystemConf, false))
-                        new File(mSystemConf).delete();
-                    if (!RootTools.deleteFileOrDirectory(mVendorConf, false))
-                        new File(mVendorConf).delete();
-                    if (!RootTools.deleteFileOrDirectory(mSystemConf + ".out", false))
-                        new File(mSystemConf + ".out").delete();
-                    if (!RootTools.deleteFileOrDirectory(mVendorConf + ".out", false))
-                        new File(mVendorConf + ".out").delete();
-                } else {
-                    if (!RootTools.deleteFileOrDirectory(mSystemConf, false))
-                        new File(mSystemConf).delete();
-                    if (!RootTools.deleteFileOrDirectory(mSystemConf + ".out", false))
-                        new File(mSystemConf + ".out").delete();
-                }
-                // Close all shells
-                RootTools.closeAllShells();
-                return 4;
-            } catch (Exception e) {
-                Log.i("ViPER4Android", "Modify config cleanup failed, msg = " + e.getMessage());
-                return 4;
-            }
+        if (ifVendorExists)
+        	bConfigModified &= checkFileContainsKeyLower("/system/vendor/etc/audio_effects.conf", "41d3c987-e6cf-11e3-a88a-11aba5d5c51b", "ASCII");
+        if (!bConfigModified) {
+	        // Copy configuration to temp directory
+	        if (ifVendorExists) {
+	            /* Copy to external storage, we dont need remount */
+	            RootTools.copyFile("/system/etc/audio_effects.conf", mSystemConf, false, false);
+	            RootTools.copyFile("/system/vendor/etc/audio_effects.conf", mVendorConf, false, false);
+	        } else {
+	            /* Copy to external storage, we dont need remount */
+	            RootTools.copyFile("/system/etc/audio_effects.conf", mSystemConf, false, false);
+	        }
+	        // Modifing configuration
+	        int modifyResult1 = modifyFXConfig(mSystemConf, mSystemConf + ".out");
+	        int modifyResult2 = 0;
+	        if (ifVendorExists) {
+	        	modifyResult2 = modifyFXConfig(mVendorConf, mVendorConf + ".out");
+	        }
+	        if ((modifyResult1 != 0) || (modifyResult2 != 0)) {
+	            /* Failed to modify the configuration, cleanup temp file(s) */
+	            try {
+	                if (ifVendorExists) {
+	                    if (!RootTools.deleteFileOrDirectory(mSystemConf, false))
+	                        new File(mSystemConf).delete();
+	                    if (!RootTools.deleteFileOrDirectory(mVendorConf, false))
+	                        new File(mVendorConf).delete();
+	                    if (!RootTools.deleteFileOrDirectory(mSystemConf + ".out", false))
+	                        new File(mSystemConf + ".out").delete();
+	                    if (!RootTools.deleteFileOrDirectory(mVendorConf + ".out", false))
+	                        new File(mVendorConf + ".out").delete();
+	                } else {
+	                    if (!RootTools.deleteFileOrDirectory(mSystemConf, false))
+	                        new File(mSystemConf).delete();
+	                    if (!RootTools.deleteFileOrDirectory(mSystemConf + ".out", false))
+	                        new File(mSystemConf + ".out").delete();
+	                }
+	                // Close all shells
+	                RootTools.closeAllShells();
+	                if (modifyResult1 != 0) return modifyResult1;
+	                else return modifyResult2;
+	            } catch (Exception e) {
+	                if (modifyResult1 != 0) return modifyResult1;
+	                else return modifyResult2;
+	            }
+	        }
         }
 
         // Copy back to system
@@ -800,24 +829,34 @@ public class Utils {
                     operationSuccess = RootTools.copyFile(mBaseDrvPathName,
                             "/system/lib/soundfx/libv4a_fx_ics.so", false, false);
                 }
-                if (operationSuccess) {
-                    operationSuccess = RootTools.copyFile(mSystemConf + ".out",
-                            "/system/etc/audio_effects.conf", false, false);
-                }
-                if (operationSuccess) {
-                    operationSuccess = RootTools.copyFile(mVendorConf + ".out",
-                            "/system/vendor/etc/audio_effects.conf", false, false);
+                if (!bConfigModified) {
+	                if (operationSuccess) {
+	                    operationSuccess = RootTools.copyFile(mSystemConf + ".out",
+	                            "/system/etc/audio_effects.conf", false, false);
+	                }
+	                if (operationSuccess) {
+	                    operationSuccess = RootTools.copyFile(mVendorConf + ".out",
+	                            "/system/vendor/etc/audio_effects.conf", false, false);
+	                }
                 }
                 if (operationSuccess && isAddondSupported) {
                     operationSuccess = RootTools.copyFile(mAddondScriptPathName,
                             "/system/addon.d/91-v4a.sh", false, false);
                 }
-                // Modify permission
-                CommandCapture ccSetPermission = new CommandCapture(0,
-                        mChmod + " 644 /system/etc/audio_effects.conf",
-                        mChmod + " 644 /system/vendor/etc/audio_effects.conf",
-                        mChmod + " 644 /system/lib/soundfx/libv4a_fx_ics.so");
-                RootTools.getShell(true).add(ccSetPermission);
+
+                if (!bConfigModified) {
+	                // Modify permission
+	                CommandCapture ccSetPermission = new CommandCapture(0,
+	                        mChmod + " 644 /system/etc/audio_effects.conf",
+	                        mChmod + " 644 /system/vendor/etc/audio_effects.conf",
+	                        mChmod + " 644 /system/lib/soundfx/libv4a_fx_ics.so");
+	                RootTools.getShell(true).add(ccSetPermission);
+                } else {
+	                // Modify permission
+	                CommandCapture ccSetPermission = new CommandCapture(0,
+	                        mChmod + " 644 /system/lib/soundfx/libv4a_fx_ics.so");
+	                RootTools.getShell(true).add(ccSetPermission);
+                }
 
                 // Modify permission of addon.d script if applicable
                 if (isAddondSupported) {
@@ -834,20 +873,29 @@ public class Utils {
                     operationSuccess = RootTools.copyFile(mBaseDrvPathName,
                             "/system/lib/soundfx/libv4a_fx_ics.so", false, false);
                 }
-                if (operationSuccess) {
-                    operationSuccess = RootTools.copyFile(mSystemConf + ".out",
-                            "/system/etc/audio_effects.conf", false, false);
+                if (!bConfigModified) {
+	                if (operationSuccess) {
+	                    operationSuccess = RootTools.copyFile(mSystemConf + ".out",
+	                            "/system/etc/audio_effects.conf", false, false);
+	                }
                 }
                 if (operationSuccess && isAddondSupported) {
                     operationSuccess = RootTools.copyFile(mAddondScriptPathName,
                             "/system/addon.d/91-v4a.sh", false, false);
                 }
 
-                // Modify permission
-                CommandCapture ccSetPermission = new CommandCapture(0,
-                        mChmod + " 644 /system/etc/audio_effects.conf",
-                        mChmod + " 644 /system/lib/soundfx/libv4a_fx_ics.so");
-                RootTools.getShell(true).add(ccSetPermission);
+                if (!bConfigModified) {
+	                // Modify permission
+	                CommandCapture ccSetPermission = new CommandCapture(0,
+	                        mChmod + " 644 /system/etc/audio_effects.conf",
+	                        mChmod + " 644 /system/lib/soundfx/libv4a_fx_ics.so");
+	                RootTools.getShell(true).add(ccSetPermission);
+                } else {
+	                // Modify permission
+	                CommandCapture ccSetPermission = new CommandCapture(0,
+	                        mChmod + " 644 /system/lib/soundfx/libv4a_fx_ics.so");
+	                RootTools.getShell(true).add(ccSetPermission);
+                }
 
                 // Modify permission of addon.d script if applicable
                 if (isAddondSupported) {
@@ -860,32 +908,34 @@ public class Utils {
             }
         } catch (Exception e) {
             operationSuccess = false;
-            Log.i("ViPER4Android", "Copy back to /system failed, msg = " + e.getMessage());
+            Log.i("ViPER4Android", "Failed to copy back to /system, msg = " + e.getMessage());
         }
 
         /* Cleanup temp file(s) and close root shell */
         try {
-            if (ifVendorExists) {
-                if (!RootTools.deleteFileOrDirectory(mSystemConf, false)) {
-                    new File(mSystemConf).delete();
-                }
-                if (!RootTools.deleteFileOrDirectory(mVendorConf, false)) {
-                    new File(mVendorConf).delete();
-                }
-                if (!RootTools.deleteFileOrDirectory(mSystemConf + ".out", false)) {
-                    new File(mSystemConf + ".out").delete();
-                }
-                if (!RootTools.deleteFileOrDirectory(mVendorConf + ".out", false)) {
-                    new File(mVendorConf + ".out").delete();
-                }
-            } else {
-                if (!RootTools.deleteFileOrDirectory(mSystemConf, false)) {
-                    new File(mSystemConf).delete();
-                }
-                if (!RootTools.deleteFileOrDirectory(mSystemConf + ".out", false)) {
-                    new File(mSystemConf + ".out").delete();
-                }
-            }
+        	if (!bConfigModified) {
+	            if (ifVendorExists) {
+	                if (!RootTools.deleteFileOrDirectory(mSystemConf, false)) {
+	                    new File(mSystemConf).delete();
+	                }
+	                if (!RootTools.deleteFileOrDirectory(mVendorConf, false)) {
+	                    new File(mVendorConf).delete();
+	                }
+	                if (!RootTools.deleteFileOrDirectory(mSystemConf + ".out", false)) {
+	                    new File(mSystemConf + ".out").delete();
+	                }
+	                if (!RootTools.deleteFileOrDirectory(mVendorConf + ".out", false)) {
+	                    new File(mVendorConf + ".out").delete();
+	                }
+	            } else {
+	                if (!RootTools.deleteFileOrDirectory(mSystemConf, false)) {
+	                    new File(mSystemConf).delete();
+	                }
+	                if (!RootTools.deleteFileOrDirectory(mSystemConf + ".out", false)) {
+	                    new File(mSystemConf + ".out").delete();
+	                }
+	            }
+        	}
             // Close all shells
             RootTools.closeAllShells();
         } catch (Exception e) {
@@ -898,306 +948,6 @@ public class Utils {
         }
 
         return 0;
-    }
-
-    // Install ViPER4Android FX driver using without shell command method
-    private static int installDrv_FX_WithoutShell(Context ctx, String mDriverName) {
-        boolean isAddondSupported = false;
-        int mShellCmdReturn;
-
-        // Make sure we can use external storage for temp directory
-        if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            return 2;
-        }
-
-        // Copy driver assets to local
-        if (!copyAssetsToLocal(ctx, mDriverName, "libv4a_fx_ics.so")) {
-            return 3;
-        }
-
-        // Check if addon.d directory exists and copy script if supported
-        if (addondExists()) {
-            copyAssetsToLocal(ctx, "91-v4a.sh", "91-v4a.sh");
-            isAddondSupported = true;
-        }
-
-        // Generate temp config file path, thanks to 'ste71m'
-        String mSystemConf = StaticEnvironment.getExternalStoragePath() + "v4a_audio_system.conf";
-        String mVendorConf = StaticEnvironment.getExternalStoragePath() + "v4a_audio_vendor.conf";
-
-        // Check vendor directory
-        boolean ifVendorExists = RootTools.exists("/system/vendor/etc/audio_effects.conf");
-
-        // Copy configuration to temp directory
-        if (ifVendorExists) {
-            /* Copy to external storage */
-            mShellCmdReturn = ShellCommand
-                    .rootExecuteWithoutShell("cp /system/etc/audio_effects.conf " + mSystemConf);
-            Log.i("ViPER4Android", "Command return = " + mShellCmdReturn);
-            mShellCmdReturn = ShellCommand
-                    .rootExecuteWithoutShell("cp /system/vendor/etc/audio_effects.conf " + mVendorConf);
-            Log.i("ViPER4Android", "Command return = " + mShellCmdReturn);
-        } else {
-            /* Copy to external storage */
-            mShellCmdReturn = ShellCommand
-                    .rootExecuteWithoutShell("cp /system/etc/audio_effects.conf " + mSystemConf);
-            Log.i("ViPER4Android", "Command return = " + mShellCmdReturn);
-        }
-
-        // Modifing configuration
-        boolean modifyResult = modifyFXConfig(mSystemConf, mSystemConf + ".out");
-        if (ifVendorExists) {
-            modifyResult &= modifyFXConfig(mVendorConf, mVendorConf + ".out");
-        }
-        if (!modifyResult) {
-            /* Modify the configuration failed, lets cleanup temp file(s) */
-            if (ifVendorExists) {
-                new File(mSystemConf).delete();
-                new File(mVendorConf).delete();
-                new File(mSystemConf + ".out").delete();
-                new File(mVendorConf + ".out").delete();
-            } else {
-                new File(mSystemConf).delete();
-                new File(mSystemConf + ".out").delete();
-            }
-            return 4;
-        }
-
-        // Copy back to system
-        String mBaseDrvPathName = getBasePath(ctx);
-        String mAddondScriptPathName = mBaseDrvPathName;
-        if (mBaseDrvPathName.endsWith("/")) {
-            mBaseDrvPathName = mBaseDrvPathName + "libv4a_fx_ics.so";
-            if (isAddondSupported) {
-                mAddondScriptPathName = mAddondScriptPathName + "91-v4a.sh";
-            }
-        } else {
-            mBaseDrvPathName = mBaseDrvPathName + "/libv4a_fx_ics.so";
-            if (isAddondSupported) {
-                mAddondScriptPathName = mAddondScriptPathName + "/91-v4a.sh";
-            }
-        }
-
-        if (ifVendorExists) {
-            // Copy files
-
-            mShellCmdReturn = ShellCommand.rootExecuteWithoutShell("mount -o rw,remount /system");
-
-            if (mShellCmdReturn != 0) {
-                new File(mSystemConf).delete();
-                new File(mVendorConf).delete();
-                new File(mSystemConf + ".out").delete();
-                new File(mVendorConf + ".out").delete();
-                Log.e("ViPER4Android", "Cannot remount /system");
-                return 5;
-            }
-
-            mShellCmdReturn = ShellCommand
-                    .rootExecuteWithoutShell("rm /system/lib/soundfx/libv4a_fx_ics.so");
-            Log.i("ViPER4Android", "Command return = " + mShellCmdReturn);
-            if (mShellCmdReturn != 0) {
-                new File(mSystemConf).delete();
-                new File(mVendorConf).delete();
-                new File(mSystemConf + ".out").delete();
-                new File(mVendorConf + ".out").delete();
-                Log.e("ViPER4Android", "Cannot remove V4A driver from /system");
-                return 5;
-            }
-
-            mShellCmdReturn = ShellCommand.rootExecuteWithoutShell("cp " + mBaseDrvPathName
-                    + " /system/lib/soundfx/libv4a_fx_ics.so");
-            if (mShellCmdReturn != 0) {
-                new File(mSystemConf).delete();
-                new File(mVendorConf).delete();
-                new File(mSystemConf + ".out").delete();
-                new File(mVendorConf + ".out").delete();
-                Log.e("ViPER4Android", "Cannot copy V4A driver to /system");
-                return 5;
-            }
-
-            if (isAddondSupported) {
-                mShellCmdReturn = ShellCommand.rootExecuteWithoutShell("cp "
-                        + mAddondScriptPathName + " /system/addon.d/91-v4a.sh");
-
-                if (mShellCmdReturn != 0) {
-                    Log.e("ViPER4Android", "Cannot copy addon.d script to /system/addon.d/");
-                    // NO RETURN FALSE OR CLOSESHELL - addon.d script failure
-                    // should not stop v4a from installing
-                }
-            }
-
-            mShellCmdReturn = ShellCommand.rootExecuteWithoutShell("cp " + mSystemConf + ".out"
-                    + " /system/etc/audio_effects.conf");
-
-            if (mShellCmdReturn != 0) {
-                new File(mSystemConf).delete();
-                new File(mVendorConf).delete();
-                new File(mSystemConf + ".out").delete();
-                new File(mVendorConf + ".out").delete();
-                Log.e("ViPER4Android", "Cannot copy audio config to /system");
-                return 5;
-            }
-
-            mShellCmdReturn = ShellCommand.rootExecuteWithoutShell("cp " + mVendorConf + ".out"
-                    + " /system/vendor/etc/audio_effects.conf");
-
-            if (mShellCmdReturn != 0) {
-                new File(mSystemConf).delete();
-                new File(mVendorConf).delete();
-                new File(mSystemConf + ".out").delete();
-                new File(mVendorConf + ".out").delete();
-                Log.e("ViPER4Android", "Cannot copy audio config to /system/vendor");
-                return 5;
-            }
-            // Modify permission
-
-            mShellCmdReturn = ShellCommand
-                    .rootExecuteWithoutShell("chmod 644 /system/etc/audio_effects.conf");
-
-            if (mShellCmdReturn != 0) {
-                new File(mSystemConf).delete();
-                new File(mVendorConf).delete();
-                new File(mSystemConf + ".out").delete();
-                new File(mVendorConf + ".out").delete();
-                Log.e("ViPER4Android", "Cannot change config's permission [/system]");
-                return 5;
-            }
-
-            mShellCmdReturn = ShellCommand
-                    .rootExecuteWithoutShell("chmod 644 /system/vendor/etc/audio_effects.conf");
-            if (mShellCmdReturn != 0) {
-                new File(mSystemConf).delete();
-                new File(mVendorConf).delete();
-                new File(mSystemConf + ".out").delete();
-                new File(mVendorConf + ".out").delete();
-                Log.e("ViPER4Android", "Cannot change config's permission [/system/vendor]");
-                return 5;
-            }
-            if (isAddondSupported) {
-                mShellCmdReturn = ShellCommand
-                        .rootExecuteWithoutShell("chmod 644 /system/addon.d/91-v4a.sh");
-
-                if (mShellCmdReturn != 0) {
-                    Log.e("ViPER4Android",
-                            "Cannot change addon.d script permission [/system/addon.d]");
-                    // NO RETURN FALSE OR CLOSESHELL - addon.d script failure
-                    // should not stop v4a from installing
-                }
-            }
-
-            mShellCmdReturn = ShellCommand
-                    .rootExecuteWithoutShell("chmod 644 /system/lib/soundfx/libv4a_fx_ics.so");
-            if (mShellCmdReturn != 0) {
-                new File(mSystemConf).delete();
-                new File(mVendorConf).delete();
-                new File(mSystemConf + ".out").delete();
-                new File(mVendorConf + ".out").delete();
-                Log.e("ViPER4Android", "Cannot change driver's permission");
-                return 5;
-            }
-
-            mShellCmdReturn = ShellCommand.rootExecuteWithoutShell("sync");
-            Log.i("ViPER4Android", "Command return = " + mShellCmdReturn);
-
-            mShellCmdReturn = ShellCommand.rootExecuteWithoutShell("mount -o ro,remount /system");
-            Log.i("ViPER4Android", "Command return = " + mShellCmdReturn);
-        } else {
-            // Copy files
-
-            mShellCmdReturn = ShellCommand.rootExecuteWithoutShell("mount -o rw,remount /system");
-            if (mShellCmdReturn != 0) {
-                new File(mSystemConf).delete();
-                new File(mSystemConf + ".out").delete();
-                Log.e("ViPER4Android", "Cannot remount /system");
-                return 5;
-            }
-
-            mShellCmdReturn = ShellCommand
-                    .rootExecuteWithoutShell("rm /system/lib/soundfx/libv4a_fx_ics.so");
-            Log.i("ViPER4Android", "Command return = " + mShellCmdReturn);
-            if (mShellCmdReturn != 0) {
-                new File(mSystemConf).delete();
-                new File(mSystemConf + ".out").delete();
-                Log.e("ViPER4Android", "Cannot remove V4A driver from /system");
-                return 5;
-            }
-
-            mShellCmdReturn = ShellCommand.rootExecuteWithoutShell("cp " + mBaseDrvPathName
-                    + " /system/lib/soundfx/libv4a_fx_ics.so");
-            if (mShellCmdReturn != 0) {
-                new File(mSystemConf).delete();
-                new File(mSystemConf + ".out").delete();
-                Log.e("ViPER4Android", "Cannot copy V4A driver to /system");
-                return 5;
-            }
-            if (isAddondSupported) {
-                mShellCmdReturn = ShellCommand.rootExecuteWithoutShell("cp "
-                        + mAddondScriptPathName + " /system/addon.d/91-v4a.sh");
-                if (mShellCmdReturn != 0) {
-                    Log.e("ViPER4Android", "Cannot copy addon.d script to /system/addon.d/");
-                    // NO RETURN FALSE OR CLOSESHELL - addon.d script failure
-                    // should not stop v4a from installing
-                }
-            }
-
-            mShellCmdReturn = ShellCommand.rootExecuteWithoutShell("cp " + mSystemConf + ".out"
-                    + " /system/etc/audio_effects.conf");
-            if (mShellCmdReturn != 0) {
-                new File(mSystemConf).delete();
-                new File(mSystemConf + ".out").delete();
-                Log.e("ViPER4Android", "Cannot copy audio config to /system");
-                return 5;
-            }
-            // Modify permission
-
-            mShellCmdReturn = ShellCommand
-                    .rootExecuteWithoutShell("chmod 644 /system/etc/audio_effects.conf");
-            if (mShellCmdReturn != 0) {
-                new File(mSystemConf).delete();
-                new File(mSystemConf + ".out").delete();
-                Log.e("ViPER4Android", "Cannot change config's permission [/system]");
-                return 5;
-            }
-            if (isAddondSupported) {
-                mShellCmdReturn = ShellCommand
-                        .rootExecuteWithoutShell("chmod 644 /system/addon.d/91-v4a.sh");
-                if (mShellCmdReturn != 0) {
-                    Log.e("ViPER4Android",
-                            "Cannot change addon.d script permission [/system/addon.d]");
-                    // NO RETURN FALSE OR CLOSESHELL - addon.d script failure
-                    // should not stop v4a from installing
-                }
-            }
-            mShellCmdReturn = ShellCommand
-                    .rootExecuteWithoutShell("chmod 644 /system/lib/soundfx/libv4a_fx_ics.so");
-            if (mShellCmdReturn != 0) {
-                new File(mSystemConf).delete();
-                new File(mSystemConf + ".out").delete();
-                Log.e("ViPER4Android", "Cannot change driver's permission");
-                return 5;
-            }
-            mShellCmdReturn = ShellCommand.rootExecuteWithoutShell("sync");
-            Log.i("ViPER4Android", "Command return = " + mShellCmdReturn);
-            mShellCmdReturn = ShellCommand.rootExecuteWithoutShell("mount -o ro,remount /system");
-            Log.i("ViPER4Android", "Command return = " + mShellCmdReturn);
-        }
-
-        /* Cleanup temp file(s) and close root shell */
-        if (ifVendorExists) {
-            new File(mSystemConf).delete();
-            new File(mVendorConf).delete();
-            new File(mSystemConf + ".out").delete();
-            new File(mVendorConf + ".out").delete();
-        } else {
-            new File(mSystemConf).delete();
-            new File(mSystemConf + ".out").delete();
-        }
-
-        if (RootTools.exists("/system/lib/soundfx/libv4a_fx_ics.so")) {
-        	return 0;
-        } else {
-        	return 6;
-        }
     }
 
     // Install ViPER4Android FX driver
@@ -1213,7 +963,10 @@ public class Utils {
     		return method1Result;  // Report result to user
     	case 5:  // Busybox not found
     	case 6:  // Unknow error
-    		return installDrv_FX_WithoutShell(ctx, mDriverName);
+    		/* TODO: implement method2.
+    		 * Maybe we can use a shell script to install the driver.
+    		 * */ 
+    		return 6;
     	}
 
     	return 6;
@@ -1225,8 +978,7 @@ public class Utils {
      * @param activity
      */
     public static void restartActivity(final Activity activity) {
-        if (activity == null)
-            return;
+        if (activity == null) return;
         final int enter_anim = android.R.anim.fade_in;
         final int exit_anim = android.R.anim.fade_out;
         activity.overridePendingTransition(enter_anim, exit_anim);

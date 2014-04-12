@@ -146,7 +146,7 @@ public class BuildProp {
 		if (mBuildPropContent.size() < 28) {
 			/* 
 			 * build.prop should contains at least 28 entries
-			 * includes build type&version&date and sdk version
+			 * includes build type&version&date and sdk version etc
 			 */
 			Log.i("ViPER4Android", "[Commit build.prop] mBuildPropContent.size() < 28");
 			return;

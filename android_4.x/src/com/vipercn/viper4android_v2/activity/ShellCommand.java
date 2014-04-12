@@ -21,6 +21,7 @@ class ShellCommand {
             mProcess.waitFor();
             exitValue = mProcess.exitValue();
             mProcess.destroy();
+            mProcess = null;
         } catch (IOException e) {
             Log.i("ViPER4Android_ShellCommand", "IOException, msg = " + e.getMessage());
             return exitValue;
