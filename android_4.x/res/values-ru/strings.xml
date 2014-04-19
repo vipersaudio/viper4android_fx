@@ -108,11 +108,11 @@
     <string name="pref_fidelity_vc_mode_title">Алгоритм</string>
     <string name="pref_fidelity_vc_bassgain">Усиление</string>
     <string name="pref_fidelity_vc_bassgain_title">Усиление</string>
-    <string name="pref_curesystem_title">Бинауральная стимуляция</string>
-    <string name="pref_curesystem_summary_on">Бинауральная стимуляция включена</string>
-    <string name="pref_curesystem_summary_off">Бинауральная стимуляция отключена</string>
+    <string name="pref_curesystem_title">Кроссфидер</string>
+    <string name="pref_curesystem_summary_on">Кроссфидер включён</string>
+    <string name="pref_curesystem_summary_off">Кроссфидер отключён</string>
     <string name="pref_curesystem_enable">Включить</string>
-    <string name="pref_select_cure_cf_title">Бинауральные биения</string>
+    <string name="pref_select_cure_cf_title">Бинауральный уровень</string>
     <string name="dialog_cure_crossfeed">Уровень</string>
     <string name="pref_convolver_title">Конвольвер</string>
     <string name="pref_convolver_summary_on">Конвольвер включён</string>
@@ -372,9 +372,9 @@
 \n
 \n12.6 \"Уровень\". Интенсивность работы эффекта \"Реставрация ВЧ\". Рекомендуется \"3,5 дБ\" для \"Естественный\", \"8 дБ\" для \"Ozone+\", \"По умолчанию\" для XHiFi.
 \n
-\n13. \"Бинауральная стимуляция\". Снижает утомление при длительном прослушивании путём стимуляции мозга через слуховую систему с помощью \"бинауральных биений\", экспериментальная функция.
+\n13. \"Кроссфидер\". Снижает утомление при длительном прослушивании, экспериментальная функция.
 \n
-\n13.1 \"Бинауральные биения\". Интенсивность бинауральной стимуляции. Рекомендуется \"Средний\" уровень.
+\n13.1 \"Бинауральный уровень\". Интенсивность эффекта. Рекомендуется \"Средний\" уровень.
 \n
 \n14. \"Выходной сигнал\". Доступны усиление, баланс и лимитирование уровня выходного сигнала V4A. Лимитер используется для предотвращения искажений, вызванных перегрузкой, в свою очередь создавая искажения, вызванные клиппингом.
 \n
