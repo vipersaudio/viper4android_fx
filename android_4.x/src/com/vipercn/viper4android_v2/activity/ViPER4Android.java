@@ -863,6 +863,10 @@ public final class ViPER4Android extends Activity {
         SharedPreferences prefSettings = getSharedPreferences(
                 SHARED_PREFERENCES_BASENAME + ".settings", MODE_PRIVATE);
         if (!mIsTabbed) {
+            if (mDrawerToggle == null) {
+                /* mDrawerToggle == null in Monkey test */
+                return true;
+            }
             if (mDrawerToggle.onOptionsItemSelected(item)) {
                 return true;
             }
