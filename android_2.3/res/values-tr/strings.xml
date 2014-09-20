@@ -202,5 +202,5 @@ Ses Formatı: %5$s
     <string name="text_checkupdate">Güncellemeleri Kontrol Et</string>
     <string name="text_updatelink">http://vipersaudio.com/swupdate/viper4android/download.html</string>
     <string name="str_about">EQ (Equalizer) KA (Kullanıcı Arayüzü) için alankila ya teşekkürler..</string>
-    <string name="str_copyright">Telif Hakkı © 2006–2016, vipercn.com. Çevirenin Forumu:androidhatti.com Çeviren:droidplus</string>
+    <string name="str_copyright">Telif Hakkı © 2006–2016, vipercn.com.</string>
 </resources>
