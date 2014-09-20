@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="empty"/>
+  <string name="app_name">ViPER4Android FX</string>
+  <string name="select_configuration_title">ViPER4Android FX</string>
+  <string name="headset_title">Kulaklık</string>
+  <string name="speaker_title">Hoparlör</string>
+  <string name="bluetooth_title">Bluetooth Kulaklık/Hoparlör</string>
+  <string name="usb_title">USB/Dock</string>
+  <string name="audio_effects">Ses Efektleri</string>
+  <string name="dsp_settings_headset">Efekt Ayarları - Kulaklık</string>
+  <string name="dsp_settings_speaker">Efekt Ayarları - Hoparlör</string>
+  <string name="dsp_settings_bluetooth">Efekt Ayarları - Bluetooth Kulaklık/Hoparlör</string>
+  <string name="dsp_settings_usb">Efekt Ayarları - USB Cihazı</string>
+  <string name="pref_dsp_enable">Etkinleştirme</string>
+  <string name="pref_effect_title">Efekt Gücünü Seç</string>
+  <string name="dialog_effect">Efekt Gücü</string>
+  <string name="pref_force_enable_text">V4A yı Etkinleştirmeye Zorla</string>
+  <string name="pref_force_enable_warn">"Etkinleştirmeye zorlamak efekt olmama sorununu çözebilir. 
+Ancak bazı ROMlarda sesin gitmesine ya da pil tüketiminin aşırı derecede artmasına neden olabilir. 
+Bu yüzden, lütfen riskiniz altında kullanın. Eğer böyle durumlar meydana gelirse, lütfen bu özelliği kapatın."</string>
+  <string name="pref_fx_master_title">Ana Güç</string>
+  <string name="pref_fx_master_summary_on">V4A-FX Açık</string>
+  <string name="pref_fx_master_summary_off">V4A-FX Kapalı</string>
+  <string name="pref_spkfx_master_title">Ana Güç</string>
+  <string name="pref_spkfx_master_summary_on">V4A-SpeakerFX Açık</string>
+  <string name="pref_spkfx_master_summary_off">V4A-SpeakerFX Kapalı</string>
+  <string name="pref_fx_limiter_title">Ana Geçiş (Limitleyici)</string>
+  <string name="pref_fx_limiter_threshold">Limit Threshold</string>
+  <string name="pref_spkfx_limiter_title">Ana Geçiş (Limitleyici)</string>
+  <string name="pref_spkfx_limiter_threshold">Limit Threshold</string>
+  <string name="pref_output_gain">Çıkış Kazancı</string>
+  <string name="pref_output_pan">Channel Pan</string>
+  <string name="pref_playback_title">Playback Kazanç Kontrolü</string>
+  <string name="pref_playback_summary_on">PlaybackAGC etkinleştirildi</string>
+  <string name="pref_playback_summary_off">PlaybackAGC devre dışı bırakıldı</string>
+  <string name="pref_playback_output_threshold">Maks Çıkış</string>
+  <string name="pref_playback_maxgain">Maks Kazanç</string>
+  <string name="pref_xloud_title">eXtra Loud</string>
+  <string name="pref_xloud_summary_on">eXtra-Loud etkinleştirildi</string>
+  <string name="pref_xloud_summary_off">eXtra-Loud devre dışı bırakıldı</string>
+  <string name="pref_xloud_output_amplifer">Çıkış Kazancı</string>
+  <string name="pref_xloud_spk_lowfreq">Low Response</string>
+  <string name="pref_xloud_spk_highfreq">High Response</string>
+  <string name="pref_spk_opt_title">Hoparlör Optimizasyonu</string>
+  <string name="pref_spk_opt_summary_on">Hoparlör optimizasyonu etkinleştirildi</string>
+  <string name="pref_spk_opt_summary_off">Hoparlör optimizasyonu devre dışı bırakıldı</string>
+  <string name="pref_viperddc_title">ViPER-DDC</string>
+  <string name="pref_viperddc_summary_on">ViPER-DDC etkinleştirildi</string>
+  <string name="pref_viperddc_summary_off">ViPER-DDC devre dışı bırakıldı</string>
+  <string name="pref_viperddc_enable">Etkinleştirme</string>
+  <string name="pref_viperddc_device">Dinleme Cihazı</string>
+  <string name="pref_viperddc_device_manufacturer">Üretici Seç</string>
+  <string name="pref_viperddc_device_model">Model Seç</string>
+  <string name="pref_viperddc_tips">"BİLDİRİ: 
+ViPER-DDC Hi-Fi ses işlemcisidir ve kulaklık doğrulamada kullanılır. 
+ViPER-DDC 500 e yakın kulaklığı destekler, ve daha fazlasını desteklemeye devam edecektir. 
+Bu yüzden, eğer kulaklığınızı listede bulamıyorsanız, bu özelliği kapatınız."</string>
+  <string name="pref_vse_title">Spektrum Uzantısı</string>
+  <string name="pref_vse_summary_on">Spektrum uzantısı etkinleştirildi</string>
+  <string name="pref_vse_summary_off">Spektrum uzantısı devre dışı bırakıldı</string>
+  <string name="pref_vse_enable">Etkinleştirme</string>
+  <string name="pref_vse_strength">Güç</string>
+  <string name="pref_vse_strength_title">Güç Seç</string>
+  <string name="pref_vse_tips">"NOTICE: 
+Spectrum extension is a true Hi-Fi audio processor and it is used for extending the lossy compressed spectrum. 
+If you are playing lossy compressed music(such mp3, aac, ogg), this feature may gives you a lossless feeling. 
+But if you are playing lossless music, we recommend you to disable this feature."</string>
+  <string name="pref_equalizer_title">FIREqualizer</string>
+  <string name="pref_equalizer_summary_on">FIREqualizer etkinleştirildi</string>
+  <string name="pref_equalizer_summary_off">FIREqualizer devre dışı bırakıldı</string>
+  <string name="pref_equalizer_enable">Etkinleştirme</string>
+  <string name="pref_equalizer_preset_title">Müzik Türünü Seçin</string>
+  <string name="pref_dynamicsystem_title">Dinamik Sistem</string>
+  <string name="pref_dynamicsystem_summary_on">Dinamik sistem etkinleştirildi</string>
+  <string name="pref_dynamicsystem_summary_off">Dinamik sistem devre dışı bırakıldı</string>
+  <string name="pref_dynamicsystem_enable">Etkinleştirme</string>
+  <string name="pref_dynamicsystem_output">Dinleme Cihazı</string>
+  <string name="pref_dynamicsystem_output_title">Dinleme Cihazını Seç</string>
+  <string name="pref_dynamicsystem_bass">Dinamik Bası Seç</string>
+  <string name="pref_dynamicsystem_tube_title">Ses Tüneli Simulatörü (6N1J)</string>
+  <string name="pref_dynamicsystem_tube_summary_on">Ses tüneli simulatörü etkinleştirildi</string>
+  <string name="pref_dynamicsystem_tube_summary_off">Ses tüneli simulatörü devre dışı bırakıldı</string>
+  <string name="pref_fidelity_title">Fidelity Control</string>
+  <string name="pref_fidelity_vb_summary_on">ViPER Bass etkinleştirildi</string>
+  <string name="pref_fidelity_vb_summary_off">ViPER Bass devre dışı bırakıldı</string>
+  <string name="pref_fidelity_vb_enable">ViPER Bass ı Etkinleştir</string>
+  <string name="pref_fidelity_vb_mode">Bas Modu</string>
+  <string name="pref_fidelity_vb_mode_title">Bas Modunu Seçin</string>
+  <string name="pref_fidelity_vb_bassfreq">Bas Sıklığı</string>
+  <string name="pref_fidelity_vb_bassfreq_title">Bas Sıklığını Seçin</string>
+  <string name="pref_fidelity_vb_bassgain">Bas Yükseltme</string>
+  <string name="pref_fidelity_vb_bassgain_title">Bas Yükseltmeyi Seçin</string>
+  <string name="pref_fidelity_vc_summary_on">ViPER Clarity etkinleştirildi</string>
+  <string name="pref_fidelity_vc_summary_off">ViPER Clarity devre dışı bırakıldı</string>
+  <string name="pref_fidelity_vc_enable">ViPER Clarity i Etkinleştir</string>
+  <string name="pref_fidelity_vc_mode">Berraklık Modu</string>
+  <string name="pref_fidelity_vc_mode_title">Berraklık Modunu Seçiniz</string>
+  <string name="pref_fidelity_vc_bassgain">Berraklık</string>
+  <string name="pref_fidelity_vc_bassgain_title">Berraklığı Seç</string>
+  <string name="pref_curesystem_title">Auditory System Protection</string>
+  <string name="pref_curesystem_summary_on">Cure Tech+ etkinleştirildi</string>
+  <string name="pref_curesystem_summary_off">Cure Tech+ devre dışı bırakıldı</string>
+  <string name="pref_curesystem_enable">Etkinleştirme</string>
+  <string name="pref_select_cure_cf_title">Select Binaural Level</string>
+  <string name="dialog_cure_crossfeed">Binaural Level</string>
+  <string name="pref_convolver_title">Convolver</string>
+  <string name="pref_convolver_summary_on">Convolver is enabled</string>
+  <string name="pref_convolver_summary_off">Convolver is disabled</string>
+  <string name="pref_convolver_enable">Etkinleştirme</string>
+  <string name="pref_convolver_knl">Impulse Response</string>
+  <string name="pref_convolver_knl_title">Select Impulse Response</string>
+  <string name="pref_convolver_crosschannel">Cross Channel</string>
+  <string name="pref_convolver_crosschannel_title">Select Cross Channel</string>
+  <string name="pref_vhs_title">Kulaklık Surround +</string>
+  <string name="pref_vhs_summary_on">VHS+ etkinleştirildi</string>
+  <string name="pref_vhs_summary_off">VHS+ devre dışı bırakıldı</string>
+  <string name="pref_vhs_enable">Etkinleştirme</string>
+  <string name="pref_select_vhs_qual_title">Efekt Seviyesini Seçiniz</string>
+  <string name="dialog_vhs_qual">Efekt Seviyesi</string>
+  <string name="pref_colorfulmusic_title">Field Surround</string>
+  <string name="pref_colorfulmusic_summary_on">Field surround is enabled</string>
+  <string name="pref_colorfulmusic_summary_off">Field surround is disabled</string>
+  <string name="pref_colorfulmusic_enable">Etkinleştirme</string>
+  <string name="pref_select_colorfulmusic_title">Select Field Surround Strength</string>
+  <string name="dialog_colorfulmusic">Field Surround Strength</string>
+  <string name="pref_select_colorfulmusic_mi_title">Select Mid Image Strength</string>
+  <string name="dialog_colorfulmusic_mi">Mid Image Strength</string>
+  <string name="pref_diffsurr_title">Diferansiyel Surround</string>
+  <string name="pref_diffsurr_summary_on">Difer surround etkinleştirildi</string>
+  <string name="pref_diffsurr_summary_off">Difer surround devre dışı bırakıldı</string>
+  <string name="pref_diffsurr_enable">Etkinleştirme</string>
+  <string name="pref_select_diffsurr_ms_title">Gecikme Süresini Seçin</string>
+  <string name="dialog_diffsurr_ms">Gecikme Süresi</string>
+  <string name="pref_reverb_title">Yankılanma</string>
+  <string name="pref_reverb_summary_on">Yankılanma etkinleştirildi</string>
+  <string name="pref_reverb_summary_off">Yankılanma devre dışı bırakıldı</string>
+  <string name="pref_reverb_enable">Etkinleştirme</string>
+  <string name="pref_reverb_roomsize">Oda Büyüklüğü</string>
+  <string name="pref_reverb_width">Ses Alanı</string>
+  <string name="pref_reverb_damp">Damping Factor</string>
+  <string name="pref_reverb_wet">Yaş Sinyal</string>
+  <string name="pref_reverb_dry">Kuru Sinyal</string>
+  <string name="eq_preset_acoustic">Akustik</string>
+  <string name="eq_preset_bass_booster">Bas Yükseltici</string>
+  <string name="eq_preset_bass_reducer">Bas Azaltıcı</string>
+  <string name="eq_preset_classical">Klasik</string>
+  <string name="eq_preset_deep">Derin</string>
+  <string name="eq_preset_flat">Düz</string>
+  <string name="eq_preset_r_and_b">RB</string>
+  <string name="eq_preset_rock">Rock</string>
+  <string name="eq_preset_small_speakers">Küçük Hoparlörler</string>
+  <string name="eq_preset_treble_booster">Tiz Yükseltici</string>
+  <string name="eq_preset_treble_reducer">Tiz Azaltıcı</string>
+  <string name="eq_preset_vocal_booster">Vokal Yükseltici</string>
+  <string name="eq_preset_custom">Özel</string>
+  <string name="text_ir_dir_isempty">ViPER4Android: IR örnek klasörü %1$s boş.</string>
+  <string name="text_token_lost">ViPER4Android: Bazı programlar androidden ses efektlerini kapatmasını istedi, bu yüzden V4A geçici olarak devre dışı bırakıldı.</string>
+  <string name="text_enabled">Etkinleştirildi</string>
+  <string name="text_disabled">Devre dışı bırakıldı</string>
+  <string name="text_headset">Kulaklık</string>
+  <string name="text_bluetooth">Bluetooth</string>
+  <string name="text_speaker">Hoparlör</string>
+  <string name="text_usb">USB/Dock</string>
+  <string name="text_showtrayicon">Bildirimi Göster</string>
+  <string name="text_hidetrayicon">Bildirimi Gizle</string>
+  <string name="text_lockeffect">Efekt Modunu Kilitle</string>
+  <string name="text_yes">Evet</string>
+  <string name="text_no">Hayır</string>
+  <string name="text_normal">Normal</string>
+  <string name="text_abnormal">Anormal</string>
+  <string name="text_supported">Desteklenmiş</string>
+  <string name="text_unsupported">Desteklenmemiş</string>
+  <string name="text_loadfxprofile">Efekt Profili Yükle</string>
+  <string name="text_newfxprofile">Yeni Efekt Profili</string>
+  <string name="text_savefxprofile">Efekt Profilini Kaydet</string>
+  <string name="text_profilesaved_overwrite">Bu profili yeniden yazmak istiyor musunuz ?</string>
+  <string name="text_profileload_tip">Profili Uygula</string>
+  <string name="text_ok">Tamam</string>
+  <string name="text_cancel">İptal</string>
+  <string name="text_drvinst_prefer">Lütfen seçiminizi yapınız</string>
+  <string name="text_drvinst_sqdrv">"Süper ses kalitesi sürücüsü en az iki çekirdekli işlemci gerektirir ve pil tüketimini hızlandırır. 
+Yine de devam etmek istiyor musunuz?"</string>
+  <string name="text_drvvernotmatch">"ViPER4Android'i kullanmak için, V4A sürücüsünü yüklemeniz/güncellemeniz gerekmektedir. 
+
+Şimdi yüklensin/güncellensin mi ?"</string>
+  <string name="text_drvuninst_confim">V4A sürücüsünü kaldırmak istediğinizden emin misiniz?</string>
+  <string name="text_uiprefer">KA (Kull. Arayüzü) Ayarı</string>
+  <string name="text_uiprefer_dialog">Lütfen seçiminizi yapınız</string>
+  <string name="text_commode">FX Uyumluluk Modu</string>
+  <string name="text_drv_blank"/>
+  <string name="text_uninstall">Sürücüyü Kaldır</string>
+  <string name="text_install">Sürücüyü Yükle</string>
+  <string name="text_drvinst_ok">Sürücü yüklendi, lütfen cihazınızı yeniden başlatın.</string>
+  <string name="text_drvuninst_ok">Sürücü kaldırıldı, lütfen cihazınızı yeniden başlatın.</string>
+  <string name="text_no_busybox">Cihazınızda busybox bulunamadı, şimdi yüklemek ister misiniz?</string>
+  <string name="text_drvinst_acquireroot">Sürücü yüklenemedi, root izni sağlanamadı, lütfen cihazınızın rootlu olduğundan emin olun.</string>
+  <string name="text_drvinst_busybox_not_installed">Sürücü yüklenemedi, çünkü busybox cihazınızda bulunamadı.</string>
+  <string name="text_drvinst_sdnotmounted">Sürücü yüklenemedi, harici hafıza bulunamadı.</string>
+  <string name="text_drvinst_dataioerr">Sürücü yüklenemedi , I/O error, lütfen yeniden başlatıp tekrar deneyin.</string>
+  <string name="text_drvinst_cfg_unsup">Sürücü yüklenemedi , desteklenmeyen Android sürümü ya da ROM.</string>
+  <string name="text_drvinst_failed">"Sürücü yüklenemedi , cihazınızda bulunan busybox çalışmıyor. 
+Bu yanlış ya da bozuk busybox yüklenmiş anlamına gelmektedir, V4A çalışmak için stericson busybox ürününe ihtiyaç duyar. 
+Eğer uygun busybox ı yüklediğinizden eminseniz, lütfen cihazınızın tamamen rootlanmış olduğundan emin olun."</string>
+  <string name="text_modifybuildprop">"UYARI: 
+LPA özelliği cihazınızda etkinleştirilmiş, bu V4A nın işlevsizliğine sebep olabilir. 
+LPA nın anlamı " Düşük Güçlü Ses", bu sorunu build.prop u düzenleyerek düzeltebiliriz. 
+İşleme başlamadan önce şiddetle NANDROİD YEDEĞİ ya da VERİ YEDEĞİ almanızı öneririz!
+LPA yı şimdi devre dışı bırakmak ister misiniz?"</string>
+  <string name="text_changelog">Değişiklik Listesi</string>
+  <string name="text_drv_status">Sürücü Durumu</string>
+  <string name="text_drv_status_view">"
+
+Sürücü Versiyonu: %1$s 
+NEON Etkinleştirme: %2$s 
+Etkinleştirme: %3$s 
+Durum: %4$s 
+Ses Formatı: %5$s 
+İşlemleme: %6$s 
+Örnekleme Hızı: %7$d 
+"</string>
+  <string name="text_service_error">ViPER4Android servisi ile bağlantı kurulamadı</string>
+  <string name="about_title">Yardım ve Hakkında</string>
+  <string name="about_text">"***ViPER4Android Hakkında*** 
+ 
+'libv4a_xx_xx.so' ViPER4Android in kernelidir. 
+Telif Hakkı © 2006-2016, vipercn.com. Tüm hakları saklıdır. 
+Resmi izin dışında, ticari kullanımı yasaktır. 
+Resmi Forum: http://vipersaudio.com/blog/ 
+
+ 
+'ViPER4Android.apk' ViPER4Android in kontrol panelidir. 
+Cyanogenmod un DSPManager i üzerine kurulmuştur. 
+
+Özel Teşekkürler
+Zhuhang@XDA
+M4570D0N@github
+xLaMbChOpSx@github
+bboa@github
+ 
+Versiyon %1$s (FX), Kod adı “Beautiful”. 
+"</string>
+  <string name="text_help_content">
+
+
+
+
+
+
+
+
+
+"***Genel Yardım*** 
+ 
+'Sürücüyü Yükle' - ViPER4Android efekt sürücüsünü Yükle/Güncelle. 
+'Sürücüyü Kaldır' - ViPER4Android efekt sürücüsünü kaldır. 
+'FX Uyumluluk Modu' - Efekt uyumluluk modunu ayarla. 
+ 'Normal' - ViPER4Android i genel efekt yap. 
+ 'Uyumlu' - ViPER4Android i yerel efekt yap. 
+ 
+"                                        <b>V4A efekti cihazınızda yüklü olan bütün/çoğu medya oynatıcısında yok mu ?</b>
+
+
+
+
+
+
+
+
+
+"
+ FX modunu uyumlu yapıp telefonunuzu yeniden başlatın ve tekrar deneyim. 
+ 
+"                                        <b>Ses kalitesini nasıl değiştirebilirim?</b>
+
+
+
+
+
+
+
+
+
+"
+ Menüden sürücüyü kaldırıp telefonunuzu yeniden başlatın. Uygulamayı açtığınızda istediğiniz ses kalitesini seçiniz.
+ 
+"                                        <b>Pil tüketimini nasıl azaltırım ?</b>
+
+
+
+
+
+
+
+
+
+"
+V4A Normal modda çalışıyorken sistem sesleri ayarlarından dokunma ve kilit seslerini kapatınız. 
+ 
+"                                        <b>Forum: http://forum.xda-developers.com/showthread.php?t=2191223</b>
+  </string>
+  <string name="text_forum_link">http://forum.xda-developers.com/showthread.php?t=2191223</string>
+  <string name="text_view_forum">Forum</string>
+  <string name="text_checkupdate">Güncellemeleri Kontrol Et</string>
+  <string name="text_updatelink">http://vipersaudio.com/swupdate/viper4android/download.html</string>
+  <string name="navigation_drawer_open">Open navigation drawer</string>
+  <string name="navigation_drawer_close">Close navigation drawer</string>
+  <string name="navigation_toggle_drawer">Çekmece görünümüne geç</string>
+  <string name="navigation_toggle_tabbed">Sekme görünümüne geç</string>
+</resources>
