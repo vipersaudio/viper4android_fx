@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="drvinst_prefer">
+    <item>Süper Ses Kalitesi</item>
+    <item>Yüksek Ses Kalitesi</item>
+    <item>Güç Tasarrufu</item>
+  </string-array>
+  <string-array name="drvinst_prefer_values">
+    <item>sq</item>
+    <item>hq</item>
+    <item>lq</item>
+  </string-array>
+  <string-array name="ui_prefer">
+    <item>Acemi</item>
+    <item>Asistan</item>
+    <item>Uzman</item>
+  </string-array>
+  <string-array name="ui_prefer_values">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+  </string-array>
+  <string-array name="compatible_mode">
+    <item>Normal</item>
+    <item>Uyumlu</item>
+  </string-array>
+  <string-array name="compatible_mode_values">
+    <item>global</item>
+    <item>local</item>
+  </string-array>
+  <string-array name="vse_strength_values">
+    <item>0.1</item>
+    <item>0.2</item>
+    <item>0.3</item>
+    <item>0.4</item>
+    <item>0.5</item>
+    <item>0.6</item>
+    <item>0.7</item>
+    <item>0.8</item>
+    <item>0.9</item>
+    <item>1.0</item>
+  </string-array>
+  <string-array name="colorfulmusic_coeffs">
+    <item>Az</item>
+    <item>Level 1</item>
+    <item>Level 2</item>
+    <item>Level 3</item>
+    <item>Level 4</item>
+    <item>Level 5</item>
+    <item>Level 6</item>
+    <item>Level 7</item>
+    <item>Aşırı</item>
+  </string-array>
+  <string-array name="colorfulmusic_coeffs_values">
+    <item>120;200</item>
+    <item>130;275</item>
+    <item>140;350</item>
+    <item>150;425</item>
+    <item>160;500</item>
+    <item>170;575</item>
+    <item>180;650</item>
+    <item>190;725</item>
+    <item>200;800</item>
+  </string-array>
+  <string-array name="colorfulmusic_midimage">
+    <item>Az</item>
+    <item>Level 1</item>
+    <item>Level 2</item>
+    <item>Level 3</item>
+    <item>Level 4</item>
+    <item>Level 5</item>
+    <item>Level 6</item>
+    <item>Level 7</item>
+    <item>Level 8</item>
+    <item>Level 9</item>
+    <item>Aşırı</item>
+  </string-array>
+  <string-array name="colorfulmusic_midimage_values">
+    <item>100</item>
+    <item>110</item>
+    <item>120</item>
+    <item>130</item>
+    <item>140</item>
+    <item>150</item>
+    <item>160</item>
+    <item>170</item>
+    <item>180</item>
+    <item>190</item>
+    <item>200</item>
+  </string-array>
+  <string-array name="conv_cross_channel">
+    <item>Yüzde 0</item>
+    <item>Yüzde 5</item>
+    <item>Yüzde 10</item>
+    <item>Yüzde 15</item>
+    <item>Yüzde 20</item>
+    <item>Yüzde 25</item>
+    <item>Yüzde 30</item>
+    <item>Yüzde 35</item>
+    <item>Yüzde 40</item>
+    <item>Yüzde 45</item>
+    <item>Yüzde 50</item>
+    <item>Yüzde 55</item>
+    <item>Yüzde 60</item>
+    <item>Yüzde 70</item>
+    <item>Yüzde 80</item>
+  </string-array>
+  <string-array name="conv_cross_channel_values">
+    <item>0</item>
+    <item>5</item>
+    <item>10</item>
+    <item>15</item>
+    <item>20</item>
+    <item>25</item>
+    <item>30</item>
+    <item>35</item>
+    <item>40</item>
+    <item>45</item>
+    <item>50</item>
+    <item>55</item>
+    <item>60</item>
+    <item>70</item>
+    <item>80</item>
+  </string-array>
+  <string-array name="diffsurround_delay">
+    <item>2 ms</item>
+    <item>5 ms</item>
+    <item>8 ms</item>
+    <item>10 ms</item>
+    <item>12 ms</item>
+    <item>14 ms</item>
+    <item>16 ms</item>
+    <item>18 ms</item>
+    <item>20 ms</item>
+  </string-array>
+  <string-array name="diffsurround_delay_values">
+    <item>200</item>
+    <item>500</item>
+    <item>800</item>
+    <item>1000</item>
+    <item>1200</item>
+    <item>1400</item>
+    <item>1600</item>
+    <item>1800</item>
+    <item>2000</item>
+  </string-array>
+  <string-array name="reverb_roomsize">
+    <item>25 m2</item>
+    <item>36 m2</item>
+    <item>49 m2</item>
+    <item>64 m2</item>
+    <item>81 m2</item>
+    <item>100 m2</item>
+    <item>121 m2</item>
+    <item>203 m2</item>
+    <item>347 m2</item>
+    <item>652 m2</item>
+    <item>1200 m2</item>
+  </string-array>
+  <string-array name="reverb_roomsize_values">
+    <item>0</item>
+    <item>10</item>
+    <item>20</item>
+    <item>30</item>
+    <item>40</item>
+    <item>50</item>
+    <item>60</item>
+    <item>70</item>
+    <item>80</item>
+    <item>90</item>
+    <item>100</item>
+  </string-array>
+  <string-array name="reverb_roomwidth">
+    <item>5 m</item>
+    <item>6 m</item>
+    <item>7 m</item>
+    <item>8 m</item>
+    <item>9 m</item>
+    <item>10 m</item>
+    <item>11 m</item>
+    <item>14 m</item>
+    <item>19 m</item>
+    <item>26 m</item>
+    <item>36 m</item>
+  </string-array>
+  <string-array name="reverb_roomwidth_values">
+    <item>0</item>
+    <item>10</item>
+    <item>20</item>
+    <item>30</item>
+    <item>40</item>
+    <item>50</item>
+    <item>60</item>
+    <item>70</item>
+    <item>80</item>
+    <item>90</item>
+    <item>100</item>
+  </string-array>
+  <string-array name="reverb_percent">
+    <item>Yüzde 0</item>
+    <item>Yüzde 10</item>
+    <item>Yüzde 20</item>
+    <item>Yüzde 30</item>
+    <item>Yüzde 40</item>
+    <item>Yüzde 50</item>
+    <item>Yüzde 60</item>
+    <item>Yüzde 70</item>
+    <item>Yüzde 80</item>
+    <item>Yüzde 90</item>
+    <item>Yüzde 100</item>
+  </string-array>
+  <string-array name="reverb_percent_values">
+    <item>0</item>
+    <item>10</item>
+    <item>20</item>
+    <item>30</item>
+    <item>40</item>
+    <item>50</item>
+    <item>60</item>
+    <item>70</item>
+    <item>80</item>
+    <item>90</item>
+    <item>100</item>
+  </string-array>
+  <string-array name="equalizer_preset_modes">
+    <item>@string/eq_preset_acoustic</item>
+    <item>@string/eq_preset_bass_booster</item>
+    <item>@string/eq_preset_bass_reducer</item>
+    <item>@string/eq_preset_classical</item>
+    <item>@string/eq_preset_deep</item>
+    <item>@string/eq_preset_flat</item>
+    <item>@string/eq_preset_r_and_b</item>
+    <item>@string/eq_preset_rock</item>
+    <item>@string/eq_preset_small_speakers</item>
+    <item>@string/eq_preset_treble_booster</item>
+    <item>@string/eq_preset_treble_reducer</item>
+    <item>@string/eq_preset_vocal_booster</item>
+    <item>@string/eq_preset_custom</item>
+  </string-array>
+  <string-array name="equalizer_preset_values">
+    <item>4.5;4.5;3.5;1.2;1.0;0.5;1.4;1.75;3.5;2.5;</item>
+    <item>10.0;6.5;4.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;</item>
+    <item>-10.5;-6.5;-4.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;</item>
+    <item>4.0;4.0;3.25;1.0;0.0;0.0;-1.0;-0.5;2.0;3.5;</item>
+    <item>4.0;4.0;0.5;0.0;0.0;0.0;0.0;1.5;-4.0;-4.5;</item>
+    <item>0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;</item>
+    <item>5.5;5.5;3.5;0.0;0.0;0.0;0.0;-1.75;1.5;2.5;</item>
+    <item>4.5;4.5;2.75;0.0;0.0;0.0;0.0;-0.5;2.75;4.0;</item>
+    <item>6.5;6.5;4.0;0.0;0.0;0.0;0.0;0.0;-6.5;-4.0;</item>
+    <item>0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;4.0;6.5;</item>
+    <item>0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;-6.5;-4.0;</item>
+    <item>-2.5;-2.5;0.0;0.0;0.0;0.0;0.6;3.5;1.5;-2.0;</item>
+    <item>custom</item>
+  </string-array>
+  <string-array name="cure_crossfeed">
+    <item>Az</item>
+    <item>Orta</item>
+    <item>Aşırı</item>
+  </string-array>
+  <string-array name="cure_crossfeed_values">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+  </string-array>
+  <string-array name="vhs_qual">
+    <item>Level 1</item>
+    <item>Level 2</item>
+    <item>Level 3</item>
+    <item>Level 4</item>
+    <item>Level 5</item>
+  </string-array>
+  <string-array name="vhs_qual_values">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+    <item>4</item>
+  </string-array>
+  <string-array name="playbackgain_ratio">
+    <item>Az</item>
+    <item>Orta</item>
+    <item>Aşırı</item>
+  </string-array>
+  <string-array name="playbackgain_ratio_values">
+    <item>50</item>
+    <item>100</item>
+    <item>300</item>
+  </string-array>
+  <string-array name="multi_factor">
+    <item>1x</item>
+    <item>2x</item>
+    <item>3x</item>
+    <item>4x</item>
+    <item>5x</item>
+    <item>6x</item>
+    <item>7x</item>
+    <item>8x</item>
+    <item>9x</item>
+    <item>10x</item>
+    <item>Inf</item>
+  </string-array>
+  <string-array name="multi_factor_values">
+    <item>100</item>
+    <item>200</item>
+    <item>300</item>
+    <item>400</item>
+    <item>500</item>
+    <item>600</item>
+    <item>700</item>
+    <item>800</item>
+    <item>900</item>
+    <item>1000</item>
+    <item>3000</item>
+  </string-array>
+  <string-array name="amplification_db">
+    <item>0 dB</item>
+    <item>3.5 dB</item>
+    <item>6.0 dB</item>
+    <item>9.5 dB</item>
+    <item>12.0 dB</item>
+    <item>14.0 dB</item>
+    <item>18.0 dB</item>
+    <item>20.0 dB</item>
+  </string-array>
+  <string-array name="amplification_db_values">
+    <item>100</item>
+    <item>150</item>
+    <item>200</item>
+    <item>300</item>
+    <item>400</item>
+    <item>500</item>
+    <item>800</item>
+    <item>1000</item>
+  </string-array>
+  <string-array name="output_db">
+    <item>0 dB</item>
+    <item>-1.0 dB</item>
+    <item>-1.9 dB</item>
+    <item>-3.0 dB</item>
+    <item>-6.0 dB</item>
+    <item>-10.5 dB</item>
+  </string-array>
+  <string-array name="output_db_values">
+    <item>100</item>
+    <item>90</item>
+    <item>80</item>
+    <item>70</item>
+    <item>50</item>
+    <item>30</item>
+  </string-array>
+  <string-array name="output_volume">
+    <item>6.0 dB</item>
+    <item>5.6 dB</item>
+    <item>5.1 dB</item>
+    <item>4.6 dB</item>
+    <item>4.1 dB</item>
+    <item>3.5 dB</item>
+    <item>2.9 dB</item>
+    <item>2.3 dB</item>
+    <item>1.6 dB</item>
+    <item>0.8 dB</item>
+    <item>0 dB</item>
+    <item>-1.0 dB</item>
+    <item>-1.9 dB</item>
+    <item>-3.0 dB</item>
+    <item>-4.4 dB</item>
+    <item>-6.0 dB</item>
+    <item>-8.0 dB</item>
+    <item>-10.5 dB</item>
+    <item>-14.0 dB</item>
+    <item>-20.0 dB</item>
+    <item>-26.0 dB</item>
+    <item>-40.0 dB</item>
+  </string-array>
+  <string-array name="output_volume_values">
+    <item>200</item>
+    <item>190</item>
+    <item>180</item>
+    <item>170</item>
+    <item>160</item>
+    <item>150</item>
+    <item>140</item>
+    <item>130</item>
+    <item>120</item>
+    <item>110</item>
+    <item>100</item>
+    <item>90</item>
+    <item>80</item>
+    <item>70</item>
+    <item>60</item>
+    <item>50</item>
+    <item>40</item>
+    <item>30</item>
+    <item>20</item>
+    <item>10</item>
+    <item>5</item>
+    <item>1</item>
+  </string-array>
+  <string-array name="channel_pan">
+    <item>1.0 : 0.0</item>
+    <item>0.9 : 0.1</item>
+    <item>0.8 : 0.2</item>
+    <item>0.7 : 0.3</item>
+    <item>0.6 : 0.4</item>
+    <item>0.5 : 0.5</item>
+    <item>0.4 : 0.6</item>
+    <item>0.3 : 0.7</item>
+    <item>0.2 : 0.8</item>
+    <item>0.1 : 0.9</item>
+    <item>0.0 : 1.0</item>
+  </string-array>
+  <string-array name="channel_pan_values">
+    <item>-100</item>
+    <item>-80</item>
+    <item>-60</item>
+    <item>-40</item>
+    <item>-20</item>
+    <item>0</item>
+    <item>20</item>
+    <item>40</item>
+    <item>60</item>
+    <item>80</item>
+    <item>100</item>
+  </string-array>
+  <string-array name="dynamicsystem_bass">
+    <item>Yüzde 0</item>
+    <item>Yüzde 1</item>
+    <item>Yüzde 2</item>
+    <item>Yüzde 3</item>
+    <item>Yüzde 4</item>
+    <item>Yüzde 5</item>
+    <item>Yüzde 6</item>
+    <item>Yüzde 7</item>
+    <item>Yüzde 8</item>
+    <item>Yüzde 9</item>
+    <item>Yüzde 10</item>
+    <item>Yüzde 12</item>
+    <item>Yüzde 14</item>
+    <item>Yüzde 16</item>
+    <item>Yüzde 18</item>
+    <item>Yüzde 20</item>
+    <item>Yüzde 22</item>
+    <item>Yüzde 24</item>
+    <item>Yüzde 26</item>
+    <item>Yüzde 28</item>
+    <item>Yüzde 30</item>
+    <item>Yüzde 33</item>
+    <item>Yüzde 36</item>
+    <item>Yüzde 40</item>
+    <item>Yüzde 45</item>
+    <item>Yüzde 50</item>
+    <item>Yüzde 55</item>
+    <item>Yüzde 60</item>
+    <item>Yüzde 70</item>
+    <item>Yüzde 80</item>
+    <item>Yüzde 90</item>
+    <item>Yüzde 100</item>
+  </string-array>
+  <string-array name="dynamicsystem_bass_values">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+    <item>4</item>
+    <item>5</item>
+    <item>6</item>
+    <item>7</item>
+    <item>8</item>
+    <item>9</item>
+    <item>10</item>
+    <item>12</item>
+    <item>14</item>
+    <item>16</item>
+    <item>18</item>
+    <item>20</item>
+    <item>22</item>
+    <item>24</item>
+    <item>26</item>
+    <item>28</item>
+    <item>30</item>
+    <item>33</item>
+    <item>36</item>
+    <item>40</item>
+    <item>45</item>
+    <item>50</item>
+    <item>55</item>
+    <item>60</item>
+    <item>70</item>
+    <item>80</item>
+    <item>90</item>
+    <item>100</item>
+  </string-array>
+  <string-array name="dynamicsystem_outputs">
+    <item>Aşırı İyi Kulaklık (Baş) (v2)</item>
+    <item>High-end Kulaklık (Baş) (v2)</item>
+    <item>Normal Kulaklık (Baş)(v2)</item>
+    <item>Low-end Kulaklık (Baş) (v2)</item>
+    <item>Normal Kulaklık (Kulak) (v2)</item>
+    <item>Aşırı İyi Kulaklık (Baş) (v1)</item>
+    <item>High-end Kulaklık (Baş) (v1)</item>
+    <item>Normal Kulaklık (Baş) (v1)</item>
+    <item>Normal Kulaklık (Kulak) (v1)</item>
+    <item>Apple Kulaklık (Kulak)</item>
+    <item>Monster Kulaklık (Kulak)</item>
+    <item>Moto Kulaklık (Kulak)</item>
+    <item>Philips Kulaklık (Kulak)</item>
+    <item>SHP2000</item>
+    <item>SHP9000</item>
+    <item>Bilinmeyen Tür I</item>
+    <item>Bilinmeyen Tür II</item>
+    <item>Bilinmeyen Tür III</item>
+    <item>Bilinmeyen Tür IV</item>
+  </string-array>
+  <string-array name="dynamicsystem_outputs_values">
+    <item>140;6200;40;60;10;80</item>
+    <item>180;5800;55;80;10;70</item>
+    <item>300;5600;60;105;10;50</item>
+    <item>600;5400;60;105;10;20</item>
+    <item>100;5600;40;80;50;50</item>
+    <item>1200;6200;40;80;0;20</item>
+    <item>1000;6200;40;80;0;10</item>
+    <item>800;6200;40;80;10;0</item>
+    <item>400;6200;40;80;10;0</item>
+    <item>1200;6200;50;90;15;10</item>
+    <item>1000;6200;50;90;30;10</item>
+    <item>1100;6200;60;100;20;0</item>
+    <item>1200;6200;50;100;10;50</item>
+    <item>1200;6200;60;100;0;30</item>
+    <item>1200;6200;40;80;0;30</item>
+    <item>1000;6200;60;100;0;0</item>
+    <item>1000;6200;60;120;0;0</item>
+    <item>1000;6200;80;140;0;0</item>
+    <item>800;6200;80;140;0;0</item>
+  </string-array>
+  <string-array name="vbass_mode">
+    <item>Doğal Bas</item>
+    <item>Pure Bass+</item>
+    <item>Subwoofer (Düşük Hz lerde çalışır)</item>
+  </string-array>
+  <string-array name="vbass_mode_values">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+  </string-array>
+  <string-array name="vbass_freq">
+    <item>30 Hz</item>
+    <item>40 Hz</item>
+    <item>50 Hz</item>
+    <item>60 Hz</item>
+    <item>66 Hz</item>
+    <item>78 Hz</item>
+    <item>80 Hz</item>
+    <item>100 Hz</item>
+  </string-array>
+  <string-array name="vbass_freq_values">
+    <item>30</item>
+    <item>40</item>
+    <item>50</item>
+    <item>60</item>
+    <item>66</item>
+    <item>78</item>
+    <item>80</item>
+    <item>100</item>
+  </string-array>
+  <string-array name="vbass_boost">
+    <item>3.5 dB</item>
+    <item>6.0 dB</item>
+    <item>8.0 dB</item>
+    <item>10.0 dB</item>
+    <item>11.0 dB</item>
+    <item>12.0 dB</item>
+    <item>13.0 dB</item>
+    <item>14.0 dB</item>
+    <item>14.8 dB</item>
+    <item>15.6 dB</item>
+    <item>16.3 dB</item>
+    <item>17.0 dB</item>
+  </string-array>
+  <string-array name="vbass_boost_values">
+    <item>50</item>
+    <item>100</item>
+    <item>150</item>
+    <item>200</item>
+    <item>250</item>
+    <item>300</item>
+    <item>350</item>
+    <item>400</item>
+    <item>450</item>
+    <item>500</item>
+    <item>550</item>
+    <item>600</item>
+  </string-array>
+  <string-array name="vclarity_mode">
+    <item>Doğal</item>
+    <item>OZone+</item>
+    <item>XHiFi</item>
+  </string-array>
+  <string-array name="vclarity_mode_values">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+  </string-array>
+  <string-array name="vclarity_boost">
+    <item>Default</item>
+    <item>3.5 dB</item>
+    <item>6.0 dB</item>
+    <item>8.0 dB</item>
+    <item>10.0 dB</item>
+    <item>11.0 dB</item>
+    <item>12.0 dB</item>
+    <item>13.0 dB</item>
+    <item>14.0 dB</item>
+    <item>14.8 dB</item>
+  </string-array>
+  <string-array name="vclarity_boost_values">
+    <item>0</item>
+    <item>50</item>
+    <item>100</item>
+    <item>150</item>
+    <item>200</item>
+    <item>250</item>
+    <item>300</item>
+    <item>350</item>
+    <item>400</item>
+    <item>450</item>
+  </string-array>
+  <string-array name="speaker_lowfreq">
+    <item>100 Hz</item>
+    <item>140 Hz</item>
+    <item>180 Hz</item>
+    <item>200 Hz</item>
+    <item>220 Hz</item>
+  </string-array>
+  <string-array name="speaker_lowfreq_values">
+    <item>100</item>
+    <item>140</item>
+    <item>180</item>
+    <item>200</item>
+    <item>220</item>
+  </string-array>
+  <string-array name="speaker_highfreq">
+    <item>3000 Hz</item>
+    <item>4000 Hz</item>
+    <item>5000 Hz</item>
+    <item>6000 Hz</item>
+    <item>7000 Hz</item>
+    <item>8000 Hz</item>
+  </string-array>
+  <string-array name="speaker_highfreq_values">
+    <item>3000</item>
+    <item>4000</item>
+    <item>5000</item>
+    <item>6000</item>
+    <item>7000</item>
+    <item>8000</item>
+  </string-array>
+</resources>
