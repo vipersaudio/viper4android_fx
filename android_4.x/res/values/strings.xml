@@ -205,7 +205,7 @@
     <string name="text_modifybuildprop">ATTENTION:
 \nLPA is enabled on your device, this may cause V4A to malfunction.
 \nLPA, or \'Low Power Audio\', can be disabled through modifying build.prop, which can be done automatically.
-\nWe strongly recommend you to make a NANDROID BACKUP or DATA BACKUP before proceeding!
+\nWe strongly recommend you to make a NANDROID or DATA BACKUP before proceeding!
 \nDo you wish to disable LPA now?</string>
     <string name="text_changelog">Changelog</string>
     <string name="text_drv_status">Driver Status</string>
