@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:id="@+id/lockeffect" android:title="@string/text_lockeffect"/>
-    <item android:id="@+id/notify" android:title="@string/text_drv_blank"/>
-    <item android:id="@+id/drvinst" android:title="@string/text_drv_blank"/>
-    <item android:id="@+id/drvstatus" android:title="@string/text_drv_status"/>
-    <item android:id="@+id/changelog" android:title="@string/text_changelog"/>
-    <item android:id="@+id/checkupdate" android:title="@string/text_checkupdate"/>
-</menu>
