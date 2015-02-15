@@ -16,7 +16,7 @@ import com.vipercn.viper4android_v2.R;
 import com.vipercn.viper4android_v2.service.ViPER4AndroidService;
 
 import com.stericson.RootTools.RootTools;
-import com.stericson.RootTools.execution.CommandCapture;
+import com.stericson.RootShell.execution.Command;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -846,21 +846,21 @@ public class Utils {
 
                 if (!bConfigModified) {
 	                // Modify permission
-	                CommandCapture ccSetPermission = new CommandCapture(0,
+	                Command ccSetPermission = new Command(0,
 	                        mChmod + " 644 /system/etc/audio_effects.conf",
 	                        mChmod + " 644 /system/vendor/etc/audio_effects.conf",
 	                        mChmod + " 644 /system/lib/soundfx/libv4a_fx_ics.so");
 	                RootTools.getShell(true).add(ccSetPermission);
                 } else {
 	                // Modify permission
-	                CommandCapture ccSetPermission = new CommandCapture(0,
+	                Command ccSetPermission = new Command(0,
 	                        mChmod + " 644 /system/lib/soundfx/libv4a_fx_ics.so");
 	                RootTools.getShell(true).add(ccSetPermission);
                 }
 
                 // Modify permission of addon.d script if applicable
                 if (isAddondSupported) {
-                    CommandCapture ccSetAddondPermission = new CommandCapture(0,
+                    Command ccSetAddondPermission = new Command(0,
                             mChmod + " 644 /system/addon.d/91-v4a.sh");
                     RootTools.getShell(true).add(ccSetAddondPermission);
                 }
@@ -886,20 +886,20 @@ public class Utils {
 
                 if (!bConfigModified) {
 	                // Modify permission
-	                CommandCapture ccSetPermission = new CommandCapture(0,
+	                Command ccSetPermission = new Command(0,
 	                        mChmod + " 644 /system/etc/audio_effects.conf",
 	                        mChmod + " 644 /system/lib/soundfx/libv4a_fx_ics.so");
 	                RootTools.getShell(true).add(ccSetPermission);
                 } else {
 	                // Modify permission
-	                CommandCapture ccSetPermission = new CommandCapture(0,
+	                Command ccSetPermission = new Command(0,
 	                        mChmod + " 644 /system/lib/soundfx/libv4a_fx_ics.so");
 	                RootTools.getShell(true).add(ccSetPermission);
                 }
 
                 // Modify permission of addon.d script if applicable
                 if (isAddondSupported) {
-                    CommandCapture ccSetAddondPermission = new CommandCapture(0,
+                    Command ccSetAddondPermission = new Command(0,
                             mChmod + " 644 /system/addon.d/91-v4a.sh");
                     RootTools.getShell(true).add(ccSetAddondPermission);
                 }

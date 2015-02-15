@@ -17,8 +17,8 @@ import android.util.Log;
 
 import com.stericson.RootTools.RootTools;
 import com.stericson.RootTools.containers.Permissions;
-import com.stericson.RootTools.exceptions.RootDeniedException;
-import com.stericson.RootTools.execution.CommandCapture;
+import com.stericson.RootShell.exceptions.RootDeniedException;
+import com.stericson.RootShell.execution.Command;
 
 /*
  * I wrote this BuildProp for replacing the "BuildProp Tools".
@@ -224,7 +224,7 @@ public class BuildProp {
 			return;
 		}
 		new File(tempBuildpropFile).delete();
-        CommandCapture ccSetPermission = new CommandCapture(0,
+		Command ccSetPermission = new Command(0,
                 mChmod + " 644 " + destBuildpropFile);
         try {
 			RootTools.getShell(true).add(ccSetPermission);

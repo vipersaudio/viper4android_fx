@@ -15,6 +15,7 @@ public class StaticEnvironment {
     private static String sExternalStoragePath = "";
     private static String sV4aRoot = "";
     private static String sV4aKernelPath = "";
+	private static String sV4aCustomDDCPath = "";
     private static String sV4aProfilePath = "";
 
     private static boolean checkWritable(String mFileName) {
@@ -54,6 +55,7 @@ public class StaticEnvironment {
                     ? mExternalStoragePathName : mExternalStoragePathName + "/";
             sV4aRoot = sExternalStoragePath + "ViPER4Android/";
             sV4aKernelPath = sV4aRoot + "Kernel/";
+			sV4aCustomDDCPath = sV4aRoot + "DDC/";
             sV4aProfilePath = sV4aRoot + "Profile/";
         } else {
             boolean isPathFromSdkWorking = false;
@@ -85,10 +87,12 @@ public class StaticEnvironment {
                         ? mExternalStoragePathName : mExternalStoragePathName + "/";
                 sV4aRoot = sExternalStoragePath + "ViPER4Android/";
                 sV4aKernelPath = sV4aRoot + "Kernel/";
+				sV4aCustomDDCPath = sV4aRoot + "DDC/";
                 sV4aProfilePath = sV4aRoot + "Profile/";
                 Log.i("ViPER4Android", "External storage path = " + sExternalStoragePath);
                 Log.i("ViPER4Android", "ViPER4Android root path = " + sV4aRoot);
                 Log.i("ViPER4Android", "ViPER4Android kernel path = " + sV4aKernelPath);
+				Log.i("ViPER4Android", "ViPER4Android custom DDC path = " + sV4aCustomDDCPath);
                 Log.i("ViPER4Android", "ViPER4Android profile path = " + sV4aProfilePath);
                 return;
             }
@@ -97,10 +101,12 @@ public class StaticEnvironment {
                         ? mExternalStoragePathName : mExternalStoragePathName + "/";
                 sV4aRoot = sExternalStoragePath + "ViPER4Android/";
                 sV4aKernelPath = sV4aRoot + "Kernel/";
+				sV4aCustomDDCPath = sV4aRoot + "DDC/";
                 sV4aProfilePath = sV4aRoot + "Profile/";
                 Log.i("ViPER4Android", "External storage path = " + sExternalStoragePath);
                 Log.i("ViPER4Android", "ViPER4Android root path = " + sV4aRoot);
                 Log.i("ViPER4Android", "ViPER4Android kernel path = " + sV4aKernelPath);
+				Log.i("ViPER4Android", "ViPER4Android custom DDC path = " + sV4aCustomDDCPath);
                 Log.i("ViPER4Android", "ViPER4Android profile path = " + sV4aProfilePath);
                 return;
             }
@@ -110,6 +116,7 @@ public class StaticEnvironment {
                     ? mExternalStoragePathName : mExternalStoragePathName + "/";
             sV4aRoot = sExternalStoragePath + "ViPER4Android/";
             sV4aKernelPath = sV4aRoot + "Kernel/";
+			sV4aCustomDDCPath = sV4aRoot + "DDC/";
             sV4aProfilePath = sV4aRoot + "Profile/";
         }
     }
@@ -134,6 +141,7 @@ public class StaticEnvironment {
                     ? mExternalStoragePathName : mExternalStoragePathName + "/";
             sV4aRoot = sExternalStoragePath + "ViPER4Android/";
             sV4aKernelPath = sV4aRoot + "Kernel/";
+			sV4aCustomDDCPath = sV4aRoot + "DDC/";
             sV4aProfilePath = sV4aRoot + "Profile/";
         }
         sEnvironmentInitialized = true;
@@ -149,6 +157,10 @@ public class StaticEnvironment {
 
     public static String getV4aKernelPath() {
         return sV4aKernelPath;
+    }
+
+    public static String getV4aCustomDDCPath() {
+        return sV4aCustomDDCPath;
     }
 
     public static String getV4aProfilePath() {

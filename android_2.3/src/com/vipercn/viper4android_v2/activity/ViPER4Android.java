@@ -264,7 +264,7 @@ public final class ViPER4Android extends PreferenceActivity
     		lstCompatibleList = null;
     		// Since we cant use getPackageManager in static method, we need to type the current version here
     		// TODO: <DO NOT REMOVE> please make sure this string equals to current apk's version
-    		if (szDrvVersion.equals("2.3.3.0")) {
+    		if (szDrvVersion.equals("2.3.4.0")) {
     			return true;
     		}
     		return false;

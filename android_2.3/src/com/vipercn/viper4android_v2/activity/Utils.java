@@ -148,16 +148,17 @@ public class Utils
 	    	InputStream is = conn.getInputStream();
 		    if (conn.getContentLength() <= 0) return false;
 		    if (is == null) return false;
-		    FileOutputStream fos = new FileOutputStream(szStorePath + szFileName);
+		    FileOutputStream fosStream = new FileOutputStream(szStorePath + szFileName);
 
 		    byte buf[] = new byte[1024];
 		    do
 		    {
 		        int numread = is.read(buf);
 		        if (numread == -1) break;
-		        fos.write(buf, 0, numread);
+		        fosStream.write(buf, 0, numread);
 		    } while (true);
 	        is.close();
+	        fosStream.close();
 
 	        return true;
     	}

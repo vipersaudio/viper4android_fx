@@ -200,7 +200,7 @@
     <string name="text_drvinst_dataioerr">Driver install failed: I/O error, please reboot and try again.</string>
     <string name="text_drvinst_cfg_unsup">Driver install failed: Unsupported android system or ROM.</string>
     <string name="text_drvinst_failed">Driver install failed: The busybox installation found on your device does not work.
-\nThis usually means you installed a wrong or broken busybox. V4A needs Stericson's busybox to work.
+\nThis usually means you installed a wrong or broken busybox. V4A needs Stericson\'s busybox to work.
 \nIf you are sure you installed the proper busybox, then please confirm your device has been completely rooted.</string>
     <string name="text_modifybuildprop">ATTENTION:
 \nLPA is enabled on your device, this may cause V4A to malfunction.
@@ -223,7 +223,7 @@
     <string name="about_text">***About ViPER4Android***
 \n
 \n\'libv4a_xx_xx.so\' is the kernel of ViPER4Android.
-\nCopyright © 2006-2016, vipercn.com. All rights reserved.
+\nCopyright © 2006-2016, ViPER ACOUSTIC. All rights reserved.
 \nWithout the official permission, commercial use is disallowed.
 \nOfficial Forum: http://vipersaudio.com/blog/
 \n

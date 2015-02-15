@@ -1,7 +1,10 @@
 
 package com.vipercn.viper4android_v2.activity;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -9,6 +12,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.os.Environment;
 import android.util.Log;
 
 public class DDCDatabase {
@@ -72,6 +76,69 @@ public class DDCDatabase {
 	}
 
 	public static String queryDDCBlock(String szKeyID, Context ctx) {
+		if (szKeyID == null) return "";
+		if (szKeyID.isEmpty()) return "";
+		if (szKeyID.startsWith("FILE:")) {
+			String szDDCFilePath = Environment.getExternalStorageDirectory() + "/ViPER4Android/DDC/" +
+					szKeyID.substring(5);
+			File mDDCFileHandle = new File(szDDCFilePath);
+			if (!mDDCFileHandle.exists()) {
+				return "";
+			}
+			if (!mDDCFileHandle.canRead()) {
+				return "";
+			}
+			
+			String szSR44100Coeffs = "";
+			String szSR48000Coeffs = "";
+			
+			FileReader frDDCReader = null;
+			BufferedReader brDDCBufferedReader = null;
+			try {
+				frDDCReader = new FileReader(mDDCFileHandle);
+				brDDCBufferedReader = new BufferedReader(frDDCReader);
+				while (true) {
+					String szLine = brDDCBufferedReader.readLine();
+					if (szLine == null) {
+						break;
+					}
+					szLine = szLine.trim();
+					if (szLine.startsWith("SR_44100:")) {
+						szSR44100Coeffs = szLine.substring(9);
+					} else if (szLine.startsWith("SR_48000:")) {
+						szSR48000Coeffs = szLine.substring(9);
+					}
+				}
+				brDDCBufferedReader.close();
+				frDDCReader.close();
+				brDDCBufferedReader = null;
+				frDDCReader = null;
+				mDDCFileHandle = null;
+			} catch (IOException e1) {
+                try {
+                    if (brDDCBufferedReader != null) {
+                    	brDDCBufferedReader.close();
+                    }
+                    if (frDDCReader != null) {
+                    	frDDCReader.close();
+                    }
+                    brDDCBufferedReader = null;
+                    frDDCReader = null;
+                    mDDCFileHandle = null;
+                    return "";
+                } catch (IOException e2) {
+                	brDDCBufferedReader = null;
+                	frDDCReader = null;
+                	mDDCFileHandle = null;
+                    return "";
+                }
+			}
+			
+			if (szSR44100Coeffs.isEmpty()) return "";
+			if (szSR48000Coeffs.isEmpty()) return "";
+			return szSR44100Coeffs + "," + szSR48000Coeffs;
+		}
+
 		String szLocalDatabasePathName = Utils.GetBasePath(ctx);
 		if (szLocalDatabasePathName.endsWith("/")) {
 			szLocalDatabasePathName = szLocalDatabasePathName + "ViPERDDC.db";
