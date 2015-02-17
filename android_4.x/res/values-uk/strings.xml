@@ -247,8 +247,8 @@ Enter file contents here<?xml version="1.0" encoding="utf-8"?>
 \n\"Видалити драйвер\" — видалити драйвер ефектів ViPER4Android.
 \n
 \n\"Сумісність\" — установить режим совместимости.
-\n    \"Нет\" — зробити ViPER4Android глобальним ефектом.
-\n    \"Включить\" — зробити ViPER4Android локальним ефектом.
+\n    \"Немає\" — зробити ViPER4Android глобальним ефектом.
+\n    \"Включити\" — зробити ViPER4Android локальним ефектом.
 \n</string>
     <string name="text_forum_link">http://forum.xda-developers.com/showthread.php?t=2191223</string>
     <string name="text_view_forum">Форум</string>
