@@ -1,6 +1,6 @@
 ﻿ViPER4Android FX v2.3.4.0
 代號：Beautiful
-Copyright (C) 2006-2016 蝰蛇声学(R)
+Copyright (C) 2006-2016 蝰蛇聲學(R)
 官方論壇：forum.vipersaudio.com
 
 新年快樂！
