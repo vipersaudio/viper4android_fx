@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v4.view.ViewPager android:id="@id/viewPager" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <android.support.v4.view.PagerTabStrip android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/white" android:layout_gravity="top" android:id="@id/pagerTabStrip" android:background="@drawable/pager_background" android:layout_width="wrap_content" android:layout_height="30.0dip" />
+    </android.support.v4.view.ViewPager>
+    <View android:background="@drawable/top_shadow" android:layout_width="fill_parent" android:layout_height="5.0dip" />
+</merge>

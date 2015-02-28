@@ -1,0 +1,243 @@
+Manifest-Version: 1.0
+Created-By: 1.0 (Android SignApk)
+
+Name: res/xml/speaker_preferences_l1.xml
+SHA1-Digest: IqlJuuCjwdTVrE6RdMNhOUBZ4Xs=
+
+Name: res/drawable-ldpi-v4/vp_background_texture.png
+SHA1-Digest: A9350F/eeiNp9F4bIiJ1WM0C3mc=
+
+Name: assets/libv4a_fx_ics_VFP.so
+SHA1-Digest: M2yRplPR2TO6hVkXf7HPoTyEgY0=
+
+Name: assets/ver.txt
+SHA1-Digest: ZRv85x8FkFwzyds5os89CmHDGWw=
+
+Name: assets/libv4a_fx_jb_NEON.so
+SHA1-Digest: p/OuYT27NmneidOGZ/51rpva5tU=
+
+Name: res/drawable-hdpi-v4/icon.png
+SHA1-Digest: iuMypbY1hYxfL9BJ2X4RTUxrOXw=
+
+Name: res/xml/headset_preferences_l1.xml
+SHA1-Digest: 7NqYNbMVqscbcQxSvRNn4GfqUsU=
+
+Name: assets/libv4a_fx_ics_NOVFP.so
+SHA1-Digest: ZyFCvYgv9PUiDilAGqXOk/5qN+M=
+
+Name: res/drawable-mdpi-v21/icon.png
+SHA1-Digest: ZUsTLkwy7VRLFxEtGKvkFKoGSVo=
+
+Name: assets/libv4a_fx_jb_NEON_HQ.so
+SHA1-Digest: W23eTMvneocUO9rTj/9iTchzXxU=
+
+Name: res/drawable-hdpi-v4/ic_drawer.png
+SHA1-Digest: nQVzFSnMtFBGH+/G8ZOHKfBgz3Q=
+
+Name: res/xml/speaker_preferences_l0.xml
+SHA1-Digest: aGmBh2RTPBFE4owCEtggAzfIiYg=
+
+Name: assets/ViPERDDC.db
+SHA1-Digest: 9GzCK+jVeaTugWCW6VU84uGJffs=
+
+Name: res/drawable-mdpi-v4/ic_drawer.png
+SHA1-Digest: dneojr0HN+G3zqG3MhfCnnIHgP4=
+
+Name: res/drawable-xhdpi-v21/ic_drawer.png
+SHA1-Digest: N75/8dY2S8vnSTRHZ7G1zf1TuiM=
+
+Name: res/drawable-xhdpi-v21/icon.png
+SHA1-Digest: H32xJ2mJ0S8qoaN+Qg09F7mZEts=
+
+Name: res/xml/headset_preferences_l0.xml
+SHA1-Digest: ZTjj2WjznbpVS/5eYJqYsovbtVs=
+
+Name: assets/libv4a_fx_ics_NEON_HQ.so
+SHA1-Digest: AQBMokRFCABU+a7nz71NHR4goBA=
+
+Name: assets/libv4a_fx_jb_NEON_SQ.so
+SHA1-Digest: WEnUu4kSCcU1IKcyLWJRWwvNMwU=
+
+Name: res/drawable-hdpi-v4/vp_background_texture.png
+SHA1-Digest: A9350F/eeiNp9F4bIiJ1WM0C3mc=
+
+Name: assets/Changelog_en_US.txt
+SHA1-Digest: w+UdCebZd5W1MKrHcZB1JonG4x8=
+
+Name: res/drawable-xhdpi-v4/vp_background_texture.png
+SHA1-Digest: 6OmnSuakEhtPW+EWTqFLe0zy2xQ=
+
+Name: res/drawable-ldpi-v4/drawer_shadow.9.png
+SHA1-Digest: cNUdijE95lHbP1Db15SXYf0Kwsk=
+
+Name: res/drawable-xhdpi-v4/ic_drawer.png
+SHA1-Digest: GZY0coy8LBFmsOXmrLmvJE8kygE=
+
+Name: lib/armeabi/libV4AJniUtils.so
+SHA1-Digest: 5Alq9304WlfclsF+5PAIe9c/3m4=
+
+Name: res/drawable-ldpi-v21/drawer_shadow.9.png
+SHA1-Digest: cNUdijE95lHbP1Db15SXYf0Kwsk=
+
+Name: res/layout/equalizer.xml
+SHA1-Digest: NmsQWGTegG4ZJcymQera1vb6p/w=
+
+Name: res/drawable-xhdpi-v4/icon.png
+SHA1-Digest: H32xJ2mJ0S8qoaN+Qg09F7mZEts=
+
+Name: res/drawable-hdpi-v21/icon.png
+SHA1-Digest: iuMypbY1hYxfL9BJ2X4RTUxrOXw=
+
+Name: assets/libv4a_fx_ics_NEON.so
+SHA1-Digest: cpfd/73+m+B7ubTgq+VACw/KaV4=
+
+Name: res/xml/speaker_preferences_l2.xml
+SHA1-Digest: b43KI41JnW7QhhxxqzURAnObFW4=
+
+Name: res/layout/drvstatus.xml
+SHA1-Digest: IrZYJKCe65SuH4IzrFMouvzM+dk=
+
+Name: resources.arsc
+SHA1-Digest: atGCOnDx35HJaIHwClWVh7gpQOk=
+
+Name: res/drawable-mdpi-v21/ic_drawer.png
+SHA1-Digest: HHdEzTGOqhI7AVyoDYLl5UHyvf8=
+
+Name: res/menu/menu.xml
+SHA1-Digest: A12EaF1AyITHfeuq2xkNPHGUGqA=
+
+Name: lib/x86/libV4AJniUtils.so
+SHA1-Digest: i/v3L5YOHYSnN61sTE5EZrLQDN0=
+
+Name: res/drawable/top_shadow.xml
+SHA1-Digest: zf59rknMZ88LDlyVpw5oJVMBkzw=
+
+Name: res/layout/drawer_item.xml
+SHA1-Digest: aEAExLGBAp+7p0LT/OYYDBXKUF4=
+
+Name: AndroidManifest.xml
+SHA1-Digest: gVvkBeQDdRTOosSYHBLc4z/1lMk=
+
+Name: res/drawable-ldpi-v4/icon.png
+SHA1-Digest: e+pPO5qwj4PIkKUTb7g8h570emg=
+
+Name: res/drawable-xxhdpi-v4/icon.png
+SHA1-Digest: P8a3vK9CCBLG6ygL7xgzRlZ4pqQ=
+
+Name: assets/libv4a_fx_jb_NOVFP.so
+SHA1-Digest: Y3Rx3gEYwlR8VCm+324rUjlx4CA=
+
+Name: assets/libv4a_fx_jb_VFP.so
+SHA1-Digest: dKrpYmyKIE3K1Y92rqVOwFifOSY=
+
+Name: res/drawable-xxhdpi-v21/icon.png
+SHA1-Digest: P8a3vK9CCBLG6ygL7xgzRlZ4pqQ=
+
+Name: res/drawable-hdpi-v21/vp_background_texture.png
+SHA1-Digest: ye+rqj8AiSA585PFEZhEOg8UK4U=
+
+Name: res/drawable-ldpi-v21/vp_background_texture.png
+SHA1-Digest: ye+rqj8AiSA585PFEZhEOg8UK4U=
+
+Name: assets/Changelog_zh_TW.txt
+SHA1-Digest: qNdc5+2MciPgNsBmgtYg8gPhV4M=
+
+Name: res/xml/bluetooth_preferences_l0.xml
+SHA1-Digest: ZTjj2WjznbpVS/5eYJqYsovbtVs=
+
+Name: res/drawable-xhdpi-v4/drawer_shadow.9.png
+SHA1-Digest: utDk0NKN3CklXyoNTkzpahPy7Aw=
+
+Name: res/drawable-hdpi-v21/drawer_shadow.9.png
+SHA1-Digest: iaWaiCscygiqoeyCwDZvkqNikPE=
+
+Name: res/drawable-mdpi-v21/vp_background_texture.png
+SHA1-Digest: ye+rqj8AiSA585PFEZhEOg8UK4U=
+
+Name: assets/Changelog_zh_CN.txt
+SHA1-Digest: U6UMDzogmUsCzu1MsqttyAFHp6o=
+
+Name: res/xml/usb_preferences_l2.xml
+SHA1-Digest: 9nfEbC6YpkR3wc825S4yghxn6hE=
+
+Name: res/drawable-ldpi-v21/icon.png
+SHA1-Digest: e+pPO5qwj4PIkKUTb7g8h570emg=
+
+Name: res/xml/bluetooth_preferences_l1.xml
+SHA1-Digest: 7NqYNbMVqscbcQxSvRNn4GfqUsU=
+
+Name: assets/libv4a_fx_jb_X86.so
+SHA1-Digest: MsyPJStAoYrYPT5IBqTcWXiSI38=
+
+Name: res/drawable-xhdpi-v21/vp_background_texture.png
+SHA1-Digest: NF1D6YFWrku9tnnHmGLn9mnBJPY=
+
+Name: assets/91-v4a.sh
+SHA1-Digest: cAh3HcIfi4+7v+eKp58Efl8ZYpc=
+
+Name: res/layout/activity_main_tabbed.xml
+SHA1-Digest: nS9Q4w4NsdFtiLT3c3uR5dYHL98=
+
+Name: res/menu/menu_tabbed.xml
+SHA1-Digest: eTIFp9JAaCppe1IRz5m2sPwyqpU=
+
+Name: res/drawable-ldpi-v21/ic_drawer.png
+SHA1-Digest: HHdEzTGOqhI7AVyoDYLl5UHyvf8=
+
+Name: res/drawable-xhdpi-v21/drawer_shadow.9.png
+SHA1-Digest: utDk0NKN3CklXyoNTkzpahPy7Aw=
+
+Name: res/layout/equalizer_popup.xml
+SHA1-Digest: h6rdxmI1C9o6/NmyppxTjyPKoUY=
+
+Name: res/xml/usb_preferences_l0.xml
+SHA1-Digest: ZTjj2WjznbpVS/5eYJqYsovbtVs=
+
+Name: res/drawable-hdpi-v4/drawer_shadow.9.png
+SHA1-Digest: iaWaiCscygiqoeyCwDZvkqNikPE=
+
+Name: res/layout/activity_main.xml
+SHA1-Digest: tzUrz4MS+Gv/XTSKMFYcuVAcg50=
+
+Name: res/xml/usb_preferences_l1.xml
+SHA1-Digest: 7NqYNbMVqscbcQxSvRNn4GfqUsU=
+
+Name: res/drawable-mdpi-v4/drawer_shadow.9.png
+SHA1-Digest: cNUdijE95lHbP1Db15SXYf0Kwsk=
+
+Name: res/xml/bluetooth_preferences_l2.xml
+SHA1-Digest: 9nfEbC6YpkR3wc825S4yghxn6hE=
+
+Name: assets/libv4a_fx_ics_NEON_SQ.so
+SHA1-Digest: vnji+PHm/p3MHEt/LQ/51xTgzlQ=
+
+Name: res/drawable-ldpi-v4/ic_drawer.png
+SHA1-Digest: dneojr0HN+G3zqG3MhfCnnIHgP4=
+
+Name: assets/libv4a_fx_ics_X86.so
+SHA1-Digest: ElATL0PvT71FaBpprJWUuFCayAQ=
+
+Name: res/drawable-mdpi-v4/icon.png
+SHA1-Digest: ZUsTLkwy7VRLFxEtGKvkFKoGSVo=
+
+Name: res/drawable-mdpi-v21/drawer_shadow.9.png
+SHA1-Digest: cNUdijE95lHbP1Db15SXYf0Kwsk=
+
+Name: res/drawable-hdpi-v21/ic_drawer.png
+SHA1-Digest: 2V8WT3fmyJE0IaTwQ+duVqm3rdA=
+
+Name: res/xml/headset_preferences_l2.xml
+SHA1-Digest: 9nfEbC6YpkR3wc825S4yghxn6hE=
+
+Name: classes.dex
+SHA1-Digest: gtBOpXHGV67lnd1CDja+b8KLmSs=
+
+Name: res/drawable/empty_icon.xml
+SHA1-Digest: F7bDz1SzuxQ5nt2sUhO74ow7vYI=
+
+Name: res/drawable/pager_background.xml
+SHA1-Digest: M+B3RtR7vSCWEifqegjo8Ggmle4=
+
+Name: res/drawable-mdpi-v4/vp_background_texture.png
+SHA1-Digest: A9350F/eeiNp9F4bIiJ1WM0C3mc=
+

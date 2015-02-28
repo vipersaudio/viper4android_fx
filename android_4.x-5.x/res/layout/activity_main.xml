@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.vipercn.viper4android_v2.widgets.CustomDrawerLayout android:id="@id/v4a_drawer_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:animateLayoutChanges="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/v4a_container" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ListView android:layout_gravity="start" android:id="@id/v4a_navigation_drawer" android:background="@drawable/pager_background" android:layout_width="260.0dip" android:layout_height="fill_parent" android:divider="@android:color/transparent" android:dividerHeight="0.0dip" android:choiceMode="singleChoice"
+      xmlns:android="http://schemas.android.com/apk/res/android" />
+</com.vipercn.viper4android_v2.widgets.CustomDrawerLayout>
