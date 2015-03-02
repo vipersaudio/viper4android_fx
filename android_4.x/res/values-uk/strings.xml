@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  Thanks to okandreyok@4pda
+    
+      http://4pda.ru/forum/index.php?showtopic=405989
+
+      2015
+    -->
+    <string name="app_name">ViPER FX</string>
+    <string name="select_configuration_title">ViPER4Android</string>
+    <string name="headset_title">НАУШНИКИ</string>
+    <string name="speaker_title">ДИНАМИК</string>
+    <string name="bluetooth_title">BLUETOOTH</string>
+    <string name="usb_title">USB</string>
+    <string name="audio_effects">Аудіоефекти</string>
+    <string name="dsp_settings_headset">Настройка ефектів — Навушники</string>
+    <string name="dsp_settings_speaker">Настройка ефектів — Динамік</string>
+    <string name="dsp_settings_bluetooth">Настройка ефектів — Bluetooth</string>
+    <string name="dsp_settings_usb">Настройка ефектів — USB</string>
+    <string name="pref_dsp_enable">Включити</string>
+    <string name="pref_effect_title">Рівень</string>
+    <string name="dialog_effect">Рівень</string>
+    <string name="pref_force_enable_text">Примусово</string>
+    <string name="pref_force_enable_warn">Примусове включення ViPER може вирішити проблему з неактивними ефектами. 
+\nАле на деяких прошивках можливі відсутність звуку/швидкий розряд батареї. 
+\nВикористовуйте на свій розсуд. Якщо описане вище відбудеться, вимкніть цю опцію.</string>
+    <string name="pref_fx_master_title">Всі ефекти</string>
+    <string name="pref_fx_master_summary_on">ViPER FX включений</string>
+    <string name="pref_fx_master_summary_off">ViPER FX відключений</string>
+    <string name="pref_spkfx_master_title">Всі ефекти</string>
+    <string name="pref_spkfx_master_summary_on">ViPER SpeakerFX включений</string>
+    <string name="pref_spkfx_master_summary_off">ViPER SpeakerFX відключений</string>
+    <string name="pref_fx_limiter_title">Вихідний сигнал</string>
+    <string name="pref_fx_limiter_threshold">Лімітер</string>
+    <string name="pref_spkfx_limiter_title">Вихідний сигнал</string>
+    <string name="pref_spkfx_limiter_threshold">Лімітер</string>
+    <string name="pref_output_gain">Посилення</string>
+    <string name="pref_output_pan">Баланс</string>
+    <string name="pref_playback_title">Авторегулювання підсилення</string>
+    <string name="pref_playback_summary_on">АРП включена</string>
+    <string name="pref_playback_summary_off">АРП відключена</string>
+    <string name="pref_playback_output_threshold">Поріг</string>
+    <string name="pref_playback_maxgain">Межа</string>
+    <string name="pref_xloud_title">Супергучність</string>
+    <string name="pref_xloud_summary_on">Супергучність включена</string>
+    <string name="pref_xloud_summary_off">Супергучність відключена</string>
+    <string name="pref_xloud_output_amplifer">Посилення</string>
+    <string name="pref_xloud_spk_lowfreq">НЧ</string>
+    <string name="pref_xloud_spk_highfreq">ВЧ</string>
+    <string name="pref_spk_opt_title">Оптимізація динаміка</string>
+    <string name="pref_spk_opt_summary_on">Оптимізація включена</string>
+    <string name="pref_spk_opt_summary_off">Оптимізація відключена</string>
+    <string name="pref_viperddc_title">Цифрова корекція навушників</string>
+    <string name="pref_viperddc_summary_on">Цифрова корекція включена</string>
+    <string name="pref_viperddc_summary_off">Цифрова корекція відключена</string>
+    <string name="pref_viperddc_enable">Цифрова корекція</string>
+    <string name="pref_viperddc_device">Навушники</string>
+    <string name="pref_viperddc_device_manufacturer">Виробник</string>
+    <string name="pref_viperddc_device_model">Модель</string>
+    <string name="pref_viperddc_tips">УВАГА:
+\nЦифрова корекція — корекція під певну модель навушників.
+\nПідтримується більше 500 моделей, дані будуть доповнюватися.
+\nЯкщо Ви не змогли знайти свої навушники в списку, вимкніть цю функцію.</string>
+    <string name="pref_vse_title">Розширення спектру</string>
+    <string name="pref_vse_summary_on">Розширення спектру включено</string>
+    <string name="pref_vse_summary_off">Розширення спектру відключено</string>
+    <string name="pref_vse_enable">Розширення спектру</string>
+    <string name="pref_vse_strength">Рівень</string>
+    <string name="pref_vse_strength_title">Рівень</string>
+    <string name="pref_vse_tips">УВАГА:
+\n\"Розширення спектру\" — розширення втраченого при стисненні спектру.
+\nПри відтворенні форматів з втратами (MP3, AAC, OGG) звук може бути наближений до звуку форматів без втрат.
+\nПри відтворенні нестислих форматів відключіть цю функцію.</string>
+    <string name="pref_equalizer_title">Еквалайзер</string>
+    <string name="pref_equalizer_summary_on">Еквалайзер включений</string>
+    <string name="pref_equalizer_summary_off">Еквалайзер відключений</string>
+    <string name="pref_equalizer_enable">Еквалайзер</string>
+    <string name="pref_equalizer_preset_title">Передустановки</string>
+    <string name="pref_dynamicsystem_title">Динамічна обробка</string>
+    <string name="pref_dynamicsystem_summary_on">Динамічна обробка включена</string>
+    <string name="pref_dynamicsystem_summary_off">Динамічна обробка відключена</string>
+    <string name="pref_dynamicsystem_enable">Включити</string>
+    <string name="pref_dynamicsystem_output">Навушники</string>
+    <string name="pref_dynamicsystem_output_title">Навушники</string>
+    <string name="pref_dynamicsystem_bass">Рівень НЧ</string>
+    <string name="pref_dynamicsystem_tube_title">Ламповий звук (6N1J)</string>
+    <string name="pref_dynamicsystem_tube_summary_on">Ламповий звук включений</string>
+    <string name="pref_dynamicsystem_tube_summary_off">Ламповий звук відключений</string>
+    <string name="pref_fidelity_title">Реставрація звуку</string>
+    <string name="pref_fidelity_vb_summary_on">Реставрація НЧ включена</string>
+    <string name="pref_fidelity_vb_summary_off">Реставрація НЧ відключена</string>
+    <string name="pref_fidelity_vb_enable">Реставрація НЧ</string>
+    <string name="pref_fidelity_vb_mode">Алгоритм</string>
+    <string name="pref_fidelity_vb_mode_title">Алгоритм</string>
+    <string name="pref_fidelity_vb_bassfreq">Частота</string>
+    <string name="pref_fidelity_vb_bassfreq_title">Частота</string>
+    <string name="pref_fidelity_vb_bassgain">Посилення</string>
+    <string name="pref_fidelity_vb_bassgain_title">Посилення</string>
+    <string name="pref_fidelity_vc_summary_on">Реставрація ВЧ включена</string>
+    <string name="pref_fidelity_vc_summary_off">Реставрація ВЧ відключена</string>
+    <string name="pref_fidelity_vc_enable">Реставрація ВЧ</string>
+    <string name="pref_fidelity_vc_mode">Алгоритм</string>
+    <string name="pref_fidelity_vc_mode_title">Алгоритм</string>
+    <string name="pref_fidelity_vc_bassgain">Посилення</string>
+    <string name="pref_fidelity_vc_bassgain_title">Посилення</string>
+    <string name="pref_curesystem_title">Кроссфідер</string>
+    <string name="pref_curesystem_summary_on">Кроссфідер включений</string>
+    <string name="pref_curesystem_summary_off">Кроссфідер відключений</string>
+    <string name="pref_curesystem_enable">Включити</string>
+    <string name="pref_select_cure_cf_title">Бінауральний рівень</string>
+    <string name="dialog_cure_crossfeed">Рівень</string>
+    <string name="pref_convolver_title">Конвольвер</string>
+    <string name="pref_convolver_summary_on">Конвольвер включений</string>
+    <string name="pref_convolver_summary_off">Конвольвер відключений</string>
+    <string name="pref_convolver_enable">Конвольвер</string>
+    <string name="pref_convolver_knl">Імпульс</string>
+    <string name="pref_convolver_knl_title">Імпульс</string>
+    <string name="pref_convolver_crosschannel">Перетин каналів</string>
+    <string name="pref_convolver_crosschannel_title">Перетин каналів</string>
+    <string name="pref_vhs_title">Об\'ємний звук в навушниках</string>
+    <string name="pref_vhs_summary_on">Об\'ємний звук в навушниках включений</string>
+    <string name="pref_vhs_summary_off">Об\'ємний звук в навушниках відключений</string>
+    <string name="pref_vhs_enable">Об\'ємний звук в навушниках</string>
+    <string name="pref_select_vhs_qual_title">Розмір залу</string>
+    <string name="dialog_vhs_qual">Розмір залу</string>
+    <string name="pref_colorfulmusic_title">Просторовий звук</string>
+    <string name="pref_colorfulmusic_summary_on">Просторовий звук включений</string>
+    <string name="pref_colorfulmusic_summary_off">Просторовий звук відключений</string>
+    <string name="pref_colorfulmusic_enable">Просторовий звук</string>
+    <string name="pref_select_colorfulmusic_title">Розмір простору</string>
+    <string name="dialog_colorfulmusic">Розмір простору</string>
+    <string name="pref_select_colorfulmusic_mi_title">Плотность центра</string>
+    <string name="dialog_colorfulmusic_mi">Щільність центру</string>
+    <string name="pref_diffsurr_title">Хаас-ефект</string>
+    <string name="pref_diffsurr_summary_on">Хаас-ефект включений</string>
+    <string name="pref_diffsurr_summary_off">Хаас-ефект відключений</string>
+    <string name="pref_diffsurr_enable">Хаас-ефект</string>
+    <string name="pref_select_diffsurr_ms_title">Затримка каналу</string>
+    <string name="dialog_diffsurr_ms">Затримка каналу</string>
+    <string name="pref_reverb_title">Реверберація</string>
+    <string name="pref_reverb_summary_on">Реверберація включена</string>
+    <string name="pref_reverb_summary_off">Реверберація відключена</string>
+    <string name="pref_reverb_enable">Реверберація</string>
+    <string name="pref_reverb_roomsize">Площа залу</string>
+    <string name="pref_reverb_width">Ширина сцени</string>
+    <string name="pref_reverb_damp">Загасання</string>
+    <string name="pref_reverb_wet">Відбитий сигнал</string>
+    <string name="pref_reverb_dry">Прямий сигнал</string>
+    <string name="eq_preset_acoustic">Акустика</string>
+    <string name="eq_preset_bass_booster">Посилити НЧ</string>
+    <string name="eq_preset_bass_reducer">Послабити НЧ</string>
+    <string name="eq_preset_classical">Класика</string>
+    <string name="eq_preset_deep">Глибина</string>
+    <string name="eq_preset_flat">Плоский</string>
+    <string name="eq_preset_r_and_b">R&amp;B</string>
+    <string name="eq_preset_rock">Рок</string>
+    <string name="eq_preset_small_speakers">Міні-динаміки</string>
+    <string name="eq_preset_treble_booster">Посилити ВЧ</string>
+    <string name="eq_preset_treble_reducer">Послабити ВЧ</string>
+    <string name="eq_preset_vocal_booster">Посилити вокал</string>
+    <string name="eq_preset_custom">Вручну</string>
+    <string name="text_ir_dir_isempty">ViPER4Android: папка імпульсів %1$s порожня.</string>
+    <string name="text_token_lost">ViPER4Android: одна з програм виконала запит на відключення аудіоефектів, V4A буде тимчасово відключений.</string>
+    <string name="text_enabled">Включено</string>
+    <string name="text_disabled">Відключено</string>
+    <string name="text_headset">Навушники</string>
+    <string name="text_bluetooth">Bluetooth</string>
+    <string name="text_speaker">Динамік</string>
+    <string name="text_usb">USB</string>
+    <string name="text_showtrayicon">Значок повідомлення</string>
+    <string name="text_hidetrayicon">Відключити значок</string>
+    <string name="text_lockeffect">Фіксація ефектів</string>
+    <string name="text_yes">Так</string>
+    <string name="text_no">Немає</string>
+    <string name="text_normal">Нормально</string>
+    <string name="text_abnormal">Конфлікт</string>
+    <string name="text_supported">Сумісний</string>
+    <string name="text_unsupported">Несумісний</string>
+    <string name="text_loadfxprofile">Завантажити профіль</string>
+    <string name="text_newfxprofile">Новий профіль…</string>
+    <string name="text_savefxprofile">Зберегти профіль</string>
+    <string name="text_profilesaved_overwrite">Профіль з таким ім\'ям існує, перезаписати?</string>
+    <string name="text_profileload_tip">Завантаження профілю</string>
+    <string name="text_ok">OK</string>
+    <string name="text_cancel">Скасування</string>
+    <string name="text_drvinst_prefer">Вибір драйвера</string>
+    <string name="text_drvinst_sqdrv">Для Високої якості ефектів рекомендується двоядерний процесор, можливий швидкий розряд батареї. 
+\nПродовжити?</string>
+    <string name="text_drvvernotmatch">Для роботи ViPER4Android необхідне встановлення/оновлення драйвера. 
+\nВиконати зараз?</string>
+    <string name="text_drvuninst_confim">Видалити драйвер ViPER4Android?</string>
+    <string name="text_uiprefer">Інтерфейс</string>
+    <string name="text_uiprefer_dialog">Рівень</string>
+    <string name="text_commode">Сумісність</string>
+    <string name="text_drv_blank"></string>
+    <string name="text_uninstall">Видалити драйвер</string>
+    <string name="text_install">Встановити драйвер</string>
+    <string name="text_drvinst_ok">Драйвер встановлений. Перезавантажте пристрій.</string>
+    <string name="text_drvuninst_ok">Драйвер видалено. Перезавантажте пристрій.</string>
+    <string name="text_no_busybox">BusyBox не знайдений, встановити зараз?</string>
+    <string name="text_drvinst_acquireroot">Драйвер не встановлений. Не вдалося отримати права root, переконайтеся в наявності root-доступу до пристрою.</string>
+    <string name="text_drvinst_busybox_not_installed">Драйвер не встановлений, так як відповідна версія BusyBox не знайдено.</string>
+    <string name="text_drvinst_sdnotmounted">Драйвер не встановлений, так як зовнішній накопичувач не змонтований.</string>
+    <string name="text_drvinst_dataioerr">Драйвер не встановлений. Сталася помилка вводу-виводу, переагрузите пристрій і спробуйте ще раз.</string>
+    <string name="text_drvinst_cfg_unsup">Драйвер не встановлений. Операція не підтримується система Android або ROM.</string>
+    <string name="text_drvinst_failed">Драйвер не встановлений. Перевірте наявність root-прав і BusyBox.</string>
+    <string name="text_modifybuildprop">УВАГА:
+\nна цьому пристрої активовано функцію LPA, що може викликати збої в роботі V4A.
+\nLPA означає \"Low Power Audio\", її можна відключити за допомогою зміни build.prop, процес буде виконано автоматично.
+\nНастійно рекомендується зробити NANDROID BACKUP або DATA BACKUP перед виконанням! 
+\nВідключити LPA зараз?</string>
+    <string name="text_changelog">Що нового</string>
+    <string name="text_drv_status">Стан драйвера</string>
+    <string name="text_drv_status_view">\n
+\nДрайвер: %1$s
+\nNEON включён: %2$s
+\nViPER включён: %3$s
+\nСтан: %4$s
+\nАудіо: %5$s
+\nОбробка: %6$s
+\nДискретизація: %7$d Гц
+\n</string>
+    <string name="text_service_error">Не вдалося запустити ViPER4Android.</string>
+    <string name="about_title">Допомога</string>
+    <string name="about_text">***Про ViPER4Android***
+\n
+\n\"libv4a_xx_xx.so\" — драйвер ViPER4Android. 
+\n© 2006—2016, ViPER ACOUSTIC. Всі права захищені.
+\nКомерційне використання без офіційного дозволу заборонено.
+\nОфіційний форум: forum.vipersaudio.com
+\n
+\n\"ViPER4Android.apk\" — панель управління ViPER4Android. 
+\nМістить код DSPManager для CyanogenMod.
+\n
+\nВелике спасибі Zhuhang@XDA
+\n
+\nВелике спасибі M4570D0N@github, xLaMbChOpSx@github, bboa@github (співтовариство@4pda)
+\n
+\nВерсія %1$s (FX) &#8220;Beautiful&#8221;.
+\n
+</string>
+    <string name="text_help_content">***Коротка довідка***
+\n
+\n\"Встановити драйвер\" — встановити/оновити драйвер ефектів ViPER4Android.
+\n
+\n\"Видалити драйвер\" — видалити драйвер ефектів ViPER4Android.
+\n
+\n\"Сумісність\" — установить режим совместимости.
+\n    \"Немає\" — зробити ViPER4Android глобальним ефектом.
+\n    \"Включити\" — зробити ViPER4Android локальним ефектом.
+\n</string>
+    <string name="text_forum_link">http://forum.xda-developers.com/showthread.php?t=2191223</string>
+    <string name="text_view_forum">Форум</string>
+    <string name="text_checkupdate">Оновлення</string>
+    <string name="text_updatelink">http://vipersaudio.com/swupdate/viper4android/download.html</string>
+    <string name="navigation_drawer_open">Відкрити панель</string>
+    <string name="navigation_drawer_close">Закрити панель</string>
+    <string name="navigation_toggle_drawer">Бічна панель</string>
+    <string name="navigation_toggle_tabbed">Вкладки</string>
+</resources>

@@ -2,13 +2,18 @@ package com.vipercn.viper4android_v2.preference;
 
 import android.app.AlertDialog.Builder;
 import android.content.Context;
+import android.os.Environment;
 import android.preference.ListPreference;
 import android.util.AttributeSet;
+import android.util.Log;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import com.vipercn.viper4android_v2.activity.DDCDatabase;
+import com.vipercn.viper4android_v2.activity.Utils;
 
 public class SummariedListPreferenceDDC extends ListPreference {
 
@@ -18,6 +23,23 @@ public class SummariedListPreferenceDDC extends ListPreference {
         super(context, set);
     	mDDCMMData = DDCDatabase.queryManufacturerAndModel(getContext());
     	if (mDDCMMData == null) mDDCMMData = new LinkedHashMap<String, String>();
+
+    	final String szCustomDDCPath = Environment.getExternalStorageDirectory() + "/ViPER4Android/DDC/";
+		File mCustomDDCFile = new File(szCustomDDCPath);
+		if (!mCustomDDCFile.exists())
+		{
+			Log.i("ViPER4Android", "Custom DDC directory does not exists");
+			mCustomDDCFile.mkdirs();
+			mCustomDDCFile.mkdir();
+		}
+		else Log.i("ViPER4Android", "Custom DDC directory exists");
+		ArrayList<String> szCustomDDCList = new ArrayList<String>();
+		Utils.GetFileNameList(mCustomDDCFile, ".vdc", szCustomDDCList);
+		if (!szCustomDDCList.isEmpty()) {
+			for (int i = 0; i < szCustomDDCList.size(); i++) {
+				mDDCMMData.put("FILE:" + szCustomDDCList.get(i), szCustomDDCList.get(i));
+			}
+		}
     }
 
     @Override

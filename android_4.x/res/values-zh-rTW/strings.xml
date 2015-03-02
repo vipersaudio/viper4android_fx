@@ -198,9 +198,9 @@
     <string name="text_drvinst_sdnotmounted">驅動程式安裝失敗，未找到可讀寫的外部或內部儲存空間。</string>
     <string name="text_drvinst_dataioerr">驅動程式安裝失敗，系統I/O錯誤，您可以重啟手機後再試。</string>
     <string name="text_drvinst_cfg_unsup">驅動程式安裝失敗，V4A暫時不支援您的系統或ROM。</string>
-    <string name="text_drvinst_failed">驅動程式安裝失敗，在您的裝置上找到的busybox不工作。
+    <string name="text_drvinst_failed">驅動程式安裝失敗，在您的裝置上找到的busybox無法正常執行。
 \n這通常意味著您安裝了錯誤的或損壞的busybox，V4A需要stericson.busybox來安裝驅動程式。
-\n如果您確定您已經安裝了正確的busybox，那麼請確認您的裝置已經完整ROOT(建議您使用RE管理器手動在/system內創建文件以驗證是否完整ROOT，一般的ROOT檢測程式無法正確檢測虛假的ROOT)。</string>
+\n如果您確定您已經安裝了正確的busybox，那麼請確認您的裝置已經完整ROOT(建議您使用RE管理器手動在/system內建立文件以驗證是否完整ROOT，一般的ROOT檢測程式無法正確檢測虛假的ROOT)。</string>
     <string name="text_modifybuildprop">注意：
 \n您裝置上的LPA功能已經開啟，這可能會造成V4A沒有效果。
 \nLPA是指“低功耗音訊”，安裝程序可以透過自動修改build.prop來停用它。
@@ -223,13 +223,13 @@
     <string name="about_text">***關於ViPER4Android***
 \n
 \n\'libv4a_xx_xx.so\'是ViPER4Android的核心組件。
-\n版權所有© 2006-2016，vipercn.com。保留所有權利。
+\n版權所有© 2006-2016，蝰蛇聲學(R)。保留所有權利。
 \n未經官方許可，不可用於商業用途(包括有連帶/包含關系的廣告營收等)。
 \n官方論壇: forum.vipersaudio.com
 \n
 \n\'ViPER4Android.apk\'是ViPER4Android的控制面板。
-\n基於Cyanogenmod的DSPManager中部分代碼而做。
-\n感謝\'艳阳飞雪\'為ViPER4Android精心打造的新圖標。
+\n基於Cyanogenmod的DSPManager中部分代碼而製作。
+\n感謝\'艳阳飞雪\'為ViPER4Android精心打造的新圖示。
 \n感謝Zhuhang@XDA。
 \n感謝M4570D0N@github、xLaMbChOpSx@github和bboa@github等。
 \n感謝Eric850130@github修正繁體中文語言
