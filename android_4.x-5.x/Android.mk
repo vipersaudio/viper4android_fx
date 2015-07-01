@@ -37,7 +37,7 @@ ifneq ($(filter NEON NEON_HQ NEON_SQ NOVFP VFP X86,$(VIPER4ANDROID_MODE)),)
 
 include $(CLEAR_VARS)
 
-ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 21)))
+ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 18)))
     LOCAL_V4A_LIB := libv4a_fx_jb
 else
     LOCAL_V4A_LIB := libv4a_fx_ics
