@@ -18,7 +18,7 @@
     <string name="pref_force_enable_text">Force Enable V4A</string>
     <string name="pref_force_enable_warn">"Turning on Force-Enable could solve the no effect problem. 
 In certain roms, you may get unexpected results such as no sound and battery drain. 
-Use at your own risks. If such things happen, please turn this off."</string>
+Use at your own risk. If such things happen, please turn this off."</string>
     <string name="pref_fx_master_title">Master Power</string>
     <string name="pref_fx_master_summary_on">V4A-FX is powered on</string>
     <string name="pref_fx_master_summary_off">V4A-FX is powered off</string>
@@ -198,7 +198,7 @@ Install/update now?"</string>
     <string name="text_drvinst_busybox_not_installed">Driver install failed: No proper busybox installation found on this device.</string>
     <string name="text_drvinst_sdnotmounted">Driver install failed: External storage not mounted.</string>
     <string name="text_drvinst_dataioerr">Driver install failed: I/O error, please reboot and try again.</string>
-    <string name="text_drvinst_cfg_unsup">Driver install failed: Unsupported android system or ROM.</string>
+    <string name="text_drvinst_cfg_unsup">Driver install failed: Unsupported Android version or ROM.</string>
     <string name="text_drvinst_failed">"Driver install failed: The busybox installation found on your device does not work. 
 This usually means you installed a wrong or broken busybox. V4A needs Stericson's busybox to work. 
 If you are sure you installed the proper busybox, then please confirm your device has been completely rooted."</string>
