@@ -65,6 +65,11 @@
 \n頻譜擴展是一個用於擴展有損壓縮的頻譜的HiFi音效。
 \n如果您經常播放有損壓縮的音樂(如mp3、aac和ogg等)，本功能可以給您一個接近無損的聽感。
 \n但如果您播放無損音樂，我們則建議您停用本功能。</string>
+    <string name="pref_analogx_enable">啓用</string>
+    <string name="pref_analogx_summary_on">AnalogX已啓用</string>
+    <string name="pref_analogx_summary_off">AnalogX已停用</string>
+    <string name="pref_analogx_strength">強度</string>
+    <string name="pref_analogx_strength_title">選擇強度</string>
     <string name="pref_equalizer_title">FIR等化器</string>
     <string name="pref_equalizer_summary_on">FIR等化器已啓用</string>
     <string name="pref_equalizer_summary_off">FIR等化器已停用</string>

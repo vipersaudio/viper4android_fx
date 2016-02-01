@@ -263,6 +263,16 @@
         <item>1</item>
         <item>2</item>
     </string-array>
+    <string-array name="analogx_mode">
+        <item>Slight</item>
+        <item>Moderate</item>
+        <item>Extreme</item>
+    </string-array>
+    <string-array name="analogx_mode_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
     <string-array name="vhs_qual">
         <item>Level 1</item>
         <item>Level 2</item>

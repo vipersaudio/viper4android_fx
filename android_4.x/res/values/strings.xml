@@ -66,6 +66,12 @@
 \nSpectrum extension is a true Hi-Fi audio processor and it is used for extending the lossy compressed spectrum.
 \nIf you are playing lossy compressed music(such mp3, aac, ogg), this feature may give a lossless feeling.
 \nHowever, if you are playing lossless music, we recommend you to disable this feature.</string>
+    <string name="pref_analogx_title">AnalogX</string>
+    <string name="pref_analogx_enable">Enable</string>
+    <string name="pref_analogx_summary_on">AnalogX is enabled</string>
+    <string name="pref_analogx_summary_off">AnalogX is disabled</string>
+    <string name="pref_analogx_strength">Strength</string>
+    <string name="pref_analogx_strength_title">Select Strength</string>
     <string name="pref_equalizer_title">FIREqualizer</string>
     <string name="pref_equalizer_summary_on">FIREqualizer is enabled</string>
     <string name="pref_equalizer_summary_off">FIREqualizer is disabled</string>

@@ -379,6 +379,25 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:title="@string/pref_analogx_title" >
+
+        <CheckBoxPreference
+            android:disableDependentsState="false"
+            android:key="viper4android.headphonefx.analogx.enable"
+            android:summaryOff="@string/pref_analogx_summary_off"
+            android:summaryOn="@string/pref_analogx_summary_on"
+            android:title="@string/pref_analogx_enable" />
+
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference
+            android:defaultValue="0"
+            android:dialogTitle="@string/pref_analogx_strength"
+            android:entries="@array/analogx_mode"
+            android:entryValues="@array/analogx_mode_values"
+            android:key="viper4android.headphonefx.analogx.mode"
+            android:title="@string/pref_analogx_strength_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/pref_fx_limiter_title" >
 
         <com.vipercn.viper4android_v2.preference.SummariedListPreference

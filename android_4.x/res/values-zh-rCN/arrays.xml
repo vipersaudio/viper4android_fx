@@ -100,6 +100,11 @@
         <item>中等</item>
         <item>极端</item>
     </string-array>
+    <string-array name="analogx_mode">
+        <item>轻微</item>
+        <item>中等</item>
+        <item>极端</item>
+    </string-array>
     <string-array name="vhs_qual">
         <item>级别1</item>
         <item>级别2</item>
