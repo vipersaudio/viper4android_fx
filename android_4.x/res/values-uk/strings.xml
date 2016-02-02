@@ -32,8 +32,8 @@
   <string name="pref_output_gain">Посилення</string>
   <string name="pref_output_pan">Баланс</string>
   <string name="pref_playback_title">Авторегулювання підсилення</string>
-  <string name="pref_playback_summary_on">АРУ увімкнено</string>
-  <string name="pref_playback_summary_off">АРУ вимкнено</string>
+  <string name="pref_playback_summary_on">АРП увімкнено</string>
+  <string name="pref_playback_summary_off">АРП вимкнено</string>
   <string name="pref_playback_output_threshold">Поріг</string>
   <string name="pref_playback_maxgain">Межа</string>
   <string name="pref_xloud_title">Супергучність</string>
@@ -293,7 +293,7 @@
 \n
 \n1. \"Всі ефекти\". Налаштування відповідає за увімкнення музичних ефектів для навушників.
 \n
-\n2. \"Авторегулювання підсилення\", \"АРУ\". Основне призначення — динамічне підвищення або зниження гучності звуку.
+\n2. \"Авторегулювання підсилення\", \"АРП\". Основне призначення — динамічне підвищення або зниження гучності звуку.
 \n
 \n2.1 \"Рівень\" — швидкість підвищення або пониження, і чим він вище — \"Максимум\", тим швидше наростання і вищий рівень кінцевої гучності. На рівні \"Мінімум\" кінцева гучність наростає повільніше, її рівень буде ближче до вихідної гучності. Рекомендується \"Середній\" рівень.
 \n
