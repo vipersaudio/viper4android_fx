@@ -232,7 +232,7 @@
 \nСостояние: %4$s
 \nАудиоформат: %5$s
 \nОбработка: %6$s
-\nСэмплинг: %7$d Гц
+\nСемплирование: %7$d Гц
 \n</string>
     <string name="text_service_error">Не удалось запустить ViPER4Android.</string>
     <string name="about_title">Помощь</string>
