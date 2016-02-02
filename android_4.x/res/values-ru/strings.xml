@@ -28,7 +28,7 @@
     <string name="pref_force_enable_text">Принудительно</string>
     <string name="pref_force_enable_warn">Принудительное включение ViPER может решить проблему с неактивными эффектами. 
 \nНо на некоторых прошивках возможны отсутствие звука/быстрый разряд батареи. 
-\nИспользуйте на своё усмотрение. Если описанное выше произойдёт, отключите эту опцию.</string>
+\nИспользуйте на своё усмотрение. Если описанное выше произойдёт, отключите эту функцию.</string>
     <string name="pref_fx_master_title">Все эффекты</string>
     <string name="pref_fx_master_summary_on">ViPER FX включён</string>
     <string name="pref_fx_master_summary_off">ViPER FX отключён</string>
