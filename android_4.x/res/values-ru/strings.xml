@@ -214,7 +214,7 @@
     <string name="text_drvinst_busybox_not_installed">Драйвер не установлен, так как подходящая версия BusyBox не найдена.</string>
     <string name="text_drvinst_sdnotmounted">Драйвер не установлен, так как внешний накопитель не смонтирован.</string>
     <string name="text_drvinst_dataioerr">Драйвер не установлен. Произошла ошибка ввода-вывода, переагрузите устройство и попробуйте ещё раз.</string>
-    <string name="text_drvinst_cfg_unsup">Драйвер не установлен. Неподдерживаемая система Android или ROM.</string>
+    <string name="text_drvinst_cfg_unsup">Драйвер не установлен. Неподдерживаемая версия Android или ROM.</string>
     <string name="text_drvinst_failed">Драйвер не установлен: обнаруженная версия BusyBox неработоспособна.
 \nВозможно, установлена неподходящая версия, или текущая установка BusyBox повреждена. V4A для правильной работы требуется BusyBox Stericson\'а.
 \nЕсли установлена подходящая версия BusyBox, убедитесь в наличии полного root-доступа к устройству.</string>
