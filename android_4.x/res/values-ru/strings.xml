@@ -10,6 +10,7 @@
       http://4pda.ru/forum/index.php?showtopic=405989
 
       2014—2016
+      We like V4A, yay!
     -->
     <string name="app_name">ViPER FX</string>
     <string name="select_configuration_title">ViPER4Android</string>
@@ -26,8 +27,8 @@
     <string name="pref_effect_title">Уровень</string>
     <string name="dialog_effect">Уровень</string>
     <string name="pref_force_enable_text">Принудительно</string>
-    <string name="pref_force_enable_warn">Принудительное включение ViPER может решить проблему с неактивными эффектами. 
-\nНо на некоторых прошивках возможны отсутствие звука/быстрый разряд батареи. 
+    <string name="pref_force_enable_warn">Принудительное включение ViPER может решить проблему с неактивными эффектами.
+\nНа некоторых прошивках возможны отсутствие звука/быстрый разряд батареи.
 \nИспользуйте на своё усмотрение. Если описанное выше произойдёт, отключите эту функцию.</string>
     <string name="pref_fx_master_title">Все эффекты</string>
     <string name="pref_fx_master_summary_on">ViPER FX включён</string>
@@ -195,9 +196,9 @@
     <string name="text_ok">OK</string>
     <string name="text_cancel">Отмена</string>
     <string name="text_drvinst_prefer">Выбор драйвера</string>
-    <string name="text_drvinst_sqdrv">Для Высокого качества эффектов рекомендуется двухъядерный процессор, возможен быстрый разряд батареи. 
+    <string name="text_drvinst_sqdrv">Для Высокого качества эффектов рекомендуется двухъядерный процессор, возможен быстрый разряд батареи.
 \nПродолжить?</string>
-    <string name="text_drvvernotmatch">Для работы ViPER4Android необходима установка/обновление драйвера. 
+    <string name="text_drvvernotmatch">Для работы ViPER4Android необходима установка/обновление драйвера.
 \nВыполнить сейчас?</string>
     <string name="text_drvuninst_confim">Удалить драйвер ViPER4Android?</string>
     <string name="text_uiprefer">Интерфейс</string>
@@ -220,7 +221,7 @@
     <string name="text_modifybuildprop">ВНИМАНИЕ:
 \nна этом устройстве включена функция LPA (Low Power Audio), что может вызвать сбои в работе V4A.
 \nЕё можно отключить с помощью изменения build.prop, процесс будет выполнен автоматически.
-\nНастоятельно рекомендуется сделать NANDROID BACKUP или DATA BACKUP перед выполнением! 
+\nНастоятельно рекомендуется сделать NANDROID BACKUP или DATA BACKUP перед выполнением!
 \nОтключить LPA сейчас?</string>
     <string name="text_changelog">Что нового</string>
     <string name="text_drv_status">Состояние драйвера</string>
@@ -237,12 +238,12 @@
     <string name="about_title">Помощь</string>
     <string name="about_text">***О ViPER4Android***
 \n
-\n\"libv4a_xx_xx.so\" — драйвер ViPER4Android. 
+\n\"libv4a_xx_xx.so\" — драйвер ViPER4Android.
 \n© 2006—2016, ViPER ACOUSTIC. Все права защищены.
 \nКоммерческое использование без официального разрешения запрещено.
 \nОфициальный форум: forum.vipersaudio.com
 \n
-\n\"ViPER4Android.apk\" — панель управления ViPER4Android. 
+\n\"ViPER4Android.apk\" — панель управления ViPER4Android.
 \nСодержит код DSPManager для CyanogenMod.
 \n
 \n***Благодарности***
