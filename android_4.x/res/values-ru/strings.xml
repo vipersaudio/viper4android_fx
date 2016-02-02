@@ -184,7 +184,7 @@
     <string name="text_yes">Да</string>
     <string name="text_no">Нет</string>
     <string name="text_normal">Нормально</string>
-    <string name="text_abnormal">Конфликт</string>
+    <string name="text_abnormal">Проблемы</string>
     <string name="text_supported">Совместим</string>
     <string name="text_unsupported">Несовместим</string>
     <string name="text_loadfxprofile">Загрузить профиль</string>
