@@ -66,6 +66,12 @@
 \nRozszerzenie Spectrum to system przetwarzający dźwięk w realnej jakości Hi-Fi, funkcja jest używana w celu poszerzenia pasma przenoszenia strumienia audio o kompresji stratnej.
 \nJeżeli odtwarzasz formaty stratne (jak mp3, aac, ogg), funkcja pomoże uzyskać jakość dźwięku zbliżoną do formatu bezstratnego.
 \nJeżeli odtwarzasz muzykę skompresowaną bezstratnie (jak flac) wyłącz ten efekt.</string>
+    <string name="pref_analogx_title">AnalogX</string>
+    <string name="pref_analogx_enable">AnalogX</string>
+    <string name="pref_analogx_summary_on">Aktywny</string>
+    <string name="pref_analogx_summary_off">Nieaktywny</string>
+    <string name="pref_analogx_strength">Siła efektu</string>
+    <string name="pref_analogx_strength_title">Wybierz siłę efektu</string>
     <string name="pref_equalizer_title">Equalizer</string>
     <string name="pref_equalizer_summary_on">Aktywny</string>
     <string name="pref_equalizer_summary_off">Nieaktywny</string>
