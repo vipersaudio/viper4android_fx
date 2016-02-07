@@ -250,6 +250,16 @@
         <item>1</item>
         <item>2</item>
     </string-array>
+    <string-array name="analogx_mode">
+        <item>Минимум</item>
+        <item>Средний</item>
+        <item>Максимум</item>
+    </string-array>
+    <string-array name="analogx_mode_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
     <string-array name="vhs_qual">
         <item>Маленький зал</item>
         <item>Небольшой зал</item>
