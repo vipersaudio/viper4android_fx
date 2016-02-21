@@ -1,5 +1,5 @@
 ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 14)))
-ifeq ($(VIPER4ANDROID_FOLDER),android_4.x-5.x)
+ifneq ($(VIPER4ANDROID_FOLDER),android_4.x-5.x)
 
 LOCAL_PATH:= $(call my-dir)
 
