@@ -396,30 +396,50 @@
         <item>5</item>
         <item>1</item>
     </string-array>
-    <string-array name="channel_pan">
+       <string-array name="channel_pan">
         <item>1.0 : 0.0</item>
+        <item>0.95 : 0.05</item>
         <item>0.9 : 0.1</item>
+        <item>0.85 : 0.15</item>
         <item>0.8 : 0.2</item>
+        <item>0.75 : 0.25</item>
         <item>0.7 : 0.3</item>
+        <item>0.65 : 0.35</item>
         <item>0.6 : 0.4</item>
+        <item>0.55 : 0.45</item>
         <item>0.5 : 0.5</item>
+        <item>0.45 : 0.55</item>
         <item>0.4 : 0.6</item>
+        <item>0.35 : 0.65</item>
         <item>0.3 : 0.7</item>
+        <item>0.25 : 0.75</item>
         <item>0.2 : 0.8</item>
+        <item>0.15 : 0.85</item>
         <item>0.1 : 0.9</item>
+        <item>0.05 : 0.95</item>
         <item>0.0 : 1.0</item>
     </string-array>
     <string-array name="channel_pan_values">
         <item>-100</item>
+        <item>-90</item>
         <item>-80</item>
+        <item>-70</item>
         <item>-60</item>
+        <item>-50</item>
         <item>-40</item>
+        <item>-30</item>
         <item>-20</item>
+        <item>-10</item>
         <item>0</item>
+        <item>10</item>
         <item>20</item>
+        <item>30</item>
         <item>40</item>
+        <item>50</item>
         <item>60</item>
+        <item>70</item>
         <item>80</item>
+        <item>90</item>
         <item>100</item>
     </string-array>
     <string-array name="dynamicsystem_bass">
