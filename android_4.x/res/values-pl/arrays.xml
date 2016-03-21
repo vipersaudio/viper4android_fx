@@ -107,6 +107,11 @@
         <item>Poziom 4</item>
         <item>Poziom 5</item>
     </string-array>
+    <string-array name="analogx_mode">
+        <item>Delikatna</item>
+        <item>Umiarkowana</item>
+        <item>Mocna</item>
+    </string-array>
     <string-array name="playbackgain_ratio">
         <item>Delikatna</item>
         <item>Umiarkowana</item>

@@ -760,31 +760,33 @@ public class ViPER4AndroidService extends Service {
     private static final int PARAM_HPFX_CURE_PROCESS_ENABLED = 65581;
     private static final int PARAM_HPFX_CURE_CROSSFEED = 65582;
     private static final int PARAM_HPFX_TUBE_PROCESS_ENABLED = 65583;
-    private static final int PARAM_HPFX_OUTPUT_VOLUME = 65584;
-    private static final int PARAM_HPFX_OUTPUT_PAN = 65585;
-    private static final int PARAM_HPFX_LIMITER_THRESHOLD = 65586;
-    private static final int PARAM_SPKFX_CONV_PROCESS_ENABLED = 65587;
+    private static final int PARAM_HPFX_ANALOGX_PROCESS_ENABLED = 65584;
+    private static final int PARAM_HPFX_ANALOGX_MODE = 65585;
+    private static final int PARAM_HPFX_OUTPUT_VOLUME = 65586;
+    private static final int PARAM_HPFX_OUTPUT_PAN = 65587;
+    private static final int PARAM_HPFX_LIMITER_THRESHOLD = 65588;
+    private static final int PARAM_SPKFX_CONV_PROCESS_ENABLED = 65589;
     @SuppressWarnings("unused")
-	private static final int PARAM_SPKFX_CONV_UPDATEKERNEL = 65588;
-    private static final int PARAM_SPKFX_CONV_PREPAREBUFFER = 65589;
-    private static final int PARAM_SPKFX_CONV_SETBUFFER = 65590;
-    private static final int PARAM_SPKFX_CONV_COMMITBUFFER = 65591;
-    private static final int PARAM_SPKFX_CONV_CROSSCHANNEL = 65592;
-    private static final int PARAM_SPKFX_FIREQ_PROCESS_ENABLED = 65593;
-    private static final int PARAM_SPKFX_FIREQ_BANDLEVEL = 65594;
-    private static final int PARAM_SPKFX_REVB_PROCESS_ENABLED = 65595;
-    private static final int PARAM_SPKFX_REVB_ROOMSIZE = 65596;
-    private static final int PARAM_SPKFX_REVB_WIDTH = 65597;
-    private static final int PARAM_SPKFX_REVB_DAMP = 65598;
-    private static final int PARAM_SPKFX_REVB_WET = 65599;
-    private static final int PARAM_SPKFX_REVB_DRY = 65600;
-    private static final int PARAM_SPKFX_CORR_PROCESS_ENABLED = 65601;
-    private static final int PARAM_SPKFX_AGC_PROCESS_ENABLED = 65602;
-    private static final int PARAM_SPKFX_AGC_RATIO = 65603;
-    private static final int PARAM_SPKFX_AGC_VOLUME = 65604;
-    private static final int PARAM_SPKFX_AGC_MAXSCALER = 65605;
-    private static final int PARAM_SPKFX_OUTPUT_VOLUME = 65606;
-    private static final int PARAM_SPKFX_LIMITER_THRESHOLD = 65607;
+	private static final int PARAM_SPKFX_CONV_UPDATEKERNEL = 65590;
+    private static final int PARAM_SPKFX_CONV_PREPAREBUFFER = 65591;
+    private static final int PARAM_SPKFX_CONV_SETBUFFER = 65592;
+    private static final int PARAM_SPKFX_CONV_COMMITBUFFER = 65593;
+    private static final int PARAM_SPKFX_CONV_CROSSCHANNEL = 65594;
+    private static final int PARAM_SPKFX_FIREQ_PROCESS_ENABLED = 65595;
+    private static final int PARAM_SPKFX_FIREQ_BANDLEVEL = 65596;
+    private static final int PARAM_SPKFX_REVB_PROCESS_ENABLED = 65597;
+    private static final int PARAM_SPKFX_REVB_ROOMSIZE = 65598;
+    private static final int PARAM_SPKFX_REVB_WIDTH = 65599;
+    private static final int PARAM_SPKFX_REVB_DAMP = 65600;
+    private static final int PARAM_SPKFX_REVB_WET = 65601;
+    private static final int PARAM_SPKFX_REVB_DRY = 65602;
+    private static final int PARAM_SPKFX_CORR_PROCESS_ENABLED = 65603;
+    private static final int PARAM_SPKFX_AGC_PROCESS_ENABLED = 65604;
+    private static final int PARAM_SPKFX_AGC_RATIO = 65605;
+    private static final int PARAM_SPKFX_AGC_VOLUME = 65606;
+    private static final int PARAM_SPKFX_AGC_MAXSCALER = 65607;
+    private static final int PARAM_SPKFX_OUTPUT_VOLUME = 65608;
+    private static final int PARAM_SPKFX_LIMITER_THRESHOLD = 65609;
 
     private final LocalBinder mBinder = new LocalBinder();
     private static boolean mUseHeadset;
@@ -1882,6 +1884,16 @@ public class ViPER4AndroidService extends Service {
                 v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_TUBE_PROCESS_ENABLED, 1);
             } else {
                 v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_TUBE_PROCESS_ENABLED, 0);
+            }
+
+            /* AnalogX */
+            Log.i("ViPER4Android", "updateSystem(): Updating AnalogX.");
+            v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_ANALOGX_MODE, Integer.valueOf(
+                    preferences.getString("viper4android.headphonefx.analogx.mode", "0")));
+            if (preferences.getBoolean("viper4android.headphonefx.analogx.enable", false)) {
+                v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_ANALOGX_PROCESS_ENABLED, 1);
+            } else {
+                v4aModule.setParameter_px4_vx4x1(PARAM_HPFX_ANALOGX_PROCESS_ENABLED, 0);
             }
 
             /* Speaker Optimization */

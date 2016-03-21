@@ -21,6 +21,11 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     v4a_RootTools \
     v4a_android-support
 
+ifeq (1,$(strip $(shell expr $(PLATFORM_SDK_VERSION) \>= 23)))
+LOCAL_STATIC_JAVA_LIBRARIES += \
+    org.apache.http.legacy
+endif
+
 include $(BUILD_PACKAGE)
 
 #libs
