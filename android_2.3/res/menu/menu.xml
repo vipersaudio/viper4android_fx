@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/loadprofile" android:title="@string/text_loadfxprofile"/>
-    <item android:id="@+id/saveprofile" android:title="@string/text_savefxprofile"/>
-    <item android:id="@+id/reset" android:title="@string/menu_reset"/>
-</menu>
