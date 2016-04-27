@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style name="action_bar_style" parent="@android:style/Widget.Material.ActionBar.Solid" />
-    <style name="AppTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">
-        <item name="android:actionBarStyle">@style/action_bar_style</item>
-    </style>
-</resources>
