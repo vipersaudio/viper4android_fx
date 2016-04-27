@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/pref_fx_master_title">
+        <CheckBoxPreference android:title="@string/pref_dsp_enable" android:key="viper4android.headphonefx.enable" android:summaryOn="@string/pref_fx_master_summary_on" android:summaryOff="@string/pref_fx_master_summary_off" android:disableDependentsState="false" />
+        <CheckBoxPreference android:title="@string/pref_force_enable_text" android:key="viper4android.global.forceenable.enable" android:disableDependentsState="false" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_playback_title">
+        <CheckBoxPreference android:title="@string/pref_dsp_enable" android:key="viper4android.headphonefx.playbackgain.enable" android:summaryOn="@string/pref_playback_summary_on" android:summaryOff="@string/pref_playback_summary_off" android:disableDependentsState="false" />
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference android:entries="@array/playbackgain_ratio" android:title="@string/pref_effect_title" android:key="viper4android.headphonefx.playbackgain.ratio" android:defaultValue="50" android:dialogTitle="@string/dialog_effect" android:entryValues="@array/playbackgain_ratio_values" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_viperddc_title">
+        <CheckBoxPreference android:title="@string/pref_viperddc_enable" android:key="viper4android.headphonefx.viperddc.enable" android:summaryOn="@string/pref_viperddc_summary_on" android:summaryOff="@string/pref_viperddc_summary_off" android:disableDependentsState="false" />
+        <com.vipercn.viper4android_v2.preference.SummariedListPreferenceDDC android:title="@string/pref_viperddc_device" android:key="viper4android.headphonefx.viperddc.device" android:defaultValue="" android:dialogTitle="@string/pref_viperddc_device" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_vse_title">
+        <CheckBoxPreference android:title="@string/pref_vse_enable" android:key="viper4android.headphonefx.vse.enable" android:summaryOn="@string/pref_vse_summary_on" android:summaryOff="@string/pref_vse_summary_off" android:disableDependentsState="false" />
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference android:entries="@array/vse_strength_values" android:title="@string/pref_vse_strength" android:key="viper4android.headphonefx.vse.value" android:defaultValue="0.1" android:dialogTitle="@string/pref_vse_strength_title" android:entryValues="@array/vse_strength_values" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_equalizer_title">
+        <CheckBoxPreference android:title="@string/pref_equalizer_enable" android:key="viper4android.headphonefx.fireq.enable" android:summaryOn="@string/pref_equalizer_summary_on" android:summaryOff="@string/pref_equalizer_summary_off" android:disableDependentsState="false" />
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference android:entries="@array/equalizer_preset_modes" android:title="@string/pref_equalizer_preset_title" android:key="viper4android.headphonefx.fireq" android:defaultValue="0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;0.0;" android:dialogTitle="@string/pref_equalizer_preset_title" android:entryValues="@array/equalizer_preset_values" />
+        <com.vipercn.viper4android_v2.preference.EqualizerPreference android:key="viper4android.headphonefx.fireq.custom" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_convolver_title">
+        <CheckBoxPreference android:title="@string/pref_convolver_enable" android:key="viper4android.headphonefx.convolver.enable" android:summaryOn="@string/pref_convolver_summary_on" android:summaryOff="@string/pref_convolver_summary_off" android:disableDependentsState="false" />
+        <com.vipercn.viper4android_v2.preference.SummariedListPreferenceWithCustom android:title="@string/pref_convolver_knl" android:key="viper4android.headphonefx.convolver.kernel" android:defaultValue="" android:dialogTitle="@string/pref_convolver_knl_title" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_colorfulmusic_title">
+        <CheckBoxPreference android:title="@string/pref_colorfulmusic_enable" android:key="viper4android.headphonefx.colorfulmusic.enable" android:summaryOn="@string/pref_colorfulmusic_summary_on" android:summaryOff="@string/pref_colorfulmusic_summary_off" android:disableDependentsState="false" />
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference android:entries="@array/colorfulmusic_coeffs" android:title="@string/pref_select_colorfulmusic_title" android:key="viper4android.headphonefx.colorfulmusic.coeffs" android:defaultValue="120;200" android:dialogTitle="@string/dialog_colorfulmusic" android:entryValues="@array/colorfulmusic_coeffs_values" />
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference android:entries="@array/colorfulmusic_midimage" android:title="@string/pref_select_colorfulmusic_mi_title" android:key="viper4android.headphonefx.colorfulmusic.midimage" android:defaultValue="150" android:dialogTitle="@string/dialog_colorfulmusic_mi" android:entryValues="@array/colorfulmusic_midimage_values" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_vhs_title">
+        <CheckBoxPreference android:title="@string/pref_curesystem_enable" android:key="viper4android.headphonefx.vhs.enable" android:summaryOn="@string/pref_vhs_summary_on" android:summaryOff="@string/pref_vhs_summary_off" android:disableDependentsState="false" />
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference android:entries="@array/vhs_qual" android:title="@string/pref_select_vhs_qual_title" android:key="viper4android.headphonefx.vhs.qual" android:defaultValue="0" android:dialogTitle="@string/dialog_vhs_qual" android:entryValues="@array/vhs_qual_values" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_reverb_title">
+        <CheckBoxPreference android:title="@string/pref_reverb_enable" android:key="viper4android.headphonefx.reverb.enable" android:summaryOn="@string/pref_reverb_summary_on" android:summaryOff="@string/pref_reverb_summary_off" android:disableDependentsState="false" />
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference android:entries="@array/reverb_roomsize" android:title="@string/pref_reverb_roomsize" android:key="viper4android.headphonefx.reverb.roomsize" android:defaultValue="0" android:dialogTitle="@string/pref_effect_title" android:entryValues="@array/reverb_roomsize_values" />
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference android:entries="@array/reverb_roomwidth" android:title="@string/pref_reverb_width" android:key="viper4android.headphonefx.reverb.roomwidth" android:defaultValue="0" android:dialogTitle="@string/pref_effect_title" android:entryValues="@array/reverb_roomwidth_values" />
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference android:entries="@array/reverb_percent" android:title="@string/pref_reverb_damp" android:key="viper4android.headphonefx.reverb.damp" android:defaultValue="0" android:dialogTitle="@string/pref_effect_title" android:entryValues="@array/reverb_percent_values" />
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference android:entries="@array/reverb_percent" android:title="@string/pref_reverb_wet" android:key="viper4android.headphonefx.reverb.wet" android:defaultValue="0" android:dialogTitle="@string/pref_effect_title" android:entryValues="@array/reverb_percent_values" />
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference android:entries="@array/reverb_percent" android:title="@string/pref_reverb_dry" android:key="viper4android.headphonefx.reverb.dry" android:defaultValue="50" android:dialogTitle="@string/pref_effect_title" android:entryValues="@array/reverb_percent_values" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_fidelity_title">
+        <CheckBoxPreference android:title="@string/pref_fidelity_vb_enable" android:key="viper4android.headphonefx.fidelity.bass.enable" android:summaryOn="@string/pref_fidelity_vb_summary_on" android:summaryOff="@string/pref_fidelity_vb_summary_off" android:disableDependentsState="false" />
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference android:entries="@array/vbass_freq" android:title="@string/pref_fidelity_vb_bassfreq_title" android:key="viper4android.headphonefx.fidelity.bass.freq" android:defaultValue="40" android:dialogTitle="@string/pref_fidelity_vb_bassfreq" android:entryValues="@array/vbass_freq_values" />
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference android:entries="@array/vbass_boost" android:title="@string/pref_fidelity_vb_bassgain_title" android:key="viper4android.headphonefx.fidelity.bass.gain" android:defaultValue="50" android:dialogTitle="@string/pref_fidelity_vb_bassgain" android:entryValues="@array/vbass_boost_values" />
+        <CheckBoxPreference android:title="@string/pref_fidelity_vc_enable" android:key="viper4android.headphonefx.fidelity.clarity.enable" android:summaryOn="@string/pref_fidelity_vc_summary_on" android:summaryOff="@string/pref_fidelity_vc_summary_off" android:disableDependentsState="false" />
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference android:entries="@array/vclarity_boost" android:title="@string/pref_fidelity_vc_bassgain_title" android:key="viper4android.headphonefx.fidelity.clarity.gain" android:defaultValue="50" android:dialogTitle="@string/pref_fidelity_vc_bassgain" android:entryValues="@array/vclarity_boost_values" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_curesystem_title">
+        <CheckBoxPreference android:title="@string/pref_curesystem_enable" android:key="viper4android.headphonefx.cure.enable" android:summaryOn="@string/pref_curesystem_summary_on" android:summaryOff="@string/pref_curesystem_summary_off" android:disableDependentsState="false" />
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference android:entries="@array/cure_crossfeed" android:title="@string/pref_select_cure_cf_title" android:key="viper4android.headphonefx.cure.crossfeed" android:defaultValue="0" android:dialogTitle="@string/dialog_cure_crossfeed" android:entryValues="@array/cure_crossfeed_values" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_fx_limiter_title">
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference android:entries="@array/output_volume" android:title="@string/pref_output_gain" android:key="viper4android.headphonefx.outvol" android:defaultValue="100" android:dialogTitle="@string/pref_effect_title" android:entryValues="@array/output_volume_values" />
+        <com.vipercn.viper4android_v2.preference.SummariedListPreference android:entries="@array/channel_pan" android:title="@string/pref_output_pan" android:key="viper4android.headphonefx.channelpan" android:defaultValue="0" android:dialogTitle="@string/pref_effect_title" android:entryValues="@array/channel_pan_values" />
+    </PreferenceCategory>
+</PreferenceScreen>

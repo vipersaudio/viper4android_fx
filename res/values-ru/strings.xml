@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ViPER FX</string>
+    <string name="select_configuration_title">ViPER4Android</string>
+    <string name="headset_title">НАУШНИКИ</string>
+    <string name="speaker_title">ДИНАМИК</string>
+    <string name="bluetooth_title">BLUETOOTH</string>
+    <string name="usb_title">USB</string>
+    <string name="audio_effects">Аудиоэффекты</string>
+    <string name="dsp_settings_headset">Настройка эффектов — Наушники</string>
+    <string name="dsp_settings_speaker">Настройка эффектов — Динамик</string>
+    <string name="dsp_settings_bluetooth">Настройка эффектов — Bluetooth</string>
+    <string name="dsp_settings_usb">Настройка эффектов — USB</string>
+    <string name="pref_dsp_enable">Включить</string>
+    <string name="pref_effect_title">Уровень</string>
+    <string name="dialog_effect">Уровень</string>
+    <string name="pref_force_enable_text">Принудительно</string>
+    <string name="pref_force_enable_warn">"Принудительное включение ViPER может решить проблему с неактивными эффектами. 
+Но на некоторых прошивках возможны отсутствие звука/быстрый разряд батареи. 
+Используйте на своё усмотрение. Если описанное выше произойдёт, отключите эту опцию."</string>
+    <string name="pref_fx_master_title">Все эффекты</string>
+    <string name="pref_fx_master_summary_on">ViPER FX включён</string>
+    <string name="pref_fx_master_summary_off">ViPER FX отключён</string>
+    <string name="pref_spkfx_master_title">Все эффекты</string>
+    <string name="pref_spkfx_master_summary_on">ViPER SpeakerFX включён</string>
+    <string name="pref_spkfx_master_summary_off">ViPER SpeakerFX отключён</string>
+    <string name="pref_fx_limiter_title">Выходной сигнал</string>
+    <string name="pref_fx_limiter_threshold">Лимитер</string>
+    <string name="pref_spkfx_limiter_title">Выходной сигнал</string>
+    <string name="pref_spkfx_limiter_threshold">Лимитер</string>
+    <string name="pref_output_gain">Усиление</string>
+    <string name="pref_output_pan">Баланс</string>
+    <string name="pref_playback_title">Авторегулировка усиления</string>
+    <string name="pref_playback_summary_on">АРУ включена</string>
+    <string name="pref_playback_summary_off">АРУ отключена</string>
+    <string name="pref_playback_output_threshold">Порог</string>
+    <string name="pref_playback_maxgain">Предел</string>
+    <string name="pref_xloud_title">Супергромкость</string>
+    <string name="pref_xloud_summary_on">Супергромкость включена</string>
+    <string name="pref_xloud_summary_off">Супергромкость отключена</string>
+    <string name="pref_xloud_output_amplifer">Усиление</string>
+    <string name="pref_xloud_spk_lowfreq">НЧ</string>
+    <string name="pref_xloud_spk_highfreq">ВЧ</string>
+    <string name="pref_spk_opt_title">Оптимизация динамика</string>
+    <string name="pref_spk_opt_summary_on">Оптимизация включена</string>
+    <string name="pref_spk_opt_summary_off">Оптимизация отключена</string>
+    <string name="pref_viperddc_title">Цифровая коррекция наушников</string>
+    <string name="pref_viperddc_summary_on">Цифровая коррекция включена</string>
+    <string name="pref_viperddc_summary_off">Цифровая коррекция отключена</string>
+    <string name="pref_viperddc_enable">Цифровая коррекция</string>
+    <string name="pref_viperddc_device">Наушники</string>
+    <string name="pref_viperddc_device_manufacturer">Производитель</string>
+    <string name="pref_viperddc_device_model">Модель</string>
+    <string name="pref_viperddc_tips">"ВНИМАНИЕ: 
+Цифровая коррекция — коррекция под определённую модель наушников. 
+Поддерживается более 500 моделей, данные будут дополняться. 
+Если Вы не смогли найти свои наушники в списке, отключите эту функцию."</string>
+    <string name="pref_vse_title">Расширение спектра</string>
+    <string name="pref_vse_summary_on">Расширение спектра включено</string>
+    <string name="pref_vse_summary_off">Расширение спектра отключено</string>
+    <string name="pref_vse_enable">Расширение спектра</string>
+    <string name="pref_vse_strength">Уровень</string>
+    <string name="pref_vse_strength_title">Уровень</string>
+    <string name="pref_vse_tips">"ВНИМАНИЕ: 
+\"Расширение спектра\" — расширение потеряного при сжатии спектра. 
+При воспроизведении форматов с потерями (MP3, AAC, OGG) звук может быть приближен к звуку форматов без потерь. 
+При воспроизведении несжатых форматов отключите эту функцию."</string>
+    <string name="pref_equalizer_title">Эквалайзер</string>
+    <string name="pref_equalizer_summary_on">Эквалайзер включён</string>
+    <string name="pref_equalizer_summary_off">Эквалайзер отключён</string>
+    <string name="pref_equalizer_enable">Эквалайзер</string>
+    <string name="pref_equalizer_preset_title">Предустановки</string>
+    <string name="pref_dynamicsystem_title">Динамическая обработка</string>
+    <string name="pref_dynamicsystem_summary_on">Динамическая обработка включена</string>
+    <string name="pref_dynamicsystem_summary_off">Динамическая обработка отключена</string>
+    <string name="pref_dynamicsystem_enable">Включить</string>
+    <string name="pref_dynamicsystem_output">Наушники</string>
+    <string name="pref_dynamicsystem_output_title">Наушники</string>
+    <string name="pref_dynamicsystem_bass">Уровень НЧ</string>
+    <string name="pref_dynamicsystem_tube_title">Ламповый звук (6N1J)</string>
+    <string name="pref_dynamicsystem_tube_summary_on">Ламповый звук включён</string>
+    <string name="pref_dynamicsystem_tube_summary_off">Ламповый звук отключён</string>
+    <string name="pref_fidelity_title">Реставрация звука</string>
+    <string name="pref_fidelity_vb_summary_on">Реставрация НЧ включена</string>
+    <string name="pref_fidelity_vb_summary_off">Реставрация НЧ отключена</string>
+    <string name="pref_fidelity_vb_enable">Реставрация НЧ</string>
+    <string name="pref_fidelity_vb_mode">Алгоритм</string>
+    <string name="pref_fidelity_vb_mode_title">Алгоритм</string>
+    <string name="pref_fidelity_vb_bassfreq">Частота</string>
+    <string name="pref_fidelity_vb_bassfreq_title">Частота</string>
+    <string name="pref_fidelity_vb_bassgain">Усиление</string>
+    <string name="pref_fidelity_vb_bassgain_title">Усиление</string>
+    <string name="pref_fidelity_vc_summary_on">Реставрация ВЧ включена</string>
+    <string name="pref_fidelity_vc_summary_off">Реставрация ВЧ отключена</string>
+    <string name="pref_fidelity_vc_enable">Реставрация ВЧ</string>
+    <string name="pref_fidelity_vc_mode">Алгоритм</string>
+    <string name="pref_fidelity_vc_mode_title">Алгоритм</string>
+    <string name="pref_fidelity_vc_bassgain">Усиление</string>
+    <string name="pref_fidelity_vc_bassgain_title">Усиление</string>
+    <string name="pref_curesystem_title">Кроссфидер</string>
+    <string name="pref_curesystem_summary_on">Кроссфидер включён</string>
+    <string name="pref_curesystem_summary_off">Кроссфидер отключён</string>
+    <string name="pref_curesystem_enable">Включить</string>
+    <string name="pref_select_cure_cf_title">Бинауральный уровень</string>
+    <string name="dialog_cure_crossfeed">Уровень</string>
+    <string name="pref_convolver_title">Конвольвер</string>
+    <string name="pref_convolver_summary_on">Конвольвер включён</string>
+    <string name="pref_convolver_summary_off">Конвольвер отключён</string>
+    <string name="pref_convolver_enable">Конвольвер</string>
+    <string name="pref_convolver_knl">Импульс</string>
+    <string name="pref_convolver_knl_title">Импульс</string>
+    <string name="pref_convolver_crosschannel">Пересечение каналов</string>
+    <string name="pref_convolver_crosschannel_title">Пересечение каналов</string>
+    <string name="pref_vhs_title">Объёмный звук в наушниках</string>
+    <string name="pref_vhs_summary_on">Объёмный звук в наушниках включён</string>
+    <string name="pref_vhs_summary_off">Объёмный звук в наушниках отключён</string>
+    <string name="pref_vhs_enable">Объёмный звук в наушниках</string>
+    <string name="pref_select_vhs_qual_title">Размер зала</string>
+    <string name="dialog_vhs_qual">Размер зала</string>
+    <string name="pref_colorfulmusic_title">Пространственный звук</string>
+    <string name="pref_colorfulmusic_summary_on">Пространственный звук включён</string>
+    <string name="pref_colorfulmusic_summary_off">Пространственный звук отключён</string>
+    <string name="pref_colorfulmusic_enable">Пространственный звук</string>
+    <string name="pref_select_colorfulmusic_title">Размер пространства</string>
+    <string name="dialog_colorfulmusic">Размер пространства</string>
+    <string name="pref_select_colorfulmusic_mi_title">Плотность центра</string>
+    <string name="dialog_colorfulmusic_mi">Плотность центра</string>
+    <string name="pref_diffsurr_title">Хаас-эффект</string>
+    <string name="pref_diffsurr_summary_on">Хаас-эффект включён</string>
+    <string name="pref_diffsurr_summary_off">Хаас-эффект отключён</string>
+    <string name="pref_diffsurr_enable">Хаас-эффект</string>
+    <string name="pref_select_diffsurr_ms_title">Задержка канала</string>
+    <string name="dialog_diffsurr_ms">Задержка канала</string>
+    <string name="pref_reverb_title">Реверберация</string>
+    <string name="pref_reverb_summary_on">Реверберация включена</string>
+    <string name="pref_reverb_summary_off">Реверберация отключена</string>
+    <string name="pref_reverb_enable">Реверберация</string>
+    <string name="pref_reverb_roomsize">Площадь зала</string>
+    <string name="pref_reverb_width">Ширина сцены</string>
+    <string name="pref_reverb_damp">Затухание</string>
+    <string name="pref_reverb_wet">Отражённый сигнал</string>
+    <string name="pref_reverb_dry">Прямой сигнал</string>
+    <string name="eq_preset_acoustic">Акустика</string>
+    <string name="eq_preset_bass_booster">Усилить НЧ</string>
+    <string name="eq_preset_bass_reducer">Ослабить НЧ</string>
+    <string name="eq_preset_classical">Классика</string>
+    <string name="eq_preset_deep">Глубина</string>
+    <string name="eq_preset_flat">Плоский</string>
+    <string name="eq_preset_r_and_b">R&amp;B</string>
+    <string name="eq_preset_rock">Рок</string>
+    <string name="eq_preset_small_speakers">Мини-динамики</string>
+    <string name="eq_preset_treble_booster">Усилить ВЧ</string>
+    <string name="eq_preset_treble_reducer">Ослабить ВЧ</string>
+    <string name="eq_preset_vocal_booster">Усилить вокал</string>
+    <string name="eq_preset_custom">Вручную</string>
+    <string name="text_ir_dir_isempty">ViPER4Android: папка импульсов %1$s пуста.</string>
+    <string name="text_token_lost">ViPER4Android: одна из программ выполнила запрос на отключение аудиоэффектов, V4A будет временно отключён.</string>
+    <string name="text_enabled">Включено</string>
+    <string name="text_disabled">Отключено</string>
+    <string name="text_headset">Наушники</string>
+    <string name="text_bluetooth">Bluetooth</string>
+    <string name="text_speaker">Динамик</string>
+    <string name="text_usb">USB</string>
+    <string name="text_showtrayicon">Значок уведомления</string>
+    <string name="text_hidetrayicon">Отключить значок</string>
+    <string name="text_lockeffect">Фиксация эффектов</string>
+    <string name="text_yes">Да</string>
+    <string name="text_no">Нет</string>
+    <string name="text_normal">Нормально</string>
+    <string name="text_abnormal">Конфликт</string>
+    <string name="text_supported">Совместим</string>
+    <string name="text_unsupported">Несовместим</string>
+    <string name="text_loadfxprofile">Загрузить профиль</string>
+    <string name="text_newfxprofile">Новый профиль…</string>
+    <string name="text_savefxprofile">Сохранить профиль</string>
+    <string name="text_profilesaved_overwrite">Профиль с таким именем существует, перезаписать?</string>
+    <string name="text_profileload_tip">Загрузка профиля</string>
+    <string name="text_ok">OK</string>
+    <string name="text_cancel">Отмена</string>
+    <string name="text_drvinst_prefer">Выбор драйвера</string>
+    <string name="text_drvinst_sqdrv">"Для Высокого качества эффектов рекомендуется двухъядерный процессор, возможен быстрый разряд батареи. 
+Продолжить?"</string>
+    <string name="text_drvvernotmatch">"Для работы ViPER4Android необходима установка/обновление драйвера. 
+Выполнить сейчас?"</string>
+    <string name="text_drvuninst_confim">Удалить драйвер ViPER4Android?</string>
+    <string name="text_uiprefer">Интерфейс</string>
+    <string name="text_uiprefer_dialog">Уровень</string>
+    <string name="text_commode">Совместимость</string>
+    <string name="text_drv_blank" />
+    <string name="text_uninstall">Удалить драйвер</string>
+    <string name="text_install">Установить драйвер</string>
+    <string name="text_drvinst_ok">Драйвер установлен. Перезагрузите устройство.</string>
+    <string name="text_drvuninst_ok">Драйвер удалён. Перезагрузите устройство.</string>
+    <string name="text_no_busybox">BusyBox не найден, установить сейчас?</string>
+    <string name="text_drvinst_acquireroot">Драйвер не установлен. Не удалось получить права root, убедитесь в наличии root-доступа к устройству.</string>
+    <string name="text_drvinst_busybox_not_installed">Драйвер не установлен, так как подходящая версия BusyBox не найдена.</string>
+    <string name="text_drvinst_sdnotmounted">Драйвер не установлен, так как внешний накопитель не смонтирован.</string>
+    <string name="text_drvinst_dataioerr">Драйвер не установлен. Произошла ошибка ввода-вывода, переагрузите устройство и попробуйте ещё раз.</string>
+    <string name="text_drvinst_cfg_unsup">Драйвер не установлен. Неподдерживаемая система Android или ROM.</string>
+    <string name="text_drvinst_failed">Драйвер не установлен. Проверьте наличие root-прав и BusyBox.</string>
+    <string name="text_modifybuildprop">"ВНИМАНИЕ: 
+на этом устройстве включена функция LPA, что может вызвать сбои в работе V4A. 
+LPA означает \"Low Power Audio\", её можно отключить с помощью изменения build.prop, процесс будет выполнен автоматически. 
+Настоятельно рекомендуется сделать NANDROID BACKUP или DATA BACKUP перед выполнением! 
+Отключить LPA сейчас?"</string>
+    <string name="text_changelog">Что нового</string>
+    <string name="text_drv_status">Состояние драйвера</string>
+    <string name="text_drv_status_view">"
+ 
+Драйвер: %1$s 
+NEON включён: %2$s 
+ViPER включён: %3$s 
+Состояние: %4$s 
+Аудиоформат: %5$s 
+Обработка: %6$s 
+Дискретизация: %7$d Гц 
+"</string>
+    <string name="text_service_error">Не удалось запустить ViPER4Android.</string>
+    <string name="about_title">Помощь</string>
+    <string name="about_text">"***О ViPER4Android*** 
+ 
+\"libv4a_xx_xx.so\" — драйвер ViPER4Android. 
+© 2006—2016, ViPER ACOUSTIC. Все права защищены. 
+Коммерческое использование без официального разрешения запрещено. 
+Официальный форум: forum.vipersaudio.com 
+ 
+\"ViPER4Android.apk\" — панель управления ViPER4Android. 
+Содержит код DSPManager для CyanogenMod. 
+ 
+Большое спасибо Zhuhang@XDA 
+ 
+Большое спасибо M4570D0N@github, xLaMbChOpSx@github, bboa@github (сообщество@4pda) 
+ 
+Версия %1$s (FX) “Beautiful”. 
+"</string>
+    <string name="text_help_content">"***Краткая справка*** 
+ 
+\"Установить драйвер\" — установить/обновить драйвер эффектов ViPER4Android. 
+ 
+\"Удалить драйвер\" — удалить драйвер эффектов ViPER4Android. 
+ 
+\"Совместимость\" — установить режим совместимости. 
+ \"Нет\" — сделать ViPER4Android глобальным эффектом. 
+ \"Включить\" — сделать ViPER4Android локальным эффектом. 
+ 
+ 
+***Вопросы и ответы*** 
+ 
+"<b>В.: эффекты V4A не работают во всех или в большинстве медиаплееров?</b>" 
+О.: попробуйте включить режим совместимости, перезапустить устройство и проверить ещё раз. 
+ 
+"<b>В.: как переключить качество звука?</b>" 
+О.: удалите драйвер командой в меню, перезапустите устройство и выберите желаемый уровень качества звука. 
+ 
+"<b>В.: как снизить энергопотребление?</b>" 
+О.: при отключённой совместимости, отказ от звуков касания и разблокировки может в 4 раза продлить работу от батареи; используйте драйвер \"Энергосбережение\". 
+ 
+"<b>В.: как настроить работу V4A и PowerAmp?</b>" 
+О.: если V4A будет использоваться и в других программах (онлайн-радио, видеоплееры и т. п.), тогда в PowerAmp необходимо отключить \"Прямое управление громкостью\" (DVC), в V4A отключить \"Совместимость\" и перезагрузить устройство. 
+Если V4A будет использоваться только с PowerAmp, в V4A необходимо включить \"Совместимость\", в PowerAmp — \"Поддержку FX\" (FX означает \"эффекты\"), тогда функция DVC сможет работать. 
+ 
+"<b>В.: V4A прекращает обработку после сворачивания или спустя некоторое время?</b>" 
+О.: включите отображение значка уведомления. 
+ 
+"<b>В.: что такое \"Фиксация эффектов\"?</b>" 
+О.: настройки выбранной вкладки применятся для всех выходов (наушники, динамик, bluetooth, usb). 
+ 
+"<b>В.: почему пункт \"Состояние\" неактивен?</b>" 
+О.: включена \"Совместимость\". 
+ 
+ 
+"<b>Форум: http://forum.xda-developers.com/showthread.php?t=2191223</b>" 
+ 
+ 
+ВНИМАНИЕ: 
+не рекомендуется непрерывное прослушивание более 1—2 часов в день, для вкладных наушников время сокращается вдвое. Возможны отложенные проблемы со слухом при чрезмерной громкости, а также полная безвозвратная потеря слуха из-за избыточного звукового давления при использовании наушников-вкладышей. 
+При симптоме звона в ушах рекомендуется пересмотреть используемые настройки, уровень громкости, модель наушников в сторону меньшей нагрузки на слух. 
+ 
+ 
+***Драйверы*** 
+ 
+\"Высокое качество\" — 64-битная обработка с плавающей запятой, эквалайзер 127-го порядка с конечной импульсной характеристикой (для ЦП ARM с расширением NEON). 
+ 
+\"Стандартное качество\" — 28-битная обработка с фиксированной запятой, эквалайзер с нелинейной фазой (для ЦП ARM с расширением NEON; близкий по характеристикам для ЦП x86). 
+ 
+\"Энергосбережение\" — 24-битная обработка с фиксированной запятой, эквалайзер с нелинейной фазой (для ЦП ARM с расширением NEON; по умолчанию для ЦП ARM с расширением VFP и без него). 
+ 
+ 
+***Эффекты*** 
+ 
+*Наушники* 
+ 
+1. \"Все эффекты\". Настройка отвечает за включение музыкальных эффектов для наушников. 
+ 
+2. \"Авторегулировка усиления\", \"АРУ\". Основное назначение — динамическое повышение или понижение громкости звука. 
+ 
+2.1 \"Уровень\" — скорость повышения или понижения, и чем он выше — \"Максимум\", тем быстрее нарастание и выше уровень конечной громкости. На уровне \"Минимум\" конечная громкость нарастает медленнее, её уровень будет ближе к исходной громкости. Рекомендуется \"Средний\" уровень. 
+ 
+2.2 Максимальное усиление — \"Предел\". Если уровень записи композиции слишком низкий, для усиления звука можно установить повышенные значения. Чем выше значение, тем выше громкость. Слишком большое усиление также сделает заметными шумы в композиции. Рекомендуется \"4x\". 
+ 
+2.3 Максимальный уровень — \"Порог\". Определяет максимальную громкость в дБ, которой может достичь \"Авторегулировка усиления\". Большему значению соответствует повышенная громкость, \"0 дБ\" является максимальным уровнем. Для смягчения звучания рекомендуется \"-1,9 дБ\". 
+ 
+3. \"Цифровая коррекция\" — коррекция воспроизведения под определённую модель устройства. В качестве эталона используется Beyerdynamic T1. Управляет АЧХ, переходной характеристикой, фазовой задержкой и т. д. Для корректной работы необходимо наличие устройства в базе данных, устройства будут добавляться в последующих версиях. 
+ 
+4. \"Расширение спектра\" — расширение потеряного при сжатии спектра. При воспроизведении форматов с потерями (MP3, AAC, OGG) звук может быть приближен к звуку форматов без потерь. Отключите при воспроизведении несжатых форматов. 
+ 
+5. \"Эквалайзер\". Десятиполосный линейный эквалайзер, n-го порядка (определяется драйвером). 
+ 
+5.1 \"Предустановки\". Вы можете выбрать одну из предустановленных настроек эквалайзера. При выборе \"Вручную\" звучание будет соответствовать положению регуляторов, установленному пользователем. 
+ 
+5.2 Линейный графический эквалайзер. Если коснуться графика, во всплывающем окне можно настроить уровни усиления и подавления частот в 10 диапазонах. 
+ 
+6. \"Конвольвер\". Если загружен образец импульсного отклика — \"Импульс\", звук будет обработан аналогично условиям, при которых был записан импульс. Если при создании импульса применялись различные эффекты, они также окажут влияние на звучание наряду с акустикой помещения и особенностями звучания воспроизводящей аппаратуры, характеристики которых передает импульсный отклик. 
+Убедитесь, что на карте памяти имеется папка ViPER4Android/Kernel/, импульсы должны размещаться в ней. Если папка не существует, при сохранении профиля настроек она создаётся автоматически. 
+ 
+6.1 \"Импульс\". В списке отображаются импульсы, находящиеся в папке ViPER4Android/Kernel/. 
+ 
+6.2 \"Пересечение каналов\" — взаимопроникновение каналов. Располагает звук перед вами. 
+ 
+7. \"Пространственный звук\". В основном используется для создания эффекта расширенного звучания. Звук может быть стерео- или монофоническим. 
+ 
+7.1 \"Размер пространства\". Это значение определяет интенсивность эффекта. Большему значению соответствует увеличенный стереоэффект. Звук будет доноситься в отдалении слева и справа. 
+ 
+7.2 \"Плотность центра\" образа. Это значение определяет плотность звучания в середине воображаемой сцены. При больших значениях звучание инструментов кажется сближенным и расположенным в центре сцены, при меньших звучание становится отдалённым и смещённым к её краям. 
+ 
+8. Дифференциальное объёмное звучание, известное как \"Хаас-эффект\". 
+ 
+8.1 \"Задержка канала\". Это значение определяет запаздывание (интервал) между левым и правым каналами. Больше значение — шире звук. Смещение стереопанорамы является мнимым и обусловлено психоакустическими особенностями слуха, эффект актуальнее для монофонических записей. 
+ 
+9. \"Объёмный звук в наушниках\". Виртуальный эффект пространственного звучания для наушников. Призван воссоздать локализацию источников звуков в помещении при помощи комплексной обработки сигнала. 
+ 
+9.1 \"Размер зала\" — определяет размер виртуального помещения. 
+ 
+10. \"Реверберация\". Использует математический метод для имитации ощущения окружающего пространства. Например, композиция может звучать подобно исполнению в зале, гостиной, ванной и т. д. 
+ 
+10.1 \"Площадь зала\". Это значение определяет размер виртуального помещения. При увеличении, звук становится шире и появляется больше эхо. 
+ 
+10.2 \"Ширина сцены\". Это значение задаёт ширину вышеуказанного виртуального помещения в метрах. Если принять площадь зала за 100 м², ширину сцены задать как 14 м, длина зала будет равна 7,14 м. Таким образом, площадь зала и ширина сцены определяют пропорции виртуального помещения. При увеличении значения звук, приходящий с обеих сторон, будет ощущаться яснее. 
+ 
+10.3 \"Затухание\". Это значение определяет влажность воздуха в виртуальном помещении — влага легко поглощает все эхо. Больше значение — меньше слышимых эхо. 
+ 
+10.4 \"Отражённый сигнал\". Это значение определяет уровень реверберированного звука с учётом влажности и размера виртуального помещения. 
+ 
+10.5 \"Прямой сигнал\". Это значение определяет уровень исходного звука. 
+Для имитации помещений с низкой влажностью воздуха, таких как гостиная, зал и другие закрытые пространства, можно использовать площадь зала и ширину сцены для задания размера виртуального помещения, влажность воздуха выбирается в пределах 0…20 процентов, уровень реверберированного сигнала — 20…50 процентов, уровень исходного сигнала — около 50 процентов. 
+Для имитации помещений с высокой влажностью воздуха, таких как ванная комната и другие закрытые пространства с высокой влажностью, влажность воздуха выбирается в пределах 50…100 процентов, уровень реверберированного сигнала — 40…80 процентов, уровень исходного сигнала — около 50 процентов. 
+ 
+11. \"Динамическая обработка\" отвечает за динамический диапазон звука. Другими словами, за нижние и верхние частоты, а также лимитирование уровня сигнала. 
+ 
+11.1 \"Наушники\". Значение описывает тип подключённых наушников. Если не удаётся выбрать подходящее устройство для насыщенного звучания НЧ, выберите \"Обычные наушники\". Обычные наушники выбраны обобщённо. Рекомендуются \"Обычные наушники\". 
+ 
+11.2 \"Уровень НЧ\". Значение определяет усреднённый уровень низких частот, большее значение увеличивает их интенсивность. Рекомендуется \"33 процента\". 
+ 
+11.3 Симуляция лампы — модель \"6N1J\". Эта настройка отвечает за включение симуляции звучания лампы. V4A использует упрощённую математическую модель симуляции лампового звука. При включении эффекта к звуку добавляется большое количество случайных высокочастотных гармонических искажений и увеличивается количество нечётных гармоник. 
+ 
+12. Управление достоверностью звучания — \"Реставрация звука\". Заменяет технологию Восстановление Звука XHiFi. Управляет низами — \"Реставрация НЧ\", а также верхами — \"Реставрация ВЧ\". 
+ 
+12.1 \"Алгоритм\" реставрации НЧ. Доступны \"Естественный\", \"Очищенный\" и \"Сабвуферный\". \"Естественный\" — то же, что и V4A XHiFi’s Lo Contour. \"Очищенный\" — придаёт низам чистоты. \"Сабвуферный\" — делает низы очень мощными. 
+ 
+12.2 Частота НЧ — \"Частота\". Устанавливает частоту НЧ. Рекомендуется \"60 Гц\" для всех алгоритмов. 
+ 
+12.3 Усиление НЧ — \"Усиление\". Отвечает за громкость НЧ. Рекомендуется \"6 дБ\" для \"Естественный\", \"8 дБ\" для \"Очищенный\". 
+ 
+12.4 \"Реставрация ВЧ\" — эффект отчётливого звука. 
+ 
+12.5 Алгоритм повышения отчётливости звука — \"Алгоритм\". Алгоритмы \"Естественный\", \"OZone+\" и \"XHiFi\" выполняют различное повышение отчётливости звука. Ozone+ выполняет простую обработку ВЧ. XHiFi это то же, что и V4A XHiFi’s Hi Clarity. 
+ 
+12.6 \"Уровень\". Интенсивность работы эффекта \"Реставрация ВЧ\". Рекомендуется \"3,5 дБ\" для \"Естественный\", \"8 дБ\" для \"Ozone+\", \"По умолчанию\" для XHiFi. 
+ 
+13. \"Кроссфидер\". Снижает утомление при длительном прослушивании, экспериментальная функция. 
+ 
+13.1 \"Бинауральный уровень\". Интенсивность эффекта. Рекомендуется \"Средний\" уровень. 
+ 
+14. \"Выходной сигнал\". Доступны усиление, баланс и лимитирование уровня выходного сигнала V4A. Лимитер используется для предотвращения искажений, вызванных перегрузкой, в свою очередь создавая искажения, вызванные клиппингом. 
+ 
+14.1 \"Усиление\". Значение регулирует общую выходную громкость. 
+ 
+14.2 Панорамирование каналов, или стереобаланс — \"Баланс\". Определяет соотношение левого и правого каналов в выходном сигнале. 
+ 
+14.3 \"Лимитер\". Определяет границы ограничения амплитуды звуковых колебаний лимитером, максимальное значение \"0 дБ\". 
+Чем меньше значение, тем легче достичь ограничения амплитуды звука, что приведёт к потере деталей звучания из-за клиппинга, но поможет эффективно управлять конечной выходной громкостью. Рекомендуется \"0 дБ\". 
+ 
+ 
+*Динамик телефона* 
+ 
+1. Главный выключатель — \"Все эффекты\". Позволяет включить эффекты V4A для динамика. 
+ 
+2. Оптимизация динамика. Оптимизирует звук встроенного динамика. 
+ 
+3. \"Супергромкость\". Способствует усилению звука, но в разумных пределах — для предотвращения повреждения динамика. Не перегружайте динамик. 
+ 
+3.1 Интенсивность эффекта — \"Уровень\". Определяет скорость усиления или подавления, при большем значении увеличивается скорость и повышается конечная громкость, при меньшем значении скорость замедляется, итоговая громкость приближается к исходной громкости. Рекомендуется \"Средний\" уровень. 
+ 
+3.2 Максимальное усиление — \"Предел\". Если уровень записи композиции слишком низкий, для усиления звука можно установить повышенные значения. Чем выше значение, тем выше громкость. Рекомендуется \"∞\". 
+ 
+3.3 Максимальный уровень — \"Порог\". Определяет максимальную громкость звука в дБ, большему значению соответствует повышенная громкость, 0 дБ является максимальным уровнем. Рекомендуется \"0 дБ\". "</string>
+    <string name="text_forum_link">http://forum.xda-developers.com/showthread.php?t=2191223</string>
+    <string name="text_view_forum">Форум</string>
+    <string name="text_checkupdate">Обновления</string>
+    <string name="text_updatelink">http://vipersaudio.com/swupdate/viper4android/download.html</string>
+    <string name="navigation_drawer_open">Открыть панель</string>
+    <string name="navigation_drawer_close">Закрыть панель</string>
+    <string name="navigation_toggle_drawer">Боковая панель</string>
+    <string name="navigation_toggle_tabbed">Вкладки</string>
+</resources>

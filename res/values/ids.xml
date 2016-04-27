@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="v4a_drawer_layout">false</item>
+    <item type="id" name="v4a_container">false</item>
+    <item type="id" name="v4a_navigation_drawer">false</item>
+    <item type="id" name="viewPager">false</item>
+    <item type="id" name="pagerTabStrip">false</item>
+    <item type="id" name="drawer_icon">false</item>
+    <item type="id" name="drawer_title">false</item>
+    <item type="id" name="drv_status">false</item>
+    <item type="id" name="FrequencyResponse">false</item>
+    <item type="id" name="v4a_action_tabbed">false</item>
+    <item type="id" name="lockeffect">false</item>
+    <item type="id" name="notify">false</item>
+    <item type="id" name="loadprofile">false</item>
+    <item type="id" name="saveprofile">false</item>
+    <item type="id" name="uiprefer">false</item>
+    <item type="id" name="compatible">false</item>
+    <item type="id" name="drvinst">false</item>
+    <item type="id" name="drvstatus">false</item>
+    <item type="id" name="changelog">false</item>
+    <item type="id" name="checkupdate">false</item>
+    <item type="id" name="about">false</item>
+</resources>
