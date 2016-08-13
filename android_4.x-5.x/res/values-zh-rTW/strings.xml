@@ -136,14 +136,14 @@ ViPER-DDC是一個用於耳機校正的HiFi音效。
     <string name="pref_reverb_enable">啓用</string>
     <string name="pref_reverb_roomsize">空間大小</string>
     <string name="pref_reverb_width">音場寬度</string>
-    <string name="pref_reverb_damp">水汽含量</string>
+    <string name="pref_reverb_damp">水氣含量</string>
     <string name="pref_reverb_wet">濕度訊號比例</string>
     <string name="pref_reverb_dry">乾燥訊號比例</string>
     <string name="eq_preset_acoustic">原音音樂</string>
     <string name="eq_preset_bass_booster">低音強化</string>
     <string name="eq_preset_bass_reducer">低音弱化</string>
     <string name="eq_preset_classical">古典音樂</string>
-    <string name="eq_preset_deep">深沈</string>
+    <string name="eq_preset_deep">深沉</string>
     <string name="eq_preset_flat">平淡</string>
     <string name="eq_preset_r_and_b">R&amp;B</string>
     <string name="eq_preset_rock">搖滾音樂</string>
@@ -173,7 +173,7 @@ ViPER-DDC是一個用於耳機校正的HiFi音效。
     <string name="text_newfxprofile">新建音效配置…</string>
     <string name="text_savefxprofile">儲存音效配置</string>
     <string name="text_profilesaved_overwrite">配置檔案名稱已經存在，是否需要覆蓋？</string>
-    <string name="text_profileload_tip">應用音效配置到</string>
+    <string name="text_profileload_tip">套用音效配置到</string>
     <string name="text_ok">確定</string>
     <string name="text_cancel">取消</string>
     <string name="text_drvinst_prefer">請選擇您的偏好</string>
@@ -183,9 +183,9 @@ ViPER-DDC是一個用於耳機校正的HiFi音效。
 安裝或更新過程將會自動完成，解除安裝時可以使用選單中的解除安裝驅動程式。 
 現在安裝或更新嗎？"</string>
     <string name="text_drvuninst_confim">您確定要解除安裝V4A驅動程式嗎？</string>
-    <string name="text_uiprefer">界面控制級別</string>
+    <string name="text_uiprefer">界面控制等級</string>
     <string name="text_uiprefer_dialog">請選擇您的偏好</string>
-    <string name="text_commode">音效兼容模式</string>
+    <string name="text_commode">音效相容模式</string>
     <string name="text_drv_blank" />
     <string name="text_uninstall">解除安裝驅動程式</string>
     <string name="text_install">安裝驅動程式</string>
@@ -197,7 +197,7 @@ ViPER-DDC是一個用於耳機校正的HiFi音效。
     <string name="text_drvinst_sdnotmounted">驅動程式安裝失敗，未找到可讀寫的外部或內部儲存空間。</string>
     <string name="text_drvinst_dataioerr">驅動程式安裝失敗，系統I/O錯誤，您可以重啟手機後再試。</string>
     <string name="text_drvinst_cfg_unsup">驅動程式安裝失敗，V4A暫時不支援您的系統或ROM。</string>
-    <string name="text_drvinst_failed">"驅動程式安裝失敗，在您的裝置上找到的busybox不工作。 
+    <string name="text_drvinst_failed">"驅動程式安裝失敗，在您的裝置上找到的busybox沒辦法運作。 
 這通常意味著您安裝了錯誤的或損壞的busybox，V4A需要stericson.busybox來安裝驅動程式。 
 如果您確定您已經安裝了正確的busybox，那麼請確認您的裝置已經完整ROOT(建議您使用RE管理器手動在/system內創建文件以驗證是否完整ROOT，一般的ROOT檢測程式無法正確檢測虛假的ROOT)。"</string>
     <string name="text_modifybuildprop">"注意： 
@@ -218,7 +218,7 @@ NEON已啟用: %2$s
 正在處理: %6$s 
 取樣率: %7$d 
 "</string>
-    <string name="text_service_error">無法和ViPER4Android背景服務建立連接，可能是無法載入驅動程式或背景服務程序已被殺死。</string>
+    <string name="text_service_error">無法和ViPER4Android背景服務建立連接，可能是無法載入驅動程式或背景服務程序已被關閉。</string>
     <string name="about_title">幫助和關於</string>
     <string name="about_text">"***關於ViPER4Android*** 
  
@@ -241,12 +241,12 @@ NEON已啟用: %2$s
  
 '安裝驅動程式' - 安裝或更新V4A驅動程式。 
 '解除安裝驅動' - 解除安裝V4A驅動程式。 
-'音效兼容模式' - 設定音效的兼容模式。 
+'音效相容模式' - 設定音效的相容模式。 
  '正常模式' - 將V4A用作全局音效。 
- '兼容模式' - 將V4A用作局部音效。 
+ '相容模式' - 將V4A用作局部音效。 
  
 "<b>您是否遇到過在大多數多媒體播放器上V4A無效的問題？</b>"
- 您可以將音效模式切換到兼容模式，然後再試。 
+ 您可以將音效模式切換到相容模式，然後再試。 
  
 "<b>如何更改當前的音訊處理品質？</b>"
  在選單中解除安裝驅動程式，重啟手機後選擇您期望的品質模式。 
