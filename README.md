@@ -13,26 +13,26 @@ Usage:<br />
 4.Modify the code and compile.<br />
 <br />
 Notice:<br />
-1.The source code contains both android 2.3 and android 4.x apk source code, please select the right path when you import the project.<br />
+1.The source code contains both android 2.3 and android 4.x apk source code, please select the right path when you import the project.<br />jhfgsliugfqiugrlg
 2.If you want to create a new local language translation, please DO NOT change "text_user_statistics".<br />
 3.Commit descriptions MUST be in english.<br />
 4.If you want to make a major change, please pm me and create a new branch, DO NOT add any unstable/untested code in master.<br />
 5.The ViPER4Android driver (libv4a_xxx_xxx.so) is restrict disallowed in commercial use.<br />
 <br />
 <br />
-[中文说明]<br />
-控制面板的源代码是基于Cyanogenmod的DSPManager所做。<br />
+[锟斤拷锟斤拷说锟斤拷]<br />
+锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷源锟斤拷锟斤拷锟角伙拷锟斤拷Cyanogenmod锟斤拷DSPManager锟斤拷锟斤拷锟斤拷<br />
 <br />
-代码使用方法：<br />
-    1、将代码Clone到本地。<br />
-    2、在Eclipse中以安卓工程的方式导入。<br />
-    3、在工程的配置界面中，以外部库的方式导入"RootTools-2.6.jar"。<br />
-    4、修改并编译工程。<br />
+锟斤拷锟斤拷使锟矫凤拷锟斤拷锟斤拷<br />
+    1锟斤拷锟斤拷锟斤拷锟斤拷Clone锟斤拷锟斤拷锟截★拷<br />
+    2锟斤拷锟斤拷Eclipse锟斤拷锟皆帮拷卓锟斤拷锟教的凤拷式锟斤拷锟诫。<br />
+    3锟斤拷锟节癸拷锟教碉拷锟斤拷锟矫斤拷锟斤拷锟叫ｏ拷锟斤拷锟解部锟斤拷锟侥凤拷式锟斤拷锟斤拷"RootTools-2.6.jar"锟斤拷<br />
+    4锟斤拷锟睫改诧拷锟斤拷锟诫工锟教★拷<br />
 <br />
-注意：<br />
-    1、源代码中包含安卓2.3和安卓4.x的APK代码，导入工程时请选择正确的路径。<br />
-    2、如果你打算添加一种新的本地语言翻译，请不要改动"text_user_statistics"。<br />
-    3、代码的提交说明必须为英文。<br />
-    4、如果你打算做一个重大的改进，请通知我并创建一个新的分支，不要在master分支中加入任何未经测试或不稳定的代码。<br />
-    5、ViPER4Android的驱动程序(libv4a_xxx_xxx.so)严禁用在商业用途。<br />
+注锟解：<br />
+    1锟斤拷源锟斤拷锟斤拷锟叫帮拷锟斤拷锟斤拷卓2.3锟酵帮拷卓4.x锟斤拷APK锟斤拷锟诫，锟斤拷锟诫工锟斤拷时锟斤拷选锟斤拷锟斤拷确锟斤拷路锟斤拷锟斤拷<br />
+    2锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷一锟斤拷锟铰的憋拷锟斤拷锟斤拷锟皆凤拷锟诫，锟诫不要锟侥讹拷"text_user_statistics"锟斤拷<br />
+    3锟斤拷锟斤拷锟斤拷锟斤拷锟结交说锟斤拷锟斤拷锟斤拷为英锟侥★拷<br />
+    4锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷一锟斤拷锟截达拷锟侥改斤拷锟斤拷锟斤拷通知锟揭诧拷锟斤拷锟斤拷一锟斤拷锟铰的凤拷支锟斤拷锟斤拷要锟斤拷master锟斤拷支锟叫硷拷锟斤拷锟轿猴拷未锟斤拷锟斤拷锟皆伙拷锟斤拷锟饺讹拷锟侥达拷锟诫。<br />
+    5锟斤拷ViPER4Android锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷(libv4a_xxx_xxx.so)锟较斤拷锟斤拷锟斤拷锟斤拷业锟斤拷途锟斤拷<br />
 <br />
