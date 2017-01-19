@@ -18,3 +18,8 @@ local.properties
 # Eclipse project files
 .classpath
 .project
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/viper4android_fx.iml
+.idea/workspace.xml
