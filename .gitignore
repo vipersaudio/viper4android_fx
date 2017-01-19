@@ -23,3 +23,6 @@ local.properties
 .idea/vcs.xml
 .idea/viper4android_fx.iml
 .idea/workspace.xml
+.idea/compiler.xml
+.idea/copyright/profiles_settings.xml
+.idea/encodings.xml

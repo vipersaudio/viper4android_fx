@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="drvinst_prefer">
-        <item>Super Audio Quality</item>
-        <item>High Audio Quality</item>
-        <item>Power Saving</item>
+        <item>Audio Kualitas Super</item>
+        <item>Audio Kualitas Tinggi</item>
+        <item>Prioritas Hemat Daya</item>
     </string-array>
     <string-array name="drvinst_prefer_values">
         <item>sq</item>
@@ -11,9 +11,9 @@
         <item>lq</item>
     </string-array>
     <string-array name="ui_prefer">
-        <item>Beginner</item>
-        <item>Moderate</item>
-        <item>Expert</item>
+        <item>Pemula</item>
+        <item>Menengah</item>
+        <item>Ahli</item>
     </string-array>
     <string-array name="ui_prefer_values">
         <item>0</item>
@@ -22,7 +22,7 @@
     </string-array>
     <string-array name="compatible_mode">
         <item>Normal</item>
-        <item>Compatible</item>
+        <item>Kompatibel</item>
     </string-array>
     <string-array name="compatible_mode_values">
         <item>global</item>
@@ -41,7 +41,7 @@
         <item>1.0</item>
     </string-array>
     <string-array name="colorfulmusic_coeffs">
-        <item>Slight</item>
+        <item>Sedikit</item>
         <item>Level 1</item>
         <item>Level 2</item>
         <item>Level 3</item>
@@ -49,7 +49,7 @@
         <item>Level 5</item>
         <item>Level 6</item>
         <item>Level 7</item>
-        <item>Extreme</item>
+        <item>Ekstrim</item>
     </string-array>
     <string-array name="colorfulmusic_coeffs_values">
         <item>120;200</item>
@@ -63,7 +63,7 @@
         <item>200;800</item>
     </string-array>
     <string-array name="colorfulmusic_midimage">
-        <item>Slight</item>
+        <item>Sedikit</item>
         <item>Level 1</item>
         <item>Level 2</item>
         <item>Level 3</item>
@@ -73,7 +73,7 @@
         <item>Level 7</item>
         <item>Level 8</item>
         <item>Level 9</item>
-        <item>Extreme</item>
+        <item>Ekstrim</item>
     </string-array>
     <string-array name="colorfulmusic_midimage_values">
         <item>100</item>
@@ -89,21 +89,21 @@
         <item>200</item>
     </string-array>
     <string-array name="conv_cross_channel">
-        <item>0 Percent</item>
-        <item>5 Percent</item>
-        <item>10 Percent</item>
-        <item>15 Percent</item>
-        <item>20 Percent</item>
-        <item>25 Percent</item>
-        <item>30 Percent</item>
-        <item>35 Percent</item>
-        <item>40 Percent</item>
-        <item>45 Percent</item>
-        <item>50 Percent</item>
-        <item>55 Percent</item>
-        <item>60 Percent</item>
-        <item>70 Percent</item>
-        <item>80 Percent</item>
+        <item>0 Persen</item>
+        <item>5 Persen</item>
+        <item>10 Persen</item>
+        <item>15 Persen</item>
+        <item>20 Persen</item>
+        <item>25 Persen</item>
+        <item>30 Persen</item>
+        <item>35 Persen</item>
+        <item>40 Persen</item>
+        <item>45 Persen</item>
+        <item>50 Persen</item>
+        <item>55 Persen</item>
+        <item>60 Persen</item>
+        <item>70 Persen</item>
+        <item>80 Persen</item>
     </string-array>
     <string-array name="conv_cross_channel_values">
         <item>0</item>
@@ -197,17 +197,17 @@
         <item>100</item>
     </string-array>
     <string-array name="reverb_percent">
-        <item>0 Percent</item>
-        <item>10 Percent</item>
-        <item>20 Percent</item>
-        <item>30 Percent</item>
-        <item>40 Percent</item>
-        <item>50 Percent</item>
-        <item>60 Percent</item>
-        <item>70 Percent</item>
-        <item>80 Percent</item>
-        <item>90 Percent</item>
-        <item>100 Percent</item>
+        <item>0 Persen</item>
+        <item>10 Persen</item>
+        <item>20 Persen</item>
+        <item>30 Persen</item>
+        <item>40 Persen</item>
+        <item>50 Persen</item>
+        <item>60 Persen</item>
+        <item>70 Persen</item>
+        <item>80 Persen</item>
+        <item>90 Persen</item>
+        <item>100 Persen</item>
     </string-array>
     <string-array name="reverb_percent_values">
         <item>0</item>
@@ -253,9 +253,9 @@
         <item>custom</item>
     </string-array>
     <string-array name="cure_crossfeed">
-        <item>Slight</item>
-        <item>Moderate</item>
-        <item>Extreme</item>
+        <item>Sedikit</item>
+        <item>Menengah</item>
+        <item>Ekstrim</item>
     </string-array>
     <string-array name="cure_crossfeed_values">
         <item>0</item>
@@ -277,9 +277,9 @@
         <item>4</item>
     </string-array>
     <string-array name="playbackgain_ratio">
-        <item>Slight</item>
-        <item>Moderate</item>
-        <item>Extreme</item>
+        <item>Sedikit</item>
+        <item>Menengah</item>
+        <item>Ekstrim</item>
     </string-array>
     <string-array name="playbackgain_ratio_values">
         <item>50</item>
@@ -423,38 +423,38 @@
         <item>100</item>
     </string-array>
     <string-array name="dynamicsystem_bass">
-        <item>0 Percent</item>
-        <item>1 Percent</item>
-        <item>2 Percent</item>
-        <item>3 Percent</item>
-        <item>4 Percent</item>
-        <item>5 Percent</item>
-        <item>6 Percent</item>
-        <item>7 Percent</item>
-        <item>8 Percent</item>
-        <item>9 Percent</item>
-        <item>10 Percent</item>
-        <item>12 Percent</item>
-        <item>14 Percent</item>
-        <item>16 Percent</item>
-        <item>18 Percent</item>
-        <item>20 Percent</item>
-        <item>22 Percent</item>
-        <item>24 Percent</item>
-        <item>26 Percent</item>
-        <item>28 Percent</item>
-        <item>30 Percent</item>
-        <item>33 Percent</item>
-        <item>36 Percent</item>
-        <item>40 Percent</item>
-        <item>45 Percent</item>
-        <item>50 Percent</item>
-        <item>55 Percent</item>
-        <item>60 Percent</item>
-        <item>70 Percent</item>
-        <item>80 Percent</item>
-        <item>90 Percent</item>
-        <item>100 Percent</item>
+        <item>0 Persen</item>
+        <item>1 Persen</item>
+        <item>2 Persen</item>
+        <item>3 Persen</item>
+        <item>4 Persen</item>
+        <item>5 Persen</item>
+        <item>6 Persen</item>
+        <item>7 Persen</item>
+        <item>8 Persen</item>
+        <item>9 Persen</item>
+        <item>10 Persen</item>
+        <item>12 Persen</item>
+        <item>14 Persen</item>
+        <item>16 Persen</item>
+        <item>18 Persen</item>
+        <item>20 Persen</item>
+        <item>22 Persen</item>
+        <item>24 Persen</item>
+        <item>26 Persen</item>
+        <item>28 Persen</item>
+        <item>30 Persen</item>
+        <item>33 Persen</item>
+        <item>36 Persen</item>
+        <item>40 Persen</item>
+        <item>45 Persen</item>
+        <item>50 Persen</item>
+        <item>55 Persen</item>
+        <item>60 Persen</item>
+        <item>70 Persen</item>
+        <item>80 Persen</item>
+        <item>90 Persen</item>
+        <item>100 Persen</item>
     </string-array>
     <string-array name="dynamicsystem_bass_values">
         <item>0</item>
@@ -491,25 +491,25 @@
         <item>100</item>
     </string-array>
     <string-array name="dynamicsystem_outputs">
-        <item>Extreme Headphone(v2)</item>
-        <item>High-end Headphone(v2)</item>
-        <item>Common Headphone(v2)</item>
-        <item>Low-end Headphone(v2)</item>
-        <item>Common Earphone(v2)</item>
-        <item>Extreme Headphone(v1)</item>
-        <item>High-end Headphone(v1)</item>
-        <item>Common Headphone(v1)</item>
-        <item>Common Earphone(v1)</item>
-        <item>Apple Earphone</item>
-        <item>Monster Earphone</item>
-        <item>Moto Earphone</item>
-        <item>Philips Earphone</item>
+        <item>Headphone Ekstrim(v2)</item>
+        <item>Headphone Kelas Atas(v2)</item>
+        <item>Headphone Umum(v2)</item>
+        <item>Headphone Kelas Bawah(v2)</item>
+        <item>Earphone Umum(v2)</item>
+        <item>Headphone Ekstrim(v1)</item>
+        <item>Headphone Kelas Atas(v1)</item>
+        <item>Headphone Umum(v1)</item>
+        <item>Earphone Umum(v1)</item>
+        <item>Earphone Apple</item>
+        <item>Earphone Monster</item>
+        <item>Earphone Moto</item>
+        <item>Earphone Philips</item>
         <item>SHP2000</item>
         <item>SHP9000</item>
-        <item>Unknown Type I</item>
-        <item>Unknown Type II</item>
-        <item>Unknown Type III</item>
-        <item>Unknown Type IV</item>
+        <item>Tipe tak dikenal I</item>
+        <item>Tipe tak dikenal II</item>
+        <item>Tipe tak dikenal III</item>
+        <item>Tipe tak dikenal IV</item>
     </string-array>
     <string-array name="dynamicsystem_outputs_values">
         <item>140;6200;40;60;10;80</item>
