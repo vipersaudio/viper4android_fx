@@ -4,9 +4,9 @@
     <string name="app_name">ViPER4Android FX</string>
     <string name="select_configuration_title">ViPER4Android FX</string>
     <string name="headset_title">Headset</string>
-    <string name="speaker_title">Speaker Handphone</string>
+    <string name="speaker_title">Speaker Phone</string>
     <string name="bluetooth_title">Perangkat Bluetooth</string>
-    <string name="usb_title">Perangkat USB/Dock</string>
+    <string name="usb_title">USB/Dock</string>
     <string name="audio_effects">Efek Audio</string>
     <string name="dsp_settings_headset">Pengaturan efek - Headset</string>
     <string name="dsp_settings_speaker">Pengaturan efek - Speaker Handphone</string>
@@ -18,28 +18,28 @@
     <string name="pref_force_enable_text">Paksa Aktifkan V4A</string>
     <string name="pref_force_enable_warn">"Memaksa mengaktifkan fitur ini mungkin dapat menyelesaikan masalah V4A yang tidak menghasilkan efek suara.
 Di beberapa ROM, pengguna dapat mengalami kejadian seperti tidak ada suara yang dihasilkan dan baterai lebih boros dari biasanya.
-Gunakan dengan resiko anda sendiri. Jika hal tersebut terjadi, matikan fitur ini."</string>
-    <string name="pref_fx_master_title">Master Power</string>
+Gunakan dengan resiko ditanggung anda sendiri. Jika hal tersebut terjadi, matikan fitur ini."</string>
+    <string name="pref_fx_master_title">Power Utama</string>
     <string name="pref_fx_master_summary_on">V4A-FX telah aktif</string>
     <string name="pref_fx_master_summary_off">V4A-FX tidak aktif</string>
-    <string name="pref_spkfx_master_title">Master Power</string>
+    <string name="pref_spkfx_master_title">Power Utama</string>
     <string name="pref_spkfx_master_summary_on">V4A-SpeakerFX telah aktif</string>
     <string name="pref_spkfx_master_summary_off">V4A-SpeakerFX tidak aktif</string>
-    <string name="pref_fx_limiter_title">Master Gate (Pembatas)</string>
+    <string name="pref_fx_limiter_title">Pembatas Suara Utama</string>
     <string name="pref_fx_limiter_threshold">Batasi Ambang Suara</string>
-    <string name="pref_spkfx_limiter_title">Master Gate (Pembatas)</string>
+    <string name="pref_spkfx_limiter_title">Pembatas Suara Utama</string>
     <string name="pref_spkfx_limiter_threshold">Batasi Ambang Suara</string>
-    <string name="pref_output_gain">Output Gain</string>
-    <string name="pref_output_pan">Channel Pan</string>
-    <string name="pref_playback_title">Playback Gain Control</string>
+    <string name="pref_output_gain">Keluaran Tambahan</string>
+    <string name="pref_output_pan">Keseimbangan Channel</string>
+    <string name="pref_playback_title">Kontrol Tambahan Suara (PlaybackAGC)</string>
     <string name="pref_playback_summary_on">PlaybackAGC telah aktif</string>
     <string name="pref_playback_summary_off">PlaybackAGC tidak aktif</string>
     <string name="pref_playback_output_threshold">Keluaran maksimal</string>
-    <string name="pref_playback_maxgain">Gain Maksimal</string>
+    <string name="pref_playback_maxgain">Tambahan Suara (Gain) Maksimal</string>
     <string name="pref_xloud_title">eXtra Loud</string>
     <string name="pref_xloud_summary_on">eXtra-Loud telah aktif</string>
     <string name="pref_xloud_summary_off">eXtra-Loud tidak aktif</string>
-    <string name="pref_xloud_output_amplifer">Output Gain</string>
+    <string name="pref_xloud_output_amplifer">Keluaran Tambahan</string>
     <string name="pref_xloud_spk_lowfreq">Respon Rendah</string>
     <string name="pref_xloud_spk_highfreq">Respon Tinggi</string>
     <string name="pref_spk_opt_title">Optimisasi Speaker</string>
@@ -49,11 +49,11 @@ Gunakan dengan resiko anda sendiri. Jika hal tersebut terjadi, matikan fitur ini
     <string name="pref_viperddc_summary_on">ViPER-DDC telah aktif</string>
     <string name="pref_viperddc_summary_off">ViPER-DDC tidak aktif</string>
     <string name="pref_viperddc_enable">Aktifkan</string>
-    <string name="pref_viperddc_device">Perangkat Pendengaran yang Digunakan</string>
+    <string name="pref_viperddc_device">Perangkat yang Digunakan</string>
     <string name="pref_viperddc_device_manufacturer">Pilih Pabrikan</string>
     <string name="pref_viperddc_device_model">Pilih Model</string>
     <string name="pref_viperddc_tips">"PEMBERITAHUAN:
-ViPER-DDC adalah pemroses audio Hi-Fi murni dan digunakan untuk memperbaiki / mengoreksi suara yang dihasilkan oleh headset.
+ViPER-DDC adalah pemroses audio Hi-Fi murni dan digunakan untuk memperbaiki / mengoreksi suara yang dihasilkan oleh enis headset tertentu.
 ViPER-DDC sekarang telah mendukung hampir 500 headphone, dan akan terus dilanjutkan pengembangannya untuk mendukung lebih banyak headphone.
 Jika pengguna tidak dapat menemukan jenis headset yang ada di dalam daftar, harap matikan fitur ini hingga jenis headphone kamu ditambahkan."</string>
     <string name="pref_vse_title">Perluasan Spektrum Suara</string>
@@ -75,8 +75,8 @@ Akan tetapi, jika pengguna mendengarkan music dengan tipe audio lossless, kami m
     <string name="pref_dynamicsystem_summary_on">Sistem dinamis telah aktif</string>
     <string name="pref_dynamicsystem_summary_off">Sistem dinamis tidak aktif</string>
     <string name="pref_dynamicsystem_enable">Aktifkan</string>
-    <string name="pref_dynamicsystem_output">Listening Device</string>
-    <string name="pref_dynamicsystem_output_title">Pilih Listening Device</string>
+    <string name="pref_dynamicsystem_output">Perangkat yang Digunakan</string>
+    <string name="pref_dynamicsystem_output_title">Pilih perangkat yang digunakan</string>
     <string name="pref_dynamicsystem_bass">Pilih Dynamic Bass</string>
     <string name="pref_dynamicsystem_tube_title">Simulasi Tabung Suara (6N1J)</string>
     <string name="pref_dynamicsystem_tube_summary_on">Simulasi tabung suara telah aktif</string>
@@ -90,20 +90,20 @@ Akan tetapi, jika pengguna mendengarkan music dengan tipe audio lossless, kami m
     <string name="pref_fidelity_vb_bassfreq">Frekuensi Bass</string>
     <string name="pref_fidelity_vb_bassfreq_title">Pilih Frekuensi Bass</string>
     <string name="pref_fidelity_vb_bassgain">Pendorong Bass</string>
-    <string name="pref_fidelity_vb_bassgain_title">Pilih Pendorong Bass</string>
+    <string name="pref_fidelity_vb_bassgain_title">Pendorong Bass</string>
     <string name="pref_fidelity_vc_summary_on">ViPER Clarity telah aktif</string>
     <string name="pref_fidelity_vc_summary_off">ViPER Clarity tidak aktif</string>
     <string name="pref_fidelity_vc_enable">Aktifkan ViPER Clarity</string>
     <string name="pref_fidelity_vc_mode">Mode Clarity (Kejelasan Suara)</string>
     <string name="pref_fidelity_vc_mode_title">Pilih Mode Clarity (Kejelasan Suara)</string>
     <string name="pref_fidelity_vc_bassgain">Clarity (Kejelasan Suara)</string>
-    <string name="pref_fidelity_vc_bassgain_title">Pilih mode Clarity (Kejelasan Suara)</string>
+    <string name="pref_fidelity_vc_bassgain_title">Pilih tingkatan Clarity</string>
     <string name="pref_curesystem_title">Sistem Perlindungan Pendengaran</string>
     <string name="pref_curesystem_summary_on">Cure Tech+ telah aktif</string>
     <string name="pref_curesystem_summary_off">Cure Tech+ tidak aktif</string>
     <string name="pref_curesystem_enable">Aktifkan</string>
-    <string name="pref_select_cure_cf_title">Pilih Level Binaural</string>
-    <string name="dialog_cure_crossfeed">Level Binaural</string>
+    <string name="pref_select_cure_cf_title">Pilih Tingkatan Binaural</string>
+    <string name="dialog_cure_crossfeed">Tingkatan Binaural</string>
     <string name="pref_convolver_title">Convolver</string>
     <string name="pref_convolver_summary_on">Convolver telah aktif</string>
     <string name="pref_convolver_summary_off">Convolver tidak aktif</string>
@@ -118,27 +118,27 @@ Akan tetapi, jika pengguna mendengarkan music dengan tipe audio lossless, kami m
     <string name="pref_vhs_enable">Aktifkan</string>
     <string name="pref_select_vhs_qual_title">Pilih Tingkatan Efek</string>
     <string name="dialog_vhs_qual">Tingkatan Efek</string>
-    <string name="pref_colorfulmusic_title">Field Surround</string>
-    <string name="pref_colorfulmusic_summary_on">Field surround telah aktif</string>
-    <string name="pref_colorfulmusic_summary_off">Field surround tidak aktif</string>
+    <string name="pref_colorfulmusic_title">Surround Bidang</string>
+    <string name="pref_colorfulmusic_summary_on">Surround bidang telah aktif</string>
+    <string name="pref_colorfulmusic_summary_off">Surround bidang tidak aktif</string>
     <string name="pref_colorfulmusic_enable">Aktifkan</string>
     <string name="pref_select_colorfulmusic_title">Pilih Kekuatan Field Surround</string>
     <string name="dialog_colorfulmusic">Kekuatan Field Surround</string>
     <string name="pref_select_colorfulmusic_mi_title">Pilih Kekuatan Mid Image</string>
     <string name="dialog_colorfulmusic_mi">Kekuatan Mid Image</string>
-    <string name="pref_diffsurr_title">Differential Surround</string>
-    <string name="pref_diffsurr_summary_on">Diff surround telah aktif</string>
-    <string name="pref_diffsurr_summary_off">Diff surround tidak aktif</string>
+    <string name="pref_diffsurr_title">Surround Differensial</string>
+    <string name="pref_diffsurr_summary_on">Surround differensial telah aktif</string>
+    <string name="pref_diffsurr_summary_off">Surround differensial tidak aktif</string>
     <string name="pref_diffsurr_enable">Aktifkan</string>
     <string name="pref_select_diffsurr_ms_title">Pilih selang waktu</string>
     <string name="dialog_diffsurr_ms">Selang Waktu</string>
-    <string name="pref_reverb_title">Reverberation (Efek Gema Suara)</string>
+    <string name="pref_reverb_title">Efek Gema Suara (Reverberation)</string>
     <string name="pref_reverb_summary_on">Efek Gema Suara telah aktif</string>
     <string name="pref_reverb_summary_off">Efek Gema Suara tidak aktif</string>
     <string name="pref_reverb_enable">Aktifkan</string>
     <string name="pref_reverb_roomsize">Ukuran Ruangan</string>
     <string name="pref_reverb_width">Jangkauan Suara</string>
-    <string name="pref_reverb_damp">Damping Factor</string>
+    <string name="pref_reverb_damp">Faktor Damping</string>
     <string name="pref_reverb_wet">Wet Signal</string>
     <string name="pref_reverb_dry">Dry Signal</string>
     <string name="eq_preset_acoustic">Akustik</string>
@@ -171,7 +171,7 @@ Akan tetapi, jika pengguna mendengarkan music dengan tipe audio lossless, kami m
     <string name="text_abnormal">Tidak Normal</string>
     <string name="text_supported">Mendukung</string>
     <string name="text_unsupported">Tidak Didukung</string>
-    <string name="text_loadfxprofile">Muat profil efek</string>
+    <string name="text_loadfxprofile">Muat Profil Efek</string>
     <string name="text_newfxprofile">Buat Profil Efek yang Baru…</string>
     <string name="text_savefxprofile">Simpan Profil Efek</string>
     <string name="text_profilesaved_overwrite">Apakah kamu ingin menimpa pengaturan profil ini?</string>
@@ -183,7 +183,7 @@ Akan tetapi, jika pengguna mendengarkan music dengan tipe audio lossless, kami m
     <string name="text_drvvernotmatch">"Untuk dapat menggunakan ViPER4Android, pengguna diharuskan untuk melakukan pemasangan/pembaruan driver V4A.
     Prosedur pemasangan akan dilakukan secara otomatis.
     Pasang/lakukan pembaruan sekarang?"</string>
-    <string name="text_drvuninst_confim">Apakah kamu benar-benar ingin mencopot V4A driver?</string>
+    <string name="text_drvuninst_confim">Apakah kamu benar-benar ingin mencopot pemasangan V4A driver?</string>
     <string name="text_uiprefer">Pengaturan UI</string>
     <string name="text_uiprefer_dialog">Harap pilih opsi berikut:</string>
     <string name="text_commode">Mode Kompatibel FX</string>
@@ -243,7 +243,7 @@ Version %1$s (FX), Codename “Beautiful”.
  'Normal' - Membuat ViPER4Android sebagai efek global.
  'Kompatibel' - Make ViPER4Android sebagai efek lokal.
 
-"<b>Tidak ada efek V4A pada semua/hampir pemutar media? No V4A effect on all/most mediaplayers?</b>"
+"<b>Tidak ada efek V4A pada semua/hampir pemutar media?</b>"
  Kamu dapat mengganti Mode FX ke kompatibel, kemudian restart perangkat kamu dan coba lagi.
 
 "<b>Bagaimana cara mengganti kualitas suara?</b>"
