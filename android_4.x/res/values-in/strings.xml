@@ -188,8 +188,8 @@
         <string name="text_drvinst_sqdrv">"Driver audio kualitas super membutuhkan setidaknya cpu dual-core dan mungkin dapat menyebabkan baterai lebih cepat habis dari biasanya.
           \nIngin lanjut?"</string>
         <string name="text_drvvernotmatch">"Untuk dapat menggunakan ViPER4Android, pengguna diharuskan untuk melakukan pemasangan/pembaruan driver V4A.
-        Prosedur pemasangan akan dilakukan secara otomatis.
-        Pasang/lakukan pembaruan sekarang?"</string>
+        \nProsedur pemasangan akan dilakukan secara otomatis.
+        \nPasang/lakukan pembaruan sekarang?"</string>
         <string name="text_drvuninst_confim">Apakah kamu benar-benar ingin mencopot pemasangan V4A driver?</string>
         <string name="text_uiprefer">Pengaturan UI</string>
         <string name="text_uiprefer_dialog">Harap pilih opsi berikut:</string>
