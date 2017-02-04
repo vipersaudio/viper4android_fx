@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="empty" />
+    <string name="app_name">ViPER4Android FX</string>
+    <string name="select_configuration_title">ViPER4Android FX</string>
+    <string name="headset_title">Headset</string>
+    <string name="speaker_title">Speaker Phone</string>
+    <string name="bluetooth_title">Perangkat Bluetooth</string>
+    <string name="usb_title">USB/Dock</string>
+    <string name="audio_effects">Efek Audio</string>
+    <string name="dsp_settings_headset">Pengaturan efek - Headset</string>
+    <string name="dsp_settings_speaker">Pengaturan efek - Speaker Handphone</string>
+    <string name="dsp_settings_bluetooth">Pengaturan efek - Perangkat Bluetooth</string>
+    <string name="dsp_settings_usb">Pengaturan efek - Perangkat USB</string>
+    <string name="pref_dsp_enable">Aktifkan</string>
+    <string name="pref_effect_title">Pilih Kekuatan Efek</string>
+    <string name="dialog_effect">Kekuatan Efek</string>
+    <string name="pref_force_enable_text">Paksa Aktifkan V4A</string>
+    <string name="pref_force_enable_warn">"Memaksa mengaktifkan fitur ini mungkin dapat menyelesaikan masalah V4A yang tidak menghasilkan efek suara.
+Di beberapa ROM, pengguna dapat mengalami kejadian seperti tidak ada suara yang dihasilkan dan baterai lebih boros dari biasanya.
+Gunakan dengan resiko ditanggung anda sendiri. Jika hal tersebut terjadi, matikan fitur ini."</string>
+    <string name="pref_fx_master_title">Power Utama</string>
+    <string name="pref_fx_master_summary_on">V4A-FX telah aktif</string>
+    <string name="pref_fx_master_summary_off">V4A-FX tidak aktif</string>
+    <string name="pref_spkfx_master_title">Power Utama</string>
+    <string name="pref_spkfx_master_summary_on">V4A-SpeakerFX telah aktif</string>
+    <string name="pref_spkfx_master_summary_off">V4A-SpeakerFX tidak aktif</string>
+    <string name="pref_fx_limiter_title">Pembatas Suara Utama</string>
+    <string name="pref_fx_limiter_threshold">Batasi Ambang Suara</string>
+    <string name="pref_spkfx_limiter_title">Pembatas Suara Utama</string>
+    <string name="pref_spkfx_limiter_threshold">Batasi Ambang Suara</string>
+    <string name="pref_output_gain">Keluaran Tambahan</string>
+    <string name="pref_output_pan">Keseimbangan Channel</string>
+    <string name="pref_playback_title">Kontrol Tambahan Suara (PlaybackAGC)</string>
+    <string name="pref_playback_summary_on">PlaybackAGC telah aktif</string>
+    <string name="pref_playback_summary_off">PlaybackAGC tidak aktif</string>
+    <string name="pref_playback_output_threshold">Keluaran maksimal</string>
+    <string name="pref_playback_maxgain">Tambahan Suara (Gain) Maksimal</string>
+    <string name="pref_xloud_title">eXtra Loud</string>
+    <string name="pref_xloud_summary_on">eXtra-Loud telah aktif</string>
+    <string name="pref_xloud_summary_off">eXtra-Loud tidak aktif</string>
+    <string name="pref_xloud_output_amplifer">Keluaran Tambahan</string>
+    <string name="pref_xloud_spk_lowfreq">Respon Rendah</string>
+    <string name="pref_xloud_spk_highfreq">Respon Tinggi</string>
+    <string name="pref_spk_opt_title">Optimisasi Speaker</string>
+    <string name="pref_spk_opt_summary_on">Optimisasi speaker telah aktif</string>
+    <string name="pref_spk_opt_summary_off">Optimisasi speaker tidak aktif</string>
+    <string name="pref_viperddc_title">ViPER-DDC</string>
+    <string name="pref_viperddc_summary_on">ViPER-DDC telah aktif</string>
+    <string name="pref_viperddc_summary_off">ViPER-DDC tidak aktif</string>
+    <string name="pref_viperddc_enable">Aktifkan</string>
+    <string name="pref_viperddc_device">Perangkat yang Digunakan</string>
+    <string name="pref_viperddc_device_manufacturer">Pilih Pabrikan</string>
+    <string name="pref_viperddc_device_model">Pilih Model</string>
+    <string name="pref_viperddc_tips">"PEMBERITAHUAN:
+ViPER-DDC adalah pemroses audio Hi-Fi murni dan digunakan untuk memperbaiki / mengoreksi suara yang dihasilkan oleh enis headset tertentu.
+ViPER-DDC sekarang telah mendukung hampir 500 headphone, dan akan terus dilanjutkan pengembangannya untuk mendukung lebih banyak headphone.
+Jika pengguna tidak dapat menemukan jenis headset yang ada di dalam daftar, harap matikan fitur ini hingga jenis headphone kamu ditambahkan."</string>
+    <string name="pref_vse_title">Perluasan Spektrum Suara</string>
+    <string name="pref_vse_summary_on">Perluasan spektrum suara telah aktif</string>
+    <string name="pref_vse_summary_off">Perluasan spektrum suara tidak aktif</string>
+    <string name="pref_vse_enable">Aktifkan</string>
+    <string name="pref_vse_strength">Kekuatan Efek</string>
+    <string name="pref_vse_strength_title">Pilih Kekuatan</string>
+    <string name="pref_vse_tips">"PEMBERITAHUAN:
+Perluasan spektrum suara adalah pemroses audio Hi-Fi murni dan ini digunakan untuk memperluas spektrum kompresi lossy
+Jika pengguna mendengarkan music dengan kompresi lossy(seperti mp3, aac, ogg), fitur ini akan memberikan sensasi mendengarkan audio lossless.
+Akan tetapi, jika pengguna mendengarkan music dengan tipe audio lossless, kami menyarankan untuk mematikan fitur ini."</string>
+    <string name="pref_equalizer_title">FIREqualizer</string>
+    <string name="pref_equalizer_summary_on">FIREqualizer telah aktif</string>
+    <string name="pref_equalizer_summary_off">FIREqualizer tidak aktif</string>
+    <string name="pref_equalizer_enable">Aktifkan</string>
+    <string name="pref_equalizer_preset_title">Pilih Preset</string>
+    <string name="pref_dynamicsystem_title">Sistem Dinamis</string>
+    <string name="pref_dynamicsystem_summary_on">Sistem dinamis telah aktif</string>
+    <string name="pref_dynamicsystem_summary_off">Sistem dinamis tidak aktif</string>
+    <string name="pref_dynamicsystem_enable">Aktifkan</string>
+    <string name="pref_dynamicsystem_output">Perangkat yang Digunakan</string>
+    <string name="pref_dynamicsystem_output_title">Pilih perangkat yang digunakan</string>
+    <string name="pref_dynamicsystem_bass">Pilih Dynamic Bass</string>
+    <string name="pref_dynamicsystem_tube_title">Simulasi Tabung Suara (6N1J)</string>
+    <string name="pref_dynamicsystem_tube_summary_on">Simulasi tabung suara telah aktif</string>
+    <string name="pref_dynamicsystem_tube_summary_off">Simulasi tabung suara tidak aktif</string>
+    <string name="pref_fidelity_title">Kontrol Ketelitian</string>
+    <string name="pref_fidelity_vb_summary_on">ViPER Bass telah aktif</string>
+    <string name="pref_fidelity_vb_summary_off">ViPER Bass tidak aktif</string>
+    <string name="pref_fidelity_vb_enable">Aktifkan ViPER Bass</string>
+    <string name="pref_fidelity_vb_mode">Mode Bass</string>
+    <string name="pref_fidelity_vb_mode_title">Pilih Mode Bass</string>
+    <string name="pref_fidelity_vb_bassfreq">Frekuensi Bass</string>
+    <string name="pref_fidelity_vb_bassfreq_title">Pilih Frekuensi Bass</string>
+    <string name="pref_fidelity_vb_bassgain">Pendorong Bass</string>
+    <string name="pref_fidelity_vb_bassgain_title">Pendorong Bass</string>
+    <string name="pref_fidelity_vc_summary_on">ViPER Clarity telah aktif</string>
+    <string name="pref_fidelity_vc_summary_off">ViPER Clarity tidak aktif</string>
+    <string name="pref_fidelity_vc_enable">Aktifkan ViPER Clarity</string>
+    <string name="pref_fidelity_vc_mode">Mode Clarity (Kejelasan Suara)</string>
+    <string name="pref_fidelity_vc_mode_title">Pilih Mode Clarity (Kejelasan Suara)</string>
+    <string name="pref_fidelity_vc_bassgain">Clarity (Kejelasan Suara)</string>
+    <string name="pref_fidelity_vc_bassgain_title">Pilih tingkatan Clarity</string>
+    <string name="pref_curesystem_title">Sistem Perlindungan Pendengaran</string>
+    <string name="pref_curesystem_summary_on">Cure Tech+ telah aktif</string>
+    <string name="pref_curesystem_summary_off">Cure Tech+ tidak aktif</string>
+    <string name="pref_curesystem_enable">Aktifkan</string>
+    <string name="pref_select_cure_cf_title">Pilih Tingkatan Binaural</string>
+    <string name="dialog_cure_crossfeed">Tingkatan Binaural</string>
+    <string name="pref_convolver_title">Convolver</string>
+    <string name="pref_convolver_summary_on">Convolver telah aktif</string>
+    <string name="pref_convolver_summary_off">Convolver tidak aktif</string>
+    <string name="pref_convolver_enable">Aktifkan</string>
+    <string name="pref_convolver_knl">Respon Impuls</string>
+    <string name="pref_convolver_knl_title">Pilih Respon Impuls</string>
+    <string name="pref_convolver_crosschannel">Cross Channel</string>
+    <string name="pref_convolver_crosschannel_title">Pilih Cross Channel</string>
+    <string name="pref_vhs_title">Headphone Surround +</string>
+    <string name="pref_vhs_summary_on">VHS+ telah aktif</string>
+    <string name="pref_vhs_summary_off">VHS+ tidak aktif</string>
+    <string name="pref_vhs_enable">Aktifkan</string>
+    <string name="pref_select_vhs_qual_title">Pilih Tingkatan Efek</string>
+    <string name="dialog_vhs_qual">Tingkatan Efek</string>
+    <string name="pref_colorfulmusic_title">Surround Bidang</string>
+    <string name="pref_colorfulmusic_summary_on">Surround bidang telah aktif</string>
+    <string name="pref_colorfulmusic_summary_off">Surround bidang tidak aktif</string>
+    <string name="pref_colorfulmusic_enable">Aktifkan</string>
+    <string name="pref_select_colorfulmusic_title">Pilih Kekuatan Field Surround</string>
+    <string name="dialog_colorfulmusic">Kekuatan Field Surround</string>
+    <string name="pref_select_colorfulmusic_mi_title">Pilih Kekuatan Mid Image</string>
+    <string name="dialog_colorfulmusic_mi">Kekuatan Mid Image</string>
+    <string name="pref_diffsurr_title">Surround Differensial</string>
+    <string name="pref_diffsurr_summary_on">Surround differensial telah aktif</string>
+    <string name="pref_diffsurr_summary_off">Surround differensial tidak aktif</string>
+    <string name="pref_diffsurr_enable">Aktifkan</string>
+    <string name="pref_select_diffsurr_ms_title">Pilih selang waktu</string>
+    <string name="dialog_diffsurr_ms">Selang Waktu</string>
+    <string name="pref_reverb_title">Efek Gema Suara (Reverberation)</string>
+    <string name="pref_reverb_summary_on">Efek Gema Suara telah aktif</string>
+    <string name="pref_reverb_summary_off">Efek Gema Suara tidak aktif</string>
+    <string name="pref_reverb_enable">Aktifkan</string>
+    <string name="pref_reverb_roomsize">Ukuran Ruangan</string>
+    <string name="pref_reverb_width">Jangkauan Suara</string>
+    <string name="pref_reverb_damp">Faktor Damping</string>
+    <string name="pref_reverb_wet">Wet Signal</string>
+    <string name="pref_reverb_dry">Dry Signal</string>
+    <string name="eq_preset_acoustic">Akustik</string>
+    <string name="eq_preset_bass_booster">Pendorong Bass</string>
+    <string name="eq_preset_bass_reducer">Peredam Bass</string>
+    <string name="eq_preset_classical">Klasik</string>
+    <string name="eq_preset_deep">Mendalam</string>
+    <string name="eq_preset_flat">Datar</string>
+    <string name="eq_preset_r_and_b">R&amp;B</string>
+    <string name="eq_preset_rock">Rock</string>
+    <string name="eq_preset_small_speakers">Speaker Kecil</string>
+    <string name="eq_preset_treble_booster">Pendorong Treble</string>
+    <string name="eq_preset_treble_reducer">Peredam Treble</string>
+    <string name="eq_preset_vocal_booster">Pendorong Vokal</string>
+    <string name="eq_preset_custom">Kustomisasi Sendiri</string>
+    <string name="text_ir_dir_isempty">ViPER4Android: Sampel direktori IR %1$s kosong.</string>
+    <string name="text_token_lost">ViPER4Android: Sebuah program yang sedang berjalan telah mengirimkan request ke Android untuk menonaktifkan efek audio, jadi V4A akan dinonaktifkan sementara.</string>
+    <string name="text_enabled">Aktif</string>
+    <string name="text_disabled">Tidak Aktif</string>
+    <string name="text_headset">Headset</string>
+    <string name="text_bluetooth">Bluetooth</string>
+    <string name="text_speaker">Speaker</string>
+    <string name="text_usb">USB/Dock</string>
+    <string name="text_showtrayicon">Tampilkan Pemberitahuan</string>
+    <string name="text_hidetrayicon">Sembunyikan Pemberitahuan</string>
+    <string name="text_lockeffect">Kunci Mode Efek</string>
+    <string name="text_yes">Ya</string>
+    <string name="text_no">Tidak</string>
+    <string name="text_normal">Normal</string>
+    <string name="text_abnormal">Tidak Normal</string>
+    <string name="text_supported">Mendukung</string>
+    <string name="text_unsupported">Tidak Didukung</string>
+    <string name="text_loadfxprofile">Muat Profil Efek</string>
+    <string name="text_newfxprofile">Buat Profil Efek yang Baru…</string>
+    <string name="text_savefxprofile">Simpan Profil Efek</string>
+    <string name="text_profilesaved_overwrite">Apakah kamu ingin menimpa pengaturan profil ini?</string>
+    <string name="text_profileload_tip">Terapkan profil</string>
+    <string name="text_ok">OK</string>
+    <string name="text_cancel">Batal</string>
+    <string name="text_drvinst_prefer">Harap pilih opsi berikut:</string>
+    <string name="text_drvinst_sqdrv">"Driver audio kualitas super membutuhkan setidaknya cpu dual-core dan mungkin dapat menyebabkan baterai lebih cepat habis dari biasanya. Ingin lanjut?"</string>
+    <string name="text_drvvernotmatch">"Untuk dapat menggunakan ViPER4Android, pengguna diharuskan untuk melakukan pemasangan/pembaruan driver V4A.
+    Prosedur pemasangan akan dilakukan secara otomatis.
+    Pasang/lakukan pembaruan sekarang?"</string>
+    <string name="text_drvuninst_confim">Apakah kamu benar-benar ingin mencopot pemasangan V4A driver?</string>
+    <string name="text_uiprefer">Pengaturan UI</string>
+    <string name="text_uiprefer_dialog">Harap pilih opsi berikut:</string>
+    <string name="text_commode">Mode Kompatibel FX</string>
+    <string name="text_drv_blank" />
+    <string name="text_uninstall">Copot Pemasangan Driver</string>
+    <string name="text_install">Pasang Driver</string>
+    <string name="text_drvinst_ok">Driver telah terpasang, silahkan reboot/restart perangkat kamu.</string>
+    <string name="text_drvuninst_ok">Driver telah dicopot pemasangannya, silahkan reboot/restart perangkat kamu.</string>
+    <string name="text_no_busybox">Busybox tidak terdeteksi pada perangkat kamu, apakah kamu ingin memasangnya sekarang?</string>
+    <string name="text_drvinst_acquireroot">"Pemasangan driver gagal: V4A tidak mendapatkan izin root. Pastikan perangkat kamu dalam kondisi telah dilakukan root."</string>
+    <string name="text_drvinst_busybox_not_installed">Pemasangan driver gagal: Tidak ditemukan busybox yang tepat pada perangkat ini.</string>
+    <string name="text_drvinst_sdnotmounted">Pemasangan driver gagal: Penyimpanan eksternal belum terpasang</string>
+    <string name="text_drvinst_dataioerr">Pemasangan driver gagal: I/O error, Harap reboot dan coba lagi.</string>
+    <string name="text_drvinst_cfg_unsup">Pemasangan driver gagal: Versi Android atau ROM tidak didukung.</string>
+    <string name="text_drvinst_failed">"Pemasangan driver gagal: Busybox yang telah terpasang pada perangkat kamu tidak bekerja sebagaimana mestinya.
+    Biasanya, ini berarti pengguna telah memasang busybox yang salah atau yang rusak. V4A membutuhkan busybox dari Stericson untuk dapat bekerja.
+    Jika kamu yakin telah memasang busybox yang tepat, harap pastikan perangkat kamu telah sepenuhnya dilakukan root."</string>
+    <string name="text_modifybuildprop">"PERHATIAN:
+LPA telah diaktifkan di perangkat kamu, hal ini bisa menyebabkan V4A malfungsi.
+LPA, atau 'Low Power Audio', dapat dinonaktifkan dengan memodifikasi build.prop, yang mana dapat dilakukan secara otomatis.
+Kami sangat merekomendasikan untuk membuat NANDROID atau BACKUP DATA sebelum melanjutkan!
+Apakah kamu ingin menonaktifkan LPA sekarang?"</string>
+    <string name="text_changelog">Log Perubahan</string>
+    <string name="text_drv_status">Status Driver</string>
+    <string name="text_drv_status_view">"
+
+Versi Driver: %1$s
+NEON Aktif: %2$s
+Aktif: %3$s
+Status: %4$s
+Format Audio: %5$s
+Memproses Audio: %6$s
+Rasio Sampling: %7$d
+"</string>
+    <string name="text_service_error">Gagal dalam berkomunikasi dengan layanan ViPER4Android.</string>
+    <string name="about_title">Bantuan dan Tentang</string>
+    <string name="about_text">"***Tentang ViPER4Android***
+
+'libv4a_xx_xx.so' is the kernel of ViPER4Android.
+Copyright © 2006-2016, ViPER ACOUSTIC. All rights reserved.
+Without the official permission, commercial use is disallowed.
+Official Forum: http://vipersaudio.com/blog/
+
+'ViPER4Android.apk' is the visual control panel of ViPER4Android.
+Based on Cyanogenmod's DSPManager.
+Great thanks to Zhuhang@XDA
+Great thanks to M4570D0N@github, xLaMbChOpSx@github, bboa@github
+Material Light Theme Creator: Zoja
+
+Version %1$s (FX), Codename “Beautiful”.
+"</string>
+    <string name="text_help_content">"***Bantuan Umum***
+
+'Pasang Driver' - Memasang/Melakukan update driver efek ViPER4Android.
+'Copot Pemasangan Driver' - Mencopot pemasangan driver efek ViPER4Android.
+'Mode Kompatibel FX' - Menyetel Mode Kompatibilitas Efek.
+ 'Normal' - Membuat ViPER4Android sebagai efek global.
+ 'Kompatibel' - Make ViPER4Android sebagai efek lokal.
+
+"<b>Tidak ada efek V4A pada semua/hampir pemutar media?</b>"
+ Kamu dapat mengganti Mode FX ke kompatibel, kemudian restart perangkat kamu dan coba lagi.
+
+"<b>Bagaimana cara mengganti kualitas suara?</b>"
+ Copot pemasanangan driver pada menu kemudian restart perangkat kamu dan pilih kualitas yang kamu inginkan.
+
+"<b>Bagaimana cara mengurangi konsumsi baterai?</b>"
+ Ketika V4A sedang berjalan di mode normal, matikan pengaturan suara sistem termasuk suara sentuhan dan suara lock/unlock dari perangkat untuk menghemat hingga 1.2~4 kali daya baterai.
+
+"<b>Forum: http://forum.xda-developers.com/showthread.php?t=2191223</b></string>
+    <string name="text_forum_link">http://forum.xda-developers.com/showthread.php?t=2191223</string>
+    <string name="text_view_forum">Forum</string>
+    <string name="text_checkupdate">Cek pembaruan</string>
+    <string name="text_updatelink">http://vipersaudio.com/swupdate/viper4android/download.html</string>
+    <string name="navigation_drawer_open">Buka kotak navigasi</string>
+    <string name="navigation_drawer_close">Tutup kotak navigasi</string>
+    <string name="navigation_toggle_drawer">Pindah ke tampilan kotak</string>
+    <string name="navigation_toggle_tabbed">Pindah ke tampilan tab</string>
+</resources>
